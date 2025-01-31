@@ -16,6 +16,13 @@ theme = 'PaperMod'
   title = "RyanPark's DevSecOps"
   subtitle = "Security & DevOps Engineering Blog"
   
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+# [permalinks]
+#   post = "/post/:categories/:slug/"
+
 [menu]
   [[menu.main]]
     identifier = "posts"

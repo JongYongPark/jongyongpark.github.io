@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Basic on RyanPark&#39;s DevSecOps</title>
+    <link>http://localhost:1313/tags/basic/</link>
+    <description>Recent content in Basic on RyanPark&#39;s DevSecOps</description>
+    <generator>Hugo -- 0.142.0</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Fri, 31 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/basic/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python Basic Grammar</title>
+      <link>http://localhost:1313/posts/programming/python-basics/</link>
+      <pubDate>Fri, 31 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/programming/python-basics/</guid>
+      <description>&lt;p&gt;Here I will write about the basic syntax of Python.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

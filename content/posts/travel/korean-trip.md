@@ -1,6 +1,6 @@
 ---
 title: "Review of a bus trip in Korea"
-date: 2025-02-15
+date: 2025-01-31
 categories: ["travel"]
 tags: ["Korea", "bus travel"]
 ---

@@ -9,12 +9,34 @@
     <lastBuildDate>Mon, 03 Feb 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/ops/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles</title>
+      <link>http://localhost:1313/posts/ops/makefile-bash--variable-assignment/</link>
+      <pubDate>Mon, 03 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/ops/makefile-bash--variable-assignment/</guid>
+      <description>&lt;p&gt;Differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;You&amp;rsquo;re right, I apologize for the confusion in my previous response. Let me provide a correct explanation of the differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles.&lt;/p&gt;
+&lt;p&gt;Makefile variable assignment operators:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;:= (Simple expansion):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Expands variables immediately at assignment time.&lt;/li&gt;
+&lt;li&gt;Example: FOO := $(BAR)&lt;/li&gt;
+&lt;li&gt;If BAR changes later, FOO will not be affected.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;= (Recursive expansion):&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>SRM : Reset Admin Password on MariaDB</title>
       <link>http://localhost:1313/posts/ops/srm--reset-mariadb-admin-password/</link>
       <pubDate>Mon, 03 Feb 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/ops/srm--reset-mariadb-admin-password/</guid>
       <description>&lt;p&gt;How to reset admin password on MariaDB from SRM (Softeware Risk Manager).&lt;/p&gt;
-&lt;h1 id=&#34;this-script-recovers-from-a-lost-or-forgotten-super-admin-password-it-resets-both-the-super-admin-password-and-the-database-root-user-password-to-the-provided-value-by-srm&#34;&gt;This script recovers from a lost or forgotten super-admin password. It resets both the super-admin password and the database root user password to the provided value By SRM&lt;/h1&gt;
+&lt;hr&gt;
+&lt;p&gt;This script recovers from a lost or forgotten super-admin password. It resets both the super-admin password and the database root user password to the provided value By SRM&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#!/bin/bash
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
@@ -118,6 +140,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Execute the function&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;admin-password-recover-script &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$@&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Ex&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; admin-password-recover-script ~/workspace/dev_tool/codedx/srm-2024.12.1/srm
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     <item>

@@ -123,9 +123,29 @@
   <ul>
     
       <li>
+        <a href="http://localhost:1313/posts/ops/makefile-bash--variable-assignment/">Differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles</a>
+        <p><p>Differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles</p>
+<hr>
+<p>You&rsquo;re right, I apologize for the confusion in my previous response. Let me provide a correct explanation of the differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles.</p>
+<p>Makefile variable assignment operators:</p>
+<ol>
+<li>
+<p>:= (Simple expansion):</p>
+<ul>
+<li>Expands variables immediately at assignment time.</li>
+<li>Example: FOO := $(BAR)</li>
+<li>If BAR changes later, FOO will not be affected.</li>
+</ul>
+</li>
+<li>
+<p>= (Recursive expansion):</p></p>
+      </li>
+    
+      <li>
         <a href="http://localhost:1313/posts/ops/srm--reset-mariadb-admin-password/">SRM : Reset Admin Password on MariaDB</a>
         <p><p>How to reset admin password on MariaDB from SRM (Softeware Risk Manager).</p>
-<h1 id="this-script-recovers-from-a-lost-or-forgotten-super-admin-password-it-resets-both-the-super-admin-password-and-the-database-root-user-password-to-the-provided-value-by-srm">This script recovers from a lost or forgotten super-admin password. It resets both the super-admin password and the database root user password to the provided value By SRM</h1>
+<hr>
+<p>This script recovers from a lost or forgotten super-admin password. It resets both the super-admin password and the database root user password to the provided value By SRM</p>
 <hr>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
@@ -229,6 +249,8 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># Execute the function</span>
 </span></span><span style="display:flex;"><span>admin-password-recover-script <span style="color:#e6db74">&#34;</span>$@<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Ex<span style="color:#f92672">)</span> admin-password-recover-script ~/workspace/dev_tool/codedx/srm-2024.12.1/srm
 </span></span></code></pre></div></p>
       </li>
     

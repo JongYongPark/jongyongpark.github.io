@@ -3,9 +3,33 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2025-01-31T00:00:00+00:00</lastmod>
+    <lastmod>2025-02-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/</loc>
+    <lastmod>2025-02-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/mariadb/</loc>
+    <lastmod>2025-02-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/ops/</loc>
+    <lastmod>2025-02-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/</loc>
+    <lastmod>2025-02-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/srm/</loc>
+    <lastmod>2025-02-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/ops/srm--reset-mariadb-admin-password/</loc>
+    <lastmod>2025-02-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2025-02-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/azure-devops/</loc>
+    <lastmod>2025-01-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/ops/azure-devops-api-rate-limits/</loc>
     <lastmod>2025-01-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/basic/</loc>
@@ -15,9 +39,6 @@
     <lastmod>2025-01-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/c&#43;&#43;/</loc>
-    <lastmod>2025-01-31T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/</loc>
     <lastmod>2025-01-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/programming/cyclomatic-complexity-in-c&#43;&#43;-code/</loc>
@@ -38,12 +59,6 @@
     <loc>http://localhost:1313/tags/korea/</loc>
     <lastmod>2025-01-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/ops/</loc>
-    <lastmod>2025-01-31T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2025-01-31T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/categories/programming/</loc>
     <lastmod>2025-01-31T00:00:00+00:00</lastmod>
   </url><url>
@@ -57,12 +72,6 @@
     <lastmod>2025-01-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/sdlc/</loc>
-    <lastmod>2025-01-31T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/srm/</loc>
-    <lastmod>2025-01-31T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
     <lastmod>2025-01-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/travel/</loc>

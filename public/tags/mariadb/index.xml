@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>SRM on RyanPark&#39;s DevSecOps</title>
-    <link>http://localhost:1313/tags/srm/</link>
-    <description>Recent content in SRM on RyanPark&#39;s DevSecOps</description>
+    <title>MariaDB on RyanPark&#39;s DevSecOps</title>
+    <link>http://localhost:1313/tags/mariadb/</link>
+    <description>Recent content in MariaDB on RyanPark&#39;s DevSecOps</description>
     <generator>Hugo -- 0.142.0</generator>
     <language>ko-kr</language>
     <lastBuildDate>Mon, 03 Feb 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/srm/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/mariadb/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SRM : Reset Admin Password on MariaDB</title>
       <link>http://localhost:1313/posts/ops/srm--reset-mariadb-admin-password/</link>
@@ -119,18 +119,6 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Execute the function&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;admin-password-recover-script &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$@&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-    </item>
-    <item>
-      <title>How to send findings from SRM (Software Risk Management) to Azure DevOps Work Items</title>
-      <link>http://localhost:1313/posts/ops/srm-findings-to-azure-devops-work/</link>
-      <pubDate>Fri, 31 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/ops/srm-findings-to-azure-devops-work/</guid>
-      <description>&lt;p&gt;how to check Azure DevOps Work Items API rate limit&lt;/p&gt;
-&lt;h2 id=&#34;how-to-send-findings-from-srm-software-risk-management-to-azure-devops-work-items&#34;&gt;How to send findings from SRM (Software Risk Management) to Azure DevOps Work Items&lt;/h2&gt;
-&lt;p&gt;To send findings from &lt;strong&gt;SRM (Software Risk Management)&lt;/strong&gt; to &lt;strong&gt;Azure DevOps Work Items&lt;/strong&gt;, you can follow the steps outlined below. This process involves using the Azure DevOps REST API to create or update work items based on the SRM findings. Here&amp;rsquo;s a detailed guide:&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;1-prerequisites&#34;&gt;&lt;strong&gt;1. Prerequisites&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;Before starting, ensure the following:&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

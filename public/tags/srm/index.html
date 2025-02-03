@@ -126,15 +126,29 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">SRM : Reset Admin Password on MariaDB
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>How to reset admin password on MariaDB from SRM (Softeware Risk Manager).
+This script recovers from a lost or forgotten super-admin password. It resets both the super-admin password and the database root user password to the provided value By SRM #!/bin/bash # This script recovers from a lost or forgotten super-admin password. # It resets both the super-admin password and the database root user password to the provided value. # By SRM function admin-password-recover-script() { ### Validate input and set SRM installation path if [ &#34;$#&#34; -ne 1 ] &amp;&amp; [ &#34;$#&#34; -ne 0 ]; then echo &#34;Usage: $0 [path to SRM installation folder]&#34; echo &#34;If path contains spaces, wrap it in double quotes.&#34; echo &#34;Example:&#34; echo &#34; $0 /opt/srm&#34; exit 1 fi local SRM_PATH if [ &#34;$#&#34; -eq 1 ]; then SRM_PATH=$1 else echo &#34;Enter path to SRM installation folder:&#34; read -r SRM_PATH fi # Remove trailing slash from the input path SRM_PATH=${SRM_PATH%/} # Check for MariaDB binary file if [ ! -f &#34;$SRM_PATH/mysql/bin/mysqld&#34; ]; then echo &#34;The given SRM directory does not appear to have appropriate mysql files&#34; exit 2 fi ### Get new password echo &#34;Enter new administrator password:&#34; read -rs NEW_PASSWORD ### Create temporary initialization file TEMP_INIT_FILE=$(mktemp) ### Check MariaDB configuration file echo &#34;Looking for MariaDB configuration file...&#34; DB_CONFIG=$SRM_PATH/mysql/my.cnf if [ ! -f &#34;$DB_CONFIG&#34; ]; then echo &#34;$DB_CONFIG not found. Aborting&#34; exit 2 fi ### Check MariaDB data directory from SRM properties file echo &#34;Found MariaDB configuration at $DB_CONFIG&#34; echo &#34;Looking for SRM database...&#34; DB_DATA=$(grep &#34;mysql_data_directory&#34; &#34;$SRM_PATH/properties.ini&#34; | cut -d&#39;=&#39; -f2) if [ ! -d &#34;$DB_DATA&#34; ]; then echo &#34;MariaDB data directory not found (looked at $DB_DATA). Aborting&#34; exit 2 fi ### Verify SRM database echo &#34;Found MariaDB data directory at $DB_DATA&#34; DB_NAME=srm if [ ! -d &#34;$DB_DATA/$DB_NAME&#34; ]; then DB_NAME=bitnami_srm fi if [ ! -d &#34;$DB_DATA/$DB_NAME&#34; ]; then echo &#34;SRM database not found. Aborting&#34; exit 2 fi echo &#34;Found SRM database $DB_NAME&#34; ### Generate MariaDB initialization file echo &#34;Generating MariaDB recovery init file...&#34; { echo &#34;SET PASSWORD FOR &#39;root&#39;@&#39;localhost&#39; = PASSWORD(&#39;${NEW_PASSWORD//\&#39;/\&#39;\&#39;}&#39;);&#34; echo &#34;UPDATE \`$DB_NAME\`.\`LOCAL_USERS\` SET \`PASSWORD\`=SHA2(&#39;${NEW_PASSWORD//\&#39;/\&#39;\&#39;}&#39;, 256) WHERE \`ID\`=1;&#34; echo &#34;SHUTDOWN;&#34; } &gt; &#34;$TEMP_INIT_FILE&#34; ### Stop SRM services echo &#34;Shutting down SRM services&#34; &#34;$SRM_PATH/ctlscript.sh&#34; stop ### Reset passwords echo &#34;Resetting passwords...&#34; # If root user, set file permissions and run as mysql user if (( EUID == 0 )); then chown mysql &#34;$TEMP_INIT_FILE&#34; &#34;$SRM_PATH/mysql/bin/mysqld&#34; --defaults-file=&#34;$DB_CONFIG&#34; --init-file=&#34;$TEMP_INIT_FILE&#34; --console --user=mysql else &#34;$SRM_PATH/mysql/bin/mysqld&#34; --defaults-file=&#34;$DB_CONFIG&#34; --init-file=&#34;$TEMP_INIT_FILE&#34; --console fi ### Clean up and display completion message echo &#34;Removing recovery init file...&#34; rm -f &#34;$TEMP_INIT_FILE&#34; echo &#34;Done! You may start SRM again.&#34; } # Execute the function admin-password-recover-script &#34;$@&#34; </p>
+  </div>
+  <footer class="entry-footer"><span title='2025-02-03 00:00:00 +0000 UTC'>February 3, 2025</span>&nbsp;·&nbsp;3 min</footer>
+  <a class="entry-link" aria-label="post link to SRM : Reset Admin Password on MariaDB" href="http://localhost:1313/posts/ops/srm--reset-mariadb-admin-password/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">How to send findings from SRM (Software Risk Management) to Azure DevOps Work Items
     </h2>
   </header>
   <div class="entry-content">
-    <p>How to send findings from SRM (Software Risk Management) to Azure DevOps Work Items SRM (Software Risk Management)의 결함 정보를 Azure DevOps Work Items로 전송하려면 Azure DevOps REST API를 사용하여 작업 항목(Work Item)을 생성하거나 업데이트할 수 있습니다. 아래는 이를 구현하는 방법에 대한 단계별 설명입니다.
-1. Azure DevOps API 준비 Azure DevOps Organization 및 프로젝트 설정: Azure DevOps 조직과 프로젝트가 이미 생성되어 있어야 합니다. Personal Access Token (PAT) 생성: Azure DevOps 포털에 로그인합니다. 사용자 설정 &gt; Personal Access Tokens로 이동합니다. 새로운 토큰을 생성하고, Work Items (Read &amp; Write) 권한을 부여합니다. 토큰을 안전하게 저장합니다 (이 토큰은 API 호출 시 사용됩니다). 2. Azure DevOps Work Item API 엔드포인트 Azure DevOps REST API를 사용하여 작업 항목을 생성하거나 업데이트할 수 있습니다. Work Item 생성 API: POST https://dev.azure.com/{organization}/{project}/_apis/wit/workitems/${type}?api-version=7.1-preview.3 {organization}: Azure DevOps 조직 이름. {project}: 프로젝트 이름. {type}: 작업 항목 유형 (예: Bug, Task, Issue 등). 3. SRM 결함 정보를 Azure DevOps Work Item으로 변환 SRM에서 제공하는 결함 정보를 Azure DevOps Work Item 필드에 매핑합니다. 예를 들어: SRM 결함 제목 → Azure DevOps Title SRM 결함 설명 → Azure DevOps Description SRM 결함 심각도 → Azure DevOps Severity SRM 결함 상태 → Azure DevOps State 4. API 호출 예제 (Python) 아래는 Python을 사용하여 SRM 결함 정보를 Azure DevOps Work Item으로 전송하는 예제입니다.
+    <p>how to check Azure DevOps Work Items API rate limit
+How to send findings from SRM (Software Risk Management) to Azure DevOps Work Items To send findings from SRM (Software Risk Management) to Azure DevOps Work Items, you can follow the steps outlined below. This process involves using the Azure DevOps REST API to create or update work items based on the SRM findings. Here’s a detailed guide:
+1. Prerequisites Before starting, ensure the following:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-01-31 00:00:00 +0000 UTC'>January 31, 2025</span>&nbsp;·&nbsp;3 min</footer>
+  <footer class="entry-footer"><span title='2025-01-31 00:00:00 +0000 UTC'>January 31, 2025</span>&nbsp;·&nbsp;4 min</footer>
   <a class="entry-link" aria-label="post link to How to send findings from SRM (Software Risk Management) to Azure DevOps Work Items" href="http://localhost:1313/posts/ops/srm-findings-to-azure-devops-work/"></a>
 </article>
     </main>

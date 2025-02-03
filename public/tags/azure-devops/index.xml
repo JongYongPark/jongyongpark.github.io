@@ -9,54 +9,27 @@
     <lastBuildDate>Fri, 31 Jan 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/azure-devops/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Azure DevOps API Rate Limits</title>
+      <link>http://localhost:1313/posts/ops/azure-devops-api-rate-limits/</link>
+      <pubDate>Fri, 31 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/ops/azure-devops-api-rate-limits/</guid>
+      <description>&lt;p&gt;Azure DevOps imposes &lt;strong&gt;rate limits&lt;/strong&gt; on its REST API to ensure fair usage and prevent abuse. If you exceed these limits, your API requests may be throttled, resulting in HTTP &lt;code&gt;429 Too Many Requests&lt;/code&gt; responses. To avoid this, it&amp;rsquo;s important to monitor and manage your API usage.&lt;/p&gt;
+&lt;p&gt;Here’s how you can check and handle Azure DevOps Work Items API rate limits:&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;1-understanding-azure-devops-api-rate-limits&#34;&gt;&lt;strong&gt;1. Understanding Azure DevOps API Rate Limits&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Azure DevOps API rate limits are based on:&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>How to send findings from SRM (Software Risk Management) to Azure DevOps Work Items</title>
       <link>http://localhost:1313/posts/ops/srm-findings-to-azure-devops-work/</link>
       <pubDate>Fri, 31 Jan 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/ops/srm-findings-to-azure-devops-work/</guid>
-      <description>&lt;h2 id=&#34;how-to-send-findings-from-srm-software-risk-management-to-azure-devops-work-items&#34;&gt;How to send findings from SRM (Software Risk Management) to Azure DevOps Work Items&lt;/h2&gt;
-&lt;p&gt;SRM (Software Risk Management)의 결함 정보를 Azure DevOps Work Items로 전송하려면 Azure DevOps REST API를 사용하여 작업 항목(Work Item)을 생성하거나 업데이트할 수 있습니다. 아래는 이를 구현하는 방법에 대한 단계별 설명입니다.&lt;/p&gt;
+      <description>&lt;p&gt;how to check Azure DevOps Work Items API rate limit&lt;/p&gt;
+&lt;h2 id=&#34;how-to-send-findings-from-srm-software-risk-management-to-azure-devops-work-items&#34;&gt;How to send findings from SRM (Software Risk Management) to Azure DevOps Work Items&lt;/h2&gt;
+&lt;p&gt;To send findings from &lt;strong&gt;SRM (Software Risk Management)&lt;/strong&gt; to &lt;strong&gt;Azure DevOps Work Items&lt;/strong&gt;, you can follow the steps outlined below. This process involves using the Azure DevOps REST API to create or update work items based on the SRM findings. Here&amp;rsquo;s a detailed guide:&lt;/p&gt;
 &lt;hr&gt;
-&lt;h3 id=&#34;1-azure-devops-api-준비&#34;&gt;1. &lt;strong&gt;Azure DevOps API 준비&lt;/strong&gt;&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Azure DevOps Organization 및 프로젝트 설정&lt;/strong&gt;: Azure DevOps 조직과 프로젝트가 이미 생성되어 있어야 합니다.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Personal Access Token (PAT) 생성&lt;/strong&gt;:
-&lt;ol&gt;
-&lt;li&gt;Azure DevOps 포털에 로그인합니다.&lt;/li&gt;
-&lt;li&gt;사용자 설정 &amp;gt; Personal Access Tokens로 이동합니다.&lt;/li&gt;
-&lt;li&gt;새로운 토큰을 생성하고, &lt;code&gt;Work Items (Read &amp;amp; Write)&lt;/code&gt; 권한을 부여합니다.&lt;/li&gt;
-&lt;li&gt;토큰을 안전하게 저장합니다 (이 토큰은 API 호출 시 사용됩니다).&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;2-azure-devops-work-item-api-엔드포인트&#34;&gt;2. &lt;strong&gt;Azure DevOps Work Item API 엔드포인트&lt;/strong&gt;&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Azure DevOps REST API를 사용하여 작업 항목을 생성하거나 업데이트할 수 있습니다.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Work Item 생성 API&lt;/strong&gt;:
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;POST https://dev.azure.com/{organization}/{project}/_apis/wit/workitems/${type}?api-version=7.1-preview.3
-&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;{organization}&lt;/code&gt;: Azure DevOps 조직 이름.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;{project}&lt;/code&gt;: 프로젝트 이름.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;{type}&lt;/code&gt;: 작업 항목 유형 (예: &lt;code&gt;Bug&lt;/code&gt;, &lt;code&gt;Task&lt;/code&gt;, &lt;code&gt;Issue&lt;/code&gt; 등).&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;3-srm-결함-정보를-azure-devops-work-item으로-변환&#34;&gt;3. &lt;strong&gt;SRM 결함 정보를 Azure DevOps Work Item으로 변환&lt;/strong&gt;&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;SRM에서 제공하는 결함 정보를 Azure DevOps Work Item 필드에 매핑합니다.&lt;/li&gt;
-&lt;li&gt;예를 들어:
-&lt;ul&gt;
-&lt;li&gt;SRM 결함 제목 → Azure DevOps &lt;code&gt;Title&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;SRM 결함 설명 → Azure DevOps &lt;code&gt;Description&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;SRM 결함 심각도 → Azure DevOps &lt;code&gt;Severity&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;SRM 결함 상태 → Azure DevOps &lt;code&gt;State&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;4-api-호출-예제-python&#34;&gt;4. &lt;strong&gt;API 호출 예제 (Python)&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;아래는 Python을 사용하여 SRM 결함 정보를 Azure DevOps Work Item으로 전송하는 예제입니다.&lt;/p&gt;</description>
+&lt;h3 id=&#34;1-prerequisites&#34;&gt;&lt;strong&gt;1. Prerequisites&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Before starting, ensure the following:&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

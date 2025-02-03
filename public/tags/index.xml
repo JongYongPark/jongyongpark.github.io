@@ -6,8 +6,22 @@
     <description>Recent content in Tags on RyanPark&#39;s DevSecOps</description>
     <generator>Hugo -- 0.142.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Fri, 31 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 03 Feb 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MariaDB</title>
+      <link>http://localhost:1313/tags/mariadb/</link>
+      <pubDate>Mon, 03 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/mariadb/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SRM</title>
+      <link>http://localhost:1313/tags/srm/</link>
+      <pubDate>Mon, 03 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/srm/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Azure DevOps</title>
       <link>http://localhost:1313/tags/azure-devops/</link>
@@ -62,13 +76,6 @@
       <link>http://localhost:1313/tags/sdlc/</link>
       <pubDate>Fri, 31 Jan 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/sdlc/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>SRM</title>
-      <link>http://localhost:1313/tags/srm/</link>
-      <pubDate>Fri, 31 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/srm/</guid>
       <description></description>
     </item>
   </channel>

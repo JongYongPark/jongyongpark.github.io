@@ -131,10 +131,11 @@
   </header>
   <div class="entry-content">
     <p>Differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles
-You’re right, I apologize for the confusion in my previous response. Let me provide a correct explanation of the differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles.
+An Explanation of the differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles.
 Makefile variable assignment operators:
 := (Simple expansion):
 Expands variables immediately at assignment time. Example: FOO := $(BAR) If BAR changes later, FOO will not be affected. = (Recursive expansion):
+Defers expansion until the variable is used. Example: FOO = $(BAR) If BAR changes later, FOO will reflect the new value when used. ?= (Conditional assignment):
 ...</p>
   </div>
   <footer class="entry-footer"><span title='2025-02-03 00:00:00 +0000 UTC'>February 3, 2025</span>&nbsp;·&nbsp;1 min</footer>

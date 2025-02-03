@@ -9,7 +9,7 @@
 <meta name="keywords" content="Makefile, Bash">
 <meta name="description" content="Differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles
 
-You&rsquo;re right, I apologize for the confusion in my previous response. Let me provide a correct explanation of the differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles.
+An Explanation of the differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles.
 Makefile variable assignment operators:
 
 
@@ -21,7 +21,15 @@ If BAR changes later, FOO will not be affected.
 
 
 
-= (Recursive expansion):">
+= (Recursive expansion):
+
+Defers expansion until the variable is used.
+Example: FOO = $(BAR)
+If BAR changes later, FOO will reflect the new value when used.
+
+
+
+?= (Conditional assignment):">
 <meta name="author" content="">
 <link rel="canonical" href="http://localhost:1313/posts/ops/makefile-bash--variable-assignment/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.9de45e225101e4f99701d2b68fc6b8a1ef6027928be6391fa15bf7f56326c909.css" integrity="sha256-neReIlEB5PmXAdK2j8a4oe9gJ5KL5jkfoVv39WMmyQk=" rel="preload stylesheet" as="style">
@@ -144,7 +152,7 @@ If BAR changes later, FOO will not be affected.
   </header> 
   <div class="post-content"><p>Differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles</p>
 <hr>
-<p>You&rsquo;re right, I apologize for the confusion in my previous response. Let me provide a correct explanation of the differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles.</p>
+<p>An Explanation of the differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles.</p>
 <p>Makefile variable assignment operators:</p>
 <ol>
 <li>

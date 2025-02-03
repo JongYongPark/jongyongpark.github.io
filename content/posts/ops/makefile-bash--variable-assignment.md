@@ -9,7 +9,7 @@ tags: ["Makefile","Bash"]
 Differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles
 
 ---
-You're right, I apologize for the confusion in my previous response. Let me provide a correct explanation of the differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles.
+An Explanation of the differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles.
 
 Makefile variable assignment operators:
 

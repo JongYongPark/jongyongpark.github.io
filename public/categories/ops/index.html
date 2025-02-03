@@ -126,7 +126,7 @@
         <a href="http://localhost:1313/posts/ops/makefile-bash--variable-assignment/">Differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles</a>
         <p><p>Differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles</p>
 <hr>
-<p>You&rsquo;re right, I apologize for the confusion in my previous response. Let me provide a correct explanation of the differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles.</p>
+<p>An Explanation of the differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles.</p>
 <p>Makefile variable assignment operators:</p>
 <ol>
 <li>
@@ -138,7 +138,15 @@
 </ul>
 </li>
 <li>
-<p>= (Recursive expansion):</p></p>
+<p>= (Recursive expansion):</p>
+<ul>
+<li>Defers expansion until the variable is used.</li>
+<li>Example: FOO = $(BAR)</li>
+<li>If BAR changes later, FOO will reflect the new value when used.</li>
+</ul>
+</li>
+<li>
+<p>?= (Conditional assignment):</p></p>
       </li>
     
       <li>

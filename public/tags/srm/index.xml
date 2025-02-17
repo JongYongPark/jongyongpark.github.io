@@ -125,9 +125,9 @@
     </item>
     <item>
       <title>How to send findings from SRM (Software Risk Management) to Azure DevOps Work Items</title>
-      <link>http://localhost:1313/posts/ops/srm-findings-to-azure-devops-work/</link>
+      <link>http://localhost:1313/posts/ops/srm--findings-to-azure-devops-work/</link>
       <pubDate>Fri, 31 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/ops/srm-findings-to-azure-devops-work/</guid>
+      <guid>http://localhost:1313/posts/ops/srm--findings-to-azure-devops-work/</guid>
       <description>&lt;p&gt;how to check Azure DevOps Work Items API rate limit&lt;/p&gt;
 &lt;h2 id=&#34;how-to-send-findings-from-srm-software-risk-management-to-azure-devops-work-items&#34;&gt;How to send findings from SRM (Software Risk Management) to Azure DevOps Work Items&lt;/h2&gt;
 &lt;p&gt;To send findings from &lt;strong&gt;SRM (Software Risk Management)&lt;/strong&gt; to &lt;strong&gt;Azure DevOps Work Items&lt;/strong&gt;, you can follow the steps outlined below. This process involves using the Azure DevOps REST API to create or update work items based on the SRM findings. Here&amp;rsquo;s a detailed guide:&lt;/p&gt;

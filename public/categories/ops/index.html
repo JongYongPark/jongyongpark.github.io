@@ -123,6 +123,66 @@
   <ul>
     
       <li>
+        <a href="http://localhost:1313/posts/ops/git--repo-access-url-formats/">Different URL Formats for Accessing a Git Repository</a>
+        <p><h2 id="-different-url-formats-for-accessing-a-git-repository"><strong>🔹 Different URL Formats for Accessing a Git Repository</strong></h2>
+<p>Git supports multiple protocols for accessing repositories, each with its own advantages and disadvantages in terms of authentication, security, and ease of use. Below is a summary of the common URL formats, their corresponding protocols, authentication methods, and a comparison of their pros and cons.</p>
+<hr>
+<h3 id="-git-repository-url-formats-and-their-characteristics"><strong>📌 Git Repository URL Formats and Their Characteristics</strong></h3>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Git URL Format</strong></th>
+          <th><strong>Protocol Used</strong></th>
+          <th><strong>Authentication Method</strong></th>
+          <th><strong>Pros</strong></th>
+          <th><strong>Cons</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>git@host:path/repo.git</code></td>
+          <td><strong>SSH</strong></td>
+          <td>SSH key authentication (Private/Public key pair)</td>
+          <td>✅ Secure authentication without storing passwords ✅ Supports read &amp; write access ✅ Works well in automation (CI/CD)</td>
+          <td>❌ Requires setting up SSH keys ❌ Firewalls may block SSH (port 22)</td>
+      </tr>
+      <tr>
+          <td><code>ssh://git@host/path/repo.git</code></td>
+          <td><strong>SSH</strong></td>
+          <td>SSH key authentication</td>
+          <td>✅ Same as <code>git@host:path/repo.git</code>, but with explicit protocol ✅ More readable for some users</td>
+          <td>❌ Identical disadvantages as the <code>git@</code> format</td>
+      </tr>
+      <tr>
+          <td><code>https://host/path/repo.git</code></td>
+          <td><strong>HTTPS</strong></td>
+          <td>Username + Password, or Personal Access Token (PAT)</td>
+          <td>✅ Works without additional setup ✅ Usually allowed through firewalls ✅ Supports 2FA via PAT</td>
+          <td>❌ Requires entering credentials or setting up a credential manager ❌ PATs need to be managed securely</td>
+      </tr>
+      <tr>
+          <td><code>git://host/path/repo.git</code></td>
+          <td><strong>Git Daemon (read-only)</strong></td>
+          <td>No authentication required</td>
+          <td>✅ Fast and lightweight ✅ Ideal for public repositories</td>
+          <td>❌ No authentication, security risk ❌ Only supports read access</td>
+      </tr>
+      <tr>
+          <td><code>/path/to/repo.git</code></td>
+          <td><strong>Local File System</strong></td>
+          <td>No authentication needed (local access)</td>
+          <td>✅ Fastest access (no network latency) ✅ No need for authentication</td>
+          <td>❌ Only works on the local machine ❌ Cannot be used for remote access</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="-pros-and-cons-of-each-git-access-method"><strong>📌 Pros and Cons of Each Git Access Method</strong></h3>
+<h4 id="1-ssh-githostpathrepogit-or-sshgithostpathrepogit"><strong>1️⃣ SSH (<code>git@host:path/repo.git</code> or <code>ssh://git@host/path/repo.git</code>)</strong></h4>
+<p>✅ <strong>Pros:</strong></p></p>
+      </li>
+    
+      <li>
         <a href="http://localhost:1313/posts/ops/makefile-bash--variable-assignment/">Differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles</a>
         <p><p>Differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles</p>
 <hr>
@@ -263,8 +323,9 @@
       </li>
     
       <li>
-        <a href="http://localhost:1313/posts/ops/azure-devops-api-rate-limits/">Azure DevOps API Rate Limits</a>
-        <p><p>Azure DevOps imposes <strong>rate limits</strong> on its REST API to ensure fair usage and prevent abuse. If you exceed these limits, your API requests may be throttled, resulting in HTTP <code>429 Too Many Requests</code> responses. To avoid this, it&rsquo;s important to monitor and manage your API usage.</p>
+        <a href="http://localhost:1313/posts/ops/azure--devops-api-rate-limits/">Azure DevOps API Rate Limits</a>
+        <p><h2 id="azure-devops-api-rate-limits"><strong>Azure DevOps API Rate Limits</strong></h2>
+<p>Azure DevOps imposes <strong>rate limits</strong> on its REST API to ensure fair usage and prevent abuse. If you exceed these limits, your API requests may be throttled, resulting in HTTP <code>429 Too Many Requests</code> responses. To avoid this, it&rsquo;s important to monitor and manage your API usage.</p>
 <p>Here’s how you can check and handle Azure DevOps Work Items API rate limits:</p>
 <hr>
 <h3 id="1-understanding-azure-devops-api-rate-limits"><strong>1. Understanding Azure DevOps API Rate Limits</strong></h3>
@@ -272,7 +333,7 @@
       </li>
     
       <li>
-        <a href="http://localhost:1313/posts/ops/srm-findings-to-azure-devops-work/">How to send findings from SRM (Software Risk Management) to Azure DevOps Work Items</a>
+        <a href="http://localhost:1313/posts/ops/srm--findings-to-azure-devops-work/">How to send findings from SRM (Software Risk Management) to Azure DevOps Work Items</a>
         <p><p>how to check Azure DevOps Work Items API rate limit</p>
 <h2 id="how-to-send-findings-from-srm-software-risk-management-to-azure-devops-work-items">How to send findings from SRM (Software Risk Management) to Azure DevOps Work Items</h2>
 <p>To send findings from <strong>SRM (Software Risk Management)</strong> to <strong>Azure DevOps Work Items</strong>, you can follow the steps outlined below. This process involves using the Azure DevOps REST API to create or update work items based on the SRM findings. Here&rsquo;s a detailed guide:</p>

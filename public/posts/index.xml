@@ -6,8 +6,126 @@
     <description>Recent content in Posts on RyanPark&#39;s DevSecOps</description>
     <generator>Hugo -- 0.142.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Mon, 03 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 14 Feb 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Different URL Formats for Accessing a Git Repository</title>
+      <link>http://localhost:1313/posts/ops/git--repo-access-url-formats/</link>
+      <pubDate>Fri, 14 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/ops/git--repo-access-url-formats/</guid>
+      <description>&lt;h2 id=&#34;-different-url-formats-for-accessing-a-git-repository&#34;&gt;&lt;strong&gt;🔹 Different URL Formats for Accessing a Git Repository&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Git supports multiple protocols for accessing repositories, each with its own advantages and disadvantages in terms of authentication, security, and ease of use. Below is a summary of the common URL formats, their corresponding protocols, authentication methods, and a comparison of their pros and cons.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;-git-repository-url-formats-and-their-characteristics&#34;&gt;&lt;strong&gt;📌 Git Repository URL Formats and Their Characteristics&lt;/strong&gt;&lt;/h3&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;&lt;strong&gt;Git URL Format&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;Protocol Used&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;Authentication Method&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;Pros&lt;/strong&gt;&lt;/th&gt;
+          &lt;th&gt;&lt;strong&gt;Cons&lt;/strong&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;git@host:path/repo.git&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;SSH&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;SSH key authentication (Private/Public key pair)&lt;/td&gt;
+          &lt;td&gt;✅ Secure authentication without storing passwords ✅ Supports read &amp;amp; write access ✅ Works well in automation (CI/CD)&lt;/td&gt;
+          &lt;td&gt;❌ Requires setting up SSH keys ❌ Firewalls may block SSH (port 22)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;ssh://git@host/path/repo.git&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;SSH&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;SSH key authentication&lt;/td&gt;
+          &lt;td&gt;✅ Same as &lt;code&gt;git@host:path/repo.git&lt;/code&gt;, but with explicit protocol ✅ More readable for some users&lt;/td&gt;
+          &lt;td&gt;❌ Identical disadvantages as the &lt;code&gt;git@&lt;/code&gt; format&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;https://host/path/repo.git&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;HTTPS&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;Username + Password, or Personal Access Token (PAT)&lt;/td&gt;
+          &lt;td&gt;✅ Works without additional setup ✅ Usually allowed through firewalls ✅ Supports 2FA via PAT&lt;/td&gt;
+          &lt;td&gt;❌ Requires entering credentials or setting up a credential manager ❌ PATs need to be managed securely&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;git://host/path/repo.git&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;Git Daemon (read-only)&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;No authentication required&lt;/td&gt;
+          &lt;td&gt;✅ Fast and lightweight ✅ Ideal for public repositories&lt;/td&gt;
+          &lt;td&gt;❌ No authentication, security risk ❌ Only supports read access&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;code&gt;/path/to/repo.git&lt;/code&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;strong&gt;Local File System&lt;/strong&gt;&lt;/td&gt;
+          &lt;td&gt;No authentication needed (local access)&lt;/td&gt;
+          &lt;td&gt;✅ Fastest access (no network latency) ✅ No need for authentication&lt;/td&gt;
+          &lt;td&gt;❌ Only works on the local machine ❌ Cannot be used for remote access&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;-pros-and-cons-of-each-git-access-method&#34;&gt;&lt;strong&gt;📌 Pros and Cons of Each Git Access Method&lt;/strong&gt;&lt;/h3&gt;
+&lt;h4 id=&#34;1-ssh-githostpathrepogit-or-sshgithostpathrepogit&#34;&gt;&lt;strong&gt;1️⃣ SSH (&lt;code&gt;git@host:path/repo.git&lt;/code&gt; or &lt;code&gt;ssh://git@host/path/repo.git&lt;/code&gt;)&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;✅ &lt;strong&gt;Pros:&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Github Pages with Hugo</title>
+      <link>http://localhost:1313/posts/creator/github-page-with-hugo/</link>
+      <pubDate>Fri, 14 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/creator/github-page-with-hugo/</guid>
+      <description>&lt;h1 id=&#34;github-pages&#34;&gt;Github Pages&lt;/h1&gt;
+&lt;p&gt;GitHub Pages는 GitHub 저장소를 사용하여 정적 웹사이트를 쉽게 배포할 수 있는 기능입니다.&lt;br&gt;
+다음은 &lt;strong&gt;GitHub Pages를 설정하고 사용하는 방법&lt;/strong&gt;을 단계별로 설명합니다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;1-github-pages-활성화하기&#34;&gt;&lt;strong&gt;1. GitHub Pages 활성화하기&lt;/strong&gt;&lt;/h2&gt;
+&lt;h3 id=&#34;1-github-저장소-생성&#34;&gt;&lt;strong&gt;(1) GitHub 저장소 생성&lt;/strong&gt;&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;GitHub에 로그인하고 &lt;strong&gt;새로운 저장소(New Repository)&lt;/strong&gt; 생성&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;저장소 이름을 설정 (예: &lt;code&gt;my-blog&lt;/code&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Public&lt;/code&gt;(공개) 저장소로 설정해야 GitHub Pages에서 무료로 사용할 수 있음&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;README.md&lt;/code&gt; 파일을 추가하는 것이 좋음&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;저장소 생성 후 &lt;code&gt;git clone&lt;/code&gt;으로 로컬에 다운로드&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone https://github.com/your-username/my-blog.git
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd my-blog
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;2-github-pages-활성화&#34;&gt;&lt;strong&gt;2. GitHub Pages 활성화&lt;/strong&gt;&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;GitHub 저장소로 이동&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Settings &amp;gt; Pages&lt;/strong&gt; 탭으로 이동&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Branch 선택&lt;/strong&gt;: &lt;code&gt;main&lt;/code&gt; 또는 &lt;code&gt;gh-pages&lt;/code&gt; 브랜치를 선택하여 배포할 수 있음&lt;/li&gt;
+&lt;li&gt;저장 후 몇 분 내로 GitHub Pages가 활성화됨&lt;/li&gt;
+&lt;li&gt;배포된 사이트 URL 확인 (&lt;code&gt;https://your-username.github.io/my-blog/&lt;/code&gt;)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;3-htmlcss-파일-추가하여-웹사이트-배포&#34;&gt;&lt;strong&gt;3. HTML/CSS 파일 추가하여 웹사이트 배포&lt;/strong&gt;&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;로컬 저장소에서 기본 웹페이지 생성:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;lt;h1&amp;gt;Welcome to My GitHub Page&amp;lt;/h1&amp;gt;&amp;#34;&lt;/span&gt; &amp;gt; index.html
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;변경 사항을 커밋하고 푸시:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git add index.html
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git commit -m &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Add main page&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git push origin main
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;GitHub Pages가 자동으로 &lt;code&gt;index.html&lt;/code&gt;을 인식하여 배포함&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;4-jekyll을-이용한-블로그-만들기&#34;&gt;&lt;strong&gt;4. Jekyll을 이용한 블로그 만들기&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;GitHub Pages는 Jekyll을 지원하므로, Jekyll을 활용하여 정적 블로그를 쉽게 만들 수 있음.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles</title>
       <link>http://localhost:1313/posts/ops/makefile-bash--variable-assignment/</link>
@@ -154,10 +272,11 @@
     </item>
     <item>
       <title>Azure DevOps API Rate Limits</title>
-      <link>http://localhost:1313/posts/ops/azure-devops-api-rate-limits/</link>
+      <link>http://localhost:1313/posts/ops/azure--devops-api-rate-limits/</link>
       <pubDate>Fri, 31 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/ops/azure-devops-api-rate-limits/</guid>
-      <description>&lt;p&gt;Azure DevOps imposes &lt;strong&gt;rate limits&lt;/strong&gt; on its REST API to ensure fair usage and prevent abuse. If you exceed these limits, your API requests may be throttled, resulting in HTTP &lt;code&gt;429 Too Many Requests&lt;/code&gt; responses. To avoid this, it&amp;rsquo;s important to monitor and manage your API usage.&lt;/p&gt;
+      <guid>http://localhost:1313/posts/ops/azure--devops-api-rate-limits/</guid>
+      <description>&lt;h2 id=&#34;azure-devops-api-rate-limits&#34;&gt;&lt;strong&gt;Azure DevOps API Rate Limits&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Azure DevOps imposes &lt;strong&gt;rate limits&lt;/strong&gt; on its REST API to ensure fair usage and prevent abuse. If you exceed these limits, your API requests may be throttled, resulting in HTTP &lt;code&gt;429 Too Many Requests&lt;/code&gt; responses. To avoid this, it&amp;rsquo;s important to monitor and manage your API usage.&lt;/p&gt;
 &lt;p&gt;Here’s how you can check and handle Azure DevOps Work Items API rate limits:&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;1-understanding-azure-devops-api-rate-limits&#34;&gt;&lt;strong&gt;1. Understanding Azure DevOps API Rate Limits&lt;/strong&gt;&lt;/h3&gt;
@@ -275,9 +394,9 @@
     </item>
     <item>
       <title>How to send findings from SRM (Software Risk Management) to Azure DevOps Work Items</title>
-      <link>http://localhost:1313/posts/ops/srm-findings-to-azure-devops-work/</link>
+      <link>http://localhost:1313/posts/ops/srm--findings-to-azure-devops-work/</link>
       <pubDate>Fri, 31 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/ops/srm-findings-to-azure-devops-work/</guid>
+      <guid>http://localhost:1313/posts/ops/srm--findings-to-azure-devops-work/</guid>
       <description>&lt;p&gt;how to check Azure DevOps Work Items API rate limit&lt;/p&gt;
 &lt;h2 id=&#34;how-to-send-findings-from-srm-software-risk-management-to-azure-devops-work-items&#34;&gt;How to send findings from SRM (Software Risk Management) to Azure DevOps Work Items&lt;/h2&gt;
 &lt;p&gt;To send findings from &lt;strong&gt;SRM (Software Risk Management)&lt;/strong&gt; to &lt;strong&gt;Azure DevOps Work Items&lt;/strong&gt;, you can follow the steps outlined below. This process involves using the Azure DevOps REST API to create or update work items based on the SRM findings. Here&amp;rsquo;s a detailed guide:&lt;/p&gt;

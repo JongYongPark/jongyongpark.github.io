@@ -5,11 +5,14 @@ categories: ["ops"]
 tags: ["Azure DevOps"]
 ---
 
+## **Azure DevOps API Rate Limits**
+
 Azure DevOps imposes **rate limits** on its REST API to ensure fair usage and prevent abuse. If you exceed these limits, your API requests may be throttled, resulting in HTTP `429 Too Many Requests` responses. To avoid this, it's important to monitor and manage your API usage.
 
 Here’s how you can check and handle Azure DevOps Work Items API rate limits:
 
 ---
+
 
 ### **1. Understanding Azure DevOps API Rate Limits**
 Azure DevOps API rate limits are based on:

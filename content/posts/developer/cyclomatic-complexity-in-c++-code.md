@@ -1,8 +1,8 @@
 ---
 title: "Cyclomatic Complexity in C++ Code"
 date: 2025-01-31
-categories: ["programming"]
-tags: ["C++"]
+categories: ["Developer"]
+tags: ["C++","CCM"]
 ---
 
 

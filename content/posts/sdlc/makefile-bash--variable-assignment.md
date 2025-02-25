@@ -1,7 +1,7 @@
 ---
 title: "Differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles"
 date: 2025-02-03
-categories: ["ops"]
+categories: ["sdlc"]
 tags: ["Makefile","Bash"]
 ---
 

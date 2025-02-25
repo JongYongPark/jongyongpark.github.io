@@ -161,9 +161,9 @@ CIDR(Classless Inter-Domain Routing)은 IP 주소와 서브넷 마스크를 결�
 ## 테스트 
 ```bash
 
-(base) jonpark@BD-82898:~$ curl ifconfig.me
+bash#:~$ curl ifconfig.me
 44.214.210.109
-(base) jonpark@BD-82898:~$ curl ipinfo.io
+bash#:~$ curl ipinfo.io
 {
   "ip": "44.214.210.109",
   "hostname": "vpn-aws.blackduck.com",
@@ -175,17 +175,17 @@ CIDR(Classless Inter-Domain Routing)은 IP 주소와 서브넷 마스크를 결�
   "postal": "20147",
   "timezone": "America/New_York",
   "readme": "https://ipinfo.io/missingauth"
-}(base) jonpark@BD-82898:~$ curl api.ipify.org
+}bash#:~$ curl api.ipify.org
 44.214.210.109
 (base) jonparwhois $(curl -s ifconfig.me) | grep CIDRe) | grep CIDR
 CIDR:           44.192.0.0/10
 CIDR:           44.192.0.0/11
-(base) jonpark@BD-82898:~$ whois $(curl -s ifconfig.me) | grep -i "route\|cidr\|netblock"
+bash#:~$ whois $(curl -s ifconfig.me) | grep -i "route\|cidr\|netblock"
 CIDR:           44.192.0.0/10
 CIDR:           44.192.0.0/11
-(base) jonpark@BD-82898:~$ curl ipinfo.io/$(curl -s ifconfig.me)/org
+bash#:~$ curl ipinfo.io/$(curl -s ifconfig.me)/org
 AS14618 Amazon.com, Inc.
-(base) jonpark@BD-82898:~$ 
+bash#:~$ 
 
 ```
 
@@ -220,13 +220,13 @@ curl ipinfo.io/$(curl -s ifconfig.me)/org
 ## my test
 ```bash
 
-(base) jonpark@BD-82898:~$ curl ifconfig.me
+bash#:~$ curl ifconfig.me
 44.214.210.109
 
-(base) jonpark@BD-82898:~$ curl ipinfo.io/ip
+bash#:~$ curl ipinfo.io/ip
 44.214.210.109
 
-(base) jonpark@BD-82898:~$ curl ipinfo.io
+bash#:~$ curl ipinfo.io
 {
   "ip": "44.214.210.109",
   "hostname": "vpn-aws.blackduck.com",
@@ -240,9 +240,9 @@ curl ipinfo.io/$(curl -s ifconfig.me)/org
   "readme": "https://ipinfo.io/missingauth"
 }
 
-(base) jonpark@BD-82898:~$ sudo apt install whois
+bash#:~$ sudo apt install whois
 
-(base) jonpark@BD-82898:~$ whois $(curl -s ifconfig.me)
+bash#:~$ whois $(curl -s ifconfig.me)
 
 #
 # ARIN WHOIS data and services are subject to the Terms of Use
@@ -380,7 +380,7 @@ OrgNOCRef:    https://rdap.arin.net/registry/entity/AANO1-ARIN
 # Copyright 1997-2025, American Registry for Internet Numbers, Ltd.
 #
 
-(base) jonpark@BD-82898:~$ whois $(curl -s ifconfig.me) | grep CIDR -C 1
+bash#:~$ whois $(curl -s ifconfig.me) | grep CIDR -C 1
 NetRange:       44.192.0.0 - 44.255.255.255
 CIDR:           44.192.0.0/10
 NetName:        AMAZO-4
@@ -390,12 +390,12 @@ CIDR:           44.192.0.0/11
 NetName:        AMAZON-IAD
 
 
-(base) jonpark@BD-82898:~$ sudo apt install bind9-dnsutils
+bash#:~$ sudo apt install bind9-dnsutils
 
-(base) jonpark@BD-82898:~$ dig -x $(curl -s ifconfig.me) +short
+bash#:~$ dig -x $(curl -s ifconfig.me) +short
 vpn-aws.blackduck.com.
 
-(base) jonpark@BD-82898:~$ dig -x $(curl -s ifconfig.me) 
+bash#:~$ dig -x $(curl -s ifconfig.me) 
 
 ; <<>> DiG 9.18.30-0ubuntu0.24.04.2-Ubuntu <<>> -x 44.214.210.109
 ;; global options: +cmd
@@ -416,10 +416,10 @@ vpn-aws.blackduck.com.
 ;; WHEN: Mon Feb 24 18:38:03 KST 2025
 ;; MSG SIZE  rcvd: 91
 
-(base) jonpark@BD-82898:~$ code -r get_pubic_ip_cidr.py
+bash#:~$ code -r get_pubic_ip_cidr.py
 
 
-(base) jonpark@BD-82898:~$ python get_pubic_ip_cidr.py 
+bash#:~$ python get_pubic_ip_cidr.py 
 Public IP: 44.214.210.109
 CIDR: AS14618 Amazon.com, Inc.
 

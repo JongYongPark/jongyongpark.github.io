@@ -432,7 +432,7 @@ cov-manage-components --add --name PaymentGateway --path src/payment/
 cov-manage-components --add --name UserManagement --path src/users/  
 
 ## 실제
-(base) jonpark@BD-82898:~/workspace/jonpark-work/jonpark-test-cpp$ cov-manage-components
+bash#:~/workspace/jonpark-work/jonpark-test-cpp$ cov-manage-components
 cov-manage-components: command not found
 
 ---
@@ -442,7 +442,7 @@ cov-build --dir ./cov-int --parallel 16 make -j16
 cov-analyze --dir ./cov-int --all --enable-constraint-fpp --enable-single-virtual --enable-fnptr --enable-virtual --enable-callgraph-metrics --webapp-security --aggressiveness-level high --jobs 16  
 
 ## 실제 
-(base) jonpark@BD-82898:~/workspace/jonpark-work/jonpark-test-cpp$ cov-analyze --dir ./cov-int --all --enable-constraint-fpp --enable-single-virtual --enable-fnptr --enable-virtual --enable-callgraph-metrics --webapp-security --aggressiveness-level high --jobs 16
+bash#:~/workspace/jonpark-work/jonpark-test-cpp$ cov-analyze --dir ./cov-int --all --enable-constraint-fpp --enable-single-virtual --enable-fnptr --enable-virtual --enable-callgraph-metrics --webapp-security --aggressiveness-level high --jobs 16
 Coverity Static Analysis version 2024.12.0 on Linux 5.15.167.4-microsoft-standard-WSL2 x86_64
 Internal version numbers: 1698eb2daa p-2024.12-push-32
 
@@ -453,7 +453,7 @@ Internal version numbers: 1698eb2daa p-2024.12-push-32
 ## 답변 
 cov-capture --preprocess --cache-dir /shared/cache --distribute 192.168.1.10-192.168.1.20  
 ## 실제 
-(base) jonpark@BD-82898:~/workspace/jonpark-work/jonpark-test-cpp$ cov-capture --preprocess --cache-dir /shared/cache --distribute 192.168.1.10-192.168.1.20  
+bash#:~/workspace/jonpark-work/jonpark-test-cpp$ cov-capture --preprocess --cache-dir /shared/cache --distribute 192.168.1.10-192.168.1.20  
 cov-capture: command not found
 ---
 

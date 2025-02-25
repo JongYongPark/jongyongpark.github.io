@@ -489,14 +489,14 @@ Modern software development workflows increasingly rely on sophisticated static 
 <p>cov-manage-components &ndash;add &ndash;name PaymentGateway &ndash;path src/payment/<br>
 cov-manage-components &ndash;add &ndash;name UserManagement &ndash;path src/users/</p>
 <h2 id="실제">실제<a hidden class="anchor" aria-hidden="true" href="#실제">#</a></h2>
-<p>(base) jonpark@BD-82898:~/workspace/jonpark-work/jonpark-test-cpp$ cov-manage-components
+<p>bash#:~/workspace/jonpark-work/jonpark-test-cpp$ cov-manage-components
 cov-manage-components: command not found</p>
 <hr>
 <h2 id="답변-1">답변<a hidden class="anchor" aria-hidden="true" href="#답변-1">#</a></h2>
 <p>cov-build &ndash;dir ./cov-int &ndash;parallel 16 make -j16<br>
 cov-analyze &ndash;dir ./cov-int &ndash;all &ndash;enable-constraint-fpp &ndash;enable-single-virtual &ndash;enable-fnptr &ndash;enable-virtual &ndash;enable-callgraph-metrics &ndash;webapp-security &ndash;aggressiveness-level high &ndash;jobs 16</p>
 <h2 id="실제-1">실제<a hidden class="anchor" aria-hidden="true" href="#실제-1">#</a></h2>
-<p>(base) jonpark@BD-82898:~/workspace/jonpark-work/jonpark-test-cpp$ cov-analyze &ndash;dir ./cov-int &ndash;all &ndash;enable-constraint-fpp &ndash;enable-single-virtual &ndash;enable-fnptr &ndash;enable-virtual &ndash;enable-callgraph-metrics &ndash;webapp-security &ndash;aggressiveness-level high &ndash;jobs 16
+<p>bash#:~/workspace/jonpark-work/jonpark-test-cpp$ cov-analyze &ndash;dir ./cov-int &ndash;all &ndash;enable-constraint-fpp &ndash;enable-single-virtual &ndash;enable-fnptr &ndash;enable-virtual &ndash;enable-callgraph-metrics &ndash;webapp-security &ndash;aggressiveness-level high &ndash;jobs 16
 Coverity Static Analysis version 2024.12.0 on Linux 5.15.167.4-microsoft-standard-WSL2 x86_64
 Internal version numbers: 1698eb2daa p-2024.12-push-32</p>
 <p>&ndash;enable-virtual/&ndash;disable-virtual and &ndash;enable-single-virtual may not be used together</p>
@@ -504,7 +504,7 @@ Internal version numbers: 1698eb2daa p-2024.12-push-32</p>
 <h2 id="답변-2">답변<a hidden class="anchor" aria-hidden="true" href="#답변-2">#</a></h2>
 <p>cov-capture &ndash;preprocess &ndash;cache-dir /shared/cache &ndash;distribute 192.168.1.10-192.168.1.20</p>
 <h2 id="실제-2">실제<a hidden class="anchor" aria-hidden="true" href="#실제-2">#</a></h2>
-<h2 id="cov-capture-command-not-found">(base) jonpark@BD-82898:~/workspace/jonpark-work/jonpark-test-cpp$ cov-capture &ndash;preprocess &ndash;cache-dir /shared/cache &ndash;distribute 192.168.1.10-192.168.1.20<br>
+<h2 id="cov-capture-command-not-found">bash#:~/workspace/jonpark-work/jonpark-test-cpp$ cov-capture &ndash;preprocess &ndash;cache-dir /shared/cache &ndash;distribute 192.168.1.10-192.168.1.20<br>
 cov-capture: command not found</h2>
 <h1 id="heading"><a hidden class="anchor" aria-hidden="true" href="#heading">#</a></h1>
 

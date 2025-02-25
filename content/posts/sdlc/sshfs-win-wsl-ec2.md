@@ -23,33 +23,33 @@ tmpfs                          tmpfs     6.3G   76K  6.3G   1% /run/user/1000
 lrwxrwxrwx 1 ubuntu ubuntu 15 Jan 24 09:47 workspace -> /opt/dlami/nvme/
 
 ### WSL
-(base) jonpark@BD-82898:~$ cat .bashrc | grep ec2
+bash#:~$ cat .bashrc | grep ec2
 alias mount_ec2='sudo sshfs  -o uid=`id -u jonpark`  -o gid=`id -g jonpark`  -o allow_other ubuntu@jonpark-ec2:/home/ubuntu -o IdentityFile=~/jonpark-ec2.pem ~/work_ec2'
 
 ## 수정 : -o follow_symlinks  추가
 alias mount_ec2='sudo sshfs -o uid=`id -u jonpark` -o gid=`id -g jonpark` -o allow_other -o follow_symlinks ubuntu@jonpark-ec2:/home/ubuntu -o IdentityFile=~/jonpark-ec2.pem ~/work_ec2'
 
 ## 실행 
-(base) jonpark@BD-82898:~$ sudo umount ~/work_ec2
+bash#:~$ sudo umount ~/work_ec2
 
-(base) jonpark@BD-82898:~$ sudo sshfs -o uid=`id -u jonpark` -o gid=`id -g jonpark` -o allow_other -o follow_symlinks ubuntu@jonpark-ec2:/home/ubuntu -o IdentityFile=~/jonpark-ec2.pem ~/work_ec2
+bash#:~$ sudo sshfs -o uid=`id -u jonpark` -o gid=`id -g jonpark` -o allow_other -o follow_symlinks ubuntu@jonpark-ec2:/home/ubuntu -o IdentityFile=~/jonpark-ec2.pem ~/work_ec2
 [sudo] password for jonpark:
 
 ## 결과
-(base) jonpark@BD-82898:~$ ll  -d work_ec2
+bash#:~$ ll  -d work_ec2
 drwx------ 1 jonpark jonpark 4.0K Feb 25 14:13 work_ec2/
-(base) jonpark@BD-82898:~$ ls  work_ec2
+bash#:~$ ls  work_ec2
 blackduck-oidc                          LINUX_PACKAGES_LICENSES                 Public/                                   THIRD_PARTY_SOURCE_CODE_URLS
 BUILD_FROM_SOURCE_PACKAGES_LICENCES     LINUX_PACKAGES_LIST                     PYTHON_PACKAGES_LICENSES                  Videos/
 Desktop/                                Music/                                  srm-2024.12.1-0-linux-x64-installer.run*  workspace/
 Documents/                              nvidia-acknowledgements/                srm-license.txt                           zed-linux-x86_64.tar.gz
 Downloads/                              OSSNvidiaDriver_v550.90.07_license.txt  Templates/
 google-chrome-stable_current_amd64.deb  Pictures/                               thinclient_drives/
-(base) jonpark@BD-82898:~$ ll  -d work_ec2/workspace/
+bash#:~$ ll  -d work_ec2/workspace/
 drwxrwxrwt 1 jonpark jonpark 4.0K Feb 24 19:20 work_ec2/workspace//
-(base) jonpark@BD-82898:~$ ls  work_ec2/workspace/
+bash#:~$ ls  work_ec2/workspace/
 ai/  dev_tool/  dockers/  jonpark-work/  lost+found/  miniconda3/  open-webui/
-(base) jonpark@BD-82898:~$
+bash#:~$
 
 ```
 ## 답변 

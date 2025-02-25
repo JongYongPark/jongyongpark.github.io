@@ -529,3 +529,45 @@ print("CIDR:", data.get("org"))  # CIDR 정보가 없는 경우 ASN 정보 출�
 3. 필요 시 Python 스크립트를 작성하여 자동화.
 
 이 방법들을 조합하면 공인 IP와 CIDR 정보를 쉽게 확인할 수 있습니다.
+
+---
+
+# deepseek
+
+## 답변
+리눅스 시스템에서 퍼블릭 IP의 CIDR(Classless Inter-Domain Routing)을 찾는 방법은 네트워크 환경에 따라 다릅니다. 다음 단계를 참고하세요:
+
+### 1. **퍼블릭 IP 주소 확인**
+```bash
+curl ifconfig.me
+# 또는
+curl icanhazip.com
+```
+
+### 2. **직접 연결된 시스템 (예: VPS, 서버)**
+인터페이스에 직접 퍼블릭 IP가 할당된 경우 `ip` 명령어로 CIDR 확인:
+```bash
+ip -o -f inet addr show | awk '/scope global/ {print $4}'
+```
+- 예시 출력: `203.0.113.45/24` (CIDR 포함)
+
+### 3. **NAT 뒤에 있는 경우 (예: 가정용 네트워크)**
+로컬 시스템에서는 퍼블릭 서브넷을 알 수 없으므로 **라우터 관리 페이지**에서 확인하거나 **ISP에 문의**해야 합니다.
+
+### 4. **WHOIS 조회 (ISP 할당 블록 확인)**
+퍼블릭 IP가 속한 대역을 추정할 때 사용:
+```bash
+sudo apt install whois  # 필요한 경우 설치
+curl ifconfig.me > public_ip.txt
+whois $(cat public_ip.txt) | grep -i "CIDR"
+```
+- 예시 출력: `CIDR: 203.0.113.0/24` (ISP의 광범위한 할당 블록)
+
+---
+
+### **요약**
+- **직접 할당된 서버**: `ip addr show`로 CIDR 확인.
+- **NAT 환경**: 라우터/ISP에서 정보 획득.
+- **WHOIS**: ISP의 CIDR 블록 참고용으로 사용.
+
+이 방법들은 네트워크 구성에 따라 정확도가 달라질 수 있습니다.

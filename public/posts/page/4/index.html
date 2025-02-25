@@ -126,6 +126,21 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">How to send findings from SRM (Software Risk Management) to Azure DevOps Work Items
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>how to check Azure DevOps Work Items API rate limit
+How to send findings from SRM (Software Risk Management) to Azure DevOps Work Items To send findings from SRM (Software Risk Management) to Azure DevOps Work Items, you can follow the steps outlined below. This process involves using the Azure DevOps REST API to create or update work items based on the SRM findings. Here’s a detailed guide:
+1. Prerequisites Before starting, ensure the following:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-01-31 00:00:00 +0000 UTC'>January 31, 2025</span>&nbsp;·&nbsp;4 min</footer>
+  <a class="entry-link" aria-label="post link to How to send findings from SRM (Software Risk Management) to Azure DevOps Work Items" href="http://localhost:1313/posts/operator/srm/srm--findings-to-azure-devops-work/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Next.js - JWT
     </h2>
   </header>
@@ -209,6 +224,19 @@ npx create-next-app@latest my-nextjs-jwt-app cd my-nextjs-jwt-app npm install 2.
   </div>
   <footer class="entry-footer">12 min</footer>
   <a class="entry-link" aria-label="post link to " href="http://localhost:1313/posts/developer/rust/rust/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Windows 에서 WSL을 통해 ec2 에 접근시 symbol link에 따른 문제점 내 작업 ### AWS ec2 # Hdd 가 부족해서 하나 더 추가했다 - 이것이 opt/dlami/nvme 임임 (base) ubuntu@ip-172-31-26-173:~$ df -Th Filesystem Type Size Used Avail Use% Mounted on /dev/root ext4 117G 69G 48G 60% / tmpfs tmpfs 32G 48M 32G 1% /dev/shm tmpfs tmpfs 13G 1.4M 13G 1% /run tmpfs tmpfs 5.0M 0 5.0M 0% /run/lock efivarfs efivarfs 128K 4.1K 119K 4% /sys/firmware/efi/efivars /dev/nvme0n1p15 vfat 105M 6.1M 99M 6% /boot/efi tmpfs tmpfs 6.3G 68K 6.3G 1% /run/user/126 /dev/mapper/vg.01-lv_ephemeral ext4 206G 76G 119G 39% /opt/dlami/nvme tmpfs tmpfs 6.3G 76K 6.3G 1% /run/user/1000 (base) ubuntu@ip-172-31-26-173:~$ ll workspace lrwxrwxrwx 1 ubuntu ubuntu 15 Jan 24 09:47 workspace -&gt; /opt/dlami/nvme/ ### WSL bash#:~$ cat .bashrc | grep ec2 alias mount_ec2=&#39;sudo sshfs -o uid=`id -u jonpark` -o gid=`id -g jonpark` -o allow_other ubuntu@jonpark-ec2:/home/ubuntu -o IdentityFile=~/jonpark-ec2.pem ~/work_ec2&#39; ## 수정 : -o follow_symlinks 추가 alias mount_ec2=&#39;sudo sshfs -o uid=`id -u jonpark` -o gid=`id -g jonpark` -o allow_other -o follow_symlinks ubuntu@jonpark-ec2:/home/ubuntu -o IdentityFile=~/jonpark-ec2.pem ~/work_ec2&#39; ## 실행 bash#:~$ sudo umount ~/work_ec2 bash#:~$ sudo sshfs -o uid=`id -u jonpark` -o gid=`id -g jonpark` -o allow_other -o follow_symlinks ubuntu@jonpark-ec2:/home/ubuntu -o IdentityFile=~/jonpark-ec2.pem ~/work_ec2 [sudo] password for jonpark: ## 결과 bash#:~$ ll -d work_ec2 drwx------ 1 jonpark jonpark 4.0K Feb 25 14:13 work_ec2/ bash#:~$ ls work_ec2 blackduck-oidc LINUX_PACKAGES_LICENSES Public/ THIRD_PARTY_SOURCE_CODE_URLS BUILD_FROM_SOURCE_PACKAGES_LICENCES LINUX_PACKAGES_LIST PYTHON_PACKAGES_LICENSES Videos/ Desktop/ Music/ srm-2024.12.1-0-linux-x64-installer.run* workspace/ Documents/ nvidia-acknowledgements/ srm-license.txt zed-linux-x86_64.tar.gz Downloads/ OSSNvidiaDriver_v550.90.07_license.txt Templates/ google-chrome-stable_current_amd64.deb Pictures/ thinclient_drives/ bash#:~$ ll -d work_ec2/workspace/ drwxrwxrwt 1 jonpark jonpark 4.0K Feb 24 19:20 work_ec2/workspace// bash#:~$ ls work_ec2/workspace/ ai/ dev_tool/ dockers/ jonpark-work/ lost&#43;found/ miniconda3/ open-webui/ bash#:~$ 답변 이제 문제가 더 명확해졌습니다. EC2에서 workspace는 /opt/dlami/nvme/를 가리키는 심볼릭 링크입니다. SSHFS를 통한 마운트 시 심볼릭 링크 처리에 문제가 있는 것으로 보입니다.
+...</p>
+  </div>
+  <footer class="entry-footer">2 min</footer>
+  <a class="entry-link" aria-label="post link to " href="http://localhost:1313/posts/sdlc/sshfs-win-wsl-ec2/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

@@ -126,6 +126,18 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Beyond Compare 4를 리눅스에 설치하기
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Beyond Compare 4를 리눅스에 설치하기 bash#:~$ cd ~/Downloads/ bash#:~/Downloads$ wget https://www.scootersoftware.com/bcompare-4.4.6.27483_amd64.deb --2025-02-25 14:58:16-- https://www.scootersoftware.com/bcompare-4.4.6.27483_amd64.deb Resolving www.scootersoftware.com (www.scootersoftware.com)... 72.32.90.250 Connecting to www.scootersoftware.com (www.scootersoftware.com)|72.32.90.250|:443... connected. HTTP request sent, awaiting response... 200 OK Length: 20609066 (20M) [application/octet-stream] Saving to: ‘bcompare-4.4.6.27483_amd64.deb’ bcompare-4.4.6.27483_amd64.deb 100%[=============================================================================&gt;] 19.65M 3.55MB/s in 6.7s 2025-02-25 14:58:24 (2.93 MB/s) - ‘bcompare-4.4.6.27483_amd64.deb’ saved [20609066/20609066] bash#:~/Downloads$ sudo apt install ./bcompare-4.4.6.27483_amd64.deb [sudo] password for jonpark: Reading package lists... Done Building dependency tree... Done Reading state information... Done Note, selecting &#39;bcompare&#39; instead of &#39;./bcompare-4.4.6.27483_amd64.deb&#39; The following package was automatically installed and is no longer required: libllvm17t64 Use &#39;sudo apt autoremove&#39; to remove it. The following NEW packages will be installed: bcompare 0 upgraded, 1 newly installed, 0 to remove and 16 not upgraded. Need to get 0 B/20.6 MB of archives. After this operation, 60.9 MB of additional disk space will be used. Get:1 /home/jonpark/Downloads/bcompare-4.4.6.27483_amd64.deb bcompare amd64 4.4.6-27483 [20.6 MB] Selecting previously unselected package bcompare. (Reading database ... 130187 files and directories currently installed.) Preparing to unpack .../bcompare-4.4.6.27483_amd64.deb ... Unpacking bcompare (4.4.6-27483) ... Setting up bcompare (4.4.6-27483) ... cp: cannot create regular file &#39;/usr/share/kservices5/&#39;: Not a directory Processing triggers for bamfdaemon (0.5.6&#43;22.04.20220217-0ubuntu5) ... Rebuilding /usr/share/applications/bamf-2.index... Processing triggers for desktop-file-utils (0.27-2build1) ... Processing triggers for gnome-menus (3.36.0-1.1ubuntu3) ... Processing triggers for shared-mime-info (2.4-4) ... Processing triggers for libc-bin (2.39-0ubuntu8.4) ... localepurge: Disk space freed: 0 KiB in /usr/share/locale localepurge: Disk space freed: 0 KiB in /usr/share/man localepurge: Disk space freed: 0 KiB in /usr/share/tcltk localepurge: Disk space freed: 0 KiB in /usr/share/cups/templates localepurge: Disk space freed: 0 KiB in /usr/share/cups/locale localepurge: Disk space freed: 0 KiB in /usr/share/cups/doc-root localepurge: Disk space freed: 0 KiB in /usr/share/cups/templates localepurge: Disk space freed: 0 KiB in /usr/share/cups/locale localepurge: Disk space freed: 0 KiB in /usr/share/cups/doc-root localepurge: Disk space freed: 0 KiB in /usr/share/help localepurge: Disk space freed: 0 KiB in /usr/share/vim/vim91/lang Total disk space freed by localepurge: 0 KiB N: Download is performed unsandboxed as root as file &#39;/home/jonpark/Downloads/bcompare-4.4.6.27483_amd64.deb&#39; couldn&#39;t be accessed by user &#39;_apt&#39;. - pkgAcquire::Run (13: Permission denied) ######################################## ## 아래부터는 옵션임. bash#:~/Downloads$ ls ~/.config/bcompare/ -al total 28K drwxrwxr-x 2 jonpark jonpark 4.0K Feb 25 15:05 ./ drwx------ 23 jonpark jonpark 4.0K Feb 25 15:05 ../ -rw-rw-r-- 1 jonpark jonpark 0 Feb 25 15:05 BCLOCK_11.0 -rw-rw-r-- 1 jonpark jonpark 546 Feb 25 15:05 BCState.xml -rw-rw-r-- 1 jonpark jonpark 204 Feb 25 15:05 BCState.xml.bak -rw-rw-r-- 1 jonpark jonpark 1 Feb 25 15:05 IsPro -rw-rw-r-- 1 jonpark jonpark 563 Feb 25 15:05 menu.ini -rw-rw-r-- 1 jonpark jonpark 48 Feb 25 15:07 registry.dat bash#:~/Downloads$ ls /usr/lib/beyondcompare/ bcmount32* bcmount.sh* BCompare.mad GPG-KEY-scootersoftware lib7z.so* libunrar.so* qt4/ scootersoftware.list bcmount64* BCompare* ext/ help/ libQt4Pas.so.5* mime.types scootersoftware-keyring.gpg bash#:~/Downloads$ cd /usr/lib/beyondcompare/ bash#:/usr/lib/beyondcompare$ ls bcmount32* bcmount.sh* BCompare.mad GPG-KEY-scootersoftware lib7z.so* libunrar.so* qt4/ scootersoftware.list bcmount64* BCompare* ext/ help/ libQt4Pas.so.5* mime.types scootersoftware-keyring.gpg bash#:/usr/lib/beyondcompare$ sudo cp BCompare BCompare.org bash#:/usr/lib/beyondcompare$ sudo cp -r ~/.config/bcompare ~/.config/bcompare.org bash#:/usr/lib/beyondcompare$ rm -rf ~/.config/bcompare bash#:/usr/lib/beyondcompare$ echo &#34;kill BC&#34; kill BC bash#:/usr/lib/beyondcompare$ sudo rm -rf ~/.config/bcompare #thinks bensonkb sudo sed -i &#34;s/??????????????????????/g&#34; /usr/lib/beyondcompare/BCompare bash#:/usr/lib/beyondcompare$ ## Start BC ## Enter license ## Works </p>
+  </div>
+  <footer class="entry-footer"><span title='2025-02-25 00:00:00 +0000 UTC'>February 25, 2025</span>&nbsp;·&nbsp;3 min</footer>
+  <a class="entry-link" aria-label="post link to Beyond Compare 4를 리눅스에 설치하기" href="http://localhost:1313/posts/sdlc/beyond-compare-wsl/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Coverity API SSL Issue
     </h2>
   </header>
@@ -252,22 +264,6 @@ PowerShell 스크립트를 다음과 같이 수정하여 해결할 수 있습니
   </div>
   <footer class="entry-footer"><span title='2025-02-19 00:00:00 +0000 UTC'>February 19, 2025</span>&nbsp;·&nbsp;0 min</footer>
   <a class="entry-link" aria-label="post link to Bash & PowerShell Script Comparison" href="http://localhost:1313/posts/sdlc/bash-powershell/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">MobaXterm Usage
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Issue Remote side unexpectedly closed network connection
-────
-Session stopped - Press to exit tab - Press R to restart session - Press S to save terminal output to file
-Fix Remove saved password It does not fix issue.
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-02-19 00:00:00 +0000 UTC'>February 19, 2025</span>&nbsp;·&nbsp;1 min</footer>
-  <a class="entry-link" aria-label="post link to MobaXterm Usage" href="http://localhost:1313/posts/sdlc/mobaxterm/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

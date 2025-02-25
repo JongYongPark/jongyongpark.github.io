@@ -10,9 +10,9 @@
     <atom:link href="http://localhost:1313/tags/makefile/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles</title>
-      <link>http://localhost:1313/posts/ops/makefile-bash--variable-assignment/</link>
+      <link>http://localhost:1313/posts/sdlc/makefile-bash--variable-assignment/</link>
       <pubDate>Mon, 03 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/ops/makefile-bash--variable-assignment/</guid>
+      <guid>http://localhost:1313/posts/sdlc/makefile-bash--variable-assignment/</guid>
       <description>&lt;p&gt;Differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;An Explanation of the differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles.&lt;/p&gt;

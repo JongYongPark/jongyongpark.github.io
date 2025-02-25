@@ -6,3 +6,13 @@ draft: false
 ---
 
 Welcome to my blog!
+
+Built with Github Page & Hugo
+
+``` bash
+# Push contents
+gggg
+
+# Check contents in local
+hugo server -D
+```

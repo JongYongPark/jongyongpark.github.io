@@ -123,7 +123,174 @@
   <ul>
     
       <li>
-        <a href="http://localhost:1313/posts/ops/git--repo-access-url-formats/">Different URL Formats for Accessing a Git Repository</a>
+        <a href="http://localhost:1313/posts/operator/coverity/cov--api-ssl/">Coverity API SSL Issue</a>
+        <p><h1 id="blackduck-api-호출-시-발생하는-ssl-인증서-문제를-해결하는-java-코드---disable-ssl">Blackduck API 호출 시 발생하는 SSL 인증서 문제를 해결하는 Java 코드 - disable SSL</h1>
+<p>Blackduck API 호출 시 발생하는 SSL 인증서 문제를 해결하는 Java 코드를 작성해드리겠습니다:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> javax.net.ssl.*;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.*;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.net.HttpURLConnection;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.net.URL;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.security.cert.X509Certificate;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> java.nio.charset.StandardCharsets;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">BlackDuckApiClient</span> {
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">disableSSLVerification</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>            TrustManager<span style="color:#f92672">[]</span> trustAllCerts <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TrustManager<span style="color:#f92672">[]</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">new</span> X509TrustManager() {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">public</span> X509Certificate<span style="color:#f92672">[]</span> <span style="color:#a6e22e">getAcceptedIssuers</span>() { <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>; }
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">checkClientTrusted</span>(X509Certificate<span style="color:#f92672">[]</span> certs, String authType) { }
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">checkServerTrusted</span>(X509Certificate<span style="color:#f92672">[]</span> certs, String authType) { }
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            SSLContext sc <span style="color:#f92672">=</span> SSLContext.<span style="color:#a6e22e">getInstance</span>(<span style="color:#e6db74">&#34;SSL&#34;</span>);
+</span></span><span style="display:flex;"><span>            sc.<span style="color:#a6e22e">init</span>(<span style="color:#66d9ef">null</span>, trustAllCerts, <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">security</span>.<span style="color:#a6e22e">SecureRandom</span>());
+</span></span><span style="display:flex;"><span>            HttpsURLConnection.<span style="color:#a6e22e">setDefaultSSLSocketFactory</span>(sc.<span style="color:#a6e22e">getSocketFactory</span>());
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            HostnameVerifier allHostsValid <span style="color:#f92672">=</span> (hostname, session) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>            HttpsURLConnection.<span style="color:#a6e22e">setDefaultHostnameVerifier</span>(allHostsValid);
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (Exception e) {
+</span></span><span style="display:flex;"><span>            e.<span style="color:#a6e22e">printStackTrace</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> String <span style="color:#a6e22e">authenticate</span>(String baseUrl, String username, String password) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>            URL url <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> URL(baseUrl <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;/api/tokens/authenticate&#34;</span>);
+</span></span><span style="display:flex;"><span>            HttpURLConnection conn <span style="color:#f92672">=</span> (HttpURLConnection) url.<span style="color:#a6e22e">openConnection</span>();
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 요청 설정</span>
+</span></span><span style="display:flex;"><span>            conn.<span style="color:#a6e22e">setRequestMethod</span>(<span style="color:#e6db74">&#34;POST&#34;</span>);
+</span></span><span style="display:flex;"><span>            conn.<span style="color:#a6e22e">setRequestProperty</span>(<span style="color:#e6db74">&#34;Accept&#34;</span>, <span style="color:#e6db74">&#34;application/vnd.blackducksoftware.user-4+json&#34;</span>);
+</span></span><span style="display:flex;"><span>            conn.<span style="color:#a6e22e">setRequestProperty</span>(<span style="color:#e6db74">&#34;Content-Type&#34;</span>, <span style="color:#e6db74">&#34;application/json&#34;</span>);
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Basic Auth 설정</span>
+</span></span><span style="display:flex;"><span>            String auth <span style="color:#f92672">=</span> username <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;:&#34;</span> <span style="color:#f92672">+</span> password;
+</span></span><span style="display:flex;"><span>            String encodedAuth <span style="color:#f92672">=</span> java.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">Base64</span>.<span style="color:#a6e22e">getEncoder</span>().<span style="color:#a6e22e">encodeToString</span>(auth.<span style="color:#a6e22e">getBytes</span>());
+</span></span><span style="display:flex;"><span>            conn.<span style="color:#a6e22e">setRequestProperty</span>(<span style="color:#e6db74">&#34;Authorization&#34;</span>, <span style="color:#e6db74">&#34;Basic &#34;</span> <span style="color:#f92672">+</span> encodedAuth);
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            conn.<span style="color:#a6e22e">setDoOutput</span>(<span style="color:#66d9ef">true</span>);
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 응답 읽기</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> responseCode <span style="color:#f92672">=</span> conn.<span style="color:#a6e22e">getResponseCode</span>();
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (responseCode <span style="color:#f92672">==</span> HttpURLConnection.<span style="color:#a6e22e">HTTP_OK</span>) {
+</span></span><span style="display:flex;"><span>                BufferedReader in <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> BufferedReader(
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">new</span> InputStreamReader(conn.<span style="color:#a6e22e">getInputStream</span>(), StandardCharsets.<span style="color:#a6e22e">UTF_8</span>));
+</span></span><span style="display:flex;"><span>                String inputLine;
+</span></span><span style="display:flex;"><span>                StringBuilder response <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> StringBuilder();
+</span></span><span style="display:flex;"><span>                
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">while</span> ((inputLine <span style="color:#f92672">=</span> in.<span style="color:#a6e22e">readLine</span>()) <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>) {
+</span></span><span style="display:flex;"><span>                    response.<span style="color:#a6e22e">append</span>(inputLine);
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                in.<span style="color:#a6e22e">close</span>();
+</span></span><span style="display:flex;"><span>                
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> response.<span style="color:#a6e22e">toString</span>();
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Response Code: &#34;</span> <span style="color:#f92672">+</span> responseCode);
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (Exception e) {
+</span></span><span style="display:flex;"><span>            e.<span style="color:#a6e22e">printStackTrace</span>();
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// SSL 검증 비활성화</span>
+</span></span><span style="display:flex;"><span>        disableSSLVerification();
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        String baseUrl <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://your-blackduck-server&#34;</span>;
+</span></span><span style="display:flex;"><span>        String username <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;your-username&#34;</span>;
+</span></span><span style="display:flex;"><span>        String password <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;your-password&#34;</span>;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        String response <span style="color:#f92672">=</span> authenticate(baseUrl, username, password);
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Response: &#34;</span> <span style="color:#f92672">+</span> response);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>안전한 운영 환경을 위한 인증서 설정 방법:</p></p>
+      </li>
+    
+      <li>
+        <a href="http://localhost:1313/posts/sdlc/public-ip-cidr/">Public IP &amp; CIDR</a>
+        <p><h1 id="windows-powershell-에서-public-ip와-cidr-얻기---claude">Windows Powershell 에서 public IP와 CIDR 얻기 - claude</h1>
+<h2 id="테스트">테스트</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>(base) PS C:\workspace\blog\ryanpark-devsecops&gt; <span style="color:#75715e"># 방법 1: ipify API 사용</span>
+</span></span><span style="display:flex;"><span>(base) PS C:\workspace\blog\ryanpark-devsecops&gt; (Invoke-WebRequest -Uri <span style="color:#e6db74">&#34;https://api.ipify.org&#34;</span>).Content
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">44.214</span>.210.109                                                                                                                      (base) PS C:\workspace\blog\ryanpark-devsecops&gt;                                                                                     (base) PS C:\workspace\blog\ryanpark-devsecops&gt; <span style="color:#75715e"># 방방법법 2: ifconfig.me 사사용용                                                          (base) PS C:\workspace\blog\ryanpark-devsecops&gt; (Invoke-WebRequest -Uri &#34;https://ifconfig.me/ip&#34;).Content                           </span>
+</span></span><span style="display:flex;"><span>(base) PS C:\workspace\blog\ryanpark-devsecops&gt; 
+</span></span><span style="display:flex;"><span>(base) PS C:\workspace\blog\ryanpark-devsecops&gt; <span style="color:#75715e"># 방법 3: ipinfo.io 사용 (더 자세한 정보)</span>
+</span></span><span style="display:flex;"><span>(base) PS C:\workspace\blog\ryanpark-devsecops&gt; (Invoke-WebRequest -Uri <span style="color:#e6db74">&#34;https://ipinfo.io/json&#34;</span>).Content | ConvertFrom-Json
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ip       <span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#ae81ff">44.214</span>.210.109
+</span></span><span style="display:flex;"><span>hostname <span style="color:#960050;background-color:#1e0010">:</span> vpn-aws.blackduck.com
+</span></span><span style="display:flex;"><span>city     <span style="color:#960050;background-color:#1e0010">:</span> Ashburn
+</span></span><span style="display:flex;"><span>region   <span style="color:#960050;background-color:#1e0010">:</span> Virginia
+</span></span><span style="display:flex;"><span>country  <span style="color:#960050;background-color:#1e0010">:</span> US
+</span></span><span style="display:flex;"><span>loc      <span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#ae81ff">39.0437</span>,<span style="color:#ae81ff">-77.4875</span>
+</span></span><span style="display:flex;"><span>org      <span style="color:#960050;background-color:#1e0010">:</span> AS14618 Amazon.com, Inc.
+</span></span><span style="display:flex;"><span>postal   <span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#ae81ff">20147</span>
+</span></span><span style="display:flex;"><span>timezone <span style="color:#960050;background-color:#1e0010">:</span> America/New_York
+</span></span><span style="display:flex;"><span>readme   <span style="color:#960050;background-color:#1e0010">:</span> https<span style="color:#960050;background-color:#1e0010">:</span>//ipinfo.io/missingauth
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(base) PS C:\workspace\blog\ryanpark-devsecops&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Start-Process <span style="color:#e6db74">&#34;https://whois.domaintools.com/</span>$ip<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> Quick Stats
+</span></span><span style="display:flex;"><span>IP Location	United States United States Ashburn Amazon Data Services Nova
+</span></span><span style="display:flex;"><span>ASN	United States AS14618 AMAZON-AES, US (registered Nov <span style="color:#ae81ff">04</span>, <span style="color:#ae81ff">2005</span>)
+</span></span><span style="display:flex;"><span>Resolve Host	vpn-aws.blackduck.com
+</span></span><span style="display:flex;"><span>Whois Server	whois.arin.net
+</span></span><span style="display:flex;"><span>IP Address	<span style="color:#ae81ff">44.214</span>.210.109
+</span></span><span style="display:flex;"><span>NetRange<span style="color:#960050;background-color:#1e0010">:</span>       <span style="color:#ae81ff">44.192</span>.0.0 - <span style="color:#ae81ff">44.255</span>.255.255
+</span></span><span style="display:flex;"><span>CIDR<span style="color:#960050;background-color:#1e0010">:</span>           <span style="color:#ae81ff">44.192</span>.0.<span style="color:#ae81ff">0</span>/<span style="color:#ae81ff">10</span>
+</span></span></code></pre></div><hr>
+<h2 id="답변">답변</h2>
+<p>PowerShell에서 Public IP와 CIDR를 확인하는 방법을 알려드리겠습니다:</p></p>
+      </li>
+    
+      <li>
+        <a href="http://localhost:1313/posts/operator/coverity/cov--performance/">Coverity Performance</a>
+        <p><h1 id="expected-a-covjsessionid-build-cookie-in-the-response-but-it-was-missing">Expected a [COVJSESSIONID-build] cookie in the response, but it was missing</h1>
+<p>추가 로그 분석을 통해 더 자세한 상황을 파악할 수 있습니다:</p>
+<p>원래 문제:</p>
+<pre tabindex="0"><code>Expected a [COVJSESSIONID-build] cookie in the response, but it was missing
+</code></pre><p>추가 로그 분석:</p>
+<ol>
+<li>인증 상태:</li>
+</ol>
+<pre tabindex="0"><code>Authentication=CovUsernameAuthenticationToken [
+    Principal=admin (Admin User),
+    Authenticated=true,
+    RemoteIpAddress=10.2.150.57,
+    SessionId=69FB1C3437377E29D3B887C9FDFA5403,
+    Granted Authorities=[ROLE_AUTHENTICATED_USER]
+]
+</code></pre><ul>
+<li>서버 측에서는 admin 사용자가 성공적으로 인증됨</li>
+<li>세션이 정상적으로 생성됨</li>
+</ul>
+<ol start="2">
+<li>백그라운드 프로세스:</li>
+</ol>
+<pre tabindex="0"><code>com.coverity.ces.service.GarbageCollectionServiceImpl.runGarbageCollection
+</code></pre><ul>
+<li>GarbageCollection 서비스가 정상적으로 동작 중</li>
+</ul>
+<p>수정된 해결 방안:</p>
+<ol>
+<li>
+<p>세션 관련:</p></p>
+      </li>
+    
+      <li>
+        <a href="http://localhost:1313/posts/operator/git--repo-access-url-formats/">Different URL Formats for Accessing a Git Repository</a>
         <p><h2 id="-different-url-formats-for-accessing-a-git-repository"><strong>🔹 Different URL Formats for Accessing a Git Repository</strong></h2>
 <p>Git supports multiple protocols for accessing repositories, each with its own advantages and disadvantages in terms of authentication, security, and ease of use. Below is a summary of the common URL formats, their corresponding protocols, authentication methods, and a comparison of their pros and cons.</p>
 <hr>
@@ -183,34 +350,7 @@
       </li>
     
       <li>
-        <a href="http://localhost:1313/posts/ops/makefile-bash--variable-assignment/">Differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles</a>
-        <p><p>Differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles</p>
-<hr>
-<p>An Explanation of the differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles.</p>
-<p>Makefile variable assignment operators:</p>
-<ol>
-<li>
-<p>:= (Simple expansion):</p>
-<ul>
-<li>Expands variables immediately at assignment time.</li>
-<li>Example: FOO := $(BAR)</li>
-<li>If BAR changes later, FOO will not be affected.</li>
-</ul>
-</li>
-<li>
-<p>= (Recursive expansion):</p>
-<ul>
-<li>Defers expansion until the variable is used.</li>
-<li>Example: FOO = $(BAR)</li>
-<li>If BAR changes later, FOO will reflect the new value when used.</li>
-</ul>
-</li>
-<li>
-<p>?= (Conditional assignment):</p></p>
-      </li>
-    
-      <li>
-        <a href="http://localhost:1313/posts/ops/srm--reset-mariadb-admin-password/">SRM : Reset Admin Password on MariaDB</a>
+        <a href="http://localhost:1313/posts/operator/srm/srm--reset-mariadb-admin-password/">SRM : Reset Admin Password on MariaDB</a>
         <p><p>How to reset admin password on MariaDB from SRM (Softeware Risk Manager).</p>
 <hr>
 <p>This script recovers from a lost or forgotten super-admin password. It resets both the super-admin password and the database root user password to the provided value By SRM</p>
@@ -323,7 +463,7 @@
       </li>
     
       <li>
-        <a href="http://localhost:1313/posts/ops/azure--devops-api-rate-limits/">Azure DevOps API Rate Limits</a>
+        <a href="http://localhost:1313/posts/operator/azure--devops-api-rate-limits/">Azure DevOps API Rate Limits</a>
         <p><h2 id="azure-devops-api-rate-limits"><strong>Azure DevOps API Rate Limits</strong></h2>
 <p>Azure DevOps imposes <strong>rate limits</strong> on its REST API to ensure fair usage and prevent abuse. If you exceed these limits, your API requests may be throttled, resulting in HTTP <code>429 Too Many Requests</code> responses. To avoid this, it&rsquo;s important to monitor and manage your API usage.</p>
 <p>Here’s how you can check and handle Azure DevOps Work Items API rate limits:</p>
@@ -333,7 +473,7 @@
       </li>
     
       <li>
-        <a href="http://localhost:1313/posts/ops/srm--findings-to-azure-devops-work/">How to send findings from SRM (Software Risk Management) to Azure DevOps Work Items</a>
+        <a href="http://localhost:1313/posts/operator/srm/srm--findings-to-azure-devops-work/">How to send findings from SRM (Software Risk Management) to Azure DevOps Work Items</a>
         <p><p>how to check Azure DevOps Work Items API rate limit</p>
 <h2 id="how-to-send-findings-from-srm-software-risk-management-to-azure-devops-work-items">How to send findings from SRM (Software Risk Management) to Azure DevOps Work Items</h2>
 <p>To send findings from <strong>SRM (Software Risk Management)</strong> to <strong>Azure DevOps Work Items</strong>, you can follow the steps outlined below. This process involves using the Azure DevOps REST API to create or update work items based on the SRM findings. Here&rsquo;s a detailed guide:</p>

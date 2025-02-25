@@ -126,153 +126,155 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Different URL Formats for Accessing a Git Repository
+    <h2 class="entry-hint-parent">Coverity API SSL Issue
     </h2>
   </header>
   <div class="entry-content">
-    <p>🔹 Different URL Formats for Accessing a Git Repository Git supports multiple protocols for accessing repositories, each with its own advantages and disadvantages in terms of authentication, security, and ease of use. Below is a summary of the common URL formats, their corresponding protocols, authentication methods, and a comparison of their pros and cons.
-📌 Git Repository URL Formats and Their Characteristics Git URL Format Protocol Used Authentication Method Pros Cons git@host:path/repo.git SSH SSH key authentication (Private/Public key pair) ✅ Secure authentication without storing passwords ✅ Supports read &amp; write access ✅ Works well in automation (CI/CD) ❌ Requires setting up SSH keys ❌ Firewalls may block SSH (port 22) ssh://git@host/path/repo.git SSH SSH key authentication ✅ Same as git@host:path/repo.git, but with explicit protocol ✅ More readable for some users ❌ Identical disadvantages as the git@ format https://host/path/repo.git HTTPS Username &#43; Password, or Personal Access Token (PAT) ✅ Works without additional setup ✅ Usually allowed through firewalls ✅ Supports 2FA via PAT ❌ Requires entering credentials or setting up a credential manager ❌ PATs need to be managed securely git://host/path/repo.git Git Daemon (read-only) No authentication required ✅ Fast and lightweight ✅ Ideal for public repositories ❌ No authentication, security risk ❌ Only supports read access /path/to/repo.git Local File System No authentication needed (local access) ✅ Fastest access (no network latency) ✅ No need for authentication ❌ Only works on the local machine ❌ Cannot be used for remote access 📌 Pros and Cons of Each Git Access Method 1️⃣ SSH (git@host:path/repo.git or ssh://git@host/path/repo.git) ✅ Pros:
+    <p>Blackduck API 호출 시 발생하는 SSL 인증서 문제를 해결하는 Java 코드 - disable SSL Blackduck API 호출 시 발생하는 SSL 인증서 문제를 해결하는 Java 코드를 작성해드리겠습니다:
+import javax.net.ssl.*; import java.io.*; import java.net.HttpURLConnection; import java.net.URL; import java.security.cert.X509Certificate; import java.nio.charset.StandardCharsets; public class BlackDuckApiClient { private static void disableSSLVerification() { try { TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() { public X509Certificate[] getAcceptedIssuers() { return null; } public void checkClientTrusted(X509Certificate[] certs, String authType) { } public void checkServerTrusted(X509Certificate[] certs, String authType) { } } }; SSLContext sc = SSLContext.getInstance(&#34;SSL&#34;); sc.init(null, trustAllCerts, new java.security.SecureRandom()); HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory()); HostnameVerifier allHostsValid = (hostname, session) -&gt; true; HttpsURLConnection.setDefaultHostnameVerifier(allHostsValid); } catch (Exception e) { e.printStackTrace(); } } public static String authenticate(String baseUrl, String username, String password) { try { URL url = new URL(baseUrl &#43; &#34;/api/tokens/authenticate&#34;); HttpURLConnection conn = (HttpURLConnection) url.openConnection(); // 요청 설정 conn.setRequestMethod(&#34;POST&#34;); conn.setRequestProperty(&#34;Accept&#34;, &#34;application/vnd.blackducksoftware.user-4&#43;json&#34;); conn.setRequestProperty(&#34;Content-Type&#34;, &#34;application/json&#34;); // Basic Auth 설정 String auth = username &#43; &#34;:&#34; &#43; password; String encodedAuth = java.util.Base64.getEncoder().encodeToString(auth.getBytes()); conn.setRequestProperty(&#34;Authorization&#34;, &#34;Basic &#34; &#43; encodedAuth); conn.setDoOutput(true); // 응답 읽기 int responseCode = conn.getResponseCode(); if (responseCode == HttpURLConnection.HTTP_OK) { BufferedReader in = new BufferedReader( new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8)); String inputLine; StringBuilder response = new StringBuilder(); while ((inputLine = in.readLine()) != null) { response.append(inputLine); } in.close(); return response.toString(); } else { System.out.println(&#34;Response Code: &#34; &#43; responseCode); return null; } } catch (Exception e) { e.printStackTrace(); return null; } } public static void main(String[] args) { // SSL 검증 비활성화 disableSSLVerification(); String baseUrl = &#34;https://your-blackduck-server&#34;; String username = &#34;your-username&#34;; String password = &#34;your-password&#34;; String response = authenticate(baseUrl, username, password); System.out.println(&#34;Response: &#34; &#43; response); } } 안전한 운영 환경을 위한 인증서 설정 방법:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-02-14 00:00:00 +0000 UTC'>February 14, 2025</span>&nbsp;·&nbsp;3 min</footer>
-  <a class="entry-link" aria-label="post link to Different URL Formats for Accessing a Git Repository" href="http://localhost:1313/posts/ops/git--repo-access-url-formats/"></a>
+  <footer class="entry-footer"><span title='2025-02-24 00:00:00 +0000 UTC'>February 24, 2025</span>&nbsp;·&nbsp;5 min</footer>
+  <a class="entry-link" aria-label="post link to Coverity API SSL Issue" href="http://localhost:1313/posts/operator/coverity/cov--api-ssl/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Github Pages with Hugo
+    <h2 class="entry-hint-parent">Public IP &amp; CIDR
     </h2>
   </header>
   <div class="entry-content">
-    <p>Github Pages GitHub Pages는 GitHub 저장소를 사용하여 정적 웹사이트를 쉽게 배포할 수 있는 기능입니다.
-다음은 GitHub Pages를 설정하고 사용하는 방법을 단계별로 설명합니다.
-1. GitHub Pages 활성화하기 (1) GitHub 저장소 생성 GitHub에 로그인하고 새로운 저장소(New Repository) 생성
-저장소 이름을 설정 (예: my-blog)
-Public(공개) 저장소로 설정해야 GitHub Pages에서 무료로 사용할 수 있음
-README.md 파일을 추가하는 것이 좋음
-저장소 생성 후 git clone으로 로컬에 다운로드
-git clone https://github.com/your-username/my-blog.git cd my-blog 2. GitHub Pages 활성화 GitHub 저장소로 이동 Settings &gt; Pages 탭으로 이동 Branch 선택: main 또는 gh-pages 브랜치를 선택하여 배포할 수 있음 저장 후 몇 분 내로 GitHub Pages가 활성화됨 배포된 사이트 URL 확인 (https://your-username.github.io/my-blog/) 3. HTML/CSS 파일 추가하여 웹사이트 배포 로컬 저장소에서 기본 웹페이지 생성: echo &#34;&lt;h1&gt;Welcome to My GitHub Page&lt;/h1&gt;&#34; &gt; index.html 변경 사항을 커밋하고 푸시: git add index.html git commit -m &#34;Add main page&#34; git push origin main GitHub Pages가 자동으로 index.html을 인식하여 배포함 4. Jekyll을 이용한 블로그 만들기 GitHub Pages는 Jekyll을 지원하므로, Jekyll을 활용하여 정적 블로그를 쉽게 만들 수 있음.
+    <p>Windows Powershell 에서 public IP와 CIDR 얻기 - claude 테스트 (base) PS C:\workspace\blog\ryanpark-devsecops&gt; # 방법 1: ipify API 사용 (base) PS C:\workspace\blog\ryanpark-devsecops&gt; (Invoke-WebRequest -Uri &#34;https://api.ipify.org&#34;).Content 44.214.210.109 (base) PS C:\workspace\blog\ryanpark-devsecops&gt; (base) PS C:\workspace\blog\ryanpark-devsecops&gt; # 방방법법 2: ifconfig.me 사사용용 (base) PS C:\workspace\blog\ryanpark-devsecops&gt; (Invoke-WebRequest -Uri &#34;https://ifconfig.me/ip&#34;).Content (base) PS C:\workspace\blog\ryanpark-devsecops&gt; (base) PS C:\workspace\blog\ryanpark-devsecops&gt; # 방법 3: ipinfo.io 사용 (더 자세한 정보) (base) PS C:\workspace\blog\ryanpark-devsecops&gt; (Invoke-WebRequest -Uri &#34;https://ipinfo.io/json&#34;).Content | ConvertFrom-Json ip : 44.214.210.109 hostname : vpn-aws.blackduck.com city : Ashburn region : Virginia country : US loc : 39.0437,-77.4875 org : AS14618 Amazon.com, Inc. postal : 20147 timezone : America/New_York readme : https://ipinfo.io/missingauth (base) PS C:\workspace\blog\ryanpark-devsecops&gt; Start-Process &#34;https://whois.domaintools.com/$ip&#34; Quick Stats IP Location	United States United States Ashburn Amazon Data Services Nova ASN	United States AS14618 AMAZON-AES, US (registered Nov 04, 2005) Resolve Host	vpn-aws.blackduck.com Whois Server	whois.arin.net IP Address	44.214.210.109 NetRange: 44.192.0.0 - 44.255.255.255 CIDR: 44.192.0.0/10 답변 PowerShell에서 Public IP와 CIDR를 확인하는 방법을 알려드리겠습니다:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-02-14 00:00:00 +0000 UTC'>February 14, 2025</span>&nbsp;·&nbsp;11 min</footer>
-  <a class="entry-link" aria-label="post link to Github Pages with Hugo" href="http://localhost:1313/posts/creator/github-page-with-hugo/"></a>
+  <footer class="entry-footer"><span title='2025-02-24 00:00:00 +0000 UTC'>February 24, 2025</span>&nbsp;·&nbsp;8 min</footer>
+  <a class="entry-link" aria-label="post link to Public IP & CIDR" href="http://localhost:1313/posts/sdlc/public-ip-cidr/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles
+    <h2 class="entry-hint-parent">Chrome
     </h2>
   </header>
   <div class="entry-content">
-    <p>Differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles
-An Explanation of the differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles.
-Makefile variable assignment operators:
-:= (Simple expansion):
-Expands variables immediately at assignment time. Example: FOO := $(BAR) If BAR changes later, FOO will not be affected. = (Recursive expansion):
-Defers expansion until the variable is used. Example: FOO = $(BAR) If BAR changes later, FOO will reflect the new value when used. ?= (Conditional assignment):
+    <p>Chrome Install on Ubuntu Ubuntu에서 Chrome을 완전히 제거하고 다시 설치하는 명령어 순서입니다:
+Chrome 제거: # Chrome 패키지 제거 sudo apt-get purge google-chrome-stable # 관련 의존성 패키지 제거 sudo apt-get autoremove # Chrome 설정 파일 제거 (선택사항) rm -rf ~/.config/google-chrome Chrome 다시 설치: # Chrome 다운로드를 위한 필요 패키지 설치 sudo apt-get install wget # Chrome 패키지 다운로드 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb # 다운로드한 패키지 설치 sudo dpkg -i google-chrome-stable_current_amd64.deb # 의존성 문제가 있다면 다음 명령어로 해결 sudo apt-get install -f # 다운로드한 설치 파일 제거 (선택사항) rm google-chrome-stable_current_amd64.deb 설치가 완료되면 Applications 메뉴나 터미널에서 google-chrome 명령어로 Chrome을 실행할 수 있습니다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-02-03 00:00:00 +0000 UTC'>February 3, 2025</span>&nbsp;·&nbsp;1 min</footer>
-  <a class="entry-link" aria-label="post link to Differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles" href="http://localhost:1313/posts/ops/makefile-bash--variable-assignment/"></a>
+  <footer class="entry-footer"><span title='2025-02-21 00:00:00 +0000 UTC'>February 21, 2025</span>&nbsp;·&nbsp;1 min</footer>
+  <a class="entry-link" aria-label="post link to Chrome" href="http://localhost:1313/posts/sdlc/chrome/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">SRM : Reset Admin Password on MariaDB
+    <h2 class="entry-hint-parent">Coverity Performance
     </h2>
   </header>
   <div class="entry-content">
-    <p>How to reset admin password on MariaDB from SRM (Softeware Risk Manager).
-This script recovers from a lost or forgotten super-admin password. It resets both the super-admin password and the database root user password to the provided value By SRM
-#!/bin/bash # This script recovers from a lost or forgotten super-admin password. # It resets both the super-admin password and the database root user password to the provided value. # By SRM function admin-password-recover-script() { ### Validate input and set SRM installation path if [ &#34;$#&#34; -ne 1 ] &amp;&amp; [ &#34;$#&#34; -ne 0 ]; then echo &#34;Usage: $0 [path to SRM installation folder]&#34; echo &#34;If path contains spaces, wrap it in double quotes.&#34; echo &#34;Example:&#34; echo &#34; $0 /opt/srm&#34; exit 1 fi local SRM_PATH if [ &#34;$#&#34; -eq 1 ]; then SRM_PATH=$1 else echo &#34;Enter path to SRM installation folder:&#34; read -r SRM_PATH fi # Remove trailing slash from the input path SRM_PATH=${SRM_PATH%/} # Check for MariaDB binary file if [ ! -f &#34;$SRM_PATH/mysql/bin/mysqld&#34; ]; then echo &#34;The given SRM directory does not appear to have appropriate mysql files&#34; exit 2 fi ### Get new password echo &#34;Enter new administrator password:&#34; read -rs NEW_PASSWORD ### Create temporary initialization file TEMP_INIT_FILE=$(mktemp) ### Check MariaDB configuration file echo &#34;Looking for MariaDB configuration file...&#34; DB_CONFIG=$SRM_PATH/mysql/my.cnf if [ ! -f &#34;$DB_CONFIG&#34; ]; then echo &#34;$DB_CONFIG not found. Aborting&#34; exit 2 fi ### Check MariaDB data directory from SRM properties file echo &#34;Found MariaDB configuration at $DB_CONFIG&#34; echo &#34;Looking for SRM database...&#34; DB_DATA=$(grep &#34;mysql_data_directory&#34; &#34;$SRM_PATH/properties.ini&#34; | cut -d&#39;=&#39; -f2) if [ ! -d &#34;$DB_DATA&#34; ]; then echo &#34;MariaDB data directory not found (looked at $DB_DATA). Aborting&#34; exit 2 fi ### Verify SRM database echo &#34;Found MariaDB data directory at $DB_DATA&#34; DB_NAME=srm if [ ! -d &#34;$DB_DATA/$DB_NAME&#34; ]; then DB_NAME=bitnami_srm fi if [ ! -d &#34;$DB_DATA/$DB_NAME&#34; ]; then echo &#34;SRM database not found. Aborting&#34; exit 2 fi echo &#34;Found SRM database $DB_NAME&#34; ### Generate MariaDB initialization file echo &#34;Generating MariaDB recovery init file...&#34; { echo &#34;SET PASSWORD FOR &#39;root&#39;@&#39;localhost&#39; = PASSWORD(&#39;${NEW_PASSWORD//\&#39;/\&#39;\&#39;}&#39;);&#34; echo &#34;UPDATE \`$DB_NAME\`.\`LOCAL_USERS\` SET \`PASSWORD\`=SHA2(&#39;${NEW_PASSWORD//\&#39;/\&#39;\&#39;}&#39;, 256) WHERE \`ID\`=1;&#34; echo &#34;SHUTDOWN;&#34; } &gt; &#34;$TEMP_INIT_FILE&#34; ### Stop SRM services echo &#34;Shutting down SRM services&#34; &#34;$SRM_PATH/ctlscript.sh&#34; stop ### Reset passwords echo &#34;Resetting passwords...&#34; # If root user, set file permissions and run as mysql user if (( EUID == 0 )); then chown mysql &#34;$TEMP_INIT_FILE&#34; &#34;$SRM_PATH/mysql/bin/mysqld&#34; --defaults-file=&#34;$DB_CONFIG&#34; --init-file=&#34;$TEMP_INIT_FILE&#34; --console --user=mysql else &#34;$SRM_PATH/mysql/bin/mysqld&#34; --defaults-file=&#34;$DB_CONFIG&#34; --init-file=&#34;$TEMP_INIT_FILE&#34; --console fi ### Clean up and display completion message echo &#34;Removing recovery init file...&#34; rm -f &#34;$TEMP_INIT_FILE&#34; echo &#34;Done! You may start SRM again.&#34; } # Execute the function admin-password-recover-script &#34;$@&#34; Ex) admin-password-recover-script ~/workspace/dev_tool/codedx/srm-2024.12.1/srm </p>
-  </div>
-  <footer class="entry-footer"><span title='2025-02-03 00:00:00 +0000 UTC'>February 3, 2025</span>&nbsp;·&nbsp;3 min</footer>
-  <a class="entry-link" aria-label="post link to SRM : Reset Admin Password on MariaDB" href="http://localhost:1313/posts/ops/srm--reset-mariadb-admin-password/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Azure DevOps API Rate Limits
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Azure DevOps API Rate Limits Azure DevOps imposes rate limits on its REST API to ensure fair usage and prevent abuse. If you exceed these limits, your API requests may be throttled, resulting in HTTP 429 Too Many Requests responses. To avoid this, it’s important to monitor and manage your API usage.
-Here’s how you can check and handle Azure DevOps Work Items API rate limits:
-1. Understanding Azure DevOps API Rate Limits Azure DevOps API rate limits are based on:
+    <p>Expected a [COVJSESSIONID-build] cookie in the response, but it was missing 추가 로그 분석을 통해 더 자세한 상황을 파악할 수 있습니다:
+원래 문제:
+Expected a [COVJSESSIONID-build] cookie in the response, but it was missing 추가 로그 분석:
+인증 상태: Authentication=CovUsernameAuthenticationToken [Principal=admin (Admin User),Authenticated=true,RemoteIpAddress=10.2.150.57,SessionId=69FB1C3437377E29D3B887C9FDFA5403,Granted Authorities=[ROLE_AUTHENTICATED_USER]] 서버 측에서는 admin 사용자가 성공적으로 인증됨 세션이 정상적으로 생성됨 백그라운드 프로세스: com.coverity.ces.service.GarbageCollectionServiceImpl.runGarbageCollection GarbageCollection 서비스가 정상적으로 동작 중 수정된 해결 방안:
+세션 관련:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-01-31 00:00:00 +0000 UTC'>January 31, 2025</span>&nbsp;·&nbsp;3 min</footer>
-  <a class="entry-link" aria-label="post link to Azure DevOps API Rate Limits" href="http://localhost:1313/posts/ops/azure--devops-api-rate-limits/"></a>
+  <footer class="entry-footer"><span title='2025-02-21 00:00:00 +0000 UTC'>February 21, 2025</span>&nbsp;·&nbsp;4 min</footer>
+  <a class="entry-link" aria-label="post link to Coverity Performance" href="http://localhost:1313/posts/operator/coverity/cov--performance/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Cyclomatic Complexity in C&#43;&#43; Code
+    <h2 class="entry-hint-parent">Dart
     </h2>
   </header>
   <div class="entry-content">
-    <p>Cyclomatic Complexity in C&#43;&#43; Code Cyclomatic Complexity (CCM) is a software metric used to indicate the complexity of a program. It directly measures the number of linearly independent paths through a program’s source code. Higher CCM values suggest more complex and potentially less maintainable code.
-CCM Calculation Rules Cyclomatic Complexity is calculated based on the control flow graph of the program using the following rules:
-Basic Complexity: The simplest program has a CCM of 1. Control Flow Branches: Each if, for, while, case, and other control flow statements add to the CCM. Logical Operators: Logical operators like &amp;&amp; and || can also increase CCM by introducing additional paths. Example C&#43;&#43; Code with CCM Calculation #include &lt;iostream&gt; using namespace std; // Function declaration int calculate(int a, int b, int c); int main() { int x = 10; int y = 20; int z = 30; int result = calculate(x, y, z); cout &lt;&lt; &#34;Result: &#34; &lt;&lt; result &lt;&lt; endl; return 0; } // Function with high Cyclomatic Complexity int calculate(int a, int b, int c) { int CCM = 1; // Basic complexity // If statement 1: CCM &#43;= 1 if (a &gt; b) { CCM&#43;&#43;; cout &lt;&lt; &#34;a is greater than b&#34; &lt;&lt; endl; } // If-else statement: CCM &#43;= 1 if (b &gt; c) { CCM&#43;&#43;; cout &lt;&lt; &#34;b is greater than c&#34; &lt;&lt; endl; } else { CCM&#43;&#43;; cout &lt;&lt; &#34;c is greater than or equal to b&#34; &lt;&lt; endl; } // For loop: CCM &#43;= 1 for(int i = 0; i &lt; 5; &#43;&#43;i) { CCM&#43;&#43;; cout &lt;&lt; &#34;Iteration: &#34; &lt;&lt; i &lt;&lt; endl; } // While loop: CCM &#43;= 1 int count = 0; while(count &lt; 3) { CCM&#43;&#43;; cout &lt;&lt; &#34;Count: &#34; &lt;&lt; count &lt;&lt; endl; count&#43;&#43;; } // Switch-case statement: Each case adds to CCM int option = 2; switch(option) { case 1: CCM&#43;&#43;; cout &lt;&lt; &#34;Option 1 selected&#34; &lt;&lt; endl; break; case 2: CCM&#43;&#43;; cout &lt;&lt; &#34;Option 2 selected&#34; &lt;&lt; endl; break; case 3: CCM&#43;&#43;; cout &lt;&lt; &#34;Option 3 selected&#34; &lt;&lt; endl; break; default: CCM&#43;&#43;; cout &lt;&lt; &#34;Default option selected&#34; &lt;&lt; endl; break; } // Logical operators: Each &#39;&amp;&amp;&#39; or &#39;||&#39; adds to CCM if (a &gt; 0 &amp;&amp; b &gt; 0) { // &#39;&amp;&amp;&#39; adds 1 CCM&#43;&#43;; cout &lt;&lt; &#34;Both a and b are positive&#34; &lt;&lt; endl; } if (a &gt; 0 || c &gt; 0) { // &#39;||&#39; adds 1 CCM&#43;&#43;; cout &lt;&lt; &#34;Either a or c is positive&#34; &lt;&lt; endl; } return CCM; } Code Explanation and CCM Calculation Basic Complexity:
+    <p>Dart 와 JavaScript 비교교 Dart와 JavaScript 중 어떤 언어를 배우는 것이 더 좋은지는 Ryan의 목표와 개발하려는 서비스의 방향에 따라 다릅니다.
+✅ Dart를 배우는 것이 좋은 경우 Flutter를 활용한 크로스 플랫폼 앱 개발 Ryan이 모바일 앱 개발(특히 iOS &amp; Android) 을 목표로 한다면 Dart &#43; Flutter 조합이 유리합니다. 하나의 코드베이스로 iOS, Android, 웹까지 개발 가능하여 유지보수 비용을 절감할 수 있습니다. 안정적이고 타입 안정성이 중요한 경우 Dart는 정적 타입을 제공하여 코드의 안정성이 높고, 유지보수가 쉬운 편입니다. JavaScript보다 더 안전한 프로그래밍이 가능합니다. Google 생태계에 관심이 있다면 Dart는 Google이 적극적으로 지원하는 언어이므로, Google 관련 기술과 함께 사용하기 좋습니다. ✅ JavaScript를 배우는 것이 좋은 경우 웹 서비스 개발이 목표라면 Ryan이 웹 기반 서비스(프론트엔드 &amp; 백엔드) 를 개발하려면 JavaScript가 훨씬 강력한 선택지입니다. React, Vue, Angular 등 다양한 웹 프레임워크를 활용할 수 있습니다. 서버 개발도 Node.js 를 활용해 JavaScript로 가능하므로 전체 개발이 JavaScript로 통일됩니다. 더 많은 오픈 소스 및 커뮤니티 지원을 원한다면 JavaScript는 웹 개발의 표준이며, 가장 많은 라이브러리와 프레임워크가 존재합니다. Dart에 비해 커뮤니티가 훨씬 크며, 문제 해결이 빠릅니다. 프론트엔드 개발자가 되고 싶다면 JavaScript는 웹 브라우저에서 기본적으로 실행되는 언어이므로, 프론트엔드 개발자 를 목표로 한다면 필수입니다. ⚖️ 결론: Ryan에게 적합한 선택 웹 서비스를 중심으로 개발하려면? → JavaScript 모바일 앱을 중심으로 개발하려면? → Dart &#43; Flutter 웹과 모바일을 모두 고려한다면? 웹이 더 중요하면 JavaScript 모바일이 더 중요하면 Dart Ryan이 만들고 싶은 서비스가 웹 기반이라면 JavaScript가 더 적합할 가능성이 큽니다.
+어떤 서비스를 만들고 싶은지 더 구체적으로 이야기해주면 더 적합한 선택을 도와줄 수 있어요!
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-01-31 00:00:00 +0000 UTC'>January 31, 2025</span>&nbsp;·&nbsp;5 min</footer>
-  <a class="entry-link" aria-label="post link to Cyclomatic Complexity in C&#43;&#43; Code" href="http://localhost:1313/posts/programming/cyclomatic-complexity-in-c&#43;&#43;-code/"></a>
+  <footer class="entry-footer"><span title='2025-02-21 00:00:00 +0000 UTC'>February 21, 2025</span>&nbsp;·&nbsp;5 min</footer>
+  <a class="entry-link" aria-label="post link to Dart" href="http://localhost:1313/posts/developer/dart/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">DevSecOps 블로그를 시작하며
+    <h2 class="entry-hint-parent">Nest.js
     </h2>
   </header>
   <div class="entry-content">
-    <p>안녕하세요, RyanPark의 DevSecOps 블로그입니다…
+    <p>Next.js 와와 SpringBoot 비교 속도비교 NestJS와 Spring Boot는 각각의 장단점이 있지만, 개발 속도 측면에서 비교할 때는 NestJS가 더 빠를 수 있는 몇 가지 이유가 있습니다. 다만, 최종 선택은 프로젝트의 요구 사항과 팀의 경험에 따라 달라질 수 있습니다. 아래에서 두 프레임워크를 비교해보겠습니다.
+1. NestJS의 빠른 개발 속도 JavaScript/TypeScript 기반: NestJS는 TypeScript를 기본으로 사용합니다. TypeScript는 자바스크립트를 확장한 언어로, 컴파일 시 타입 검사를 제공하여 코드 작성 중 버그를 미리 잡을 수 있습니다. 또한, JavaScript와 TypeScript는 웹 프론트엔드 개발에서 널리 사용되기 때문에, 프론트엔드와 백엔드 개발자들이 같은 언어를 사용할 수 있어 통합 개발 속도가 빨라질 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-02-21 00:00:00 +0000 UTC'>February 21, 2025</span>&nbsp;·&nbsp;18 min</footer>
+  <a class="entry-link" aria-label="post link to Nest.js" href="http://localhost:1313/posts/developer/javascipt/nestjs/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Rust Web
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> Rust는 시스템 프로그래밍 언어로 높은 성능과 안전성을 제공하지만, 웹 프레임워크 측면에서는 여전히 상대적으로 적은 선택지가 있습니다. 그럼에도 불구하고 Spring Boot나 NestJS와 비슷한 구조적 접근을 제공하는 Rust 웹 프레임워크들이 있습니다. 이들 프레임워크는 모듈화, 라우팅, 미들웨어 지원 등을 제공하며, 일반적으로 백엔드 API 서버나 웹 애플리케이션을 구축할 수 있습니다.
+다음은 Rust에서 Spring Boot나 NestJS처럼 구조적이고 확장 가능한 웹 애플리케이션을 구축할 수 있는 프레임워크들입니다:
+1. Actix Web 특징:
+Actix Web은 고성능과 비동기 처리를 지원하는 Rust의 가장 인기 있는 웹 프레임워크입니다. Spring Boot와 비슷하게, 매우 높은 성능을 자랑하면서도 유연한 미들웨어 및 라우팅 기능을 제공합니다. 모듈화된 라우팅과 미들웨어를 지원하며, 웹 소켓, API 서버 등 다양한 서버 애플리케이션을 구현할 수 있습니다. Actors 모델을 기반으로 한 Actix 시스템을 제공하여, 복잡한 상태 관리 및 비동기 처리를 유연하게 처리할 수 있습니다. Spring Boot와 비슷한 방식으로 동시성을 처리하며, REST API 서버로 매우 적합합니다. 타입 안전성과 비동기 I/O를 지원하여, 성능과 안정성에서 우수한 결과를 도출할 수 있습니다. 장점:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-02-21 00:00:00 +0000 UTC'>February 21, 2025</span>&nbsp;·&nbsp;9 min</footer>
+  <a class="entry-link" aria-label="post link to Rust Web" href="http://localhost:1313/posts/developer/rust/rust-web/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenCV compile on Windows
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Claude 이 오류는 ARM64 플랫폼을 위한 CMake 구성 과정에서 발생한 문제입니다. 주요 오류는 프로젝트 설정이 제대로 되지 않았고, ARM64 플랫폼 구성이 올바르지 않다는 것입니다.
+PowerShell 스크립트를 다음과 같이 수정하여 해결할 수 있습니다:
+# OpenCV Windows Build Script for x64 and ARM64 # Prerequisites: Visual Studio 2022, CMake, Git # Configuration $OPENCV_VERSION = &#34;4.9.0&#34; $SOURCE_DIR = &#34;C:\workspace\jonpark-work\opencv_source&#34; $BUILD_BASE_DIR = &#34;C:\workspace\jonpark-work\opencv_build&#34; $INSTALL_BASE_DIR = &#34;C:\workspace\jonpark-work\opencv_install&#34; # Common CMake parameters $CMAKE_COMMON_PARAMS = @( &#34;-DCMAKE_MINIMUM_REQUIRED_VERSION=3.10&#34;, # 최소 CMake 버전 지정 &#34;-DBUILD_SHARED_LIBS=ON&#34;, &#34;-DBUILD_TESTS=OFF&#34;, &#34;-DBUILD_PERF_TESTS=OFF&#34;, &#34;-DBUILD_EXAMPLES=OFF&#34;, &#34;-DWITH_CUDA=OFF&#34;, &#34;-DBUILD_opencv_world=ON&#34;, &#34;-DBUILD_opencv_python2=OFF&#34;, &#34;-DBUILD_opencv_python3=OFF&#34;, &#34;-DWITH_IPP=ON&#34;, &#34;-DENABLE_CXX11=ON&#34;, &#34;-DOPENCV_ENABLE_NONFREE=ON&#34;, &#34;-DBUILD_WITH_STATIC_CRT=OFF&#34; ) # Download OpenCV source if (-not (Test-Path $SOURCE_DIR)) { git clone https://github.com/opencv/opencv.git $SOURCE_DIR Push-Location $SOURCE_DIR git checkout $OPENCV_VERSION Pop-Location } # Function to build OpenCV for specific architecture function Build-OpenCV { param ( [string]$arch, [string]$generator, [string]$platform ) $BUILD_DIR = &#34;$BUILD_BASE_DIR\$arch&#34; $INSTALL_DIR = &#34;$INSTALL_BASE_DIR\$arch&#34; # Remove existing build directory to ensure clean build if (Test-Path $BUILD_DIR) { Remove-Item -Path $BUILD_DIR -Recurse -Force } # Create build directory New-Item -ItemType Directory -Force -Path $BUILD_DIR Push-Location $BUILD_DIR # Configure CMake with explicit project name and build type cmake -G $generator -A $platform ` -DCMAKE_INSTALL_PREFIX=&#34;$INSTALL_DIR&#34; ` -DCMAKE_BUILD_TYPE=Release ` -DOpenCV_ARCH=$platform ` -DOpenCV_RUNTIME=vc17 ` $CMAKE_COMMON_PARAMS ` -S $SOURCE_DIR -B $BUILD_DIR if ($LASTEXITCODE -ne 0) { Write-Error &#34;CMake configuration failed for $arch&#34; Pop-Location exit 1 } # Build and install cmake --build $BUILD_DIR --config Release --target INSTALL --parallel 8 if ($LASTEXITCODE -ne 0) { Write-Error &#34;Build failed for $arch&#34; Pop-Location exit 1 } Pop-Location } # 빌드 전 Visual Studio 환경 설정 $VS_PATH = &#34;C:\Program Files\Microsoft Visual Studio\2022\Community&#34; $VS_TOOLS = &#34;$VS_PATH\VC\Auxiliary\Build&#34; if (Test-Path &#34;$VS_TOOLS\vcvarsall.bat&#34;) { Write-Host &#34;Setting up Visual Studio environment...&#34; # x64 환경 설정 cmd.exe /c &#34;call `&#34;$VS_TOOLS\vcvarsall.bat`&#34; x64 &amp;&amp; set &gt; %temp%\vcvars.txt&#34; Get-Content &#34;$env:temp\vcvars.txt&#34; | foreach-object { if ($_ -match &#34;^(.*?)=(.*)$&#34;) { Set-Content &#34;env:\$($matches[1])&#34; $matches[2] } } } else { Write-Error &#34;Visual Studio environment setup failed&#34; exit 1 } # Build for x64 Write-Host &#34;Building for x64...&#34; Build-OpenCV -arch &#34;x64&#34; -generator &#34;Visual Studio 17 2022&#34; -platform &#34;x64&#34; # ARM64 빌드 전 환경 재설정 if (Test-Path &#34;$VS_TOOLS\vcvarsall.bat&#34;) { Write-Host &#34;Setting up Visual Studio environment for ARM64...&#34; cmd.exe /c &#34;call `&#34;$VS_TOOLS\vcvarsall.bat`&#34; x64_arm64 &amp;&amp; set &gt; %temp%\vcvars.txt&#34; Get-Content &#34;$env:temp\vcvars.txt&#34; | foreach-object { if ($_ -match &#34;^(.*?)=(.*)$&#34;) { Set-Content &#34;env:\$($matches[1])&#34; $matches[2] } } } # Build for ARM64 Write-Host &#34;Building for ARM64...&#34; Build-OpenCV -arch &#34;arm64&#34; -generator &#34;Visual Studio 17 2022&#34; -platform &#34;ARM64&#34; 주요 변경사항과 해결방법:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-02-20 00:00:00 +0000 UTC'>February 20, 2025</span>&nbsp;·&nbsp;12 min</footer>
+  <a class="entry-link" aria-label="post link to OpenCV compile on Windows" href="http://localhost:1313/posts/developer/opencv-win/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Bash &amp; PowerShell Script Comparison
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p></p>
+  </div>
+  <footer class="entry-footer"><span title='2025-02-19 00:00:00 +0000 UTC'>February 19, 2025</span>&nbsp;·&nbsp;0 min</footer>
+  <a class="entry-link" aria-label="post link to Bash & PowerShell Script Comparison" href="http://localhost:1313/posts/sdlc/bash-powershell/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">MobaXterm Usage
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Issue Remote side unexpectedly closed network connection
+────
+Session stopped - Press to exit tab - Press R to restart session - Press S to save terminal output to file
+Fix Remove saved password It does not fix issue.
 </p>
   </div>
-  <footer class="entry-footer"><span title='2025-01-31 00:00:00 +0000 UTC'>January 31, 2025</span>&nbsp;·&nbsp;1 min</footer>
-  <a class="entry-link" aria-label="post link to DevSecOps 블로그를 시작하며" href="http://localhost:1313/posts/welcome-to-my-blog/"></a>
+  <footer class="entry-footer"><span title='2025-02-19 00:00:00 +0000 UTC'>February 19, 2025</span>&nbsp;·&nbsp;1 min</footer>
+  <a class="entry-link" aria-label="post link to MobaXterm Usage" href="http://localhost:1313/posts/sdlc/mobaxterm/"></a>
 </article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">How to send findings from SRM (Software Risk Management) to Azure DevOps Work Items
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>how to check Azure DevOps Work Items API rate limit
-How to send findings from SRM (Software Risk Management) to Azure DevOps Work Items To send findings from SRM (Software Risk Management) to Azure DevOps Work Items, you can follow the steps outlined below. This process involves using the Azure DevOps REST API to create or update work items based on the SRM findings. Here’s a detailed guide:
-1. Prerequisites Before starting, ensure the following:
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-01-31 00:00:00 +0000 UTC'>January 31, 2025</span>&nbsp;·&nbsp;4 min</footer>
-  <a class="entry-link" aria-label="post link to How to send findings from SRM (Software Risk Management) to Azure DevOps Work Items" href="http://localhost:1313/posts/ops/srm--findings-to-azure-devops-work/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Python Basic Grammar
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Here I will write about the basic syntax of Python.
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-01-31 00:00:00 +0000 UTC'>January 31, 2025</span>&nbsp;·&nbsp;1 min</footer>
-  <a class="entry-link" aria-label="post link to Python Basic Grammar" href="http://localhost:1313/posts/programming/python-basics/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Review of a bus trip in Korea
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>A review of a bus trip in Korea is written here.
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-01-31 00:00:00 +0000 UTC'>January 31, 2025</span>&nbsp;·&nbsp;1 min</footer>
-  <a class="entry-link" aria-label="post link to Review of a bus trip in Korea" href="http://localhost:1313/posts/travel/korean-trip/"></a>
-</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="next" href="http://localhost:1313/posts/page/2/">Next&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
     </main>
     
 <footer class="footer">

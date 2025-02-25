@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>SDLC on RyanPark&#39;s DevSecOps</title>
+    <link>http://localhost:1313/categories/sdlc/</link>
+    <description>Recent content in SDLC on RyanPark&#39;s DevSecOps</description>
+    <generator>Hugo -- 0.142.0</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Fri, 21 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/sdlc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chrome</title>
+      <link>http://localhost:1313/posts/sdlc/chrome/</link>
+      <pubDate>Fri, 21 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/sdlc/chrome/</guid>
+      <description>&lt;h1 id=&#34;chrome-install-on-ubuntu&#34;&gt;Chrome Install on Ubuntu&lt;/h1&gt;
+&lt;p&gt;Ubuntu에서 Chrome을 완전히 제거하고 다시 설치하는 명령어 순서입니다:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Chrome 제거:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Chrome 패키지 제거&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt-get purge google-chrome-stable
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 관련 의존성 패키지 제거&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt-get autoremove
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Chrome 설정 파일 제거 (선택사항)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rm -rf ~/.config/google-chrome
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Chrome 다시 설치:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Chrome 다운로드를 위한 필요 패키지 설치&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt-get install wget
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Chrome 패키지 다운로드&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 다운로드한 패키지 설치&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo dpkg -i google-chrome-stable_current_amd64.deb
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 의존성 문제가 있다면 다음 명령어로 해결&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt-get install -f
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 다운로드한 설치 파일 제거 (선택사항)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rm google-chrome-stable_current_amd64.deb
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;설치가 완료되면 Applications 메뉴나 터미널에서 &lt;code&gt;google-chrome&lt;/code&gt; 명령어로 Chrome을 실행할 수 있습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Bash &amp; PowerShell Script Comparison</title>
+      <link>http://localhost:1313/posts/sdlc/bash-powershell/</link>
+      <pubDate>Wed, 19 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/sdlc/bash-powershell/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>MobaXterm Usage</title>
+      <link>http://localhost:1313/posts/sdlc/mobaxterm/</link>
+      <pubDate>Wed, 19 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/sdlc/mobaxterm/</guid>
+      <description>&lt;h1 id=&#34;issue&#34;&gt;Issue&lt;/h1&gt;
+&lt;p&gt;Remote side unexpectedly closed network connection&lt;/p&gt;
+&lt;p&gt;────&lt;/p&gt;
+&lt;p&gt;Session stopped
+- Press &lt;!-- raw HTML omitted --&gt; to exit tab
+- Press R to restart session
+- Press S to save terminal output to file&lt;/p&gt;
+&lt;h2 id=&#34;fix&#34;&gt;Fix&lt;/h2&gt;
+&lt;h3 id=&#34;remove-saved-password&#34;&gt;Remove saved password&lt;/h3&gt;
+&lt;p&gt;&lt;img alt=&#34;alt text&#34; loading=&#34;lazy&#34; src=&#34;.md/mobaxterm/password-settings.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;It does not fix issue.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Git Usage</title>
+      <link>http://localhost:1313/posts/sdlc/git/</link>
+      <pubDate>Mon, 17 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/sdlc/git/</guid>
+      <description>&lt;hr&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;github에서-새로운-repository저장소를-생성하는-방법&#34;&gt;&lt;strong&gt;GitHub에서 새로운 Repository(저장소)를 생성하는 방법&lt;/strong&gt;&lt;/h1&gt;
+&lt;h2 id=&#34;github에서-새로운-repository저장소를-생성하는-방법-1&#34;&gt;&lt;strong&gt;GitHub에서 새로운 Repository(저장소)를 생성하는 방법&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;GitHub에서 새로운 **Repository(저장소)**를 생성하는 방법을 단계별로 설명하겠습니다.&lt;br&gt;
+&lt;strong&gt;방법 1:&lt;/strong&gt; GitHub 웹사이트에서 직접 생성하는 방법&lt;br&gt;
+&lt;strong&gt;방법 2:&lt;/strong&gt; Git CLI를 사용하여 터미널에서 생성하는 방법&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;-방법-1-github-웹사이트에서-직접-생성하기&#34;&gt;&lt;strong&gt;📝 방법 1: GitHub 웹사이트에서 직접 생성하기&lt;/strong&gt;&lt;/h2&gt;
+&lt;h3 id=&#34;1-github에-로그인&#34;&gt;&lt;strong&gt;1️⃣ GitHub에 로그인&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/&#34;&gt;GitHub 홈페이지&lt;/a&gt;에 접속 후 로그인합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-새-저장소-생성-페이지-이동&#34;&gt;&lt;strong&gt;2️⃣ 새 저장소 생성 페이지 이동&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;우측 상단의 &lt;strong&gt;&lt;code&gt;+&lt;/code&gt; 버튼&lt;/strong&gt;을 클릭한 후 &lt;strong&gt;&amp;ldquo;New repository&amp;rdquo;&lt;/strong&gt; 선택&lt;/li&gt;
+&lt;li&gt;또는 직접 &lt;a href=&#34;https://github.com/new&#34;&gt;새 저장소 생성 페이지&lt;/a&gt;로 이동&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3-저장소-정보-입력&#34;&gt;&lt;strong&gt;3️⃣ 저장소 정보 입력&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Repository name (필수):&lt;/strong&gt; 저장소 이름을 입력합니다. (예: &lt;code&gt;my-new-repo&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Description (선택):&lt;/strong&gt; 저장소에 대한 설명을 입력합니다.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Visibility 선택:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Public&lt;/code&gt;(공개) → 누구나 볼 수 있음.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Private&lt;/code&gt;(비공개) → 본인과 초대한 사용자만 접근 가능.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;4-추가-설정&#34;&gt;&lt;strong&gt;4️⃣ 추가 설정&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;✅ &lt;code&gt;Initialize this repository with a README&lt;/code&gt; (선택)
+&lt;ul&gt;
+&lt;li&gt;체크하면 기본적인 &lt;code&gt;README.md&lt;/code&gt; 파일이 생성됨.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;✅ &lt;code&gt;.gitignore&lt;/code&gt; (선택)
+&lt;ul&gt;
+&lt;li&gt;특정 파일을 Git에서 무시하도록 설정 (예: Python, Node.js 등).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;✅ &lt;code&gt;License&lt;/code&gt; (선택)
+&lt;ul&gt;
+&lt;li&gt;오픈소스 라이선스를 설정 (예: MIT, Apache 2.0 등).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;5-저장소-생성&#34;&gt;&lt;strong&gt;5️⃣ 저장소 생성&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&amp;ldquo;Create repository&amp;rdquo;&lt;/strong&gt; 버튼을 클릭하면 저장소가 생성됩니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;6-로컬-프로젝트와-연결&#34;&gt;&lt;strong&gt;6️⃣ 로컬 프로젝트와 연결&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;이제 로컬에서 작업 중인 프로젝트를 GitHub 저장소에 연결할 수 있습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles</title>
+      <link>http://localhost:1313/posts/sdlc/makefile-bash--variable-assignment/</link>
+      <pubDate>Mon, 03 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/sdlc/makefile-bash--variable-assignment/</guid>
+      <description>&lt;p&gt;Differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;An Explanation of the differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles.&lt;/p&gt;
+&lt;p&gt;Makefile variable assignment operators:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;:= (Simple expansion):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Expands variables immediately at assignment time.&lt;/li&gt;
+&lt;li&gt;Example: FOO := $(BAR)&lt;/li&gt;
+&lt;li&gt;If BAR changes later, FOO will not be affected.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;= (Recursive expansion):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Defers expansion until the variable is used.&lt;/li&gt;
+&lt;li&gt;Example: FOO = $(BAR)&lt;/li&gt;
+&lt;li&gt;If BAR changes later, FOO will reflect the new value when used.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;?= (Conditional assignment):&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

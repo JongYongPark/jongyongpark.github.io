@@ -10,9 +10,9 @@
     <atom:link href="http://localhost:1313/tags/mariadb/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SRM : Reset Admin Password on MariaDB</title>
-      <link>http://localhost:1313/posts/ops/srm--reset-mariadb-admin-password/</link>
+      <link>http://localhost:1313/posts/operator/srm/srm--reset-mariadb-admin-password/</link>
       <pubDate>Mon, 03 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/ops/srm--reset-mariadb-admin-password/</guid>
+      <guid>http://localhost:1313/posts/operator/srm/srm--reset-mariadb-admin-password/</guid>
       <description>&lt;p&gt;How to reset admin password on MariaDB from SRM (Softeware Risk Manager).&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;This script recovers from a lost or forgotten super-admin password. It resets both the super-admin password and the database root user password to the provided value By SRM&lt;/p&gt;

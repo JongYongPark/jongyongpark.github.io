@@ -1,6 +1,7 @@
 ---
 title: "AUTOSAR"
-date: 2025-02-17
+date: 2024-02-17
+last_modified_at: 2025-03-24
 categories: ["Checker"]
 tags: ["AUTOSAR", "Standard", "Checker"]
 ---

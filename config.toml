@@ -10,32 +10,59 @@ theme = 'PaperMod'
   ShowPostNavLinks = true
   ShowBreadCrumbs = true
   ShowCodeCopyButtons = true
+  mainSections = ["posts"]
   
 [params.profileMode]
   enabled = true
   title = "RyanPark's DevSecOps"
   subtitle = "Security & DevOps Engineering Blog"
+  imageUrl = "profile.jpg"
+  imageTitle = "profile"
+  
+[params.homeInfoParams]
+  Title = "RyanPark's DevSecOps Blog 👋"
+  Content = "Security & DevOps Engineering Blog"
+
+[params.assets]
+  favicon = "favicon.ico"
+  favicon16x16 = "favicon-16x16.png"
+  favicon32x32 = "favicon-32x32.png"
+  apple_touch_icon = "apple-touch-icon.png"
   
 [taxonomies]
   category = "categories"
   tag = "tags"
+  series = "series"
 
 # [permalinks]
 #   post = "/post/:categories/:slug/"
 
 [menu]
   [[menu.main]]
-    identifier = "posts"
-    name = "Posts"
-    url = "/posts/"
+    identifier = "search"
+    name = "검색"
+    url = "/search/"
     weight = 10
   [[menu.main]]
     identifier = "categories"
-    name = "Categories"
+    name = "카테고리"
     url = "/categories/"
     weight = 20
   [[menu.main]]
     identifier = "tags"
-    name = "Tags"
+    name = "태그"
     url = "/tags/"
     weight = 30
+  [[menu.main]]
+    identifier = "archives"
+    name = "연도"
+    url = "/archives/"
+    weight = 40
+  [[menu.main]]
+    identifier = "about"
+    name = "어바웃미"
+    url = "/about/"
+    weight = 50
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]

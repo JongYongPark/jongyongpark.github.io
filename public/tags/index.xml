@@ -6,8 +6,99 @@
     <description>Recent content in Tags on RyanPark&#39;s DevSecOps</description>
     <generator>Hugo -- 0.142.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Tue, 25 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 14 Mar 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Apt</title>
+      <link>http://localhost:1313/tags/apt/</link>
+      <pubDate>Fri, 14 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/apt/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Special Chars</title>
+      <link>http://localhost:1313/tags/special-chars/</link>
+      <pubDate>Fri, 14 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/special-chars/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ubuntu</title>
+      <link>http://localhost:1313/tags/ubuntu/</link>
+      <pubDate>Fri, 14 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/ubuntu/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>K9s</title>
+      <link>http://localhost:1313/tags/k9s/</link>
+      <pubDate>Mon, 10 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/k9s/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sshfs</title>
+      <link>http://localhost:1313/tags/sshfs/</link>
+      <pubDate>Mon, 10 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/sshfs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>WSL</title>
+      <link>http://localhost:1313/tags/wsl/</link>
+      <pubDate>Mon, 10 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/wsl/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Coverity</title>
+      <link>http://localhost:1313/tags/coverity/</link>
+      <pubDate>Tue, 04 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/coverity/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Gcc</title>
+      <link>http://localhost:1313/tags/gcc/</link>
+      <pubDate>Tue, 04 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/gcc/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Deno</title>
+      <link>http://localhost:1313/tags/deno/</link>
+      <pubDate>Thu, 27 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/deno/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Go</title>
+      <link>http://localhost:1313/tags/go/</link>
+      <pubDate>Thu, 27 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/go/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mojo</title>
+      <link>http://localhost:1313/tags/mojo/</link>
+      <pubDate>Thu, 27 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/mojo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SDLC</title>
+      <link>http://localhost:1313/tags/sdlc/</link>
+      <pubDate>Thu, 27 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/sdlc/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SRM</title>
+      <link>http://localhost:1313/tags/srm/</link>
+      <pubDate>Thu, 27 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/srm/</guid>
+      <description></description>
+    </item>
     <item>
       <title>BeyondCompare</title>
       <link>http://localhost:1313/tags/beyondcompare/</link>
@@ -27,13 +118,6 @@
       <link>http://localhost:1313/tags/cidr/</link>
       <pubDate>Mon, 24 Feb 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/cidr/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Coverity</title>
-      <link>http://localhost:1313/tags/coverity/</link>
-      <pubDate>Mon, 24 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/coverity/</guid>
       <description></description>
     </item>
     <item>
@@ -184,7 +268,7 @@
       <description></description>
     </item>
     <item>
-      <title>GIT</title>
+      <title>Git</title>
       <link>http://localhost:1313/tags/git/</link>
       <pubDate>Mon, 17 Feb 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/git/</guid>
@@ -296,13 +380,6 @@
       <description></description>
     </item>
     <item>
-      <title>SRM</title>
-      <link>http://localhost:1313/tags/srm/</link>
-      <pubDate>Mon, 03 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/srm/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Azure DevOps</title>
       <link>http://localhost:1313/tags/azure-devops/</link>
       <pubDate>Fri, 31 Jan 2025 00:00:00 +0000</pubDate>
@@ -363,13 +440,6 @@
       <link>http://localhost:1313/tags/python/</link>
       <pubDate>Fri, 31 Jan 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/python/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>SDLC</title>
-      <link>http://localhost:1313/tags/sdlc/</link>
-      <pubDate>Fri, 31 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/sdlc/</guid>
       <description></description>
     </item>
   </channel>

@@ -1,13 +1,29 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>GIT on RyanPark&#39;s DevSecOps</title>
+    <title>Git on RyanPark&#39;s DevSecOps</title>
     <link>http://localhost:1313/tags/git/</link>
-    <description>Recent content in GIT on RyanPark&#39;s DevSecOps</description>
+    <description>Recent content in Git on RyanPark&#39;s DevSecOps</description>
     <generator>Hugo -- 0.142.0</generator>
     <language>ko-kr</language>
     <lastBuildDate>Mon, 17 Feb 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git - Change Branch</title>
+      <link>http://localhost:1313/posts/sdlc/git-branch/</link>
+      <pubDate>Mon, 17 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/sdlc/git-branch/</guid>
+      <description>&lt;h1 id=&#34;clone-with-branch&#34;&gt;Clone with branch&lt;/h1&gt;
+&lt;p&gt;특정 브랜치를 바로 클론하려면 다음 명령어를 사용하시면 됩니다:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone -b 2025.3.maint https://gitlab.host_name/group_name/repo_name.git
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;이 명령어는 지정된 URL에서 2025.3.maint 브랜치를 클론합니다. 기본적으로 로컬 디렉토리 이름은 저장소 이름(cnc-umbrella-chart)으로 생성됩니다.&lt;/p&gt;
+&lt;p&gt;다른 디렉토리 이름을 지정하고 싶다면 URL 뒤에 원하는 디렉토리 이름을 추가하면 됩니다:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone -b 2025.3.maint https://gitlab.host_name/group_name/repo_name.git custom-directory-name
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;이 명령어를 실행하면 2025.3.maint 브랜치만 가져오게 됩니다. 더 빠른 클론을 원한다면 &lt;code&gt;--single-branch&lt;/code&gt; 옵션을 추가할 수 있습니다:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone -b 2025.3.maint --single-branch https://gitlab.host_name/group_name/repo_name.git
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;change-branch&#34;&gt;Change branch&lt;/h1&gt;
+&lt;p&gt;이미 main 브랜치를 clone하였다. 2025.3.maint 브랜치를 가져오는 방법은?&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Git Usage</title>
       <link>http://localhost:1313/posts/sdlc/git/</link>
@@ -69,9 +85,9 @@
     </item>
     <item>
       <title>Different URL Formats for Accessing a Git Repository</title>
-      <link>http://localhost:1313/posts/operator/git--repo-access-url-formats/</link>
+      <link>http://localhost:1313/posts/technical-support/git--repo-access-url-formats/</link>
       <pubDate>Fri, 14 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/operator/git--repo-access-url-formats/</guid>
+      <guid>http://localhost:1313/posts/technical-support/git--repo-access-url-formats/</guid>
       <description>&lt;h2 id=&#34;-different-url-formats-for-accessing-a-git-repository&#34;&gt;&lt;strong&gt;🔹 Different URL Formats for Accessing a Git Repository&lt;/strong&gt;&lt;/h2&gt;
 &lt;p&gt;Git supports multiple protocols for accessing repositories, each with its own advantages and disadvantages in terms of authentication, security, and ease of use. Below is a summary of the common URL formats, their corresponding protocols, authentication methods, and a comparison of their pros and cons.&lt;/p&gt;
 &lt;hr&gt;

@@ -1,7 +1,7 @@
 ---
 title: "Public IP & CIDR"
 date: 2025-02-24
-categories: ["ops"]
+categories: ["SDLC"]
 tags: ["IP","CIDR"]
 ---
 

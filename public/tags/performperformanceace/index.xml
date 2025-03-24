@@ -10,9 +10,9 @@
     <atom:link href="http://localhost:1313/tags/performperformanceace/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Coverity Performance</title>
-      <link>http://localhost:1313/posts/operator/coverity/cov--performance/</link>
+      <link>http://localhost:1313/posts/technical-support/coverity/cov-performance/</link>
       <pubDate>Fri, 21 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/operator/coverity/cov--performance/</guid>
+      <guid>http://localhost:1313/posts/technical-support/coverity/cov-performance/</guid>
       <description>&lt;h1 id=&#34;expected-a-covjsessionid-build-cookie-in-the-response-but-it-was-missing&#34;&gt;Expected a [COVJSESSIONID-build] cookie in the response, but it was missing&lt;/h1&gt;
 &lt;p&gt;추가 로그 분석을 통해 더 자세한 상황을 파악할 수 있습니다:&lt;/p&gt;
 &lt;p&gt;원래 문제:&lt;/p&gt;

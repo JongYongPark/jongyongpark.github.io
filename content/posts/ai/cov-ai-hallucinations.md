@@ -457,4 +457,81 @@ bash#:~/workspace/jonpark-work/jonpark-test-cpp$ cov-capture --preprocess --cach
 cov-capture: command not found
 ---
 
-#
+# 없는 cov-auth를 만들어서 알려줌
+## 잘못된 부분
+
+cov-manage-im --mode delete-analysis-results
+cov-manage-im --mode delete-streams 
+cov-manage-im --mode delete-project
+
+## 잘못된 답변
+최신 버전의 Coverity에서는 `cov-commit-defects` 명령어에서 `--host` 옵션이 더 이상 사용되지 않습니다. 대신 `--url` 옵션을 사용하여 Coverity Connect 서버의 URL을 지정해야 합니다.
+
+### 업데이트된 명령어 사용 방법:
+
+1. **빌드 캡처 시 추가 정보 수집:**
+
+   ```bash
+   cov-build --dir <idir> --emit-complementary-info <your_build_command>
+   ```
+
+2. **MISRA 규칙을 적용하여 분석 수행:**
+
+   ```bash
+   cov-analyze --dir <idir> --coding-standard-config misra.config
+   ```
+
+3. **결함 커밋 시 업데이트된 옵션 사용:**
+
+   ```bash
+   cov-commit-defects --dir <idir> --url <server_url> --stream <stream_name> --user <username> --password <password>
+   ```
+
+   또는 인증 파일을 사용하는 것이 보안 측면에서 더 좋습니다:
+
+   ```bash
+   cov-commit-defects --dir <idir> --url <server_url> --stream <stream_name> --auth-key-file <auth_file>
+   ```
+
+   - `<server_url>`: Coverity Connect 서버의 전체 URL (예: `https://coverity.example.com:8443`).
+   - `<auth_file>`: `cov-auth` 또는 `cov-credentials`를 통해 생성된 인증 파일입니다.
+
+### 인증 파일 생성 방법:
+
+1. **커버리티 로그인 및 인증 파일 생성:**
+
+   ```bash
+   cov-auth --url <server_url> --save-password
+   ```
+
+   또는
+
+   ```bash
+   cov-credentials add --url <server_url> --user <username> --password
+   ```
+
+   위 명령을 실행하면 사용자에게 비밀번호를 입력하라는 프롬프트가 나타나며, 입력한 후 인증 정보가 로컬에 안전하게 저장됩니다.
+
+2. **인증 파일을 사용하여 결함 커밋:**
+
+   ```bash
+   cov-commit-defects --dir <idir> --url <server_url> --stream <stream_name>
+   ```
+
+   인증 정보가 저장되어 있으므로 추가 옵션 없이도 서버에 연결할 수 있습니다.
+
+### 추가 참고 사항:
+
+- **환경 변수 사용**: 환경 변수 `COVERITY_URL`, `COVERITY_USER`, `COVERITY_PASSPHRASE` 등을 설정하여 명령어에서 반복적으로 입력하지 않을 수 있습니다.
+  
+- **보안 고려사항**: 명령어에 직접 비밀번호를 입력하는 것은 추천되지 않습니다. 대신 인증 파일이나 환경 변수를 사용하는 것이 보안에 더 좋습니다.
+
+- **문서 확인**: 사용 중인 Coverity 버전에 따라 명령어 옵션이 다를 수 있으므로, 해당 버전의 공식 문서를 참고하시기 바랍니다.
+
+### 요약:
+
+- `cov-commit-defects`에서 `--host` 옵션 대신 `--url` 옵션을 사용해야 합니다.
+- 인증 정보는 인증 파일이나 환경 변수를 통해 관리하는 것이 좋습니다.
+- 모든 명령어에서 최신 옵션과 설정을 사용하여 원활한 MISRA 분석을 진행하시기 바랍니다.
+
+더 궁금한 사항이나 도움이 필요한 부분이 있으시면 언제든지 문의해주세요!

@@ -3,24 +3,105 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2025-02-25T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/apt/</loc>
+    <lastmod>2025-03-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/sdlc/apt/</loc>
+    <lastmod>2025-03-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/</loc>
+    <lastmod>2025-03-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/</loc>
+    <lastmod>2025-03-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/sdlc/</loc>
+    <lastmod>2025-03-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/sdlc/special-chars/</loc>
+    <lastmod>2025-03-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/special-chars/</loc>
+    <lastmod>2025-03-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2025-03-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/ubuntu/</loc>
+    <lastmod>2025-03-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/k8s/</loc>
+    <lastmod>2025-03-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/k9s/</loc>
+    <lastmod>2025-03-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/k8s_docker/k9s/</loc>
+    <lastmod>2025-03-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/sshfs/</loc>
+    <lastmod>2025-03-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/sdlc/sshfs-debug/</loc>
+    <lastmod>2025-03-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/sdlc/sshfs-win-wsl-ec2/</loc>
+    <lastmod>2025-03-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/wsl/</loc>
+    <lastmod>2025-03-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/sdlc/wsl-zone.identifier/</loc>
+    <lastmod>2025-03-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/coverity/</loc>
+    <lastmod>2025-03-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/gcc/</loc>
+    <lastmod>2025-03-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/technical-support/coverity/cov-gcc-visibility/</loc>
+    <lastmod>2025-03-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/ops/</loc>
+    <lastmod>2025-03-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/deno/</loc>
+    <lastmod>2025-02-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/sdlc/deno-install/</loc>
+    <lastmod>2025-02-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/go/</loc>
+    <lastmod>2025-02-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/sdlc/go-install/</loc>
+    <lastmod>2025-02-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/mojo/</loc>
+    <lastmod>2025-02-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/sdlc/mojo-install/</loc>
+    <lastmod>2025-02-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/sdlc/mojo-curl/</loc>
+    <lastmod>2025-02-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/sdlc/</loc>
+    <lastmod>2025-02-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/srm/</loc>
+    <lastmod>2025-02-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/technical-support/srm/srm-coverity-tool-connector/</loc>
+    <lastmod>2025-02-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/sdlc/beyond-compare-wsl/</loc>
     <lastmod>2025-02-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/beyondcompare/</loc>
-    <lastmod>2025-02-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/</loc>
-    <lastmod>2025-02-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2025-02-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/sdlc/</loc>
-    <lastmod>2025-02-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
     <lastmod>2025-02-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/api/</loc>
@@ -29,16 +110,13 @@
     <loc>http://localhost:1313/tags/cidr/</loc>
     <lastmod>2025-02-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/coverity/</loc>
-    <lastmod>2025-02-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/operator/coverity/cov--api-ssl/</loc>
+    <loc>http://localhost:1313/posts/technical-support/coverity/cov-api-ssl/</loc>
     <lastmod>2025-02-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/ip/</loc>
     <lastmod>2025-02-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/ops/</loc>
+    <loc>http://localhost:1313/posts/sdlc/mojo/</loc>
     <lastmod>2025-02-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/sdlc/public-ip-cidr/</loc>
@@ -53,7 +131,7 @@
     <loc>http://localhost:1313/posts/sdlc/chrome/</loc>
     <lastmod>2025-02-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/operator/coverity/cov--performance/</loc>
+    <loc>http://localhost:1313/posts/technical-support/coverity/cov-performance/</loc>
     <lastmod>2025-02-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/dart/</loc>
@@ -152,6 +230,9 @@
     <loc>http://localhost:1313/tags/git/</loc>
     <lastmod>2025-02-17T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/posts/sdlc/git-branch/</loc>
+    <lastmod>2025-02-17T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/posts/sdlc/git/</loc>
     <lastmod>2025-02-17T00:00:00+00:00</lastmod>
   </url><url>
@@ -203,7 +284,7 @@
     <loc>http://localhost:1313/categories/creator/</loc>
     <lastmod>2025-02-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/operator/git--repo-access-url-formats/</loc>
+    <loc>http://localhost:1313/posts/technical-support/git--repo-access-url-formats/</loc>
     <lastmod>2025-02-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/github/</loc>
@@ -216,9 +297,6 @@
     <lastmod>2025-02-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/hugo/</loc>
-    <lastmod>2025-02-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/k8s/</loc>
     <lastmod>2025-02-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/kind/</loc>
@@ -236,16 +314,13 @@
     <loc>http://localhost:1313/tags/mariadb/</loc>
     <lastmod>2025-02-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/srm/</loc>
-    <lastmod>2025-02-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/operator/srm/srm--reset-mariadb-admin-password/</loc>
+    <loc>http://localhost:1313/posts/technical-support/srm/srm-reset-mariadb-admin-password/</loc>
     <lastmod>2025-02-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/azure-devops/</loc>
     <lastmod>2025-01-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/operator/azure--devops-api-rate-limits/</loc>
+    <loc>http://localhost:1313/posts/technical-support/azure--devops-api-rate-limits/</loc>
     <lastmod>2025-01-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/basic/</loc>
@@ -269,7 +344,7 @@
     <loc>http://localhost:1313/posts/welcome-to-my-blog/</loc>
     <lastmod>2025-01-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/operator/srm/srm--findings-to-azure-devops-work/</loc>
+    <loc>http://localhost:1313/posts/technical-support/srm/srm-findings-to-azure-devops-work/</loc>
     <lastmod>2025-01-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/introduction/</loc>
@@ -293,18 +368,69 @@
     <loc>http://localhost:1313/posts/travel/korean-trip/</loc>
     <lastmod>2025-01-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/sdlc/</loc>
-    <lastmod>2025-01-31T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/categories/travel/</loc>
     <lastmod>2025-01-31T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/posts/ai/claude-prompt-guide/</loc>
+  </url><url>
     <loc>http://localhost:1313/posts/ai/cov-ai-hallucinations/</loc>
+  </url><url>
+    <loc>http://localhost:1313/posts/checker/autosar-a2-10-5/</loc>
+  </url><url>
+    <loc>http://localhost:1313/posts/checker/autosar/</loc>
+  </url><url>
+    <loc>http://localhost:1313/posts/creator/hugo/</loc>
+  </url><url>
+    <loc>http://localhost:1313/posts/developer/chrome-dev-tool/</loc>
   </url><url>
     <loc>http://localhost:1313/posts/developer/ontology/</loc>
   </url><url>
     <loc>http://localhost:1313/posts/developer/rust/rust/</loc>
   </url><url>
-    <loc>http://localhost:1313/posts/sdlc/sshfs-win-wsl-ec2/</loc>
+    <loc>http://localhost:1313/posts/k8s_docker/cfssl/</loc>
+  </url><url>
+    <loc>http://localhost:1313/posts/k8s_docker/docker-registry/</loc>
+  </url><url>
+    <loc>http://localhost:1313/posts/k8s_docker/k8s-network-debug/</loc>
+  </url><url>
+    <loc>http://localhost:1313/posts/k8s_docker/kind-k8s/</loc>
+  </url><url>
+    <loc>http://localhost:1313/posts/sdlc/filename-convention/</loc>
+  </url><url>
+    <loc>http://localhost:1313/posts/sdlc/makefile-debug/</loc>
+  </url><url>
+    <loc>http://localhost:1313/posts/sdlc/powershell/</loc>
+  </url><url>
+    <loc>http://localhost:1313/posts/sdlc/win-time-measure/</loc>
+  </url><url>
+    <loc>http://localhost:1313/posts/technical-support/cnc/cnc-jonpark/</loc>
+  </url><url>
+    <loc>http://localhost:1313/posts/technical-support/cnc/cnc-wsl/</loc>
+  </url><url>
+    <loc>http://localhost:1313/posts/technical-support/coverity/cov-triage-store/</loc>
+  </url><url>
+    <loc>http://localhost:1313/posts/technical-support/coverity/g&#43;&#43;/</loc>
+  </url><url>
+    <loc>http://localhost:1313/posts/technical-support/coverity/msvc-clangcl-repro/</loc>
+  </url><url>
+    <loc>http://localhost:1313/posts/technical-support/coverity/sast/</loc>
+  </url><url>
+    <loc>http://localhost:1313/posts/technical-support/ec2-setting/</loc>
+  </url><url>
+    <loc>http://localhost:1313/posts/technical-support/linux-utils/</loc>
+  </url><url>
+    <loc>http://localhost:1313/posts/technical-support/outlook/</loc>
+  </url><url>
+    <loc>http://localhost:1313/posts/technical-support/performance-self-assessment/</loc>
+  </url><url>
+    <loc>http://localhost:1313/posts/technical-support/srm/srm-logback/</loc>
+  </url><url>
+    <loc>http://localhost:1313/posts/technical-support/srm/srm-mariadb/</loc>
+  </url><url>
+    <loc>http://localhost:1313/posts/technical-support/technical-support-job/</loc>
+  </url><url>
+    <loc>http://localhost:1313/posts/technical-support/windows-setting/</loc>
+  </url><url>
+    <loc>http://localhost:1313/posts/technical-support/wsl-setting/</loc>
   </url>
 </urlset>

@@ -10,9 +10,9 @@
     <atom:link href="http://localhost:1313/tags/ssl/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Coverity API SSL Issue</title>
-      <link>http://localhost:1313/posts/operator/coverity/cov--api-ssl/</link>
+      <link>http://localhost:1313/posts/technical-support/coverity/cov-api-ssl/</link>
       <pubDate>Mon, 24 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/operator/coverity/cov--api-ssl/</guid>
+      <guid>http://localhost:1313/posts/technical-support/coverity/cov-api-ssl/</guid>
       <description>&lt;h1 id=&#34;blackduck-api-호출-시-발생하는-ssl-인증서-문제를-해결하는-java-코드---disable-ssl&#34;&gt;Blackduck API 호출 시 발생하는 SSL 인증서 문제를 해결하는 Java 코드 - disable SSL&lt;/h1&gt;
 &lt;p&gt;Blackduck API 호출 시 발생하는 SSL 인증서 문제를 해결하는 Java 코드를 작성해드리겠습니다:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; javax.net.ssl.*;

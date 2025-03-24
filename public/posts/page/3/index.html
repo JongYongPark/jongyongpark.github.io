@@ -126,161 +126,150 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">React Hook
+    <h2 class="entry-hint-parent">Rust Web
     </h2>
   </header>
   <div class="entry-content">
-    <p>React Hook React의 함수형 컴포넌트는 매 렌더링마다 컴포넌트 함수를 호출합니다. 이때 React는 내부적으로 **hook 체인(혹은 hook 리스트)**를 유지하며, 각 hook 호출마다 고유한 상태(예: useState의 상태, useEffect의 효과 정보 등)를 저장합니다. 이 구조와 재호출 과정을 자세히 설명하면 다음과 같습니다.
-1. Hook 체인의 기본 구조 Fiber와 Hook 리스트:
-React는 각 컴포넌트 인스턴스(실제로는 Fiber 노드)에 hook 정보를 저장합니다. 이 정보는 hook들이 호출된 순서대로 배열(혹은 연결 리스트)로 관리되며, 각 hook은 해당 컴포넌트의 렌더링 상태와 관련된 데이터를 보관합니다.
+    <p> Rust는 시스템 프로그래밍 언어로 높은 성능과 안전성을 제공하지만, 웹 프레임워크 측면에서는 여전히 상대적으로 적은 선택지가 있습니다. 그럼에도 불구하고 Spring Boot나 NestJS와 비슷한 구조적 접근을 제공하는 Rust 웹 프레임워크들이 있습니다. 이들 프레임워크는 모듈화, 라우팅, 미들웨어 지원 등을 제공하며, 일반적으로 백엔드 API 서버나 웹 애플리케이션을 구축할 수 있습니다.
+다음은 Rust에서 Spring Boot나 NestJS처럼 구조적이고 확장 가능한 웹 애플리케이션을 구축할 수 있는 프레임워크들입니다:
+1. Actix Web 특징:
+Actix Web은 고성능과 비동기 처리를 지원하는 Rust의 가장 인기 있는 웹 프레임워크입니다. Spring Boot와 비슷하게, 매우 높은 성능을 자랑하면서도 유연한 미들웨어 및 라우팅 기능을 제공합니다. 모듈화된 라우팅과 미들웨어를 지원하며, 웹 소켓, API 서버 등 다양한 서버 애플리케이션을 구현할 수 있습니다. Actors 모델을 기반으로 한 Actix 시스템을 제공하여, 복잡한 상태 관리 및 비동기 처리를 유연하게 처리할 수 있습니다. Spring Boot와 비슷한 방식으로 동시성을 처리하며, REST API 서버로 매우 적합합니다. 타입 안전성과 비동기 I/O를 지원하여, 성능과 안정성에서 우수한 결과를 도출할 수 있습니다. 장점:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>February 17, 2025</span>&nbsp;·&nbsp;10 min</footer>
-  <a class="entry-link" aria-label="post link to React Hook" href="http://localhost:1313/posts/developer/javascipt/react-hook/"></a>
+  <footer class="entry-footer"><span title='2025-02-21 00:00:00 +0000 UTC'>February 21, 2025</span>&nbsp;·&nbsp;9 min</footer>
+  <a class="entry-link" aria-label="post link to Rust Web" href="http://localhost:1313/posts/developer/rust/rust-web/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">React Native
+    <h2 class="entry-hint-parent">OpenCV compile on Windows
     </h2>
   </header>
   <div class="entry-content">
-    <p>React Native 와 React 의 차이 React Native는 React의 개념과 철학을 기반으로 하지만, 주로 모바일 앱 개발(안드로이드와 iOS)을 위해 설계된 프레임워크입니다. 아래에서는 React Native의 주요 특징과 React(Web)와의 차이점을 자세히 설명합니다.
-1. React Native란? 목적:
-React Native는 JavaScript와 React의 컴포넌트 기반 아키텍처를 활용하여 네이티브 모바일 앱(안드로이드, iOS)을 개발할 수 있도록 해줍니다.
-웹 브라우저가 아닌, 모바일 기기의 네이티브 UI 컴포넌트(예: View, Text, Image)를 사용하여 사용자 인터페이스를 구성합니다.
-구조 및 실행 방식:
-JS 코드와 네이티브 브리지:
-React Native 앱은 JavaScript 코드로 작성되며, 이 코드는 JavaScript 엔진(V8, Hermes 등)에서 실행됩니다.
-JavaScript와 네이티브 플랫폼 간의 통신은 “브리지(Bridge)“를 통해 이뤄지며, 이로 인해 JavaScript 코드에서 네이티브 UI 컴포넌트나 기능을 호출할 수 있습니다. 플랫폼별 네이티브 컴포넌트:
-React Native는 플랫폼에 최적화된 네이티브 UI 컴포넌트를 사용하여, 높은 성능과 원활한 사용자 경험을 제공합니다. 2. React (Web)와 React Native의 차이점 2.1 렌더링 대상 React (Web):
+    <p>Claude 이 오류는 ARM64 플랫폼을 위한 CMake 구성 과정에서 발생한 문제입니다. 주요 오류는 프로젝트 설정이 제대로 되지 않았고, ARM64 플랫폼 구성이 올바르지 않다는 것입니다.
+PowerShell 스크립트를 다음과 같이 수정하여 해결할 수 있습니다:
+# OpenCV Windows Build Script for x64 and ARM64 # Prerequisites: Visual Studio 2022, CMake, Git # Configuration $OPENCV_VERSION = &#34;4.9.0&#34; $SOURCE_DIR = &#34;C:\workspace\jonpark-work\opencv_source&#34; $BUILD_BASE_DIR = &#34;C:\workspace\jonpark-work\opencv_build&#34; $INSTALL_BASE_DIR = &#34;C:\workspace\jonpark-work\opencv_install&#34; # Common CMake parameters $CMAKE_COMMON_PARAMS = @( &#34;-DCMAKE_MINIMUM_REQUIRED_VERSION=3.10&#34;, # 최소 CMake 버전 지정 &#34;-DBUILD_SHARED_LIBS=ON&#34;, &#34;-DBUILD_TESTS=OFF&#34;, &#34;-DBUILD_PERF_TESTS=OFF&#34;, &#34;-DBUILD_EXAMPLES=OFF&#34;, &#34;-DWITH_CUDA=OFF&#34;, &#34;-DBUILD_opencv_world=ON&#34;, &#34;-DBUILD_opencv_python2=OFF&#34;, &#34;-DBUILD_opencv_python3=OFF&#34;, &#34;-DWITH_IPP=ON&#34;, &#34;-DENABLE_CXX11=ON&#34;, &#34;-DOPENCV_ENABLE_NONFREE=ON&#34;, &#34;-DBUILD_WITH_STATIC_CRT=OFF&#34; ) # Download OpenCV source if (-not (Test-Path $SOURCE_DIR)) { git clone https://github.com/opencv/opencv.git $SOURCE_DIR Push-Location $SOURCE_DIR git checkout $OPENCV_VERSION Pop-Location } # Function to build OpenCV for specific architecture function Build-OpenCV { param ( [string]$arch, [string]$generator, [string]$platform ) $BUILD_DIR = &#34;$BUILD_BASE_DIR\$arch&#34; $INSTALL_DIR = &#34;$INSTALL_BASE_DIR\$arch&#34; # Remove existing build directory to ensure clean build if (Test-Path $BUILD_DIR) { Remove-Item -Path $BUILD_DIR -Recurse -Force } # Create build directory New-Item -ItemType Directory -Force -Path $BUILD_DIR Push-Location $BUILD_DIR # Configure CMake with explicit project name and build type cmake -G $generator -A $platform ` -DCMAKE_INSTALL_PREFIX=&#34;$INSTALL_DIR&#34; ` -DCMAKE_BUILD_TYPE=Release ` -DOpenCV_ARCH=$platform ` -DOpenCV_RUNTIME=vc17 ` $CMAKE_COMMON_PARAMS ` -S $SOURCE_DIR -B $BUILD_DIR if ($LASTEXITCODE -ne 0) { Write-Error &#34;CMake configuration failed for $arch&#34; Pop-Location exit 1 } # Build and install cmake --build $BUILD_DIR --config Release --target INSTALL --parallel 8 if ($LASTEXITCODE -ne 0) { Write-Error &#34;Build failed for $arch&#34; Pop-Location exit 1 } Pop-Location } # 빌드 전 Visual Studio 환경 설정 $VS_PATH = &#34;C:\Program Files\Microsoft Visual Studio\2022\Community&#34; $VS_TOOLS = &#34;$VS_PATH\VC\Auxiliary\Build&#34; if (Test-Path &#34;$VS_TOOLS\vcvarsall.bat&#34;) { Write-Host &#34;Setting up Visual Studio environment...&#34; # x64 환경 설정 cmd.exe /c &#34;call `&#34;$VS_TOOLS\vcvarsall.bat`&#34; x64 &amp;&amp; set &gt; %temp%\vcvars.txt&#34; Get-Content &#34;$env:temp\vcvars.txt&#34; | foreach-object { if ($_ -match &#34;^(.*?)=(.*)$&#34;) { Set-Content &#34;env:\$($matches[1])&#34; $matches[2] } } } else { Write-Error &#34;Visual Studio environment setup failed&#34; exit 1 } # Build for x64 Write-Host &#34;Building for x64...&#34; Build-OpenCV -arch &#34;x64&#34; -generator &#34;Visual Studio 17 2022&#34; -platform &#34;x64&#34; # ARM64 빌드 전 환경 재설정 if (Test-Path &#34;$VS_TOOLS\vcvarsall.bat&#34;) { Write-Host &#34;Setting up Visual Studio environment for ARM64...&#34; cmd.exe /c &#34;call `&#34;$VS_TOOLS\vcvarsall.bat`&#34; x64_arm64 &amp;&amp; set &gt; %temp%\vcvars.txt&#34; Get-Content &#34;$env:temp\vcvars.txt&#34; | foreach-object { if ($_ -match &#34;^(.*?)=(.*)$&#34;) { Set-Content &#34;env:\$($matches[1])&#34; $matches[2] } } } # Build for ARM64 Write-Host &#34;Building for ARM64...&#34; Build-OpenCV -arch &#34;arm64&#34; -generator &#34;Visual Studio 17 2022&#34; -platform &#34;ARM64&#34; 주요 변경사항과 해결방법:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>February 17, 2025</span>&nbsp;·&nbsp;8 min</footer>
-  <a class="entry-link" aria-label="post link to React Native" href="http://localhost:1313/posts/developer/javascipt/react-native/"></a>
+  <footer class="entry-footer"><span title='2025-02-20 00:00:00 +0000 UTC'>February 20, 2025</span>&nbsp;·&nbsp;12 min</footer>
+  <a class="entry-link" aria-label="post link to OpenCV compile on Windows" href="http://localhost:1313/posts/developer/opencv-win/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Different URL Formats for Accessing a Git Repository
+    <h2 class="entry-hint-parent">Bash &amp; PowerShell Script Comparison
     </h2>
   </header>
   <div class="entry-content">
-    <p>🔹 Different URL Formats for Accessing a Git Repository Git supports multiple protocols for accessing repositories, each with its own advantages and disadvantages in terms of authentication, security, and ease of use. Below is a summary of the common URL formats, their corresponding protocols, authentication methods, and a comparison of their pros and cons.
-📌 Git Repository URL Formats and Their Characteristics Git URL Format Protocol Used Authentication Method Pros Cons git@host:path/repo.git SSH SSH key authentication (Private/Public key pair) ✅ Secure authentication without storing passwords ✅ Supports read &amp; write access ✅ Works well in automation (CI/CD) ❌ Requires setting up SSH keys ❌ Firewalls may block SSH (port 22) ssh://git@host/path/repo.git SSH SSH key authentication ✅ Same as git@host:path/repo.git, but with explicit protocol ✅ More readable for some users ❌ Identical disadvantages as the git@ format https://host/path/repo.git HTTPS Username &#43; Password, or Personal Access Token (PAT) ✅ Works without additional setup ✅ Usually allowed through firewalls ✅ Supports 2FA via PAT ❌ Requires entering credentials or setting up a credential manager ❌ PATs need to be managed securely git://host/path/repo.git Git Daemon (read-only) No authentication required ✅ Fast and lightweight ✅ Ideal for public repositories ❌ No authentication, security risk ❌ Only supports read access /path/to/repo.git Local File System No authentication needed (local access) ✅ Fastest access (no network latency) ✅ No need for authentication ❌ Only works on the local machine ❌ Cannot be used for remote access 📌 Pros and Cons of Each Git Access Method 1️⃣ SSH (git@host:path/repo.git or ssh://git@host/path/repo.git) ✅ Pros:
-...</p>
+    <p></p>
   </div>
-  <footer class="entry-footer"><span title='2025-02-14 00:00:00 +0000 UTC'>February 14, 2025</span>&nbsp;·&nbsp;3 min</footer>
-  <a class="entry-link" aria-label="post link to Different URL Formats for Accessing a Git Repository" href="http://localhost:1313/posts/operator/git--repo-access-url-formats/"></a>
+  <footer class="entry-footer"><span title='2025-02-19 00:00:00 +0000 UTC'>February 19, 2025</span>&nbsp;·&nbsp;0 min</footer>
+  <a class="entry-link" aria-label="post link to Bash & PowerShell Script Comparison" href="http://localhost:1313/posts/sdlc/bash-powershell/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Github Pages with Hugo
+    <h2 class="entry-hint-parent">MobaXterm Usage
     </h2>
   </header>
   <div class="entry-content">
-    <p>Github Pages GitHub Pages는 GitHub 저장소를 사용하여 정적 웹사이트를 쉽게 배포할 수 있는 기능입니다.
-다음은 GitHub Pages를 설정하고 사용하는 방법을 단계별로 설명합니다.
-1. GitHub Pages 활성화하기 (1) GitHub 저장소 생성 GitHub에 로그인하고 새로운 저장소(New Repository) 생성
-저장소 이름을 설정 (예: my-blog)
-Public(공개) 저장소로 설정해야 GitHub Pages에서 무료로 사용할 수 있음
-README.md 파일을 추가하는 것이 좋음
-저장소 생성 후 git clone으로 로컬에 다운로드
-git clone https://github.com/your-username/my-blog.git cd my-blog 2. GitHub Pages 활성화 GitHub 저장소로 이동 Settings &gt; Pages 탭으로 이동 Branch 선택: main 또는 gh-pages 브랜치를 선택하여 배포할 수 있음 저장 후 몇 분 내로 GitHub Pages가 활성화됨 배포된 사이트 URL 확인 (https://your-username.github.io/my-blog/) 3. HTML/CSS 파일 추가하여 웹사이트 배포 로컬 저장소에서 기본 웹페이지 생성: echo &#34;&lt;h1&gt;Welcome to My GitHub Page&lt;/h1&gt;&#34; &gt; index.html 변경 사항을 커밋하고 푸시: git add index.html git commit -m &#34;Add main page&#34; git push origin main GitHub Pages가 자동으로 index.html을 인식하여 배포함 4. Jekyll을 이용한 블로그 만들기 GitHub Pages는 Jekyll을 지원하므로, Jekyll을 활용하여 정적 블로그를 쉽게 만들 수 있음.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-02-14 00:00:00 +0000 UTC'>February 14, 2025</span>&nbsp;·&nbsp;11 min</footer>
-  <a class="entry-link" aria-label="post link to Github Pages with Hugo" href="http://localhost:1313/posts/creator/github-page-with-hugo/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">KinD for k8s
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p> KinD로 3개의 worker node를 포함한 클러스터를 만드는 Bash 스크립트 다음은 KinD(Kubernetes in Docker)를 사용하여 프라이빗 클라우드를 생성하고, 3개의 worker node를 포함한 클러스터를 만드는 Bash 스크립트입니다. 이 스크립트는 필요한 유틸리티를 다운로드하고 설치하며, kind 클러스터를 구성합니다.
-Bash Script: setup_kind_cluster.sh #!/bin/bash # 스크립트 실행 중 오류 발생 시 중단 set -e # 변수 정의 KIND_VERSION=&#34;v0.20.0&#34; KUBECTL_VERSION=&#34;v1.28.0&#34; DOCKER_COMPOSE_VERSION=&#34;v2.22.0&#34; # 필요한 유틸리티 다운로드 및 설치 install_utilities() { # Docker 설치 (Docker가 설치되어 있지 않을 경우) if ! command -v docker &amp;&gt; /dev/null; then echo &#34;Docker를 설치 중입니다...&#34; curl -fsSL https://get.docker.com | bash sudo usermod -aG docker $USER echo &#34;Docker 설치 완료. 사용하려면 로그아웃 후 다시 로그인하세요.&#34; else echo &#34;Docker가 이미 설치되어 있습니다.&#34; fi # kind 설치 if ! command -v kind &amp;&gt; /dev/null; then echo &#34;Kind를 설치 중입니다...&#34; curl -Lo ./kind https://kind.sigs.k8s.io/dl/${KIND_VERSION}/kind-linux-amd64 chmod &#43;x ./kind sudo mv ./kind /usr/local/bin/kind echo &#34;Kind 설치 완료.&#34; else echo &#34;Kind가 이미 설치되어 있습니다.&#34; fi # kubectl 설치 if ! command -v kubectl &amp;&gt; /dev/null; then echo &#34;Kubectl을 설치 중입니다...&#34; curl -LO &#34;https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl&#34; chmod &#43;x ./kubectl sudo mv ./kubectl /usr/local/bin/kubectl echo &#34;Kubectl 설치 완료.&#34; else echo &#34;Kubectl이 이미 설치되어 있습니다.&#34; fi # Docker Compose 설치 (필요한 경우) if ! command -v docker-compose &amp;&gt; /dev/null; then echo &#34;Docker Compose를 설치 중입니다...&#34; curl -L &#34;https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)&#34; -o /usr/local/bin/docker-compose chmod &#43;x /usr/local/bin/docker-compose echo &#34;Docker Compose 설치 완료.&#34; else echo &#34;Docker Compose가 이미 설치되어 있습니다.&#34; fi } # Kind 클러스터 설정 파일 생성 create_kind_cluster_config() { echo &#34;Kind 클러스터 설정 파일을 생성합니다...&#34; cat &lt;&lt;EOF &gt; kind-cluster-config.yaml kind: Cluster apiVersion: kind.x-k8s.io/v1alpha4 nodes: - role: control-plane - role: worker - role: worker - role: worker EOF echo &#34;Kind 클러스터 설정 파일 생성 완료.&#34; } # Kind 클러스터 생성 create_kind_cluster() { echo &#34;Kind 클러스터를 생성합니다...&#34; kind create cluster --config kind-cluster-config.yaml echo &#34;Kind 클러스터 생성 완료.&#34; } # 주요 함수 호출 install_utilities create_kind_cluster_config create_kind_cluster # 클러스터 정보 출력 kubectl get nodes echo &#34;3개의 worker 노드를 포함한 Kind 클러스터가 성공적으로 생성되었습니다.&#34; 스크립트 설명 필수 유틸리티 설치: Docker, kind, kubectl, docker-compose가 설치되지 않은 경우 자동으로 다운로드하고 설치합니다. 클러스터 구성 파일: kind-cluster-config.yaml 파일을 생성하며, 하나의 control-plane 노드와 3개의 worker 노드를 포함합니다. 클러스터 생성: kind를 이용해 클러스터를 생성합니다. kubectl로 클러스터 상태 확인: kubectl 명령어를 통해 생성된 클러스터의 노드 상태를 확인할 수 있습니다. 사용 방법: 스크립트를 파일로 저장 (예: setup_kind_cluster.sh). 파일에 실행 권한을 부여: chmod &#43;x setup_kind_cluster.sh 스크립트 실행: ./setup_kind_cluster.sh 클러스터가 성공적으로 생성되면 kubectl get nodes 명령을 통해 노드 상태를 확인할 수 있습니다. 이 스크립트는 KinD를 활용하여 간단하게 3개의 worker 노드가 있는 클러스터를 설정할 수 있도록 도와줍니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-02-14 00:00:00 +0000 UTC'>February 14, 2025</span>&nbsp;·&nbsp;2 min</footer>
-  <a class="entry-link" aria-label="post link to KinD for k8s" href="http://localhost:1313/posts/k8s_docker/k8s-kind/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles
-An Explanation of the differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles.
-Makefile variable assignment operators:
-:= (Simple expansion):
-Expands variables immediately at assignment time. Example: FOO := $(BAR) If BAR changes later, FOO will not be affected. = (Recursive expansion):
-Defers expansion until the variable is used. Example: FOO = $(BAR) If BAR changes later, FOO will reflect the new value when used. ?= (Conditional assignment):
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-02-03 00:00:00 +0000 UTC'>February 3, 2025</span>&nbsp;·&nbsp;1 min</footer>
-  <a class="entry-link" aria-label="post link to Differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles" href="http://localhost:1313/posts/sdlc/makefile-bash--variable-assignment/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">SRM : Reset Admin Password on MariaDB
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>How to reset admin password on MariaDB from SRM (Softeware Risk Manager).
-This script recovers from a lost or forgotten super-admin password. It resets both the super-admin password and the database root user password to the provided value By SRM
-#!/bin/bash # This script recovers from a lost or forgotten super-admin password. # It resets both the super-admin password and the database root user password to the provided value. # By SRM function admin-password-recover-script() { ### Validate input and set SRM installation path if [ &#34;$#&#34; -ne 1 ] &amp;&amp; [ &#34;$#&#34; -ne 0 ]; then echo &#34;Usage: $0 [path to SRM installation folder]&#34; echo &#34;If path contains spaces, wrap it in double quotes.&#34; echo &#34;Example:&#34; echo &#34; $0 /opt/srm&#34; exit 1 fi local SRM_PATH if [ &#34;$#&#34; -eq 1 ]; then SRM_PATH=$1 else echo &#34;Enter path to SRM installation folder:&#34; read -r SRM_PATH fi # Remove trailing slash from the input path SRM_PATH=${SRM_PATH%/} # Check for MariaDB binary file if [ ! -f &#34;$SRM_PATH/mysql/bin/mysqld&#34; ]; then echo &#34;The given SRM directory does not appear to have appropriate mysql files&#34; exit 2 fi ### Get new password echo &#34;Enter new administrator password:&#34; read -rs NEW_PASSWORD ### Create temporary initialization file TEMP_INIT_FILE=$(mktemp) ### Check MariaDB configuration file echo &#34;Looking for MariaDB configuration file...&#34; DB_CONFIG=$SRM_PATH/mysql/my.cnf if [ ! -f &#34;$DB_CONFIG&#34; ]; then echo &#34;$DB_CONFIG not found. Aborting&#34; exit 2 fi ### Check MariaDB data directory from SRM properties file echo &#34;Found MariaDB configuration at $DB_CONFIG&#34; echo &#34;Looking for SRM database...&#34; DB_DATA=$(grep &#34;mysql_data_directory&#34; &#34;$SRM_PATH/properties.ini&#34; | cut -d&#39;=&#39; -f2) if [ ! -d &#34;$DB_DATA&#34; ]; then echo &#34;MariaDB data directory not found (looked at $DB_DATA). Aborting&#34; exit 2 fi ### Verify SRM database echo &#34;Found MariaDB data directory at $DB_DATA&#34; DB_NAME=srm if [ ! -d &#34;$DB_DATA/$DB_NAME&#34; ]; then DB_NAME=bitnami_srm fi if [ ! -d &#34;$DB_DATA/$DB_NAME&#34; ]; then echo &#34;SRM database not found. Aborting&#34; exit 2 fi echo &#34;Found SRM database $DB_NAME&#34; ### Generate MariaDB initialization file echo &#34;Generating MariaDB recovery init file...&#34; { echo &#34;SET PASSWORD FOR &#39;root&#39;@&#39;localhost&#39; = PASSWORD(&#39;${NEW_PASSWORD//\&#39;/\&#39;\&#39;}&#39;);&#34; echo &#34;UPDATE \`$DB_NAME\`.\`LOCAL_USERS\` SET \`PASSWORD\`=SHA2(&#39;${NEW_PASSWORD//\&#39;/\&#39;\&#39;}&#39;, 256) WHERE \`ID\`=1;&#34; echo &#34;SHUTDOWN;&#34; } &gt; &#34;$TEMP_INIT_FILE&#34; ### Stop SRM services echo &#34;Shutting down SRM services&#34; &#34;$SRM_PATH/ctlscript.sh&#34; stop ### Reset passwords echo &#34;Resetting passwords...&#34; # If root user, set file permissions and run as mysql user if (( EUID == 0 )); then chown mysql &#34;$TEMP_INIT_FILE&#34; &#34;$SRM_PATH/mysql/bin/mysqld&#34; --defaults-file=&#34;$DB_CONFIG&#34; --init-file=&#34;$TEMP_INIT_FILE&#34; --console --user=mysql else &#34;$SRM_PATH/mysql/bin/mysqld&#34; --defaults-file=&#34;$DB_CONFIG&#34; --init-file=&#34;$TEMP_INIT_FILE&#34; --console fi ### Clean up and display completion message echo &#34;Removing recovery init file...&#34; rm -f &#34;$TEMP_INIT_FILE&#34; echo &#34;Done! You may start SRM again.&#34; } # Execute the function admin-password-recover-script &#34;$@&#34; Ex) admin-password-recover-script ~/workspace/dev_tool/codedx/srm-2024.12.1/srm </p>
-  </div>
-  <footer class="entry-footer"><span title='2025-02-03 00:00:00 +0000 UTC'>February 3, 2025</span>&nbsp;·&nbsp;3 min</footer>
-  <a class="entry-link" aria-label="post link to SRM : Reset Admin Password on MariaDB" href="http://localhost:1313/posts/operator/srm/srm--reset-mariadb-admin-password/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Azure DevOps API Rate Limits
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Azure DevOps API Rate Limits Azure DevOps imposes rate limits on its REST API to ensure fair usage and prevent abuse. If you exceed these limits, your API requests may be throttled, resulting in HTTP 429 Too Many Requests responses. To avoid this, it’s important to monitor and manage your API usage.
-Here’s how you can check and handle Azure DevOps Work Items API rate limits:
-1. Understanding Azure DevOps API Rate Limits Azure DevOps API rate limits are based on:
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-01-31 00:00:00 +0000 UTC'>January 31, 2025</span>&nbsp;·&nbsp;3 min</footer>
-  <a class="entry-link" aria-label="post link to Azure DevOps API Rate Limits" href="http://localhost:1313/posts/operator/azure--devops-api-rate-limits/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Cyclomatic Complexity in C&#43;&#43; Code
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Cyclomatic Complexity in C&#43;&#43; Code Cyclomatic Complexity (CCM) is a software metric used to indicate the complexity of a program. It directly measures the number of linearly independent paths through a program’s source code. Higher CCM values suggest more complex and potentially less maintainable code.
-CCM Calculation Rules Cyclomatic Complexity is calculated based on the control flow graph of the program using the following rules:
-Basic Complexity: The simplest program has a CCM of 1. Control Flow Branches: Each if, for, while, case, and other control flow statements add to the CCM. Logical Operators: Logical operators like &amp;&amp; and || can also increase CCM by introducing additional paths. Example C&#43;&#43; Code with CCM Calculation #include &lt;iostream&gt; using namespace std; // Function declaration int calculate(int a, int b, int c); int main() { int x = 10; int y = 20; int z = 30; int result = calculate(x, y, z); cout &lt;&lt; &#34;Result: &#34; &lt;&lt; result &lt;&lt; endl; return 0; } // Function with high Cyclomatic Complexity int calculate(int a, int b, int c) { int CCM = 1; // Basic complexity // If statement 1: CCM &#43;= 1 if (a &gt; b) { CCM&#43;&#43;; cout &lt;&lt; &#34;a is greater than b&#34; &lt;&lt; endl; } // If-else statement: CCM &#43;= 1 if (b &gt; c) { CCM&#43;&#43;; cout &lt;&lt; &#34;b is greater than c&#34; &lt;&lt; endl; } else { CCM&#43;&#43;; cout &lt;&lt; &#34;c is greater than or equal to b&#34; &lt;&lt; endl; } // For loop: CCM &#43;= 1 for(int i = 0; i &lt; 5; &#43;&#43;i) { CCM&#43;&#43;; cout &lt;&lt; &#34;Iteration: &#34; &lt;&lt; i &lt;&lt; endl; } // While loop: CCM &#43;= 1 int count = 0; while(count &lt; 3) { CCM&#43;&#43;; cout &lt;&lt; &#34;Count: &#34; &lt;&lt; count &lt;&lt; endl; count&#43;&#43;; } // Switch-case statement: Each case adds to CCM int option = 2; switch(option) { case 1: CCM&#43;&#43;; cout &lt;&lt; &#34;Option 1 selected&#34; &lt;&lt; endl; break; case 2: CCM&#43;&#43;; cout &lt;&lt; &#34;Option 2 selected&#34; &lt;&lt; endl; break; case 3: CCM&#43;&#43;; cout &lt;&lt; &#34;Option 3 selected&#34; &lt;&lt; endl; break; default: CCM&#43;&#43;; cout &lt;&lt; &#34;Default option selected&#34; &lt;&lt; endl; break; } // Logical operators: Each &#39;&amp;&amp;&#39; or &#39;||&#39; adds to CCM if (a &gt; 0 &amp;&amp; b &gt; 0) { // &#39;&amp;&amp;&#39; adds 1 CCM&#43;&#43;; cout &lt;&lt; &#34;Both a and b are positive&#34; &lt;&lt; endl; } if (a &gt; 0 || c &gt; 0) { // &#39;||&#39; adds 1 CCM&#43;&#43;; cout &lt;&lt; &#34;Either a or c is positive&#34; &lt;&lt; endl; } return CCM; } Code Explanation and CCM Calculation Basic Complexity:
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-01-31 00:00:00 +0000 UTC'>January 31, 2025</span>&nbsp;·&nbsp;5 min</footer>
-  <a class="entry-link" aria-label="post link to Cyclomatic Complexity in C&#43;&#43; Code" href="http://localhost:1313/posts/developer/cyclomatic-complexity-in-c&#43;&#43;-code/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">DevSecOps 블로그를 시작하며
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>안녕하세요, RyanPark의 DevSecOps 블로그입니다…
+    <p>Issue Remote side unexpectedly closed network connection
+────
+Session stopped - Press to exit tab - Press R to restart session - Press S to save terminal output to file
+Fix Remove saved password It does not fix issue.
 </p>
   </div>
-  <footer class="entry-footer"><span title='2025-01-31 00:00:00 +0000 UTC'>January 31, 2025</span>&nbsp;·&nbsp;1 min</footer>
-  <a class="entry-link" aria-label="post link to DevSecOps 블로그를 시작하며" href="http://localhost:1313/posts/welcome-to-my-blog/"></a>
+  <footer class="entry-footer"><span title='2025-02-19 00:00:00 +0000 UTC'>February 19, 2025</span>&nbsp;·&nbsp;1 min</footer>
+  <a class="entry-link" aria-label="post link to MobaXterm Usage" href="http://localhost:1313/posts/sdlc/mobaxterm/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">OpenWebUI
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>내가 설치한 방법 pip install open-webui open-webui serve –port 8180
+OpenWebUI 내 설정 Web browser URL: http://jonpark-ec2:8180/admin/settings OpenWebUI 는 ec2에 설치되어 있으므로 http://localhost:11434 를 사용한다.
+OpenAI API Manage OpenAI API Connections https://api.openai.com/v1 API Key Ollama API Manage Ollama API Connections http://localhost:11434 Trouble accessing Ollama? Click here for help. Direct Connections Direct Connections allow users to connect to their own OpenAI compatible API endpoints. Msty 에서 ec2 에 설치된 Ollama 접속하기 사용하지 말것것. 모든 것을 API key를 통해 처리함. ChatGPT 경우에도 API key 를 사용하면 별도의 요금이 차감됨.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-02-19 00:00:00 +0000 UTC'>February 19, 2025</span>&nbsp;·&nbsp;16 min</footer>
+  <a class="entry-link" aria-label="post link to OpenWebUI" href="http://localhost:1313/posts/ai/openwebui/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">CERT Cpp Checker
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p></p>
+  </div>
+  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>February 17, 2025</span>&nbsp;·&nbsp;0 min</footer>
+  <a class="entry-link" aria-label="post link to CERT Cpp Checker" href="http://localhost:1313/posts/checker/cert-cpp-checker/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">CERT Java Checker
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>CERT SER03-J : Do not serialize unencrypted sensitive data. 죄송합니다. 이전에 제공된 정보에서 혼란을 드려 죄송합니다. CERT Java 보안 코딩 표준에서 SER03-J: 민감한 데이터를 암호화하지 않고 직렬화하지 마십시오라는 규칙은 민감한 정보가 직렬화 과정에서 노출되지 않도록 보호하기 위한 지침을 제공합니다.
+취약한 코드 예시 아래 코드는 사용자의 비밀번호를 평문으로 직렬화하여 파일에 저장하는 취약한 예제입니다.
+import java.io.*; public class UserInfo implements Serializable { private static final long serialVersionUID = 1L; private String username; private String password; // 민감한 데이터 public UserInfo(String username, String password) { this.username = username; this.password = password; } // getter 및 setter 생략 public static void main(String[] args) { UserInfo user = new UserInfo(&#34;user1&#34;, &#34;password123&#34;); // 객체를 파일에 직렬화 try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(&#34;user.ser&#34;))) { oos.writeObject(user); } catch (IOException e) { e.printStackTrace(); } } } 위 코드에서는 UserInfo 객체를 직렬화하여 user.ser 파일에 저장합니다. 그러나 password 필드는 암호화되지 않은 상태로 저장되므로, 파일이 유출되면 비밀번호가 노출될 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>February 17, 2025</span>&nbsp;·&nbsp;3 min</footer>
+  <a class="entry-link" aria-label="post link to CERT Java Checker" href="http://localhost:1313/posts/checker/cert-java-checker/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Cpp Lamda
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Cpp Lamda Variable is Private C&#43;&#43;에서 람다 함수는 외부 변수들을 캡처하여 내부에서 사용할 수 있습니다. 이때, 캡처된 변수들은 람다 객체의 멤버 변수로 저장되며, 이러한 멤버 변수들은 컴파일러에 의해 private 접근 지정자로 선언됩니다. 따라서, 람다 객체 외부에서는 이들 멤버 변수에 직접 접근할 수 없습니다.
+예제 코드 #include &lt;iostream&gt; #include &lt;functional&gt; int main() { int x = 10; // x를 값으로 캡처하는 람다 함수 auto lambda = [x]() mutable { std::cout &lt;&lt; &#34;Captured x: &#34; &lt;&lt; x &lt;&lt; std::endl; x&#43;&#43;; }; lambda(); // Captured x: 10 lambda(); // Captured x: 11 // 람다 객체의 멤버 변수 x에 직접 접근하려는 시도 // std::cout &lt;&lt; &#34;Internal x: &#34; &lt;&lt; lambda.x &lt;&lt; std::endl; // 오류: &#39;lambda&#39;의 &#39;x&#39;에 접근할 수 없음 return 0; } 분석 캡처된 변수의 저장: 람다 함수 [x]는 외부 변수 x를 값으로 캡처하여 람다 객체의 멤버 변수로 저장합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>February 17, 2025</span>&nbsp;·&nbsp;2 min</footer>
+  <a class="entry-link" aria-label="post link to Cpp Lamda" href="http://localhost:1313/posts/developer/cpp-lamda/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Git - Change Branch
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Clone with branch 특정 브랜치를 바로 클론하려면 다음 명령어를 사용하시면 됩니다:
+git clone -b 2025.3.maint https://gitlab.host_name/group_name/repo_name.git 이 명령어는 지정된 URL에서 2025.3.maint 브랜치를 클론합니다. 기본적으로 로컬 디렉토리 이름은 저장소 이름(cnc-umbrella-chart)으로 생성됩니다.
+다른 디렉토리 이름을 지정하고 싶다면 URL 뒤에 원하는 디렉토리 이름을 추가하면 됩니다:
+git clone -b 2025.3.maint https://gitlab.host_name/group_name/repo_name.git custom-directory-name 이 명령어를 실행하면 2025.3.maint 브랜치만 가져오게 됩니다. 더 빠른 클론을 원한다면 --single-branch 옵션을 추가할 수 있습니다:
+git clone -b 2025.3.maint --single-branch https://gitlab.host_name/group_name/repo_name.git Change branch 이미 main 브랜치를 clone하였다. 2025.3.maint 브랜치를 가져오는 방법은?
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>February 17, 2025</span>&nbsp;·&nbsp;1 min</footer>
+  <a class="entry-link" aria-label="post link to Git - Change Branch" href="http://localhost:1313/posts/sdlc/git-branch/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Git Usage
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p> GitHub에서 새로운 Repository(저장소)를 생성하는 방법 GitHub에서 새로운 Repository(저장소)를 생성하는 방법 GitHub에서 새로운 **Repository(저장소)**를 생성하는 방법을 단계별로 설명하겠습니다.
+방법 1: GitHub 웹사이트에서 직접 생성하는 방법
+방법 2: Git CLI를 사용하여 터미널에서 생성하는 방법
+📝 방법 1: GitHub 웹사이트에서 직접 생성하기 1️⃣ GitHub에 로그인 GitHub 홈페이지에 접속 후 로그인합니다. 2️⃣ 새 저장소 생성 페이지 이동 우측 상단의 &#43; 버튼을 클릭한 후 “New repository” 선택 또는 직접 새 저장소 생성 페이지로 이동 3️⃣ 저장소 정보 입력 Repository name (필수): 저장소 이름을 입력합니다. (예: my-new-repo) Description (선택): 저장소에 대한 설명을 입력합니다. Visibility 선택: Public(공개) → 누구나 볼 수 있음. Private(비공개) → 본인과 초대한 사용자만 접근 가능. 4️⃣ 추가 설정 ✅ Initialize this repository with a README (선택) 체크하면 기본적인 README.md 파일이 생성됨. ✅ .gitignore (선택) 특정 파일을 Git에서 무시하도록 설정 (예: Python, Node.js 등). ✅ License (선택) 오픈소스 라이선스를 설정 (예: MIT, Apache 2.0 등). 5️⃣ 저장소 생성 “Create repository” 버튼을 클릭하면 저장소가 생성됩니다. 6️⃣ 로컬 프로젝트와 연결 이제 로컬에서 작업 중인 프로젝트를 GitHub 저장소에 연결할 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>February 17, 2025</span>&nbsp;·&nbsp;24 min</footer>
+  <a class="entry-link" aria-label="post link to Git Usage" href="http://localhost:1313/posts/sdlc/git/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

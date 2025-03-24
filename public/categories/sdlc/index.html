@@ -123,6 +123,793 @@
   <ul>
     
       <li>
+        <a href="http://localhost:1313/posts/sdlc/apt/">Apt proxy issue</a>
+        <p><h1 id="apt-proxy-issue">Apt proxy issue</h1>
+<p>Ubuntu에서 발생한 APT 업데이트 문제의 원인과 해결 방법을 정리해드리겠습니다.</p>
+<h2 id="문제-원인">문제 원인</h2>
+<ol>
+<li>APT(Advanced Package Tool)가 패키지 정보를 업데이트하려 할 때 프록시 서버(10.4.241.231:3142)를 통해 연결을 시도했습니다.</li>
+<li>해당 프록시 서버에 연결할 수 없어 모든 저장소에 대한 연결이 타임아웃되었습니다.</li>
+<li>문제는 <code>/etc/apt/apt.conf</code> 파일에 설정된 프록시 설정이었습니다. 이 설정은 APT가 인터넷에 직접 연결하지 않고 프록시 서버를 통해 연결하도록 지시합니다.</li>
+</ol>
+<h2 id="진단-과정">진단 과정</h2>
+<ol>
+<li>
+<p>프록시 설정 확인:</p>
+<pre tabindex="0"><code>cat /etc/apt/apt.conf.d/* | grep -i proxy
+</code></pre><p>이 명령어로는 apt.conf.d 디렉토리 내의 파일들에서 프록시 설정을 찾을 수 없었습니다.</p></p>
+      </li>
+    
+      <li>
+        <a href="http://localhost:1313/posts/sdlc/special-chars/">Special characters</a>
+        <p><h1 id="자주-사용되는-특수-문자-및-설명"><strong>자주 사용되는 특수 문자 및 설명</strong></h1>
+<h3 id="1-기본적인-특수-문자"><strong>1. 기본적인 특수 문자</strong></h3>
+<table>
+  <thead>
+      <tr>
+          <th><strong>기호</strong></th>
+          <th><strong>이름 (영어)</strong></th>
+          <th><strong>설명 (한국어)</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>_</code></td>
+          <td>Underscore</td>
+          <td>언더스코어 (밑줄)</td>
+      </tr>
+      <tr>
+          <td><code>-</code></td>
+          <td>Hyphen</td>
+          <td>하이픈 (대시, 붙임표)</td>
+      </tr>
+      <tr>
+          <td><code>–</code></td>
+          <td>En dash</td>
+          <td>엔 대시 (숫자 범위에서 사용, 예: 2020–2025)</td>
+      </tr>
+      <tr>
+          <td><code>—</code></td>
+          <td>Em dash</td>
+          <td>엠 대시 (긴 대시, 문장 구분에 사용)</td>
+      </tr>
+      <tr>
+          <td><code>=</code></td>
+          <td>Equal sign</td>
+          <td>등호</td>
+      </tr>
+      <tr>
+          <td><code>+</code></td>
+          <td>Plus sign</td>
+          <td>더하기 기호</td>
+      </tr>
+      <tr>
+          <td><code>*</code></td>
+          <td>Asterisk</td>
+          <td>별표, 곱셈 연산자</td>
+      </tr>
+      <tr>
+          <td><code>/</code></td>
+          <td>Slash, Forward slash</td>
+          <td>슬래시, 경로 구분자</td>
+      </tr>
+      <tr>
+          <td><code>\</code></td>
+          <td>Backslash</td>
+          <td>백슬래시, Windows 경로 구분자</td>
+      </tr>
+      <tr>
+          <td>`</td>
+          <td>`</td>
+          <td>Vertical bar, Pipe</td>
+      </tr>
+      <tr>
+          <td><code>!</code></td>
+          <td>Exclamation mark</td>
+          <td>느낌표</td>
+      </tr>
+      <tr>
+          <td><code>@</code></td>
+          <td>At sign</td>
+          <td>골뱅이, 이메일에서 사용</td>
+      </tr>
+      <tr>
+          <td><code>#</code></td>
+          <td>Hash, Pound sign</td>
+          <td>해시, 샵 (SNS 태그, 주석 표시)</td>
+      </tr>
+      <tr>
+          <td><code>$</code></td>
+          <td>Dollar sign</td>
+          <td>달러 기호, 변수 기호 (Bash, PHP)</td>
+      </tr>
+      <tr>
+          <td><code>%</code></td>
+          <td>Percent sign</td>
+          <td>퍼센트 기호</td>
+      </tr>
+      <tr>
+          <td><code>^</code></td>
+          <td>Caret</td>
+          <td>캐럿 (지수 표현, 텍스트 강조)</td>
+      </tr>
+      <tr>
+          <td><code>&amp;</code></td>
+          <td>Ampersand</td>
+          <td>앰퍼샌드 (AND 연산자)</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="2-괄호-및-인용부호"><strong>2. 괄호 및 인용부호</strong></h3>
+<table>
+  <thead>
+      <tr>
+          <th><strong>기호</strong></th>
+          <th><strong>이름 (영어)</strong></th>
+          <th><strong>설명 (한국어)</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>()</code></td>
+          <td>Parentheses</td>
+          <td>소괄호 (괄호)</td>
+      </tr>
+      <tr>
+          <td><code>[]</code></td>
+          <td>Square brackets</td>
+          <td>대괄호</td>
+      </tr>
+      <tr>
+          <td><code>{}</code></td>
+          <td>Curly brackets, Braces</td>
+          <td>중괄호</td>
+      </tr>
+      <tr>
+          <td><code>&lt;&gt;</code></td>
+          <td>Angle brackets</td>
+          <td>꺾쇠 괄호</td>
+      </tr>
+      <tr>
+          <td><code>'</code></td>
+          <td>Single quote, Apostrophe</td>
+          <td>작은따옴표, 아포스트로피</td>
+      </tr>
+      <tr>
+          <td><code>&quot;</code></td>
+          <td>Double quote</td>
+          <td>큰따옴표</td>
+      </tr>
+      <tr>
+          <td><code>`</code></td>
+          <td>Backtick</td>
+          <td>백틱 (역따옴표, Markdown, JavaScript 등에서 사용)</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="3-프로그래밍-및-명령어에서-자주-사용되는-특수-문자"><strong>3. 프로그래밍 및 명령어에서 자주 사용되는 특수 문자</strong></h3>
+<table>
+  <thead>
+      <tr>
+          <th><strong>기호</strong></th>
+          <th><strong>이름 (영어)</strong></th>
+          <th><strong>설명 (한국어)</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>~</code></td>
+          <td>Tilde</td>
+          <td>물결표 (홈 디렉토리 표현, 대략적인 의미)</td>
+      </tr>
+      <tr>
+          <td><code>:</code></td>
+          <td>Colon</td>
+          <td>콜론 (경로, 시간, 네임스페이스에서 사용)</td>
+      </tr>
+      <tr>
+          <td><code>;</code></td>
+          <td>Semicolon</td>
+          <td>세미콜론 (문장 구분자)</td>
+      </tr>
+      <tr>
+          <td><code>.</code></td>
+          <td>Period, Dot</td>
+          <td>마침표 (파일 확장자, 숨김 파일)</td>
+      </tr>
+      <tr>
+          <td><code>,</code></td>
+          <td>Comma</td>
+          <td>쉼표</td>
+      </tr>
+      <tr>
+          <td><code>?</code></td>
+          <td>Question mark</td>
+          <td>물음표 (쿼리스트링, 조건문)</td>
+      </tr>
+      <tr>
+          <td><code>&lt;</code></td>
+          <td>Less than</td>
+          <td>작다 (비교 연산자)</td>
+      </tr>
+      <tr>
+          <td><code>&gt;</code></td>
+          <td>Greater than</td>
+          <td>크다 (비교 연산자)</td>
+      </tr>
+      <tr>
+          <td><code>&lt;&lt;</code></td>
+          <td>Left shift</td>
+          <td>비트 연산자, 리디렉션 (Bash)</td>
+      </tr>
+      <tr>
+          <td><code>&gt;&gt;</code></td>
+          <td>Right shift</td>
+          <td>비트 연산자, 파일 추가 (Bash)</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="4-주요-사용-예시"><strong>4. 주요 사용 예시</strong></h3>
+<ol>
+<li><strong>프로그래밍</strong>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Hello, World!&#34;</span>)  <span style="color:#75715e"># 큰따옴표 사용</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> x <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">10</span>:
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;x is greater than or equal to 10&#34;</span>)  <span style="color:#75715e"># 비교 연산자 `&gt;=`</span>
+</span></span></code></pre></div></li>
+<li><strong>Bash 명령어</strong>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Hello, </span>$USER<span style="color:#e6db74">&#34;</span>   <span style="color:#75715e"># $ (변수)</span>
+</span></span><span style="display:flex;"><span>ls -l /home/user      <span style="color:#75715e"># - (옵션)</span>
+</span></span><span style="display:flex;"><span>cd ~/Documents        <span style="color:#75715e"># ~ (홈 디렉토리)</span>
+</span></span></code></pre></div></li>
+<li><strong>Markdown</strong>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>**Bold Text**  # 굵은 글씨 (별표 사용)
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">`Code`</span>  # 인라인 코드 (백틱 사용)
+</span></span></code></pre></div></li>
+</ol>
+<hr>
+<h3 id="-결론"><strong>🔹 결론</strong></h3>
+<ul>
+<li>파일명: <code>_</code>(언더스코어)와 <code>-</code>(하이픈) 사용 추천</li>
+<li>변수명: <code>_</code>(언더스코어) 주로 사용</li>
+<li>프로그래밍: <code>;</code>, <code>:</code> 등 문법적 기호 많이 사용</li>
+<li>터미널/명령어: <code>$</code>, <code>~</code>, <code>|</code> 등 필수 기호 활용</li>
+</ul>
+<p>📌 <strong>상황에 따라 적절한 특수 문자를 사용하면 코드 가독성과 명령어 실행이 편리해집니다!</strong> 🚀</p></p>
+      </li>
+    
+      <li>
+        <a href="http://localhost:1313/posts/sdlc/sshfs-debug/">SSHFS Debugging</a>
+        <p><h1 id="내-작업">내 작업</h1>
+<p>아래 명령어로 중복된 sshfs 가 있다면
+mount | grep sshfs</p>
+<p>아래 명령어로 제거하 다시 시도
+sudo umount ~/work_jonpark</p>
+<p>mount_jonpark</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span>base<span style="color:#f92672">)</span> jonpark@BD-82898:~/workspace/jonpark-work/cnc-umbrella-chart-2025.3.maint/local-dev$ ssh -vvv jonpark@aws-sig-ts-jonpark.aws.internalal
+</span></span><span style="display:flex;"><span>OpenSSH_9.6p1 Ubuntu-3ubuntu13.8, OpenSSL 3.0.13 <span style="color:#ae81ff">30</span> Jan <span style="color:#ae81ff">2024</span>
+</span></span><span style="display:flex;"><span>debug1: Reading configuration data /home/jonpark/.ssh/config
+</span></span><span style="display:flex;"><span>debug1: Reading configuration data /etc/ssh/ssh_config
+</span></span><span style="display:flex;"><span>debug1: /etc/ssh/ssh_config line 19: include /etc/ssh/ssh_config.d/*.conf matched no files
+</span></span><span style="display:flex;"><span>debug1: /etc/ssh/ssh_config line 21: Applying options <span style="color:#66d9ef">for</span> *
+</span></span><span style="display:flex;"><span>debug3: expanded UserKnownHostsFile <span style="color:#e6db74">&#39;~/.ssh/known_hosts&#39;</span> -&gt; <span style="color:#e6db74">&#39;/home/jonpark/.ssh/known_hosts&#39;</span>
+</span></span><span style="display:flex;"><span>debug3: expanded UserKnownHostsFile <span style="color:#e6db74">&#39;~/.ssh/known_hosts2&#39;</span> -&gt; <span style="color:#e6db74">&#39;/home/jonpark/.ssh/known_hosts2&#39;</span>
+</span></span><span style="display:flex;"><span>debug2: resolving <span style="color:#e6db74">&#34;aws-sig-ts-jonpark.aws.internal&#34;</span> port <span style="color:#ae81ff">22</span>
+</span></span><span style="display:flex;"><span>debug3: resolve_host: lookup aws-sig-ts-jonpark.aws.internal:22
+</span></span><span style="display:flex;"><span>debug3: channel_clear_timeouts: clearing
+</span></span><span style="display:flex;"><span>debug3: ssh_connect_direct: entering
+</span></span><span style="display:flex;"><span>debug1: Connecting to aws-sig-ts-jonpark.aws.internal <span style="color:#f92672">[</span>10.230.157.239<span style="color:#f92672">]</span> port 22.
+</span></span><span style="display:flex;"><span>debug3: set_sock_tos: set socket <span style="color:#ae81ff">3</span> IP_TOS 0x10
+</span></span><span style="display:flex;"><span>debug1: Connection established.
+</span></span><span style="display:flex;"><span>debug1: identity file /home/jonpark/.ssh/id_rsa type -1
+</span></span><span style="display:flex;"><span>debug1: identity file /home/jonpark/.ssh/id_rsa-cert type -1
+</span></span><span style="display:flex;"><span>debug1: identity file /home/jonpark/.ssh/id_ecdsa type -1
+</span></span><span style="display:flex;"><span>debug1: identity file /home/jonpark/.ssh/id_ecdsa-cert type -1
+</span></span><span style="display:flex;"><span>debug1: identity file /home/jonpark/.ssh/id_ecdsa_sk type -1
+</span></span><span style="display:flex;"><span>debug1: identity file /home/jonpark/.ssh/id_ecdsa_sk-cert type -1
+</span></span><span style="display:flex;"><span>debug1: identity file /home/jonpark/.ssh/id_ed25519 type -1
+</span></span><span style="display:flex;"><span>debug1: identity file /home/jonpark/.ssh/id_ed25519-cert type -1
+</span></span><span style="display:flex;"><span>debug1: identity file /home/jonpark/.ssh/id_ed25519_sk type -1
+</span></span><span style="display:flex;"><span>debug1: identity file /home/jonpark/.ssh/id_ed25519_sk-cert type -1
+</span></span><span style="display:flex;"><span>debug1: identity file /home/jonpark/.ssh/id_xmss type -1
+</span></span><span style="display:flex;"><span>debug1: identity file /home/jonpark/.ssh/id_xmss-cert type -1
+</span></span><span style="display:flex;"><span>debug1: identity file /home/jonpark/.ssh/id_dsa type -1
+</span></span><span style="display:flex;"><span>debug1: identity file /home/jonpark/.ssh/id_dsa-cert type -1
+</span></span><span style="display:flex;"><span>debug1: Local version string SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.8
+</span></span><span style="display:flex;"><span>debug1: Remote protocol version 2.0, remote software version OpenSSH_8.9p1 Ubuntu-3ubuntu0.11
+</span></span><span style="display:flex;"><span>debug1: compat_banner: match: OpenSSH_8.9p1 Ubuntu-3ubuntu0.11 pat OpenSSH* compat 0x04000000
+</span></span><span style="display:flex;"><span>debug2: fd <span style="color:#ae81ff">3</span> setting O_NONBLOCK
+</span></span><span style="display:flex;"><span>debug1: Authenticating to aws-sig-ts-jonpark.aws.internal:22 as <span style="color:#e6db74">&#39;jonpark&#39;</span>
+</span></span><span style="display:flex;"><span>debug1: load_hostkeys: fopen /home/jonpark/.ssh/known_hosts2: No such file or directory
+</span></span><span style="display:flex;"><span>debug1: load_hostkeys: fopen /etc/ssh/ssh_known_hosts: No such file or directory
+</span></span><span style="display:flex;"><span>debug1: load_hostkeys: fopen /etc/ssh/ssh_known_hosts2: No such file or directory
+</span></span><span style="display:flex;"><span>debug3: order_hostkeyalgs: no algorithms matched; accept original
+</span></span><span style="display:flex;"><span>debug3: send packet: type <span style="color:#ae81ff">20</span>
+</span></span><span style="display:flex;"><span>debug1: SSH2_MSG_KEXINIT sent
+</span></span><span style="display:flex;"><span>debug3: receive packet: type <span style="color:#ae81ff">20</span>
+</span></span><span style="display:flex;"><span>debug1: SSH2_MSG_KEXINIT received
+</span></span><span style="display:flex;"><span>debug2: local client KEXINIT proposal
+</span></span><span style="display:flex;"><span>debug2: KEX algorithms: sntrup761x25519-sha512@openssh.com,curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group14-sha256,ext-info-c,kex-strict-c-v00@openssh.com
+</span></span><span style="display:flex;"><span>debug2: host key algorithms: ssh-ed25519-cert-v01@openssh.com,ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521-cert-v01@openssh.com,sk-ssh-ed25519-cert-v01@openssh.com,sk-ecdsa-sha2-nistp256-cert-v01@openssh.com,rsa-sha2-512-cert-v01@openssh.com,rsa-sha2-256-cert-v01@openssh.com,ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ssh-ed25519@openssh.com,sk-ecdsa-sha2-nistp256@openssh.com,rsa-sha2-512,rsa-sha2-256
+</span></span><span style="display:flex;"><span>debug2: ciphers ctos: chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com
+</span></span><span style="display:flex;"><span>debug2: ciphers stoc: chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com
+</span></span><span style="display:flex;"><span>debug2: MACs ctos: umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1
+</span></span><span style="display:flex;"><span>debug2: MACs stoc: umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1
+</span></span><span style="display:flex;"><span>debug2: compression ctos: none,zlib@openssh.com,zlib
+</span></span><span style="display:flex;"><span>debug2: compression stoc: none,zlib@openssh.com,zlib
+</span></span><span style="display:flex;"><span>debug2: languages ctos: 
+</span></span><span style="display:flex;"><span>debug2: languages stoc: 
+</span></span><span style="display:flex;"><span>debug2: first_kex_follows <span style="color:#ae81ff">0</span> 
+</span></span><span style="display:flex;"><span>debug2: reserved <span style="color:#ae81ff">0</span> 
+</span></span><span style="display:flex;"><span>debug2: peer server KEXINIT proposal
+</span></span><span style="display:flex;"><span>debug2: KEX algorithms: curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group14-sha256,kex-strict-s-v00@openssh.com
+</span></span><span style="display:flex;"><span>debug2: host key algorithms: rsa-sha2-512,rsa-sha2-256,ecdsa-sha2-nistp256,ssh-ed25519
+</span></span><span style="display:flex;"><span>debug2: ciphers ctos: chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com
+</span></span><span style="display:flex;"><span>debug2: ciphers stoc: chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com
+</span></span><span style="display:flex;"><span>debug2: MACs ctos: umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512
+</span></span><span style="display:flex;"><span>debug2: MACs stoc: umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512
+</span></span><span style="display:flex;"><span>debug2: compression ctos: none,zlib@openssh.com
+</span></span><span style="display:flex;"><span>debug2: compression stoc: none,zlib@openssh.com
+</span></span><span style="display:flex;"><span>debug2: languages ctos: 
+</span></span><span style="display:flex;"><span>debug2: languages stoc: 
+</span></span><span style="display:flex;"><span>debug2: first_kex_follows <span style="color:#ae81ff">0</span> 
+</span></span><span style="display:flex;"><span>debug2: reserved <span style="color:#ae81ff">0</span> 
+</span></span><span style="display:flex;"><span>debug3: kex_choose_conf: will use strict KEX ordering
+</span></span><span style="display:flex;"><span>debug1: kex: algorithm: curve25519-sha256
+</span></span><span style="display:flex;"><span>debug1: kex: host key algorithm: ssh-ed25519
+</span></span><span style="display:flex;"><span>debug1: kex: server-&gt;client cipher: chacha20-poly1305@openssh.com MAC: &lt;implicit&gt; compression: none
+</span></span><span style="display:flex;"><span>debug1: kex: client-&gt;server cipher: chacha20-poly1305@openssh.com MAC: &lt;implicit&gt; compression: none
+</span></span><span style="display:flex;"><span>debug3: send packet: type <span style="color:#ae81ff">30</span>
+</span></span><span style="display:flex;"><span>debug1: expecting SSH2_MSG_KEX_ECDH_REPLY
+</span></span><span style="display:flex;"><span>debug3: receive packet: type <span style="color:#ae81ff">31</span>
+</span></span><span style="display:flex;"><span>debug1: SSH2_MSG_KEX_ECDH_REPLY received
+</span></span><span style="display:flex;"><span>debug1: Server host key: ssh-ed25519 SHA256:5D1rxgnPZJQM+hxFvUM5lP6+jMATgvQgonw/F8TIRVA
+</span></span><span style="display:flex;"><span>debug1: load_hostkeys: fopen /home/jonpark/.ssh/known_hosts2: No such file or directory
+</span></span><span style="display:flex;"><span>debug1: load_hostkeys: fopen /etc/ssh/ssh_known_hosts: No such file or directory
+</span></span><span style="display:flex;"><span>debug1: load_hostkeys: fopen /etc/ssh/ssh_known_hosts2: No such file or directory
+</span></span><span style="display:flex;"><span>debug3: hostkeys_find_by_key_hostfile: trying user hostfile <span style="color:#e6db74">&#34;/home/jonpark/.ssh/known_hosts&#34;</span>
+</span></span><span style="display:flex;"><span>debug3: hostkeys_foreach: reading file <span style="color:#e6db74">&#34;/home/jonpark/.ssh/known_hosts&#34;</span>
+</span></span><span style="display:flex;"><span>debug1: hostkeys_find_by_key_cb: found matching key in ~/.ssh/known_hosts:1
+</span></span><span style="display:flex;"><span>debug3: hostkeys_find_by_key_hostfile: trying user hostfile <span style="color:#e6db74">&#34;/home/jonpark/.ssh/known_hosts2&#34;</span>
+</span></span><span style="display:flex;"><span>debug1: hostkeys_find_by_key_hostfile: hostkeys file /home/jonpark/.ssh/known_hosts2 does not exist
+</span></span><span style="display:flex;"><span>debug3: hostkeys_find_by_key_hostfile: trying system hostfile <span style="color:#e6db74">&#34;/etc/ssh/ssh_known_hosts&#34;</span>
+</span></span><span style="display:flex;"><span>debug1: hostkeys_find_by_key_hostfile: hostkeys file /etc/ssh/ssh_known_hosts does not exist
+</span></span><span style="display:flex;"><span>debug3: hostkeys_find_by_key_hostfile: trying system hostfile <span style="color:#e6db74">&#34;/etc/ssh/ssh_known_hosts2&#34;</span>
+</span></span><span style="display:flex;"><span>debug1: hostkeys_find_by_key_hostfile: hostkeys file /etc/ssh/ssh_known_hosts2 does not exist
+</span></span><span style="display:flex;"><span>The authenticity of host <span style="color:#e6db74">&#39;aws-sig-ts-jonpark.aws.internal (10.230.157.239)&#39;</span> can<span style="color:#e6db74">&#39;t be established.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ED25519 key fingerprint is SHA256:5D1rxgnPZJQM+hxFvUM5lP6+jMATgvQgonw/F8TIRVA.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">This host key is known by the following other names/addresses:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    ~/.ssh/known_hosts:1: us03-sig-ts-jonpark.nprd.sig.synopsys.com
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Warning: Permanently added &#39;</span>aws-sig-ts-jonpark.aws.internal<span style="color:#e6db74">&#39; (ED25519) to the list of known hosts.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug3: send packet: type 21
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug1: ssh_packet_send2_wrapped: resetting send seqnr 3
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug2: ssh_set_newkeys: mode 1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug1: rekey out after 134217728 blocks
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug1: SSH2_MSG_NEWKEYS sent
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug1: expecting SSH2_MSG_NEWKEYS
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug3: receive packet: type 21
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug1: ssh_packet_read_poll2: resetting read seqnr 3
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug1: SSH2_MSG_NEWKEYS received
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug2: ssh_set_newkeys: mode 0
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug1: rekey in after 134217728 blocks
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug3: send packet: type 5
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug3: receive packet: type 7
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug1: SSH2_MSG_EXT_INFO received
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug3: kex_input_ext_info: extension server-sig-algs
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug1: kex_ext_info_client_parse: server-sig-algs=&lt;ssh-ed25519,sk-ssh-ed25519@openssh.com,ssh-rsa,rsa-sha2-256,rsa-sha2-512,ssh-dss,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,sk-ecdsa-sha2-nistp256@openssh.com,webauthn-sk-ecdsa-sha2-nistp256@openssh.com&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug3: kex_input_ext_info: extension publickey-hostbound@openssh.com
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug1: kex_ext_info_check_ver: publickey-hostbound@openssh.com=&lt;0&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug3: receive packet: type 6
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug2: service_accept: ssh-userauth
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug1: SSH2_MSG_SERVICE_ACCEPT received
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug3: send packet: type 50
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug3: receive packet: type 51
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug1: Authentications that can continue: publickey,gssapi-keyex,gssapi-with-mic,password
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug3: start over, passed a different list publickey,gssapi-keyex,gssapi-with-mic,password
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug3: preferred gssapi-with-mic,publickey,keyboard-interactive,password
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug3: authmethod_lookup gssapi-with-mic
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug3: remaining preferred: publickey,keyboard-interactive,password
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug3: authmethod_is_enabled gssapi-with-mic
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug1: Next authentication method: gssapi-with-mic
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug1: No credentials were supplied, or the credentials were unavailable or inaccessible
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">No Kerberos credentials available (default cache: FILE:/tmp/krb5cc_1000)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug1: No credentials were supplied, or the credentials were unavailable or inaccessible
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">No Kerberos credentials available (default cache: FILE:/tmp/krb5cc_1000)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug2: we did not send a packet, disable method
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug3: authmethod_lookup publickey
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug3: remaining preferred: keyboard-interactive,password
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug3: authmethod_is_enabled publickey
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug1: Next authentication method: publickey
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug1: Will attempt key: /home/jonpark/.ssh/id_rsa 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug1: Will attempt key: /home/jonpark/.ssh/id_ecdsa 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug1: Will attempt key: /home/jonpark/.ssh/id_ecdsa_sk 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug1: Will attempt key: /home/jonpark/.ssh/id_ed25519 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug1: Will attempt key: /home/jonpark/.ssh/id_ed25519_sk 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug1: Will attempt key: /home/jonpark/.ssh/id_xmss 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug1: Will attempt key: /home/jonpark/.ssh/id_dsa 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug2: pubkey_prepare: done
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug1: Trying private key: /home/jonpark/.ssh/id_rsa
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug3: no such identity: /home/jonpark/.ssh/id_rsa: No such file or directory
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug1: Trying private key: /home/jonpark/.ssh/id_ecdsa
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug3: no such identity: /home/jonpark/.ssh/id_ecdsa: No such file or directory
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug1: Trying private key: /home/jonpark/.ssh/id_ecdsa_sk
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug3: no such identity: /home/jonpark/.ssh/id_ecdsa_sk: No such file or directory
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug1: Trying private key: /home/jonpark/.ssh/id_ed25519
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug3: no such identity: /home/jonpark/.ssh/id_ed25519: No such file or directory
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug1: Trying private key: /home/jonpark/.ssh/id_ed25519_sk
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug3: no such identity: /home/jonpark/.ssh/id_ed25519_sk: No such file or directory
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug1: Trying private key: /home/jonpark/.ssh/id_xmss
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug3: no such identity: /home/jonpark/.ssh/id_xmss: No such file or directory
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug1: Trying private key: /home/jonpark/.ssh/id_dsa
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug3: no such identity: /home/jonpark/.ssh/id_dsa: No such file or directory
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug2: we did not send a packet, disable method
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug3: authmethod_lookup password
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug3: remaining preferred: ,password
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug3: authmethod_is_enabled password
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">debug1: Next authentication method: password
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">jonpark@aws-sig-ts-jonpark.aws.internal&#39;</span>s password: 
+</span></span><span style="display:flex;"><span>debug3: send packet: type <span style="color:#ae81ff">50</span>
+</span></span><span style="display:flex;"><span>debug2: we sent a password packet, wait <span style="color:#66d9ef">for</span> reply
+</span></span><span style="display:flex;"><span>debug3: receive packet: type <span style="color:#ae81ff">52</span>
+</span></span><span style="display:flex;"><span>Authenticated to aws-sig-ts-jonpark.aws.internal <span style="color:#f92672">([</span>10.230.157.239<span style="color:#f92672">]</span>:22<span style="color:#f92672">)</span> using <span style="color:#e6db74">&#34;password&#34;</span>.
+</span></span><span style="display:flex;"><span>debug1: channel 0: new session <span style="color:#f92672">[</span>client-session<span style="color:#f92672">]</span> <span style="color:#f92672">(</span>inactive timeout: 0<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>debug3: ssh_session2_open: channel_new: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>debug2: channel 0: send open
+</span></span><span style="display:flex;"><span>debug3: send packet: type <span style="color:#ae81ff">90</span>
+</span></span><span style="display:flex;"><span>debug1: Requesting no-more-sessions@openssh.com
+</span></span><span style="display:flex;"><span>debug3: send packet: type <span style="color:#ae81ff">80</span>
+</span></span><span style="display:flex;"><span>debug1: Entering interactive session.
+</span></span><span style="display:flex;"><span>debug1: pledge: filesystem
+</span></span><span style="display:flex;"><span>debug3: client_repledge: enter
+</span></span><span style="display:flex;"><span>debug3: receive packet: type <span style="color:#ae81ff">80</span>
+</span></span><span style="display:flex;"><span>debug1: client_input_global_request: rtype hostkeys-00@openssh.com want_reply <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>debug3: client_input_hostkeys: received RSA key SHA256:q5fXsdVe64oWpCs4iJ3FZVuPhCc0jVS1eaBnbodu4Ao
+</span></span><span style="display:flex;"><span>debug3: client_input_hostkeys: received ECDSA key SHA256:2CuF+VWAhjLWVdiq+DHjknUpY/qOCejEphFrHKZ0EUA
+</span></span><span style="display:flex;"><span>debug3: client_input_hostkeys: received ED25519 key SHA256:5D1rxgnPZJQM+hxFvUM5lP6+jMATgvQgonw/F8TIRVA
+</span></span><span style="display:flex;"><span>debug1: client_input_hostkeys: searching /home/jonpark/.ssh/known_hosts <span style="color:#66d9ef">for</span> aws-sig-ts-jonpark.aws.internal / <span style="color:#f92672">(</span>none<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>debug3: hostkeys_foreach: reading file <span style="color:#e6db74">&#34;/home/jonpark/.ssh/known_hosts&#34;</span>
+</span></span><span style="display:flex;"><span>debug3: hostkeys_find: found ssh-ed25519 key under different name/addr at /home/jonpark/.ssh/known_hosts:1
+</span></span><span style="display:flex;"><span>debug3: hostkeys_find: found ssh-rsa key under different name/addr at /home/jonpark/.ssh/known_hosts:2
+</span></span><span style="display:flex;"><span>debug3: hostkeys_find: found ecdsa-sha2-nistp256 key under different name/addr at /home/jonpark/.ssh/known_hosts:3
+</span></span><span style="display:flex;"><span>debug3: hostkeys_find: found ssh-ed25519 key at /home/jonpark/.ssh/known_hosts:8
+</span></span><span style="display:flex;"><span>debug1: client_input_hostkeys: searching /home/jonpark/.ssh/known_hosts2 <span style="color:#66d9ef">for</span> aws-sig-ts-jonpark.aws.internal / <span style="color:#f92672">(</span>none<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>debug1: client_input_hostkeys: hostkeys file /home/jonpark/.ssh/known_hosts2 does not exist
+</span></span><span style="display:flex;"><span>debug3: client_input_hostkeys: <span style="color:#ae81ff">3</span> server keys: <span style="color:#ae81ff">2</span> new, <span style="color:#ae81ff">18446744073709551615</span> retained, <span style="color:#ae81ff">2</span> incomplete match. <span style="color:#ae81ff">0</span> to remove
+</span></span><span style="display:flex;"><span>debug1: client_input_hostkeys: host key found matching a different name/address, skipping UserKnownHostsFile update
+</span></span><span style="display:flex;"><span>debug3: client_repledge: enter
+</span></span><span style="display:flex;"><span>debug3: receive packet: type <span style="color:#ae81ff">91</span>
+</span></span><span style="display:flex;"><span>debug2: channel_input_open_confirmation: channel 0: callback start
+</span></span><span style="display:flex;"><span>debug2: fd <span style="color:#ae81ff">3</span> setting TCP_NODELAY
+</span></span><span style="display:flex;"><span>debug3: set_sock_tos: set socket <span style="color:#ae81ff">3</span> IP_TOS 0x10
+</span></span><span style="display:flex;"><span>debug2: client_session2_setup: id <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>debug2: channel 0: request pty-req confirm <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>debug3: send packet: type <span style="color:#ae81ff">98</span>
+</span></span><span style="display:flex;"><span>debug1: Sending environment.
+</span></span><span style="display:flex;"><span>debug3: Ignored env SHELL
+</span></span><span style="display:flex;"><span>debug3: Ignored env COLORTERM
+</span></span><span style="display:flex;"><span>debug3: Ignored env CVSROOT
+</span></span><span style="display:flex;"><span>debug3: Ignored env WSL2_GUI_APPS_ENABLED
+</span></span><span style="display:flex;"><span>debug3: Ignored env TERM_PROGRAM_VERSION
+</span></span><span style="display:flex;"><span>debug3: Ignored env CONDA_EXE
+</span></span><span style="display:flex;"><span>debug3: Ignored env _CE_M
+</span></span><span style="display:flex;"><span>debug3: Ignored env WSL_DISTRO_NAME
+</span></span><span style="display:flex;"><span>debug3: Ignored env IN_PROFILE
+</span></span><span style="display:flex;"><span>debug3: Ignored env MODULAR_HOME
+</span></span><span style="display:flex;"><span>debug3: Ignored env DOCKER_SYNOPSYS_USER
+</span></span><span style="display:flex;"><span>debug3: Ignored env SNYK_API_TOKEN
+</span></span><span style="display:flex;"><span>debug3: Ignored env LANGUAGE
+</span></span><span style="display:flex;"><span>debug3: Ignored env SWIP_CLI
+</span></span><span style="display:flex;"><span>debug3: Ignored env TI_CGT_C6000
+</span></span><span style="display:flex;"><span>debug3: Ignored env DOTNET_ROOT
+</span></span><span style="display:flex;"><span>debug3: Ignored env GRADLE_HOME
+</span></span><span style="display:flex;"><span>debug3: Ignored env SNYK_ORG_NAME
+</span></span><span style="display:flex;"><span>debug3: Ignored env PYDEVD_DISABLE_FILE_VALIDATION
+</span></span><span style="display:flex;"><span>debug3: Ignored env SDKMAN_CANDIDATES_DIR
+</span></span><span style="display:flex;"><span>debug3: Ignored env GOBIN
+</span></span><span style="display:flex;"><span>debug3: Ignored env NAME
+</span></span><span style="display:flex;"><span>debug3: Ignored env PWD
+</span></span><span style="display:flex;"><span>debug3: Ignored env LOGNAME
+</span></span><span style="display:flex;"><span>debug3: Ignored env CONDA_PREFIX
+</span></span><span style="display:flex;"><span>debug3: Ignored env BUNDLED_DEBUGPY_PATH
+</span></span><span style="display:flex;"><span>debug3: Ignored env VSCODE_GIT_ASKPASS_NODE
+</span></span><span style="display:flex;"><span>debug3: Ignored env SNYK_TOKEN
+</span></span><span style="display:flex;"><span>debug3: Ignored env HOME
+</span></span><span style="display:flex;"><span>debug1: channel 0: setting env LANG <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;en_US.UTF-8&#34;</span>
+</span></span><span style="display:flex;"><span>debug2: channel 0: request env confirm <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>debug3: send packet: type <span style="color:#ae81ff">98</span>
+</span></span><span style="display:flex;"><span>debug3: Ignored env WSL_INTEROP
+</span></span><span style="display:flex;"><span>debug3: Ignored env LS_COLORS
+</span></span><span style="display:flex;"><span>debug3: Ignored env WAYLAND_DISPLAY
+</span></span><span style="display:flex;"><span>debug3: Ignored env DOCKER_SYNOPSYS_PASS
+</span></span><span style="display:flex;"><span>debug3: Ignored env CONDA_PROMPT_MODIFIER
+</span></span><span style="display:flex;"><span>debug3: Ignored env GIT_ASKPASS
+</span></span><span style="display:flex;"><span>debug3: Ignored env M2_HOME
+</span></span><span style="display:flex;"><span>debug3: Ignored env GOROOT
+</span></span><span style="display:flex;"><span>debug3: Ignored env NVM_DIR
+</span></span><span style="display:flex;"><span>debug3: Ignored env VSCODE_GIT_ASKPASS_EXTRA_ARGS
+</span></span><span style="display:flex;"><span>debug3: Ignored env LESSCLOSE
+</span></span><span style="display:flex;"><span>debug3: Ignored env COVERITY_NO_LOG_ENVIRONMENT_VARIABLES
+</span></span><span style="display:flex;"><span>debug3: Ignored env TERM
+</span></span><span style="display:flex;"><span>debug3: Ignored env DEBUGPY_ADAPTER_ENDPOINTS
+</span></span><span style="display:flex;"><span>debug3: Ignored env _CE_CONDA
+</span></span><span style="display:flex;"><span>debug3: Ignored env LESSOPEN
+</span></span><span style="display:flex;"><span>debug3: Ignored env USER
+</span></span><span style="display:flex;"><span>debug3: Ignored env VSCODE_GIT_IPC_HANDLE
+</span></span><span style="display:flex;"><span>debug3: Ignored env CONDA_SHLVL
+</span></span><span style="display:flex;"><span>debug3: Ignored env MAVEN_HOME
+</span></span><span style="display:flex;"><span>debug3: Ignored env SDKMAN_DIR
+</span></span><span style="display:flex;"><span>debug3: Ignored env DISPLAY
+</span></span><span style="display:flex;"><span>debug3: Ignored env SHLVL
+</span></span><span style="display:flex;"><span>debug3: Ignored env COV_ROOT
+</span></span><span style="display:flex;"><span>debug3: Ignored env API_VERSION
+</span></span><span style="display:flex;"><span>debug3: Ignored env SONAR_SCANNER
+</span></span><span style="display:flex;"><span>debug3: Ignored env CVS_RSH
+</span></span><span style="display:flex;"><span>debug3: Ignored env SDKMAN_CANDIDATES_API
+</span></span><span style="display:flex;"><span>debug3: Ignored env IN_BASHRC
+</span></span><span style="display:flex;"><span>debug3: Ignored env CONDA_PYTHON_EXE
+</span></span><span style="display:flex;"><span>debug3: Ignored env CSA_DIR
+</span></span><span style="display:flex;"><span>debug3: Ignored env XDG_RUNTIME_DIR
+</span></span><span style="display:flex;"><span>debug3: Ignored env CONDA_DEFAULT_ENV
+</span></span><span style="display:flex;"><span>debug3: Ignored env ZIPINFO
+</span></span><span style="display:flex;"><span>debug3: Ignored env UNZIP
+</span></span><span style="display:flex;"><span>debug3: Ignored env WSLENV
+</span></span><span style="display:flex;"><span>debug1: channel 0: setting env LC_ALL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;en_US.UTF-8&#34;</span>
+</span></span><span style="display:flex;"><span>debug2: channel 0: request env confirm <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>debug3: send packet: type <span style="color:#ae81ff">98</span>
+</span></span><span style="display:flex;"><span>debug3: Ignored env VSCODE_GIT_ASKPASS_MAIN
+</span></span><span style="display:flex;"><span>debug3: Ignored env SONAR_SCANNER_BIN_PATH
+</span></span><span style="display:flex;"><span>debug3: Ignored env COV_DIR
+</span></span><span style="display:flex;"><span>debug3: Ignored env XDG_DATA_DIRS
+</span></span><span style="display:flex;"><span>debug3: Ignored env PATH
+</span></span><span style="display:flex;"><span>debug3: Ignored env SRM_DIR
+</span></span><span style="display:flex;"><span>debug3: Ignored env USING_SRM_VERSION
+</span></span><span style="display:flex;"><span>debug3: Ignored env USING_CSA_BIN_PATH
+</span></span><span style="display:flex;"><span>debug3: Ignored env SNYK_API_VERSION
+</span></span><span style="display:flex;"><span>debug3: Ignored env DBUS_SESSION_BUS_ADDRESS
+</span></span><span style="display:flex;"><span>debug3: Ignored env SDKMAN_PLATFORM
+</span></span><span style="display:flex;"><span>debug3: Ignored env HOSTTYPE
+</span></span><span style="display:flex;"><span>debug3: Ignored env PULSE_SERVER
+</span></span><span style="display:flex;"><span>debug3: Ignored env OLDPWD
+</span></span><span style="display:flex;"><span>debug3: Ignored env GOPATH
+</span></span><span style="display:flex;"><span>debug3: Ignored env TERM_PROGRAM
+</span></span><span style="display:flex;"><span>debug3: Ignored env VSCODE_IPC_HOOK_CLI
+</span></span><span style="display:flex;"><span>debug3: Ignored env _
+</span></span><span style="display:flex;"><span>debug2: channel 0: request shell confirm <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>debug3: send packet: type <span style="color:#ae81ff">98</span>
+</span></span><span style="display:flex;"><span>debug3: client_repledge: enter
+</span></span><span style="display:flex;"><span>debug1: pledge: fork
+</span></span><span style="display:flex;"><span>debug2: channel_input_open_confirmation: channel 0: callback <span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span>debug2: channel 0: open confirm rwindow <span style="color:#ae81ff">0</span> rmax <span style="color:#ae81ff">32768</span>
+</span></span><span style="display:flex;"><span>debug3: receive packet: type <span style="color:#ae81ff">99</span>
+</span></span><span style="display:flex;"><span>debug2: channel_input_status_confirm: type <span style="color:#ae81ff">99</span> id <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>debug2: PTY allocation request accepted on channel <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>debug2: channel 0: rcvd adjust <span style="color:#ae81ff">2097152</span>
+</span></span><span style="display:flex;"><span>debug3: receive packet: type <span style="color:#ae81ff">99</span>
+</span></span><span style="display:flex;"><span>debug2: channel_input_status_confirm: type <span style="color:#ae81ff">99</span> id <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>debug2: shell request accepted on channel <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>Welcome to Ubuntu 22.04.4 LTS <span style="color:#f92672">(</span>GNU/Linux 5.15.0-131-generic x86_64<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> * Documentation:  https://help.ubuntu.com
+</span></span><span style="display:flex;"><span> * Management:     https://landscape.canonical.com
+</span></span><span style="display:flex;"><span> * Support:        https://ubuntu.com/pro
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Expanded Security Maintenance <span style="color:#66d9ef">for</span> Applications is not enabled.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">144</span> updates can be applied immediately.
+</span></span><span style="display:flex;"><span>To see these additional updates run: apt list --upgradable
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">38</span> additional security updates can be applied with ESM Apps.
+</span></span><span style="display:flex;"><span>Learn more about enabling ESM Apps service at https://ubuntu.com/esm
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>The list of available updates is more than a week old.
+</span></span><span style="display:flex;"><span>To check <span style="color:#66d9ef">for</span> new updates run: sudo apt update
+</span></span><span style="display:flex;"><span>Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>*** System restart required ***
+</span></span><span style="display:flex;"><span>Last login: Sun Mar  <span style="color:#ae81ff">9</span> 19:52:44 <span style="color:#ae81ff">2025</span> from 10.230.18.206
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>base<span style="color:#f92672">)</span> jonpark@aws-sig-ts-jonpark:~$ hostname
+</span></span><span style="display:flex;"><span>aws-sig-ts-jonpark.aws.internal
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"></code></pre></div><hr>
+<h1 id="디버깅-방법">디버깅 방법</h1></p>
+      </li>
+    
+      <li>
+        <a href="http://localhost:1313/posts/sdlc/sshfs-win-wsl-ec2/">Windows 에서 WSL을 통해 ec2에 접근하기</a>
+        <p><h1 id="windows-에서-wsl을-통해-ec2-에-접근시-symbol-link에-따른-문제점">Windows 에서 WSL을 통해 ec2 에 접근시 symbol link에 따른 문제점</h1>
+<h2 id="내-작업">내 작업</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">### AWS ec2</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Hdd 가 부족해서 하나 더 추가했다 - 이것이 opt/dlami/nvme 임임</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>base<span style="color:#f92672">)</span> ubuntu@ip-172-31-26-173:~$ df -Th
+</span></span><span style="display:flex;"><span>Filesystem                     Type      Size  Used Avail Use% Mounted on
+</span></span><span style="display:flex;"><span>/dev/root                      ext4      117G   69G   48G  60% /
+</span></span><span style="display:flex;"><span>tmpfs                          tmpfs      32G   48M   32G   1% /dev/shm
+</span></span><span style="display:flex;"><span>tmpfs                          tmpfs      13G  1.4M   13G   1% /run
+</span></span><span style="display:flex;"><span>tmpfs                          tmpfs     5.0M     <span style="color:#ae81ff">0</span>  5.0M   0% /run/lock
+</span></span><span style="display:flex;"><span>efivarfs                       efivarfs  128K  4.1K  119K   4% /sys/firmware/efi/efivars
+</span></span><span style="display:flex;"><span>/dev/nvme0n1p15                vfat      105M  6.1M   99M   6% /boot/efi
+</span></span><span style="display:flex;"><span>tmpfs                          tmpfs     6.3G   68K  6.3G   1% /run/user/126
+</span></span><span style="display:flex;"><span>/dev/mapper/vg.01-lv_ephemeral ext4      206G   76G  119G  39% /opt/dlami/nvme
+</span></span><span style="display:flex;"><span>tmpfs                          tmpfs     6.3G   76K  6.3G   1% /run/user/1000
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>base<span style="color:#f92672">)</span> ubuntu@ip-172-31-26-173:~$ ll workspace
+</span></span><span style="display:flex;"><span>lrwxrwxrwx <span style="color:#ae81ff">1</span> ubuntu ubuntu <span style="color:#ae81ff">15</span> Jan <span style="color:#ae81ff">24</span> 09:47 workspace -&gt; /opt/dlami/nvme/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### WSL</span>
+</span></span><span style="display:flex;"><span>bash#:~$ cat .bashrc | grep ec2
+</span></span><span style="display:flex;"><span>alias mount_ec2<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;sudo sshfs  -o uid=`id -u jonpark`  -o gid=`id -g jonpark`  -o allow_other ubuntu@jonpark-ec2:/home/ubuntu -o IdentityFile=~/jonpark-ec2.pem ~/work_ec2&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 수정 : -o follow_symlinks  추가</span>
+</span></span><span style="display:flex;"><span>alias mount_ec2<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;sudo sshfs -o uid=`id -u jonpark` -o gid=`id -g jonpark` -o allow_other -o follow_symlinks ubuntu@jonpark-ec2:/home/ubuntu -o IdentityFile=~/jonpark-ec2.pem ~/work_ec2&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 실행 </span>
+</span></span><span style="display:flex;"><span>bash#:~$ sudo umount ~/work_ec2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>bash#:~$ sudo sshfs -o uid<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>id -u jonpark<span style="color:#e6db74">`</span> -o gid<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>id -g jonpark<span style="color:#e6db74">`</span> -o allow_other -o follow_symlinks ubuntu@jonpark-ec2:/home/ubuntu -o IdentityFile<span style="color:#f92672">=</span>~/jonpark-ec2.pem ~/work_ec2
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>sudo<span style="color:#f92672">]</span> password <span style="color:#66d9ef">for</span> jonpark:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 결과</span>
+</span></span><span style="display:flex;"><span>bash#:~$ ll  -d work_ec2
+</span></span><span style="display:flex;"><span>drwx------ <span style="color:#ae81ff">1</span> jonpark jonpark 4.0K Feb <span style="color:#ae81ff">25</span> 14:13 work_ec2/
+</span></span><span style="display:flex;"><span>bash#:~$ ls  work_ec2
+</span></span><span style="display:flex;"><span>blackduck-oidc                          LINUX_PACKAGES_LICENSES                 Public/                                   THIRD_PARTY_SOURCE_CODE_URLS
+</span></span><span style="display:flex;"><span>BUILD_FROM_SOURCE_PACKAGES_LICENCES     LINUX_PACKAGES_LIST                     PYTHON_PACKAGES_LICENSES                  Videos/
+</span></span><span style="display:flex;"><span>Desktop/                                Music/                                  srm-2024.12.1-0-linux-x64-installer.run*  workspace/
+</span></span><span style="display:flex;"><span>Documents/                              nvidia-acknowledgements/                srm-license.txt                           zed-linux-x86_64.tar.gz
+</span></span><span style="display:flex;"><span>Downloads/                              OSSNvidiaDriver_v550.90.07_license.txt  Templates/
+</span></span><span style="display:flex;"><span>google-chrome-stable_current_amd64.deb  Pictures/                               thinclient_drives/
+</span></span><span style="display:flex;"><span>bash#:~$ ll  -d work_ec2/workspace/
+</span></span><span style="display:flex;"><span>drwxrwxrwt <span style="color:#ae81ff">1</span> jonpark jonpark 4.0K Feb <span style="color:#ae81ff">24</span> 19:20 work_ec2/workspace//
+</span></span><span style="display:flex;"><span>bash#:~$ ls  work_ec2/workspace/
+</span></span><span style="display:flex;"><span>ai/  dev_tool/  dockers/  jonpark-work/  lost+found/  miniconda3/  open-webui/
+</span></span><span style="display:flex;"><span>bash#:~$
+</span></span></code></pre></div><h2 id="답변">답변</h2>
+<p>이제 문제가 더 명확해졌습니다. EC2에서 <code>workspace</code>는 <code>/opt/dlami/nvme/</code>를 가리키는 심볼릭 링크입니다. SSHFS를 통한 마운트 시 심볼릭 링크 처리에 문제가 있는 것으로 보입니다.</p></p>
+      </li>
+    
+      <li>
+        <a href="http://localhost:1313/posts/sdlc/wsl-zone.identifier/">Zone.Identifier</a>
+        <p><h1 id="windows-에서-wsl로-복사하면-복사한-파일이름-zoneidenifier-파일이-생기지-않게-하는-방법">windows 에서 wsl로 복사하면 &ldquo;복사한 파일이름 zone.idenifier&rdquo; 파일이 생기지 않게 하는 방법.</h1>
+<p>Zone.Identifier 파일은 Windows 시스템에서 외부 출처(인터넷, 이메일 등)에서 다운로드한 파일에 자동으로 추가되는 대체 데이터 스트림(Alternate Data Stream, ADS)입니다. 이 파일에는 원본 파일의 출처와 관련된 보안 정보가 포함되어 있습니다.</p>
+<p>파일을 WSL로 복사할 때 Windows에서는 이 메타데이터를 별도의 Zone.Identifier 파일로 변환합니다. 이는 NTFS 파일 시스템의 기능이지만 Linux 파일 시스템에서는 지원하지 않기 때문입니다.</p>
+<h2 id="zoneidentifier-파일이-생성되지-않게-하는-방법">Zone.Identifier 파일이 생성되지 않게 하는 방법:</h2>
+<ol>
+<li>
+<p><strong>Windows에서 파일 신뢰 설정</strong>:</p></p>
+      </li>
+    
+      <li>
+        <a href="http://localhost:1313/posts/sdlc/deno-install/">Deno Install</a>
+        <p><h1 id="install">Install</h1>
+<p>Deno는 JavaScript와 TypeScript를 위한 현대적인 런타임 환경으로, 설치 및 사용이 매우 간단합니다. 아래에 Deno를 설치하고 &ldquo;Hello, World!&rdquo; 프로그램을 작성하여 실행하는 방법을 안내해 드리겠습니다.</p>
+<h3 id="1-deno-설치하기">1. Deno 설치하기</h3>
+<p><strong>macOS 및 Linux</strong>:</p>
+<p>터미널을 열고 다음 명령어를 입력하여 Deno를 설치할 수 있습니다:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>curl -fsSL https://deno.land/install.sh | sh
+</span></span></code></pre></div><p>이 명령어는 공식 설치 스크립트를 다운로드하여 실행합니다.</p>
+<p><strong>Windows</strong>:</p>
+<p>PowerShell을 관리자 권한으로 열고 다음 명령어를 실행합니다:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>iwr https<span style="color:#960050;background-color:#1e0010">:</span>//deno.land/install.ps1 -useb | iex
+</span></span></code></pre></div><p>또는, Windows에서 <a href="https://chocolatey.org/">Chocolatey</a> 패키지 관리자를 사용 중이라면, 다음과 같이 설치할 수 있습니다:</p></p>
+      </li>
+    
+      <li>
+        <a href="http://localhost:1313/posts/sdlc/go-install/">Go Install</a>
+        <p><h1 id="go-install">Go Install</h1>
+<p>기존 Go 1.22.2가 <code>/usr/bin/go</code>로 설치되어 있고, 새롭게 Go 1.23.1 및 Go 1.23.5를 <strong><code>~/local</code></strong> 폴더에 설치한 후 원하는 버전을 선택해서 사용하는 방법을 정리해 드리겠습니다. 🚀</p>
+<hr>
+<h2 id="-1-기존-go-1222-확인">✅ <strong>1. 기존 Go (1.22.2) 확인</strong></h2>
+<p>현재 기본 Go(1.22.2)가 <code>/usr/bin/go</code>에 설치되어 있음.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>/usr/bin/go version
+</span></span></code></pre></div><p>출력 예시:</p>
+<pre tabindex="0"><code>go version go1.22.2 linux/amd64
+</code></pre><hr>
+<h2 id="-2-새로운-go-버전-1231--1235-설치">✅ <strong>2. 새로운 Go 버전 (1.23.1 &amp; 1.23.5) 설치</strong></h2>
+<p>기존 Go(1.22.2)는 유지하면서, 추가 Go 버전을 설치하겠습니다.</p>
+<h3 id="-go-1231-다운로드-및-설치">🔹 <strong>Go 1.23.1 다운로드 및 설치</strong></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>mkdir -p ~/local
+</span></span><span style="display:flex;"><span>cd ~/local
+</span></span><span style="display:flex;"><span>wget https://go.dev/dl/go1.23.1.linux-amd64.tar.gz
+</span></span><span style="display:flex;"><span>tar -xzf go1.23.1.linux-amd64.tar.gz
+</span></span><span style="display:flex;"><span>mv go go1.23.1
+</span></span></code></pre></div><h3 id="-go-1235-다운로드-및-설치">🔹 <strong>Go 1.23.5 다운로드 및 설치</strong></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>cd ~/local
+</span></span><span style="display:flex;"><span>wget https://go.dev/dl/go1.23.5.linux-amd64.tar.gz
+</span></span><span style="display:flex;"><span>tar -xzf go1.23.5.linux-amd64.tar.gz
+</span></span><span style="display:flex;"><span>mv go go1.23.5
+</span></span></code></pre></div><p>설치 후 폴더 구조:</p></p>
+      </li>
+    
+      <li>
+        <a href="http://localhost:1313/posts/sdlc/mojo-install/">Mojo Install</a>
+        <p><h1 id="mojo-설치">Mojo 설치</h1>
+<p>Mojo는 Modular가 개발한 새로운 프로그래밍 언어로, Python과 유사하지만 더 높은 성능을 제공합니다. WSL (Windows Subsystem for Linux)의 Ubuntu 환경에서 Mojo를 설치하려면 다음과 같은 단계를 따르면 됩니다.</p>
+<hr>
+<h3 id="1-wsl-및-ubuntu-확인"><strong>1. WSL 및 Ubuntu 확인</strong></h3>
+<p>먼저 WSL이 설치되어 있고 Ubuntu가 실행 중인지 확인하세요.</p>
+<ul>
+<li>WSL이 설치되어 있지 않다면 <a href="https://learn.microsoft.com/ko-kr/windows/wsl/install">Microsoft 공식 문서</a>를 참고하여 설치하세요.</li>
+<li>Ubuntu는 Microsoft Store에서 다운로드하거나 명령줄에서 설치할 수 있습니다.</li>
+</ul>
+<p>WSL Ubuntu가 이미 설치되어 있다면, 터미널을 열고 다음 명령어로 Ubuntu 버전을 확인하세요:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>lsb_release -a
+</span></span></code></pre></div><hr>
+<h3 id="2-mojo-설치-준비"><strong>2. Mojo 설치 준비</strong></h3>
+<p>Mojo는 아직 초기 단계의 언어이므로 공식적으로 지원되는 패키지 관리자가 없습니다. 따라서 Modular의 공식 웹사이트나 CLI 도구를 사용하여 설치해야 합니다.</p></p>
+      </li>
+    
+      <li>
+        <a href="http://localhost:1313/posts/sdlc/mojo-curl/">Mojo Sample Code like Curl</a>
+        <p><h2 id="-mojo로-curl과-비슷한-기능-구현하기"><strong>🚀 Mojo로 <code>curl</code>과 비슷한 기능 구현하기</strong></h2>
+<p>Mojo는 Python과 유사한 문법을 가지면서도, 시스템 프로그래밍에 적합한 고성능 언어입니다. 현재 Mojo는 공식적으로 네트워크 라이브러리를 제공하지 않으므로, <strong>소켓을 활용하여 HTTP 요청을 보내는 <code>curl</code> 대체 기능</strong>을 직접 구현할 수 있습니다.</p>
+<hr>
+<h1 id="-1-mojo에서-http-요청curl-기능-구현하기"><strong>📌 1. Mojo에서 HTTP 요청(<code>curl</code> 기능) 구현하기</strong></h1>
+<p>다음 코드는 <strong>Mojo에서 <code>curl</code>과 유사한 기능을 수행하는 HTTP GET 요청 함수</strong>입니다.</p>
+<h3 id="-mojo_curlmojo-파일-생성"><strong>💾 <code>mojo_curl.mojo</code> 파일 생성</strong></h3>
+<p>아래 코드를 <code>mojo_curl.mojo</code>라는 파일에 저장하세요.</p>
+<pre tabindex="0"><code class="language-mojo" data-lang="mojo">import sys
+import socket
+
+# HTTP GET 요청 함수
+fn http_get(url: str) -&gt; str:
+    # URL 파싱
+    let parts = url.split(&#34;://&#34;)
+    if parts.size() != 2 or parts[0] != &#34;http&#34;:
+        return &#34;❌ 지원되지 않는 URL 형식입니다! (http만 지원)&#34;
+
+    let domain_path = parts[1].split(&#34;/&#34;, 1)
+    let host = domain_path[0]
+    let path = &#34;/&#34; + domain_path[1] if domain_path.size() &gt; 1 else &#34;/&#34;
+
+    # 소켓 생성 및 서버 연결
+    let sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.connect((host, 80))
+
+    # HTTP 요청 작성
+    let request = &#34;GET &#34; + path + &#34; HTTP/1.1\r\n&#34;
+    request += &#34;Host: &#34; + host + &#34;\r\n&#34;
+    request += &#34;User-Agent: Mojo-Curl/1.0\r\n&#34;
+    request += &#34;Connection: close\r\n\r\n&#34;
+
+    # 요청 전송
+    sock.send(request.encode())
+
+    # 응답 수신
+    let response = &#34;&#34;
+    while True:
+        let data = sock.recv(1024)
+        if not data:
+            break
+        response += data.decode()
+
+    sock.close()
+    return response
+
+# 명령줄에서 URL 입력 받기
+fn main():
+    if sys.argv.size() &lt; 2:
+        print(&#34;🛠 사용법: mojo run mojo_curl.mojo &lt;URL&gt;&#34;)
+        return
+
+    let url = sys.argv[1]
+    let response = http_get(url)
+    print(response)
+</code></pre><hr>
+<h1 id="-2-mojo-설치-및-실행-방법"><strong>📌 2. Mojo 설치 및 실행 방법</strong></h1>
+<p>Mojo는 현재 <strong>Linux 및 macOS에서만 실행 가능</strong>합니다.</p></p>
+      </li>
+    
+      <li>
         <a href="http://localhost:1313/posts/sdlc/beyond-compare-wsl/">Beyond Compare 4를 리눅스에 설치하기</a>
         <p><h1 id="beyond-compare-4를-리눅스에-설치하기">Beyond Compare 4를 리눅스에 설치하기</h1>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bash#:~$ cd ~/Downloads/
@@ -226,6 +1013,124 @@
       </li>
     
       <li>
+        <a href="http://localhost:1313/posts/sdlc/mojo/">MOJO</a>
+        <p><h1 id="mojo-사용처">Mojo 사용처</h1>
+<p>Mojo는 2023년에 출시된 비교적 새로운 프로그래밍 언어로, 아직 초기 단계에 있습니다. 따라서 현재까지 Mojo를 사용한 대표적인 오픈소스 프로젝트나 상용 프로젝트는 많지 않습니다. 그러나 Modular(모듈러)가 Mojo를 설계한 목적과 특징을 기반으로, Mojo가 어떤 유형의 프로젝트에 적합할지 예측할 수 있으며, 이미 공개된 몇 가지 실험적 또는 데모 프로젝트를 통해 그 활용 가능성을 확인할 수 있습니다.</p>
+<hr>
+<h3 id="1-mojo를-사용한-주요-프로젝트-및-사례"><strong>1. Mojo를 사용한 주요 프로젝트 및 사례</strong></h3>
+<h4 id="1-modular-ai-플랫폼"><strong>(1) Modular AI 플랫폼</strong></h4>
+<ul>
+<li><strong>프로젝트 설명</strong>: Modular는 Mojo를 개발한 회사이며, 이들의 주요 목표는 AI 및 머신러닝 워크플로우를 최적화하는 것입니다. Modular AI 플랫폼은 Mojo를 기반으로 구축되며, 고성능 컴퓨팅과 AI 모델 개발을 지원합니다.</li>
+<li><strong>왜 Mojo를 사용했는가?</strong>
+<ul>
+<li><strong>고성능 요구사항</strong>: AI 모델 학습 및 추론은 대규모 데이터와 복잡한 계산을 필요로 합니다. Mojo는 LLVM 기반으로 컴파일되며 SIMD(Single Instruction, Multiple Data) 명령어와 병렬 처리를 내장으로 지원하여 Python보다 훨씬 빠른 성능을 제공합니다.</li>
+<li><strong>Python 호환성</strong>: 많은 AI/ML 프로젝트는 Python 기반으로 작성되어 있습니다. Mojo는 Python 문법과 생태계를 유지하면서도 성능을 극대화하므로, 기존 코드베이스를 쉽게 마이그레이션하거나 확장할 수 있습니다.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="2-과학-컴퓨팅-및-시뮬레이션"><strong>(2) 과학 컴퓨팅 및 시뮬레이션</strong></h4>
+<ul>
+<li><strong>프로젝트 설명</strong>: 일부 연구자들은 Mojo를 사용하여 물리 시뮬레이션, 기상 예측, 분자 동역학 시뮬레이션 등을 구현하고 있습니다. 이러한 작업은 일반적으로 C++ 또는 Fortran으로 작성되었지만, Mojo는 Python의 가독성과 Rust 수준의 성능을 결합하여 더 접근하기 쉬운 솔루션을 제공합니다.</li>
+<li><strong>왜 Mojo를 사용했는가?</strong>
+<ul>
+<li><strong>성능 최적화</strong>: 과학 컴퓨팅은 높은 계산 성능을 요구하며, Mojo는 이를 위해 SIMD 및 병렬 처리를 내장으로 지원합니다.</li>
+<li><strong>생산성 향상</strong>: Python처럼 간결한 문법을 사용하여 코드 작성이 빠르며, 동시에 성능 저하 없이 작업을 완료할 수 있습니다.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="3-실시간-데이터-처리"><strong>(3) 실시간 데이터 처리</strong></h4>
+<ul>
+<li><strong>프로젝트 설명</strong>: 실시간 스트리밍 데이터를 처리하거나 금융 거래 시스템에서 사용되는 고성능 애플리케이션에서도 Mojo가 활용될 가능성이 큽니다. 예를 들어, 주식 시장 데이터를 실시간으로 분석하고 트레이딩 신호를 생성하는 시스템이 Mojo로 구현될 수 있습니다.</li>
+<li><strong>왜 Mojo를 사용했는가?</strong>
+<ul>
+<li><strong>저지연(Low Latency)</strong>: 실시간 데이터 처리는 매우 짧은 시간 내에 데이터를 처리해야 하며, Mojo는 이러한 요구를 충족할 수 있는 성능을 제공합니다.</li>
+<li><strong>병렬 처리</strong>: Mojo의 내장된 병렬 처리 기능은 다중 코어를 효율적으로 활용하여 데이터 처리 속도를 극대화합니다.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="2-mojo를-선택한-이유-요약"><strong>2. Mojo를 선택한 이유 요약</strong></h3>
+<table>
+  <thead>
+      <tr>
+          <th><strong>특징</strong></th>
+          <th><strong>왜 Mojo를 선택했는가?</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>고성능</strong></td>
+          <td>LLVM 기반 컴파일러와 SIMD, 병렬 처리를 통해 Python보다 훨씬 빠른 성능을 제공합니다.</td>
+      </tr>
+      <tr>
+          <td><strong>Python 호환성</strong></td>
+          <td>Python 문법과 생태계를 유지하므로, 기존 Python 코드를 쉽게 마이그레이션하거나 확장할 수 있습니다.</td>
+      </tr>
+      <tr>
+          <td><strong>메모리 안전성</strong></td>
+          <td>Rust와 유사한 메모리 관리 모델을 도입하여 안전하고 효율적인 메모리 사용이 가능합니다.</td>
+      </tr>
+      <tr>
+          <td><strong>개발 생산성</strong></td>
+          <td>Python처럼 간결한 문법을 사용하여 개발 속도를 높입니다.</td>
+      </tr>
+      <tr>
+          <td><strong>AI/ML 최적화</strong></td>
+          <td>AI/ML 워크플로우를 위한 고성능 컴퓨팅 환경을 제공합니다.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="3-mojo의-잠재적-활용-분야"><strong>3. Mojo의 잠재적 활용 분야</strong></h3>
+<p>현재 Mojo는 초기 단계이지만, 다음과 같은 분야에서 활용될 가능성이 큽니다:</p></p>
+      </li>
+    
+      <li>
+        <a href="http://localhost:1313/posts/sdlc/public-ip-cidr/">Public IP &amp; CIDR</a>
+        <p><h1 id="windows-powershell-에서-public-ip와-cidr-얻기---claude">Windows Powershell 에서 public IP와 CIDR 얻기 - claude</h1>
+<h2 id="테스트">테스트</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>(base) PS C:\workspace\blog\ryanpark-devsecops&gt; <span style="color:#75715e"># 방법 1: ipify API 사용</span>
+</span></span><span style="display:flex;"><span>(base) PS C:\workspace\blog\ryanpark-devsecops&gt; (Invoke-WebRequest -Uri <span style="color:#e6db74">&#34;https://api.ipify.org&#34;</span>).Content
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">44.214</span>.210.109                                                                                                                      (base) PS C:\workspace\blog\ryanpark-devsecops&gt;                                                                                     (base) PS C:\workspace\blog\ryanpark-devsecops&gt; <span style="color:#75715e"># 방방법법 2: ifconfig.me 사사용용                                                          (base) PS C:\workspace\blog\ryanpark-devsecops&gt; (Invoke-WebRequest -Uri &#34;https://ifconfig.me/ip&#34;).Content                           </span>
+</span></span><span style="display:flex;"><span>(base) PS C:\workspace\blog\ryanpark-devsecops&gt; 
+</span></span><span style="display:flex;"><span>(base) PS C:\workspace\blog\ryanpark-devsecops&gt; <span style="color:#75715e"># 방법 3: ipinfo.io 사용 (더 자세한 정보)</span>
+</span></span><span style="display:flex;"><span>(base) PS C:\workspace\blog\ryanpark-devsecops&gt; (Invoke-WebRequest -Uri <span style="color:#e6db74">&#34;https://ipinfo.io/json&#34;</span>).Content | ConvertFrom-Json
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ip       <span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#ae81ff">44.214</span>.210.109
+</span></span><span style="display:flex;"><span>hostname <span style="color:#960050;background-color:#1e0010">:</span> vpn-aws.blackduck.com
+</span></span><span style="display:flex;"><span>city     <span style="color:#960050;background-color:#1e0010">:</span> Ashburn
+</span></span><span style="display:flex;"><span>region   <span style="color:#960050;background-color:#1e0010">:</span> Virginia
+</span></span><span style="display:flex;"><span>country  <span style="color:#960050;background-color:#1e0010">:</span> US
+</span></span><span style="display:flex;"><span>loc      <span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#ae81ff">39.0437</span>,<span style="color:#ae81ff">-77.4875</span>
+</span></span><span style="display:flex;"><span>org      <span style="color:#960050;background-color:#1e0010">:</span> AS14618 Amazon.com, Inc.
+</span></span><span style="display:flex;"><span>postal   <span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#ae81ff">20147</span>
+</span></span><span style="display:flex;"><span>timezone <span style="color:#960050;background-color:#1e0010">:</span> America/New_York
+</span></span><span style="display:flex;"><span>readme   <span style="color:#960050;background-color:#1e0010">:</span> https<span style="color:#960050;background-color:#1e0010">:</span>//ipinfo.io/missingauth
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(base) PS C:\workspace\blog\ryanpark-devsecops&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Start-Process <span style="color:#e6db74">&#34;https://whois.domaintools.com/</span>$ip<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> Quick Stats
+</span></span><span style="display:flex;"><span>IP Location	United States United States Ashburn Amazon Data Services Nova
+</span></span><span style="display:flex;"><span>ASN	United States AS14618 AMAZON-AES, US (registered Nov <span style="color:#ae81ff">04</span>, <span style="color:#ae81ff">2005</span>)
+</span></span><span style="display:flex;"><span>Resolve Host	vpn-aws.blackduck.com
+</span></span><span style="display:flex;"><span>Whois Server	whois.arin.net
+</span></span><span style="display:flex;"><span>IP Address	<span style="color:#ae81ff">44.214</span>.210.109
+</span></span><span style="display:flex;"><span>NetRange<span style="color:#960050;background-color:#1e0010">:</span>       <span style="color:#ae81ff">44.192</span>.0.0 - <span style="color:#ae81ff">44.255</span>.255.255
+</span></span><span style="display:flex;"><span>CIDR<span style="color:#960050;background-color:#1e0010">:</span>           <span style="color:#ae81ff">44.192</span>.0.<span style="color:#ae81ff">0</span>/<span style="color:#ae81ff">10</span>
+</span></span></code></pre></div><hr>
+<h2 id="답변">답변</h2>
+<p>PowerShell에서 Public IP와 CIDR를 확인하는 방법을 알려드리겠습니다:</p></p>
+      </li>
+    
+      <li>
         <a href="http://localhost:1313/posts/sdlc/chrome/">Chrome</a>
         <p><h1 id="chrome-install-on-ubuntu">Chrome Install on Ubuntu</h1>
 <p>Ubuntu에서 Chrome을 완전히 제거하고 다시 설치하는 명령어 순서입니다:</p>
@@ -278,6 +1183,20 @@
 <h3 id="remove-saved-password">Remove saved password</h3>
 <p><img alt="alt text" loading="lazy" src=".md/mobaxterm/password-settings.png"></p>
 <p>It does not fix issue.</p></p>
+      </li>
+    
+      <li>
+        <a href="http://localhost:1313/posts/sdlc/git-branch/">Git - Change Branch</a>
+        <p><h1 id="clone-with-branch">Clone with branch</h1>
+<p>특정 브랜치를 바로 클론하려면 다음 명령어를 사용하시면 됩니다:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone -b 2025.3.maint https://gitlab.host_name/group_name/repo_name.git
+</span></span></code></pre></div><p>이 명령어는 지정된 URL에서 2025.3.maint 브랜치를 클론합니다. 기본적으로 로컬 디렉토리 이름은 저장소 이름(cnc-umbrella-chart)으로 생성됩니다.</p>
+<p>다른 디렉토리 이름을 지정하고 싶다면 URL 뒤에 원하는 디렉토리 이름을 추가하면 됩니다:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone -b 2025.3.maint https://gitlab.host_name/group_name/repo_name.git custom-directory-name
+</span></span></code></pre></div><p>이 명령어를 실행하면 2025.3.maint 브랜치만 가져오게 됩니다. 더 빠른 클론을 원한다면 <code>--single-branch</code> 옵션을 추가할 수 있습니다:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone -b 2025.3.maint --single-branch https://gitlab.host_name/group_name/repo_name.git
+</span></span></code></pre></div><h1 id="change-branch">Change branch</h1>
+<p>이미 main 브랜치를 clone하였다. 2025.3.maint 브랜치를 가져오는 방법은?</p></p>
       </li>
     
       <li>

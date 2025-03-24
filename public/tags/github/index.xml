@@ -10,9 +10,9 @@
     <atom:link href="http://localhost:1313/tags/github/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Different URL Formats for Accessing a Git Repository</title>
-      <link>http://localhost:1313/posts/operator/git--repo-access-url-formats/</link>
+      <link>http://localhost:1313/posts/technical-support/git--repo-access-url-formats/</link>
       <pubDate>Fri, 14 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/operator/git--repo-access-url-formats/</guid>
+      <guid>http://localhost:1313/posts/technical-support/git--repo-access-url-formats/</guid>
       <description>&lt;h2 id=&#34;-different-url-formats-for-accessing-a-git-repository&#34;&gt;&lt;strong&gt;🔹 Different URL Formats for Accessing a Git Repository&lt;/strong&gt;&lt;/h2&gt;
 &lt;p&gt;Git supports multiple protocols for accessing repositories, each with its own advantages and disadvantages in terms of authentication, security, and ease of use. Below is a summary of the common URL formats, their corresponding protocols, authentication methods, and a comparison of their pros and cons.&lt;/p&gt;
 &lt;hr&gt;

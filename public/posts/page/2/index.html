@@ -126,149 +126,148 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">MobaXterm Usage
+    <h2 class="entry-hint-parent">Mojo Sample Code like Curl
     </h2>
   </header>
   <div class="entry-content">
-    <p>Issue Remote side unexpectedly closed network connection
-────
-Session stopped - Press to exit tab - Press R to restart session - Press S to save terminal output to file
-Fix Remove saved password It does not fix issue.
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-02-19 00:00:00 +0000 UTC'>February 19, 2025</span>&nbsp;·&nbsp;1 min</footer>
-  <a class="entry-link" aria-label="post link to MobaXterm Usage" href="http://localhost:1313/posts/sdlc/mobaxterm/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">OpenWebUI
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>내가 설치한 방법 pip install open-webui open-webui serve –port 8180
-OpenWebUI 내 설정 Web browser URL: http://jonpark-ec2:8180/admin/settings OpenWebUI 는 ec2에 설치되어 있으므로 http://localhost:11434 를 사용한다.
-OpenAI API Manage OpenAI API Connections https://api.openai.com/v1 API Key Ollama API Manage Ollama API Connections http://localhost:11434 Trouble accessing Ollama? Click here for help. Direct Connections Direct Connections allow users to connect to their own OpenAI compatible API endpoints. Msty 에서 ec2 에 설치된 Ollama 접속하기 사용하지 말것것. 모든 것을 API key를 통해 처리함. ChatGPT 경우에도 API key 를 사용하면 별도의 요금이 차감됨.
+    <p>🚀 Mojo로 curl과 비슷한 기능 구현하기 Mojo는 Python과 유사한 문법을 가지면서도, 시스템 프로그래밍에 적합한 고성능 언어입니다. 현재 Mojo는 공식적으로 네트워크 라이브러리를 제공하지 않으므로, 소켓을 활용하여 HTTP 요청을 보내는 curl 대체 기능을 직접 구현할 수 있습니다.
+📌 1. Mojo에서 HTTP 요청(curl 기능) 구현하기 다음 코드는 Mojo에서 curl과 유사한 기능을 수행하는 HTTP GET 요청 함수입니다.
+💾 mojo_curl.mojo 파일 생성 아래 코드를 mojo_curl.mojo라는 파일에 저장하세요.
+import sysimport socket# HTTP GET 요청 함수fn http_get(url: str) -&gt; str:# URL 파싱let parts = url.split(&#34;://&#34;)if parts.size() != 2 or parts[0] != &#34;http&#34;:return &#34;❌ 지원되지 않는 URL 형식입니다! (http만 지원)&#34;let domain_path = parts[1].split(&#34;/&#34;, 1)let host = domain_path[0]let path = &#34;/&#34; &#43; domain_path[1] if domain_path.size() &gt; 1 else &#34;/&#34;# 소켓 생성 및 서버 연결let sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)sock.connect((host, 80))# HTTP 요청 작성let request = &#34;GET &#34; &#43; path &#43; &#34; HTTP/1.1\r\n&#34;request &#43;= &#34;Host: &#34; &#43; host &#43; &#34;\r\n&#34;request &#43;= &#34;User-Agent: Mojo-Curl/1.0\r\n&#34;request &#43;= &#34;Connection: close\r\n\r\n&#34;# 요청 전송sock.send(request.encode())# 응답 수신let response = &#34;&#34;while True:let data = sock.recv(1024)if not data:breakresponse &#43;= data.decode()sock.close()return response# 명령줄에서 URL 입력 받기fn main():if sys.argv.size() &lt; 2:print(&#34;🛠 사용법: mojo run mojo_curl.mojo &lt;URL&gt;&#34;)returnlet url = sys.argv[1]let response = http_get(url)print(response) 📌 2. Mojo 설치 및 실행 방법 Mojo는 현재 Linux 및 macOS에서만 실행 가능합니다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-02-19 00:00:00 +0000 UTC'>February 19, 2025</span>&nbsp;·&nbsp;16 min</footer>
-  <a class="entry-link" aria-label="post link to OpenWebUI" href="http://localhost:1313/posts/ai/openwebui/"></a>
+  <footer class="entry-footer"><span title='2025-02-27 00:00:00 +0000 UTC'>February 27, 2025</span>&nbsp;·&nbsp;3 min</footer>
+  <a class="entry-link" aria-label="post link to Mojo Sample Code like Curl" href="http://localhost:1313/posts/sdlc/mojo-curl/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">CERT Cpp Checker
+    <h2 class="entry-hint-parent">SRM Coverity Tool Connector Issues
     </h2>
   </header>
   <div class="entry-content">
-    <p></p>
-  </div>
-  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>February 17, 2025</span>&nbsp;·&nbsp;0 min</footer>
-  <a class="entry-link" aria-label="post link to CERT Cpp Checker" href="http://localhost:1313/posts/checker/cert-cpp-checker/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">CERT Java Checker
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>CERT SER03-J : Do not serialize unencrypted sensitive data. 죄송합니다. 이전에 제공된 정보에서 혼란을 드려 죄송합니다. CERT Java 보안 코딩 표준에서 SER03-J: 민감한 데이터를 암호화하지 않고 직렬화하지 마십시오라는 규칙은 민감한 정보가 직렬화 과정에서 노출되지 않도록 보호하기 위한 지침을 제공합니다.
-취약한 코드 예시 아래 코드는 사용자의 비밀번호를 평문으로 직렬화하여 파일에 저장하는 취약한 예제입니다.
-import java.io.*; public class UserInfo implements Serializable { private static final long serialVersionUID = 1L; private String username; private String password; // 민감한 데이터 public UserInfo(String username, String password) { this.username = username; this.password = password; } // getter 및 setter 생략 public static void main(String[] args) { UserInfo user = new UserInfo(&#34;user1&#34;, &#34;password123&#34;); // 객체를 파일에 직렬화 try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(&#34;user.ser&#34;))) { oos.writeObject(user); } catch (IOException e) { e.printStackTrace(); } } } 위 코드에서는 UserInfo 객체를 직렬화하여 user.ser 파일에 저장합니다. 그러나 password 필드는 암호화되지 않은 상태로 저장되므로, 파일이 유출되면 비밀번호가 노출될 수 있습니다.
+    <p>An unexpected error occurred while validating the connection 01207318
+🔍 문제 요약 및 해결 방법 ✅ 문제 요약 고객이 **Coverity(HTTP, 8080 포트)**에 대한 툴 커넥터 설정 중 “An unexpected error occurred while validating the connection” 오류가 발생했다고 보고함.
+로그를 확인한 결과, 다음과 같은 문제가 발생함:
+오류 메시지:
+ERROR - Creating a new NewHttpClient instance failed with: Response validation for [Coverity Session Cookie] encountered 1 error:1. Expected a [COVJSESSIONID-build] cookie in the response, but it was missing. Coverity 서버의 응답에서 COVJSESSIONID-build 세션 쿠키가 누락됨 고객 확인 사항:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>February 17, 2025</span>&nbsp;·&nbsp;3 min</footer>
-  <a class="entry-link" aria-label="post link to CERT Java Checker" href="http://localhost:1313/posts/checker/cert-java-checker/"></a>
+  <footer class="entry-footer"><span title='2025-02-27 00:00:00 +0000 UTC'>February 27, 2025</span>&nbsp;·&nbsp;2 min</footer>
+  <a class="entry-link" aria-label="post link to SRM Coverity Tool Connector Issues" href="http://localhost:1313/posts/technical-support/srm/srm-coverity-tool-connector/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Cpp Lamda
+    <h2 class="entry-hint-parent">Beyond Compare 4를 리눅스에 설치하기
     </h2>
   </header>
   <div class="entry-content">
-    <p>Cpp Lamda Variable is Private C&#43;&#43;에서 람다 함수는 외부 변수들을 캡처하여 내부에서 사용할 수 있습니다. 이때, 캡처된 변수들은 람다 객체의 멤버 변수로 저장되며, 이러한 멤버 변수들은 컴파일러에 의해 private 접근 지정자로 선언됩니다. 따라서, 람다 객체 외부에서는 이들 멤버 변수에 직접 접근할 수 없습니다.
-예제 코드 #include &lt;iostream&gt; #include &lt;functional&gt; int main() { int x = 10; // x를 값으로 캡처하는 람다 함수 auto lambda = [x]() mutable { std::cout &lt;&lt; &#34;Captured x: &#34; &lt;&lt; x &lt;&lt; std::endl; x&#43;&#43;; }; lambda(); // Captured x: 10 lambda(); // Captured x: 11 // 람다 객체의 멤버 변수 x에 직접 접근하려는 시도 // std::cout &lt;&lt; &#34;Internal x: &#34; &lt;&lt; lambda.x &lt;&lt; std::endl; // 오류: &#39;lambda&#39;의 &#39;x&#39;에 접근할 수 없음 return 0; } 분석 캡처된 변수의 저장: 람다 함수 [x]는 외부 변수 x를 값으로 캡처하여 람다 객체의 멤버 변수로 저장합니다.
+    <p>Beyond Compare 4를 리눅스에 설치하기 bash#:~$ cd ~/Downloads/ bash#:~/Downloads$ wget https://www.scootersoftware.com/bcompare-4.4.6.27483_amd64.deb --2025-02-25 14:58:16-- https://www.scootersoftware.com/bcompare-4.4.6.27483_amd64.deb Resolving www.scootersoftware.com (www.scootersoftware.com)... 72.32.90.250 Connecting to www.scootersoftware.com (www.scootersoftware.com)|72.32.90.250|:443... connected. HTTP request sent, awaiting response... 200 OK Length: 20609066 (20M) [application/octet-stream] Saving to: ‘bcompare-4.4.6.27483_amd64.deb’ bcompare-4.4.6.27483_amd64.deb 100%[=============================================================================&gt;] 19.65M 3.55MB/s in 6.7s 2025-02-25 14:58:24 (2.93 MB/s) - ‘bcompare-4.4.6.27483_amd64.deb’ saved [20609066/20609066] bash#:~/Downloads$ sudo apt install ./bcompare-4.4.6.27483_amd64.deb [sudo] password for jonpark: Reading package lists... Done Building dependency tree... Done Reading state information... Done Note, selecting &#39;bcompare&#39; instead of &#39;./bcompare-4.4.6.27483_amd64.deb&#39; The following package was automatically installed and is no longer required: libllvm17t64 Use &#39;sudo apt autoremove&#39; to remove it. The following NEW packages will be installed: bcompare 0 upgraded, 1 newly installed, 0 to remove and 16 not upgraded. Need to get 0 B/20.6 MB of archives. After this operation, 60.9 MB of additional disk space will be used. Get:1 /home/jonpark/Downloads/bcompare-4.4.6.27483_amd64.deb bcompare amd64 4.4.6-27483 [20.6 MB] Selecting previously unselected package bcompare. (Reading database ... 130187 files and directories currently installed.) Preparing to unpack .../bcompare-4.4.6.27483_amd64.deb ... Unpacking bcompare (4.4.6-27483) ... Setting up bcompare (4.4.6-27483) ... cp: cannot create regular file &#39;/usr/share/kservices5/&#39;: Not a directory Processing triggers for bamfdaemon (0.5.6&#43;22.04.20220217-0ubuntu5) ... Rebuilding /usr/share/applications/bamf-2.index... Processing triggers for desktop-file-utils (0.27-2build1) ... Processing triggers for gnome-menus (3.36.0-1.1ubuntu3) ... Processing triggers for shared-mime-info (2.4-4) ... Processing triggers for libc-bin (2.39-0ubuntu8.4) ... localepurge: Disk space freed: 0 KiB in /usr/share/locale localepurge: Disk space freed: 0 KiB in /usr/share/man localepurge: Disk space freed: 0 KiB in /usr/share/tcltk localepurge: Disk space freed: 0 KiB in /usr/share/cups/templates localepurge: Disk space freed: 0 KiB in /usr/share/cups/locale localepurge: Disk space freed: 0 KiB in /usr/share/cups/doc-root localepurge: Disk space freed: 0 KiB in /usr/share/cups/templates localepurge: Disk space freed: 0 KiB in /usr/share/cups/locale localepurge: Disk space freed: 0 KiB in /usr/share/cups/doc-root localepurge: Disk space freed: 0 KiB in /usr/share/help localepurge: Disk space freed: 0 KiB in /usr/share/vim/vim91/lang Total disk space freed by localepurge: 0 KiB N: Download is performed unsandboxed as root as file &#39;/home/jonpark/Downloads/bcompare-4.4.6.27483_amd64.deb&#39; couldn&#39;t be accessed by user &#39;_apt&#39;. - pkgAcquire::Run (13: Permission denied) ######################################## ## 아래부터는 옵션임. bash#:~/Downloads$ ls ~/.config/bcompare/ -al total 28K drwxrwxr-x 2 jonpark jonpark 4.0K Feb 25 15:05 ./ drwx------ 23 jonpark jonpark 4.0K Feb 25 15:05 ../ -rw-rw-r-- 1 jonpark jonpark 0 Feb 25 15:05 BCLOCK_11.0 -rw-rw-r-- 1 jonpark jonpark 546 Feb 25 15:05 BCState.xml -rw-rw-r-- 1 jonpark jonpark 204 Feb 25 15:05 BCState.xml.bak -rw-rw-r-- 1 jonpark jonpark 1 Feb 25 15:05 IsPro -rw-rw-r-- 1 jonpark jonpark 563 Feb 25 15:05 menu.ini -rw-rw-r-- 1 jonpark jonpark 48 Feb 25 15:07 registry.dat bash#:~/Downloads$ ls /usr/lib/beyondcompare/ bcmount32* bcmount.sh* BCompare.mad GPG-KEY-scootersoftware lib7z.so* libunrar.so* qt4/ scootersoftware.list bcmount64* BCompare* ext/ help/ libQt4Pas.so.5* mime.types scootersoftware-keyring.gpg bash#:~/Downloads$ cd /usr/lib/beyondcompare/ bash#:/usr/lib/beyondcompare$ ls bcmount32* bcmount.sh* BCompare.mad GPG-KEY-scootersoftware lib7z.so* libunrar.so* qt4/ scootersoftware.list bcmount64* BCompare* ext/ help/ libQt4Pas.so.5* mime.types scootersoftware-keyring.gpg bash#:/usr/lib/beyondcompare$ sudo cp BCompare BCompare.org bash#:/usr/lib/beyondcompare$ sudo cp -r ~/.config/bcompare ~/.config/bcompare.org bash#:/usr/lib/beyondcompare$ rm -rf ~/.config/bcompare bash#:/usr/lib/beyondcompare$ echo &#34;kill BC&#34; kill BC bash#:/usr/lib/beyondcompare$ sudo rm -rf ~/.config/bcompare #thinks bensonkb sudo sed -i &#34;s/??????????????????????/g&#34; /usr/lib/beyondcompare/BCompare bash#:/usr/lib/beyondcompare$ ## Start BC ## Enter license ## Works </p>
+  </div>
+  <footer class="entry-footer"><span title='2025-02-25 00:00:00 +0000 UTC'>February 25, 2025</span>&nbsp;·&nbsp;3 min</footer>
+  <a class="entry-link" aria-label="post link to Beyond Compare 4를 리눅스에 설치하기" href="http://localhost:1313/posts/sdlc/beyond-compare-wsl/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Coverity API SSL Issue
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Blackduck API 호출 시 발생하는 SSL 인증서 문제를 해결하는 Java 코드 - disable SSL Blackduck API 호출 시 발생하는 SSL 인증서 문제를 해결하는 Java 코드를 작성해드리겠습니다:
+import javax.net.ssl.*; import java.io.*; import java.net.HttpURLConnection; import java.net.URL; import java.security.cert.X509Certificate; import java.nio.charset.StandardCharsets; public class BlackDuckApiClient { private static void disableSSLVerification() { try { TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() { public X509Certificate[] getAcceptedIssuers() { return null; } public void checkClientTrusted(X509Certificate[] certs, String authType) { } public void checkServerTrusted(X509Certificate[] certs, String authType) { } } }; SSLContext sc = SSLContext.getInstance(&#34;SSL&#34;); sc.init(null, trustAllCerts, new java.security.SecureRandom()); HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory()); HostnameVerifier allHostsValid = (hostname, session) -&gt; true; HttpsURLConnection.setDefaultHostnameVerifier(allHostsValid); } catch (Exception e) { e.printStackTrace(); } } public static String authenticate(String baseUrl, String username, String password) { try { URL url = new URL(baseUrl &#43; &#34;/api/tokens/authenticate&#34;); HttpURLConnection conn = (HttpURLConnection) url.openConnection(); // 요청 설정 conn.setRequestMethod(&#34;POST&#34;); conn.setRequestProperty(&#34;Accept&#34;, &#34;application/vnd.blackducksoftware.user-4&#43;json&#34;); conn.setRequestProperty(&#34;Content-Type&#34;, &#34;application/json&#34;); // Basic Auth 설정 String auth = username &#43; &#34;:&#34; &#43; password; String encodedAuth = java.util.Base64.getEncoder().encodeToString(auth.getBytes()); conn.setRequestProperty(&#34;Authorization&#34;, &#34;Basic &#34; &#43; encodedAuth); conn.setDoOutput(true); // 응답 읽기 int responseCode = conn.getResponseCode(); if (responseCode == HttpURLConnection.HTTP_OK) { BufferedReader in = new BufferedReader( new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8)); String inputLine; StringBuilder response = new StringBuilder(); while ((inputLine = in.readLine()) != null) { response.append(inputLine); } in.close(); return response.toString(); } else { System.out.println(&#34;Response Code: &#34; &#43; responseCode); return null; } } catch (Exception e) { e.printStackTrace(); return null; } } public static void main(String[] args) { // SSL 검증 비활성화 disableSSLVerification(); String baseUrl = &#34;https://your-blackduck-server&#34;; String username = &#34;your-username&#34;; String password = &#34;your-password&#34;; String response = authenticate(baseUrl, username, password); System.out.println(&#34;Response: &#34; &#43; response); } } 안전한 운영 환경을 위한 인증서 설정 방법:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>February 17, 2025</span>&nbsp;·&nbsp;2 min</footer>
-  <a class="entry-link" aria-label="post link to Cpp Lamda" href="http://localhost:1313/posts/developer/cpp-lamda/"></a>
+  <footer class="entry-footer"><span title='2025-02-24 00:00:00 +0000 UTC'>February 24, 2025</span>&nbsp;·&nbsp;5 min</footer>
+  <a class="entry-link" aria-label="post link to Coverity API SSL Issue" href="http://localhost:1313/posts/technical-support/coverity/cov-api-ssl/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Git Usage
+    <h2 class="entry-hint-parent">MOJO
     </h2>
   </header>
   <div class="entry-content">
-    <p> GitHub에서 새로운 Repository(저장소)를 생성하는 방법 GitHub에서 새로운 Repository(저장소)를 생성하는 방법 GitHub에서 새로운 **Repository(저장소)**를 생성하는 방법을 단계별로 설명하겠습니다.
-방법 1: GitHub 웹사이트에서 직접 생성하는 방법
-방법 2: Git CLI를 사용하여 터미널에서 생성하는 방법
-📝 방법 1: GitHub 웹사이트에서 직접 생성하기 1️⃣ GitHub에 로그인 GitHub 홈페이지에 접속 후 로그인합니다. 2️⃣ 새 저장소 생성 페이지 이동 우측 상단의 &#43; 버튼을 클릭한 후 “New repository” 선택 또는 직접 새 저장소 생성 페이지로 이동 3️⃣ 저장소 정보 입력 Repository name (필수): 저장소 이름을 입력합니다. (예: my-new-repo) Description (선택): 저장소에 대한 설명을 입력합니다. Visibility 선택: Public(공개) → 누구나 볼 수 있음. Private(비공개) → 본인과 초대한 사용자만 접근 가능. 4️⃣ 추가 설정 ✅ Initialize this repository with a README (선택) 체크하면 기본적인 README.md 파일이 생성됨. ✅ .gitignore (선택) 특정 파일을 Git에서 무시하도록 설정 (예: Python, Node.js 등). ✅ License (선택) 오픈소스 라이선스를 설정 (예: MIT, Apache 2.0 등). 5️⃣ 저장소 생성 “Create repository” 버튼을 클릭하면 저장소가 생성됩니다. 6️⃣ 로컬 프로젝트와 연결 이제 로컬에서 작업 중인 프로젝트를 GitHub 저장소에 연결할 수 있습니다.
+    <p>Mojo 사용처 Mojo는 2023년에 출시된 비교적 새로운 프로그래밍 언어로, 아직 초기 단계에 있습니다. 따라서 현재까지 Mojo를 사용한 대표적인 오픈소스 프로젝트나 상용 프로젝트는 많지 않습니다. 그러나 Modular(모듈러)가 Mojo를 설계한 목적과 특징을 기반으로, Mojo가 어떤 유형의 프로젝트에 적합할지 예측할 수 있으며, 이미 공개된 몇 가지 실험적 또는 데모 프로젝트를 통해 그 활용 가능성을 확인할 수 있습니다.
+1. Mojo를 사용한 주요 프로젝트 및 사례 (1) Modular AI 플랫폼 프로젝트 설명: Modular는 Mojo를 개발한 회사이며, 이들의 주요 목표는 AI 및 머신러닝 워크플로우를 최적화하는 것입니다. Modular AI 플랫폼은 Mojo를 기반으로 구축되며, 고성능 컴퓨팅과 AI 모델 개발을 지원합니다. 왜 Mojo를 사용했는가? 고성능 요구사항: AI 모델 학습 및 추론은 대규모 데이터와 복잡한 계산을 필요로 합니다. Mojo는 LLVM 기반으로 컴파일되며 SIMD(Single Instruction, Multiple Data) 명령어와 병렬 처리를 내장으로 지원하여 Python보다 훨씬 빠른 성능을 제공합니다. Python 호환성: 많은 AI/ML 프로젝트는 Python 기반으로 작성되어 있습니다. Mojo는 Python 문법과 생태계를 유지하면서도 성능을 극대화하므로, 기존 코드베이스를 쉽게 마이그레이션하거나 확장할 수 있습니다. (2) 과학 컴퓨팅 및 시뮬레이션 프로젝트 설명: 일부 연구자들은 Mojo를 사용하여 물리 시뮬레이션, 기상 예측, 분자 동역학 시뮬레이션 등을 구현하고 있습니다. 이러한 작업은 일반적으로 C&#43;&#43; 또는 Fortran으로 작성되었지만, Mojo는 Python의 가독성과 Rust 수준의 성능을 결합하여 더 접근하기 쉬운 솔루션을 제공합니다. 왜 Mojo를 사용했는가? 성능 최적화: 과학 컴퓨팅은 높은 계산 성능을 요구하며, Mojo는 이를 위해 SIMD 및 병렬 처리를 내장으로 지원합니다. 생산성 향상: Python처럼 간결한 문법을 사용하여 코드 작성이 빠르며, 동시에 성능 저하 없이 작업을 완료할 수 있습니다. (3) 실시간 데이터 처리 프로젝트 설명: 실시간 스트리밍 데이터를 처리하거나 금융 거래 시스템에서 사용되는 고성능 애플리케이션에서도 Mojo가 활용될 가능성이 큽니다. 예를 들어, 주식 시장 데이터를 실시간으로 분석하고 트레이딩 신호를 생성하는 시스템이 Mojo로 구현될 수 있습니다. 왜 Mojo를 사용했는가? 저지연(Low Latency): 실시간 데이터 처리는 매우 짧은 시간 내에 데이터를 처리해야 하며, Mojo는 이러한 요구를 충족할 수 있는 성능을 제공합니다. 병렬 처리: Mojo의 내장된 병렬 처리 기능은 다중 코어를 효율적으로 활용하여 데이터 처리 속도를 극대화합니다. 2. Mojo를 선택한 이유 요약 특징 왜 Mojo를 선택했는가? 고성능 LLVM 기반 컴파일러와 SIMD, 병렬 처리를 통해 Python보다 훨씬 빠른 성능을 제공합니다. Python 호환성 Python 문법과 생태계를 유지하므로, 기존 Python 코드를 쉽게 마이그레이션하거나 확장할 수 있습니다. 메모리 안전성 Rust와 유사한 메모리 관리 모델을 도입하여 안전하고 효율적인 메모리 사용이 가능합니다. 개발 생산성 Python처럼 간결한 문법을 사용하여 개발 속도를 높입니다. AI/ML 최적화 AI/ML 워크플로우를 위한 고성능 컴퓨팅 환경을 제공합니다. 3. Mojo의 잠재적 활용 분야 현재 Mojo는 초기 단계이지만, 다음과 같은 분야에서 활용될 가능성이 큽니다:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>February 17, 2025</span>&nbsp;·&nbsp;24 min</footer>
-  <a class="entry-link" aria-label="post link to Git Usage" href="http://localhost:1313/posts/sdlc/git/"></a>
+  <footer class="entry-footer"><span title='2025-02-24 00:00:00 +0000 UTC'>February 24, 2025</span>&nbsp;·&nbsp;6 min</footer>
+  <a class="entry-link" aria-label="post link to MOJO" href="http://localhost:1313/posts/sdlc/mojo/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Hyundai Cpp Checker
+    <h2 class="entry-hint-parent">Public IP &amp; CIDR
     </h2>
   </header>
   <div class="entry-content">
-    <p>HYUNDAI MP-OOP-011 HYUNDAI MP-OOP-011 룰은 C&#43;&#43; 프로그래밍에서 클래스의 멤버 변수를 직접적으로 노출하지 말고, 적절한 접근 제어를 통해 캡슐화(encapsulation)를 유지하라는 원칙을 강조합니다.
-1. 룰의 목적 데이터 보호: 클래스 내부의 데이터가 외부 코드에 의해 직접 수정되는 것을 방지하여 무결성을 유지합니다. 유지보수성 향상: 데이터 접근을 메서드를 통해 제어함으로써 코드 변경 시 영향 범위를 최소화합니다. 캡슐화 준수: 객체 지향 프로그래밍의 기본 원칙인 캡슐화를 통해 데이터와 메서드를 하나의 단위로 묶어 관리합니다. 2. 권장 사항 멤버 변수의 접근 제어: 모든 멤버 변수를 private 또는 protected로 선언하여 외부에서 직접 접근하지 못하도록 합니다. 접근자 메서드 제공: 필요한 경우, 멤버 변수에 접근하기 위한 getter 및 setter 메서드를 제공합니다. 불필요한 공개 멤버 제거: 외부에서 직접 접근할 필요가 없는 멤버는 공개하지 않습니다. 3. 예시 잘못된 예:
+    <p>Windows Powershell 에서 public IP와 CIDR 얻기 - claude 테스트 (base) PS C:\workspace\blog\ryanpark-devsecops&gt; # 방법 1: ipify API 사용 (base) PS C:\workspace\blog\ryanpark-devsecops&gt; (Invoke-WebRequest -Uri &#34;https://api.ipify.org&#34;).Content 44.214.210.109 (base) PS C:\workspace\blog\ryanpark-devsecops&gt; (base) PS C:\workspace\blog\ryanpark-devsecops&gt; # 방방법법 2: ifconfig.me 사사용용 (base) PS C:\workspace\blog\ryanpark-devsecops&gt; (Invoke-WebRequest -Uri &#34;https://ifconfig.me/ip&#34;).Content (base) PS C:\workspace\blog\ryanpark-devsecops&gt; (base) PS C:\workspace\blog\ryanpark-devsecops&gt; # 방법 3: ipinfo.io 사용 (더 자세한 정보) (base) PS C:\workspace\blog\ryanpark-devsecops&gt; (Invoke-WebRequest -Uri &#34;https://ipinfo.io/json&#34;).Content | ConvertFrom-Json ip : 44.214.210.109 hostname : vpn-aws.blackduck.com city : Ashburn region : Virginia country : US loc : 39.0437,-77.4875 org : AS14618 Amazon.com, Inc. postal : 20147 timezone : America/New_York readme : https://ipinfo.io/missingauth (base) PS C:\workspace\blog\ryanpark-devsecops&gt; Start-Process &#34;https://whois.domaintools.com/$ip&#34; Quick Stats IP Location	United States United States Ashburn Amazon Data Services Nova ASN	United States AS14618 AMAZON-AES, US (registered Nov 04, 2005) Resolve Host	vpn-aws.blackduck.com Whois Server	whois.arin.net IP Address	44.214.210.109 NetRange: 44.192.0.0 - 44.255.255.255 CIDR: 44.192.0.0/10 답변 PowerShell에서 Public IP와 CIDR를 확인하는 방법을 알려드리겠습니다:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>February 17, 2025</span>&nbsp;·&nbsp;2 min</footer>
-  <a class="entry-link" aria-label="post link to Hyundai Cpp Checker" href="http://localhost:1313/posts/checker/hyundai-cpp-checker/"></a>
+  <footer class="entry-footer"><span title='2025-02-24 00:00:00 +0000 UTC'>February 24, 2025</span>&nbsp;·&nbsp;8 min</footer>
+  <a class="entry-link" aria-label="post link to Public IP & CIDR" href="http://localhost:1313/posts/sdlc/public-ip-cidr/"></a>
 </article>
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Hyundai Java Checker
+    <h2 class="entry-hint-parent">Chrome
     </h2>
   </header>
   <div class="entry-content">
-    <p>MJ-SER-002 : Do not serialize unencrypted sensitive data. CERT SER03-J 에 매핑됨
-https://documentation.blackduck.com/bundle/coverity-docs-2023.12/page/checker-ref/tables/hyundai-java.html
-https://documentation.blackduck.com/bundle/coverity-docs/page/checker-ref/tables/sei-cert-java-coding-standard.html
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>February 17, 2025</span>&nbsp;·&nbsp;1 min</footer>
-  <a class="entry-link" aria-label="post link to Hyundai Java Checker" href="http://localhost:1313/posts/checker/hyundai-java-checker/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Kiwoom
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p></p>
-  </div>
-  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>February 17, 2025</span>&nbsp;·&nbsp;0 min</footer>
-  <a class="entry-link" aria-label="post link to Kiwoom" href="http://localhost:1313/posts/ai/kiwoon/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Ollama
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>EC2의 Ubuntu 인스턴스에서 Ollama를 설치하고 사용하는 방법 EC2의 Ubuntu 인스턴스에서 Ollama를 설치하고 사용하는 방법을 안내해드리겠습니다.
-1. Ollama 설치 Ollama는 로컬 환경에서 대규모 언어 모델(LLM)을 실행할 수 있게 해주는 오픈 소스 프레임워크입니다. Ubuntu에서 Ollama를 설치하려면 다음 단계를 따르세요.
-시스템 업데이트 및 필수 패키지 설치:
-sudo apt update &amp;&amp; sudo apt upgrade -y sudo apt install -y curl Ollama 설치 스크립트 실행:
-curl -fsSL https://ollama.com/install.sh | sh 설치 확인:
-ollama --version 위 명령어를 실행하여 Ollama가 정상적으로 설치되었는지 확인합니다.
+    <p>Chrome Install on Ubuntu Ubuntu에서 Chrome을 완전히 제거하고 다시 설치하는 명령어 순서입니다:
+Chrome 제거: # Chrome 패키지 제거 sudo apt-get purge google-chrome-stable # 관련 의존성 패키지 제거 sudo apt-get autoremove # Chrome 설정 파일 제거 (선택사항) rm -rf ~/.config/google-chrome Chrome 다시 설치: # Chrome 다운로드를 위한 필요 패키지 설치 sudo apt-get install wget # Chrome 패키지 다운로드 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb # 다운로드한 패키지 설치 sudo dpkg -i google-chrome-stable_current_amd64.deb # 의존성 문제가 있다면 다음 명령어로 해결 sudo apt-get install -f # 다운로드한 설치 파일 제거 (선택사항) rm google-chrome-stable_current_amd64.deb 설치가 완료되면 Applications 메뉴나 터미널에서 google-chrome 명령어로 Chrome을 실행할 수 있습니다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>February 17, 2025</span>&nbsp;·&nbsp;13 min</footer>
-  <a class="entry-link" aria-label="post link to Ollama" href="http://localhost:1313/posts/ai/ollama/"></a>
+  <footer class="entry-footer"><span title='2025-02-21 00:00:00 +0000 UTC'>February 21, 2025</span>&nbsp;·&nbsp;1 min</footer>
+  <a class="entry-link" aria-label="post link to Chrome" href="http://localhost:1313/posts/sdlc/chrome/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Coverity Performance
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Expected a [COVJSESSIONID-build] cookie in the response, but it was missing 추가 로그 분석을 통해 더 자세한 상황을 파악할 수 있습니다:
+원래 문제:
+Expected a [COVJSESSIONID-build] cookie in the response, but it was missing 추가 로그 분석:
+인증 상태: Authentication=CovUsernameAuthenticationToken [Principal=admin (Admin User),Authenticated=true,RemoteIpAddress=10.2.150.57,SessionId=69FB1C3437377E29D3B887C9FDFA5403,Granted Authorities=[ROLE_AUTHENTICATED_USER]] 서버 측에서는 admin 사용자가 성공적으로 인증됨 세션이 정상적으로 생성됨 백그라운드 프로세스: com.coverity.ces.service.GarbageCollectionServiceImpl.runGarbageCollection GarbageCollection 서비스가 정상적으로 동작 중 수정된 해결 방안:
+세션 관련:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-02-21 00:00:00 +0000 UTC'>February 21, 2025</span>&nbsp;·&nbsp;4 min</footer>
+  <a class="entry-link" aria-label="post link to Coverity Performance" href="http://localhost:1313/posts/technical-support/coverity/cov-performance/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Dart
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Dart 와 JavaScript 비교교 Dart와 JavaScript 중 어떤 언어를 배우는 것이 더 좋은지는 Ryan의 목표와 개발하려는 서비스의 방향에 따라 다릅니다.
+✅ Dart를 배우는 것이 좋은 경우 Flutter를 활용한 크로스 플랫폼 앱 개발 Ryan이 모바일 앱 개발(특히 iOS &amp; Android) 을 목표로 한다면 Dart &#43; Flutter 조합이 유리합니다. 하나의 코드베이스로 iOS, Android, 웹까지 개발 가능하여 유지보수 비용을 절감할 수 있습니다. 안정적이고 타입 안정성이 중요한 경우 Dart는 정적 타입을 제공하여 코드의 안정성이 높고, 유지보수가 쉬운 편입니다. JavaScript보다 더 안전한 프로그래밍이 가능합니다. Google 생태계에 관심이 있다면 Dart는 Google이 적극적으로 지원하는 언어이므로, Google 관련 기술과 함께 사용하기 좋습니다. ✅ JavaScript를 배우는 것이 좋은 경우 웹 서비스 개발이 목표라면 Ryan이 웹 기반 서비스(프론트엔드 &amp; 백엔드) 를 개발하려면 JavaScript가 훨씬 강력한 선택지입니다. React, Vue, Angular 등 다양한 웹 프레임워크를 활용할 수 있습니다. 서버 개발도 Node.js 를 활용해 JavaScript로 가능하므로 전체 개발이 JavaScript로 통일됩니다. 더 많은 오픈 소스 및 커뮤니티 지원을 원한다면 JavaScript는 웹 개발의 표준이며, 가장 많은 라이브러리와 프레임워크가 존재합니다. Dart에 비해 커뮤니티가 훨씬 크며, 문제 해결이 빠릅니다. 프론트엔드 개발자가 되고 싶다면 JavaScript는 웹 브라우저에서 기본적으로 실행되는 언어이므로, 프론트엔드 개발자 를 목표로 한다면 필수입니다. ⚖️ 결론: Ryan에게 적합한 선택 웹 서비스를 중심으로 개발하려면? → JavaScript 모바일 앱을 중심으로 개발하려면? → Dart &#43; Flutter 웹과 모바일을 모두 고려한다면? 웹이 더 중요하면 JavaScript 모바일이 더 중요하면 Dart Ryan이 만들고 싶은 서비스가 웹 기반이라면 JavaScript가 더 적합할 가능성이 큽니다.
+어떤 서비스를 만들고 싶은지 더 구체적으로 이야기해주면 더 적합한 선택을 도와줄 수 있어요!
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-02-21 00:00:00 +0000 UTC'>February 21, 2025</span>&nbsp;·&nbsp;5 min</footer>
+  <a class="entry-link" aria-label="post link to Dart" href="http://localhost:1313/posts/developer/dart/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Nest.js
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Next.js 와와 SpringBoot 비교 속도비교 NestJS와 Spring Boot는 각각의 장단점이 있지만, 개발 속도 측면에서 비교할 때는 NestJS가 더 빠를 수 있는 몇 가지 이유가 있습니다. 다만, 최종 선택은 프로젝트의 요구 사항과 팀의 경험에 따라 달라질 수 있습니다. 아래에서 두 프레임워크를 비교해보겠습니다.
+1. NestJS의 빠른 개발 속도 JavaScript/TypeScript 기반: NestJS는 TypeScript를 기본으로 사용합니다. TypeScript는 자바스크립트를 확장한 언어로, 컴파일 시 타입 검사를 제공하여 코드 작성 중 버그를 미리 잡을 수 있습니다. 또한, JavaScript와 TypeScript는 웹 프론트엔드 개발에서 널리 사용되기 때문에, 프론트엔드와 백엔드 개발자들이 같은 언어를 사용할 수 있어 통합 개발 속도가 빨라질 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-02-21 00:00:00 +0000 UTC'>February 21, 2025</span>&nbsp;·&nbsp;18 min</footer>
+  <a class="entry-link" aria-label="post link to Nest.js" href="http://localhost:1313/posts/developer/javascipt/nestjs/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

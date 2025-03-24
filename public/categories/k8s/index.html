@@ -123,6 +123,33 @@
   <ul>
     
       <li>
+        <a href="http://localhost:1313/posts/k8s_docker/k9s/">k9s install</a>
+        <p><h1 id="내-작업">내 작업</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 최신 릴리스 버전 확인</span>
+</span></span><span style="display:flex;"><span>RELEASE<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>curl -s https://api.github.com/repos/derailed/k9s/releases/latest | grep <span style="color:#e6db74">&#39;&#34;tag_name&#34;:&#39;</span> | sed -E <span style="color:#e6db74">&#39;s/.*&#34;([^&#34;]+)&#34;.*/\1/&#39;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 바이너리 다운로드</span>
+</span></span><span style="display:flex;"><span>curl -L https://github.com/derailed/k9s/releases/download/<span style="color:#e6db74">${</span>RELEASE<span style="color:#e6db74">}</span>/k9s_Linux_amd64.tar.gz -o k9s.tar.gz
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 압축 해제</span>
+</span></span><span style="display:flex;"><span>mkdir -p k9s
+</span></span><span style="display:flex;"><span>tar -xzf k9s.tar.gz -C k9s
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 실행 파일 이동</span>
+</span></span><span style="display:flex;"><span>sudo mv k9s/k9s /usr/local/bin/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 실행 권한 부여</span>
+</span></span><span style="display:flex;"><span>sudo chmod +x /usr/local/bin/k9s
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 임시 파일 정리</span>
+</span></span><span style="display:flex;"><span>rm -rf k9s k9s.tar.gz
+</span></span></code></pre></div><hr>
+<h1 id="install-instruction-from-web">install instruction from web</h1>
+<p>K9s is easy to get up and running in Ubuntu with the following:</p></p>
+      </li>
+    
+      <li>
         <a href="http://localhost:1313/posts/k8s_docker/k8s-kind/">KinD for k8s</a>
         <p><hr>
 <h1 id="kind로-3개의-worker-node를-포함한-클러스터를-만드는-bash-스크립트">KinD로 3개의 worker node를 포함한 클러스터를 만드는 Bash 스크립트</h1>

@@ -6,13 +6,59 @@
     <description>Recent content in Ops on RyanPark&#39;s DevSecOps</description>
     <generator>Hugo -- 0.142.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Mon, 24 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 04 Mar 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/ops/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Gcc Visibility</title>
+      <link>http://localhost:1313/posts/technical-support/coverity/cov-gcc-visibility/</link>
+      <pubDate>Tue, 04 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/technical-support/coverity/cov-gcc-visibility/</guid>
+      <description>&lt;h1 id=&#34;gcc-visibility&#34;&gt;Gcc Visibility&lt;/h1&gt;
+&lt;p&gt;전처리된 파일에서 보이는 &lt;code&gt;basic_string&lt;/code&gt; 함수의 속성과 컴파일러 옵션이 CIM 소스 창에서 이 함수들이 보이지 않는 이유에 대해 자세히 설명해 드리겠습니다.&lt;/p&gt;
+&lt;h2 id=&#34;가시성-속성-상세-설명&#34;&gt;가시성 속성 상세 설명&lt;/h2&gt;
+&lt;p&gt;다음 코드 라인을 살펴보겠습니다:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;inline&lt;/span&gt; __attribute__ ((__visibility__(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;hidden&amp;#34;&lt;/span&gt;))) __attribute__ ((__exclude_from_explicit_instantiation__))
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;이것은 함수에 두 가지 중요한 GCC/Clang 속성을 적용하고 있습니다:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;__attribute__ ((__visibility__(&amp;quot;hidden&amp;quot;)))&lt;/code&gt; - 이 속성은 컴파일러에게 함수에 &amp;ldquo;hidden&amp;rdquo; 가시성을 부여하도록 지시합니다:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;이 심볼은 공유 라이브러리/실행 파일에서 내보내지지 않습니다&lt;/li&gt;
+&lt;li&gt;다른 모듈에서 동적 링크를 통해 접근할 수 없습니다&lt;/li&gt;
+&lt;li&gt;정의된 컴파일 단위나 라이브러리 내에서만 접근 가능합니다&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;__attribute__ ((__exclude_from_explicit_instantiation__))&lt;/code&gt; - 이 속성은 컴파일러에게 이 함수를 어떤 명시적 템플릿 인스턴스화에도 포함시키지 말라고 지시합니다. 이는 코드 크기를 줄이고 중복 정의를 방지하는 데 도움이 됩니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>SRM Coverity Tool Connector Issues</title>
+      <link>http://localhost:1313/posts/technical-support/srm/srm-coverity-tool-connector/</link>
+      <pubDate>Thu, 27 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/technical-support/srm/srm-coverity-tool-connector/</guid>
+      <description>&lt;h1 id=&#34;an-unexpected-error-occurred-while-validating-the-connection&#34;&gt;An unexpected error occurred while validating the connection&lt;/h1&gt;
+&lt;p&gt;01207318&lt;/p&gt;
+&lt;h3 id=&#34;-문제-요약-및-해결-방법&#34;&gt;&lt;strong&gt;🔍 문제 요약 및 해결 방법&lt;/strong&gt;&lt;/h3&gt;
+&lt;h4 id=&#34;-문제-요약&#34;&gt;✅ &lt;strong&gt;문제 요약&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;고객이 **Coverity(HTTP, 8080 포트)**에 대한 툴 커넥터 설정 중 &lt;strong&gt;&amp;ldquo;An unexpected error occurred while validating the connection&amp;rdquo;&lt;/strong&gt; 오류가 발생했다고 보고함.&lt;br&gt;
+로그를 확인한 결과, 다음과 같은 문제가 발생함:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;오류 메시지:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;ERROR - Creating a new NewHttpClient instance failed with: Response validation for [Coverity Session Cookie] encountered 1 error:
+1. Expected a [COVJSESSIONID-build] cookie in the response, but it was missing.
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;Coverity 서버의 응답에서 &lt;strong&gt;&lt;code&gt;COVJSESSIONID-build&lt;/code&gt; 세션 쿠키가 누락됨&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;고객 확인 사항:&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Coverity API SSL Issue</title>
-      <link>http://localhost:1313/posts/operator/coverity/cov--api-ssl/</link>
+      <link>http://localhost:1313/posts/technical-support/coverity/cov-api-ssl/</link>
       <pubDate>Mon, 24 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/operator/coverity/cov--api-ssl/</guid>
+      <guid>http://localhost:1313/posts/technical-support/coverity/cov-api-ssl/</guid>
       <description>&lt;h1 id=&#34;blackduck-api-호출-시-발생하는-ssl-인증서-문제를-해결하는-java-코드---disable-ssl&#34;&gt;Blackduck API 호출 시 발생하는 SSL 인증서 문제를 해결하는 Java 코드 - disable SSL&lt;/h1&gt;
 &lt;p&gt;Blackduck API 호출 시 발생하는 SSL 인증서 문제를 해결하는 Java 코드를 작성해드리겠습니다:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; javax.net.ssl.*;
@@ -101,55 +147,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;안전한 운영 환경을 위한 인증서 설정 방법:&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Public IP &amp; CIDR</title>
-      <link>http://localhost:1313/posts/sdlc/public-ip-cidr/</link>
-      <pubDate>Mon, 24 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/sdlc/public-ip-cidr/</guid>
-      <description>&lt;h1 id=&#34;windows-powershell-에서-public-ip와-cidr-얻기---claude&#34;&gt;Windows Powershell 에서 public IP와 CIDR 얻기 - claude&lt;/h1&gt;
-&lt;h2 id=&#34;테스트&#34;&gt;테스트&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;(base) PS C:\workspace\blog\ryanpark-devsecops&amp;gt; &lt;span style=&#34;color:#75715e&#34;&gt;# 방법 1: ipify API 사용&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;(base) PS C:\workspace\blog\ryanpark-devsecops&amp;gt; (Invoke-WebRequest -Uri &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://api.ipify.org&amp;#34;&lt;/span&gt;).Content
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;44.214&lt;/span&gt;.210.109                                                                                                                      (base) PS C:\workspace\blog\ryanpark-devsecops&amp;gt;                                                                                     (base) PS C:\workspace\blog\ryanpark-devsecops&amp;gt; &lt;span style=&#34;color:#75715e&#34;&gt;# 방방법법 2: ifconfig.me 사사용용                                                          (base) PS C:\workspace\blog\ryanpark-devsecops&amp;gt; (Invoke-WebRequest -Uri &amp;#34;https://ifconfig.me/ip&amp;#34;).Content                           &lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;(base) PS C:\workspace\blog\ryanpark-devsecops&amp;gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;(base) PS C:\workspace\blog\ryanpark-devsecops&amp;gt; &lt;span style=&#34;color:#75715e&#34;&gt;# 방법 3: ipinfo.io 사용 (더 자세한 정보)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;(base) PS C:\workspace\blog\ryanpark-devsecops&amp;gt; (Invoke-WebRequest -Uri &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://ipinfo.io/json&amp;#34;&lt;/span&gt;).Content | ConvertFrom-Json
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ip       &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;44.214&lt;/span&gt;.210.109
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hostname &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;:&lt;/span&gt; vpn-aws.blackduck.com
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;city     &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;:&lt;/span&gt; Ashburn
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;region   &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;:&lt;/span&gt; Virginia
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;country  &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;:&lt;/span&gt; US
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;loc      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;39.0437&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;-77.4875&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;org      &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;:&lt;/span&gt; AS14618 Amazon.com, Inc.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;postal   &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;20147&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;timezone &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;:&lt;/span&gt; America/New_York
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;readme   &lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;:&lt;/span&gt; https&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;:&lt;/span&gt;//ipinfo.io/missingauth
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;(base) PS C:\workspace\blog\ryanpark-devsecops&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Start-Process &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://whois.domaintools.com/&lt;/span&gt;$ip&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; Quick Stats
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;IP Location	United States United States Ashburn Amazon Data Services Nova
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ASN	United States AS14618 AMAZON-AES, US (registered Nov &lt;span style=&#34;color:#ae81ff&#34;&gt;04&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2005&lt;/span&gt;)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Resolve Host	vpn-aws.blackduck.com
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Whois Server	whois.arin.net
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;IP Address	&lt;span style=&#34;color:#ae81ff&#34;&gt;44.214&lt;/span&gt;.210.109
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;NetRange&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;:&lt;/span&gt;       &lt;span style=&#34;color:#ae81ff&#34;&gt;44.192&lt;/span&gt;.0.0 - &lt;span style=&#34;color:#ae81ff&#34;&gt;44.255&lt;/span&gt;.255.255
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;CIDR&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;:&lt;/span&gt;           &lt;span style=&#34;color:#ae81ff&#34;&gt;44.192&lt;/span&gt;.0.&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;/&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
-&lt;h2 id=&#34;답변&#34;&gt;답변&lt;/h2&gt;
-&lt;p&gt;PowerShell에서 Public IP와 CIDR를 확인하는 방법을 알려드리겠습니다:&lt;/p&gt;</description>
-    </item>
-    <item>
       <title>Coverity Performance</title>
-      <link>http://localhost:1313/posts/operator/coverity/cov--performance/</link>
+      <link>http://localhost:1313/posts/technical-support/coverity/cov-performance/</link>
       <pubDate>Fri, 21 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/operator/coverity/cov--performance/</guid>
+      <guid>http://localhost:1313/posts/technical-support/coverity/cov-performance/</guid>
       <description>&lt;h1 id=&#34;expected-a-covjsessionid-build-cookie-in-the-response-but-it-was-missing&#34;&gt;Expected a [COVJSESSIONID-build] cookie in the response, but it was missing&lt;/h1&gt;
 &lt;p&gt;추가 로그 분석을 통해 더 자세한 상황을 파악할 수 있습니다:&lt;/p&gt;
 &lt;p&gt;원래 문제:&lt;/p&gt;
@@ -183,9 +184,9 @@
     </item>
     <item>
       <title>Different URL Formats for Accessing a Git Repository</title>
-      <link>http://localhost:1313/posts/operator/git--repo-access-url-formats/</link>
+      <link>http://localhost:1313/posts/technical-support/git--repo-access-url-formats/</link>
       <pubDate>Fri, 14 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/operator/git--repo-access-url-formats/</guid>
+      <guid>http://localhost:1313/posts/technical-support/git--repo-access-url-formats/</guid>
       <description>&lt;h2 id=&#34;-different-url-formats-for-accessing-a-git-repository&#34;&gt;&lt;strong&gt;🔹 Different URL Formats for Accessing a Git Repository&lt;/strong&gt;&lt;/h2&gt;
 &lt;p&gt;Git supports multiple protocols for accessing repositories, each with its own advantages and disadvantages in terms of authentication, security, and ease of use. Below is a summary of the common URL formats, their corresponding protocols, authentication methods, and a comparison of their pros and cons.&lt;/p&gt;
 &lt;hr&gt;
@@ -245,9 +246,9 @@
     </item>
     <item>
       <title>SRM : Reset Admin Password on MariaDB</title>
-      <link>http://localhost:1313/posts/operator/srm/srm--reset-mariadb-admin-password/</link>
+      <link>http://localhost:1313/posts/technical-support/srm/srm-reset-mariadb-admin-password/</link>
       <pubDate>Mon, 03 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/operator/srm/srm--reset-mariadb-admin-password/</guid>
+      <guid>http://localhost:1313/posts/technical-support/srm/srm-reset-mariadb-admin-password/</guid>
       <description>&lt;p&gt;How to reset admin password on MariaDB from SRM (Softeware Risk Manager).&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;This script recovers from a lost or forgotten super-admin password. It resets both the super-admin password and the database root user password to the provided value By SRM&lt;/p&gt;
@@ -360,9 +361,9 @@
     </item>
     <item>
       <title>Azure DevOps API Rate Limits</title>
-      <link>http://localhost:1313/posts/operator/azure--devops-api-rate-limits/</link>
+      <link>http://localhost:1313/posts/technical-support/azure--devops-api-rate-limits/</link>
       <pubDate>Fri, 31 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/operator/azure--devops-api-rate-limits/</guid>
+      <guid>http://localhost:1313/posts/technical-support/azure--devops-api-rate-limits/</guid>
       <description>&lt;h2 id=&#34;azure-devops-api-rate-limits&#34;&gt;&lt;strong&gt;Azure DevOps API Rate Limits&lt;/strong&gt;&lt;/h2&gt;
 &lt;p&gt;Azure DevOps imposes &lt;strong&gt;rate limits&lt;/strong&gt; on its REST API to ensure fair usage and prevent abuse. If you exceed these limits, your API requests may be throttled, resulting in HTTP &lt;code&gt;429 Too Many Requests&lt;/code&gt; responses. To avoid this, it&amp;rsquo;s important to monitor and manage your API usage.&lt;/p&gt;
 &lt;p&gt;Here’s how you can check and handle Azure DevOps Work Items API rate limits:&lt;/p&gt;
@@ -372,9 +373,9 @@
     </item>
     <item>
       <title>How to send findings from SRM (Software Risk Management) to Azure DevOps Work Items</title>
-      <link>http://localhost:1313/posts/operator/srm/srm--findings-to-azure-devops-work/</link>
+      <link>http://localhost:1313/posts/technical-support/srm/srm-findings-to-azure-devops-work/</link>
       <pubDate>Fri, 31 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/operator/srm/srm--findings-to-azure-devops-work/</guid>
+      <guid>http://localhost:1313/posts/technical-support/srm/srm-findings-to-azure-devops-work/</guid>
       <description>&lt;p&gt;how to check Azure DevOps Work Items API rate limit&lt;/p&gt;
 &lt;h2 id=&#34;how-to-send-findings-from-srm-software-risk-management-to-azure-devops-work-items&#34;&gt;How to send findings from SRM (Software Risk Management) to Azure DevOps Work Items&lt;/h2&gt;
 &lt;p&gt;To send findings from &lt;strong&gt;SRM (Software Risk Management)&lt;/strong&gt; to &lt;strong&gt;Azure DevOps Work Items&lt;/strong&gt;, you can follow the steps outlined below. This process involves using the Azure DevOps REST API to create or update work items based on the SRM findings. Here&amp;rsquo;s a detailed guide:&lt;/p&gt;

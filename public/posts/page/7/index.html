@@ -100,18 +100,28 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/posts/" title="Posts">
-                    <span class="active">Posts</span>
+                <a href="http://localhost:1313/search/" title="검색">
+                    <span>검색</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/" title="Categories">
-                    <span>Categories</span>
+                <a href="http://localhost:1313/categories/" title="카테고리">
+                    <span>카테고리</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
-                    <span>Tags</span>
+                <a href="http://localhost:1313/tags/" title="태그">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archives/" title="연도">
+                    <span>연도</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="어바웃미">
+                    <span>어바웃미</span>
                 </a>
             </li>
         </ul>
@@ -123,6 +133,20 @@
     Posts
   </h1>
 </header>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>issue 1 error 현재 다른 cluster 에 있어서 발생하는 문제임
+&#43; [[ true == true ]] &#43; CNC_INSTALL_MINIO=true &#43;&#43; kubectl get nodes &#39;-o=jsonpath={.items[0].metadata.labels.pool-type}&#39; &#43; pool_type= &#43; &#39;[&#39; &#39;&#39; &#39;!=&#39; cnc-custom-node-pool-label &#39;]&#39; &#43; kubectl label nodes --overwrite kind-control-plane pool-type=cnc-custom-node-pool-label Error from server (NotFound): nodes &#34;kind-control-plane&#34; not found (base) jonpark@aws-sig-ts-jonpark:~/workspace/jonpark-work/cnc-umbrella-chart-2025.3.maint/local-dev$ ^C (base) jonpark@aws-sig-ts-jonpark:~/workspace/jonpark-work/cnc-umbrella-chart-20 (base) jonpark@aws-sig-ts-jonpark:~/workspace/jonpark-work/cnc-umbrella-chart-2025.3.maint/local-dev$ kubectl get nodes NAME STATUS ROLES AGE VERSION gke-jonpark-poc-clus-jonpark-poc-prim-6e8a38c0-nihf Ready &lt;none&gt; 8d v1.30.9-gke.1127000 gke-jonpark-poc-clus-jonpark-poc-prim-6e8a38c0-tbzg Ready &lt;none&gt; 8d v1.30.9-gke.1127000 fix issue #2 error (base) jonpark@aws-sig-ts-jonpark:~/workspace/jonpark-work$ kind get clusters kind (base) jonpark@aws-sig-ts-jonpark:~/workspace/jonpark-work$ (base) jonpark@aws-sig-ts-jonpark:~/workspace/jonpark-work$ docker ps | grep kind d14a3e645595 kindest/node:v1.25.2 &#34;/usr/local/bin/entr…&#34; 8 minutes ago Up 8 minutes kind-worker 5b1fa9e58560 kindest/node:v1.25.2 &#34;/usr/local/bin/entr…&#34; 8 minutes ago Up 8 minutes 0.0.0.0:80-&gt;80/tcp, 0.0.0.0:443-&gt;443/tcp, 0.0.0.0:9090-&gt;9090/tcp, 127.0.0.1:33693-&gt;6443/tcp, 0.0.0.0:18080-&gt;8080/tcp kind-control-plane a6b81d3559cd kindest/node:v1.25.2 &#34;/usr/local/bin/entr…&#34; 8 minutes ago Up 8 minutes kind-worker2 (base) jonpark@aws-sig-ts-jonpark:~/workspace/jonpark-work$ kubectl cluster-info E0310 06:34:49.335293 1159663 memcache.go:265] couldn&#39;t get current server API group list: Get &#34;https://127.0.0.1:44491/api?timeout=32s&#34;: dial tcp 127.0.0.1:44491: connect: connection refused E0310 06:34:49.335525 1159663 memcache.go:265] couldn&#39;t get current server API group list: Get &#34;https://127.0.0.1:44491/api?timeout=32s&#34;: dial tcp 127.0.0.1:44491: connect: connection refused E0310 06:34:49.336818 1159663 memcache.go:265] couldn&#39;t get current server API group list: Get &#34;https://127.0.0.1:44491/api?timeout=32s&#34;: dial tcp 127.0.0.1:44491: connect: connection refused E0310 06:34:49.337043 1159663 memcache.go:265] couldn&#39;t get current server API group list: Get &#34;https://127.0.0.1:44491/api?timeout=32s&#34;: dial tcp 127.0.0.1:44491: connect: connection refused E0310 06:34:49.338289 1159663 memcache.go:265] couldn&#39;t get current server API group list: Get &#34;https://127.0.0.1:44491/api?timeout=32s&#34;: dial tcp 127.0.0.1:44491: connect: connection refused To further debug and diagnose cluster problems, use &#39;kubectl cluster-info dump&#39;. The connection to the server 127.0.0.1:44491 was refused - did you specify the right host or port? (base) jonpark@aws-sig-ts-jonpark:~/workspace/jonpark-work$ kubectl cluster-info dump The connection to the server 127.0.0.1:44491 was refused - did you specify the right host or port? (base) jonpark@aws-sig-ts-jonpark:~/workspace/jonpark-work$ netstat -tulpn | grep 44491 (Not all processes could be identified, non-owned process info will not be shown, you would have to be root to see it all.) (base) jonpark@aws-sig-ts-jonpark:~/workspace/jonpark-work$ kind get clusters fix kind export kubeconfig --name kind issue #2 - doc kind 클러스터는 실행 중이지만, kubectl이 클러스터에 연결할 수 없는 상황입니다. 이는 일반적으로 kubeconfig 설정이 잘못되었거나 다른 포트를 가리키고 있는 경우에 발생합니다.
+...</p>
+  </div>
+  <footer class="entry-footer">4 min</footer>
+  <a class="entry-link" aria-label="post link to " href="http://localhost:1313/posts/k8s_docker/kind-k8s/"></a>
+</article>
 
 <article class="post-entry"> 
   <header class="entry-header">
@@ -263,21 +287,6 @@ API 스펙을 정의하고 관리하는 클래스 nlohmann::json을 사용한 JS
   </div>
   <footer class="entry-footer">12 min</footer>
   <a class="entry-link" aria-label="post link to " href="http://localhost:1313/posts/technical-support/coverity/msvc-clangcl-repro/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>코드 품질을 향상시키고 보안 결함을 찾기 위해 몇 가지 일반적인 조언 정적 분석 도구 사용: 현재 많은 정적 분석 도구가 개발자에게 코드 품질 및 보안 측면에서의 문제를 식별해주고 권장 사항을 제시합니다. Clang Static Analyzer, cppcheck, PVS-Studio 등이 있습니다.
-코드 리뷰: 동료 개발자 또는 커뮤니티의 도움을 받아 코드 리뷰를 수행하세요. 다른 사람의 시각은 새로운 인사이트를 제공할 수 있습니다.
-보안 가이드라인 준수: 프로그래밍 언어 및 프레임워크의 보안 가이드라인을 준수하고, 사용 중인 함수 및 라이브러리의 보안 취약점에 대해 인식하세요.
-...</p>
-  </div>
-  <footer class="entry-footer">3 min</footer>
-  <a class="entry-link" aria-label="post link to " href="http://localhost:1313/posts/technical-support/coverity/sast/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

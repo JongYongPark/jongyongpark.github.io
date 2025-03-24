@@ -100,18 +100,28 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/posts/" title="Posts">
-                    <span class="active">Posts</span>
+                <a href="http://localhost:1313/search/" title="검색">
+                    <span>검색</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/" title="Categories">
-                    <span>Categories</span>
+                <a href="http://localhost:1313/categories/" title="카테고리">
+                    <span>카테고리</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
-                    <span>Tags</span>
+                <a href="http://localhost:1313/tags/" title="태그">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archives/" title="연도">
+                    <span>연도</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="어바웃미">
+                    <span>어바웃미</span>
                 </a>
             </li>
         </ul>
@@ -123,6 +133,24 @@
     Posts
   </h1>
 </header>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles
+An Explanation of the differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles.
+Makefile variable assignment operators:
+:= (Simple expansion):
+Expands variables immediately at assignment time. Example: FOO := $(BAR) If BAR changes later, FOO will not be affected. = (Recursive expansion):
+Defers expansion until the variable is used. Example: FOO = $(BAR) If BAR changes later, FOO will reflect the new value when used. ?= (Conditional assignment):
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-02-03 00:00:00 +0000 UTC'>February 3, 2025</span>&nbsp;·&nbsp;1 min</footer>
+  <a class="entry-link" aria-label="post link to Differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles" href="http://localhost:1313/posts/sdlc/makefile-bash--variable-assignment/"></a>
+</article>
 
 <article class="post-entry"> 
   <header class="entry-header">
@@ -241,27 +269,16 @@ npx create-next-app@latest my-nextjs-jwt-app cd my-nextjs-jwt-app npm install 2.
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">
+    <h2 class="entry-hint-parent">AUTOSAR
     </h2>
   </header>
   <div class="entry-content">
-    <p>Claude prompting guide General tips for effective prompting 1. Be clear and specific Clearly state your task or question at the beginning of your message. Provide context and details to help Claude understand your needs. Break complex tasks into smaller, manageable steps. Bad prompt: “Help me with a presentation.” Good prompt: “I need help creating a 10-slide presentation for our quarterly sales meeting. The presentation should cover our Q2 sales performance, top-selling products, and sales targets for Q3. Please provide an outline with key points for each slide.” ...</p>
-  </div>
-  <footer class="entry-footer">21 min</footer>
-  <a class="entry-link" aria-label="post link to " href="http://localhost:1313/posts/ai/claude-prompt-guide/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>perplexity Comprehensive Guide to Managing Multiple Projects in Coverity with Stream Optimization and Component-Based Analysis Modern software development workflows increasingly rely on sophisticated static analysis tools like Coverity to maintain code quality across complex, branching codebases. For teams managing multiple projects within a single repository, Coverity offers powerful features to streamline analysis while maintaining granular defect tracking. This report synthesizes best practices for configuring streams, implementing component-based analysis, and optimizing performance based on industry-proven methodologies and Coverity’s technical documentation[2][11].
+    <p>AUTOSAR (Automotive Open System Architecture) 목차 AUTOSAR (Automotive Open System Architecture) 목차 AUTOSAR Classic Platform 버전 히스토리 AUTOSAR Adaptive Platform 버전 히스토리 AUTOSAR C&#43;&#43; 가이드라인 주요 버전 가이드라인 특징 주요 목적 AUTOSAR Classic Platform AUTOSAR Classic Platform은 자동차의 기본적인 전자 제어 시스템을 위한 표준입니다.
+버전 히스토리 버전 발표 연도 주요 특징 AUTOSAR 1.0 2005 초기 버전 AUTOSAR 2.0 2006 - AUTOSAR 2.1 2007 - AUTOSAR 3.0 2008 - AUTOSAR 3.1 2008 - AUTOSAR 3.2 2011 - AUTOSAR 4.0 2009 - AUTOSAR 4.1 2013 - AUTOSAR 4.2 2014 - AUTOSAR 4.3 2016 - AUTOSAR 4.4 2018 - AUTOSAR 4.5 2018 - AUTOSAR 4.6 2020 - AUTOSAR 4.7 2021 최신 버전 AUTOSAR Adaptive Platform AUTOSAR Adaptive Platform은 고성능 컴퓨팅과 자동화된 운전을 위한 표준입니다.
 ...</p>
   </div>
-  <footer class="entry-footer">11 min</footer>
-  <a class="entry-link" aria-label="post link to " href="http://localhost:1313/posts/ai/cov-ai-hallucinations/"></a>
+  <footer class="entry-footer"><span title='2024-02-17 00:00:00 +0000 UTC'>February 17, 2024</span>&nbsp;·&nbsp;2 min</footer>
+  <a class="entry-link" aria-label="post link to AUTOSAR" href="http://localhost:1313/posts/checker/autosar/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

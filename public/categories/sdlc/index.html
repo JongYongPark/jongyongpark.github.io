@@ -100,31 +100,90 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/posts/" title="Posts">
-                    <span>Posts</span>
+                <a href="http://localhost:1313/search/" title="검색">
+                    <span>검색</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/" title="Categories">
-                    <span>Categories</span>
+                <a href="http://localhost:1313/categories/" title="카테고리">
+                    <span>카테고리</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
-                    <span>Tags</span>
+                <a href="http://localhost:1313/tags/" title="태그">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archives/" title="연도">
+                    <span>연도</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="어바웃미">
+                    <span>어바웃미</span>
                 </a>
             </li>
         </ul>
     </nav>
 </header>
 <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">
+      SDLC
+    </h1>
+  </header>
+
   
-  <h1>SDLC</h1>
-  <ul>
-    
-      <li>
-        <a href="http://localhost:1313/posts/sdlc/apt/">Apt proxy issue</a>
-        <p><h1 id="apt-proxy-issue">Apt proxy issue</h1>
+  <div class="post-content">
+    <div class="tag-cloud">
+      <a href="/categories/ai/" style="font-size: 1rem;">
+        AI 3
+      </a>
+      <a href="/categories/checker/" style="font-size: 1rem;">
+        Checker 6
+      </a>
+      <a href="/categories/creator/" style="font-size: 1rem;">
+        Creator 1
+      </a>
+      <a href="/categories/developer/" style="font-size: 1rem;">
+        Developer 10
+      </a>
+      <a href="/categories/devsecops/" style="font-size: 1rem;">
+        DevSecOps 1
+      </a>
+      <a href="/categories/k8s/" style="font-size: 1rem;">
+        K8s 2
+      </a>
+      <a href="/categories/ops/" style="font-size: 1rem;">
+        Ops 8
+      </a>
+      <a href="/categories/sdlc/" style="font-size: 1rem;">
+        SDLC 18
+      </a>
+      <a href="/categories/travel/" style="font-size: 1rem;">
+        Travel 1
+      </a>
+    </div>
+  </div>
+</article>
+
+
+<header class="page-header">
+  <h2>
+    SDLC
+  </h2>
+</header>
+
+<div class="posts-list">
+  <div class="post-entry">
+    <header class="entry-header">
+      <h2>Apt proxy issue</h2>
+    </header>
+    <div class="entry-content">
+      <p><h1 id="apt-proxy-issue">Apt proxy issue</h1>
 <p>Ubuntu에서 발생한 APT 업데이트 문제의 원인과 해결 방법을 정리해드리겠습니다.</p>
 <h2 id="문제-원인">문제 원인</h2>
 <ol>
@@ -138,11 +197,22 @@
 <p>프록시 설정 확인:</p>
 <pre tabindex="0"><code>cat /etc/apt/apt.conf.d/* | grep -i proxy
 </code></pre><p>이 명령어로는 apt.conf.d 디렉토리 내의 파일들에서 프록시 설정을 찾을 수 없었습니다.</p></p>
-      </li>
-    
-      <li>
-        <a href="http://localhost:1313/posts/sdlc/special-chars/">Special characters</a>
-        <p><h1 id="자주-사용되는-특수-문자-및-설명"><strong>자주 사용되는 특수 문자 및 설명</strong></h1>
+    </div>
+    <footer class="entry-footer">
+      <span>2025-03-14</span>
+      <span>
+        <a href="http://localhost:1313/tags/apt">apt</a>, 
+        <a href="http://localhost:1313/tags/ubuntu">ubuntu</a>
+      </span>
+    </footer>
+    <a class="entry-link" href="http://localhost:1313/posts/sdlc/apt/"></a>
+  </div>
+  <div class="post-entry">
+    <header class="entry-header">
+      <h2>Special characters</h2>
+    </header>
+    <div class="entry-content">
+      <p><h1 id="자주-사용되는-특수-문자-및-설명"><strong>자주 사용되는 특수 문자 및 설명</strong></h1>
 <h3 id="1-기본적인-특수-문자"><strong>1. 기본적인 특수 문자</strong></h3>
 <table>
   <thead>
@@ -378,11 +448,22 @@
 <li>터미널/명령어: <code>$</code>, <code>~</code>, <code>|</code> 등 필수 기호 활용</li>
 </ul>
 <p>📌 <strong>상황에 따라 적절한 특수 문자를 사용하면 코드 가독성과 명령어 실행이 편리해집니다!</strong> 🚀</p></p>
-      </li>
-    
-      <li>
-        <a href="http://localhost:1313/posts/sdlc/sshfs-debug/">SSHFS Debugging</a>
-        <p><h1 id="내-작업">내 작업</h1>
+    </div>
+    <footer class="entry-footer">
+      <span>2025-03-14</span>
+      <span>
+        <a href="http://localhost:1313/tags/special-chars">special chars</a>, 
+        <a href="http://localhost:1313/tags/ubuntu">ubuntu</a>
+      </span>
+    </footer>
+    <a class="entry-link" href="http://localhost:1313/posts/sdlc/special-chars/"></a>
+  </div>
+  <div class="post-entry">
+    <header class="entry-header">
+      <h2>SSHFS Debugging</h2>
+    </header>
+    <div class="entry-content">
+      <p><h1 id="내-작업">내 작업</h1>
 <p>아래 명령어로 중복된 sshfs 가 있다면
 mount | grep sshfs</p>
 <p>아래 명령어로 제거하 다시 시도
@@ -721,11 +802,21 @@ sudo umount ~/work_jonpark</p>
 </span></span><span style="display:flex;"><span>aws-sig-ts-jonpark.aws.internal
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"></code></pre></div><hr>
 <h1 id="디버깅-방법">디버깅 방법</h1></p>
-      </li>
-    
-      <li>
-        <a href="http://localhost:1313/posts/sdlc/sshfs-win-wsl-ec2/">Windows 에서 WSL을 통해 ec2에 접근하기</a>
-        <p><h1 id="windows-에서-wsl을-통해-ec2-에-접근시-symbol-link에-따른-문제점">Windows 에서 WSL을 통해 ec2 에 접근시 symbol link에 따른 문제점</h1>
+    </div>
+    <footer class="entry-footer">
+      <span>2025-03-10</span>
+      <span>
+        <a href="http://localhost:1313/tags/sshfs">sshfs</a>
+      </span>
+    </footer>
+    <a class="entry-link" href="http://localhost:1313/posts/sdlc/sshfs-debug/"></a>
+  </div>
+  <div class="post-entry">
+    <header class="entry-header">
+      <h2>Windows 에서 WSL을 통해 ec2에 접근하기</h2>
+    </header>
+    <div class="entry-content">
+      <p><h1 id="windows-에서-wsl을-통해-ec2-에-접근시-symbol-link에-따른-문제점">Windows 에서 WSL을 통해 ec2 에 접근시 symbol link에 따른 문제점</h1>
 <h2 id="내-작업">내 작업</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">### AWS ec2</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># Hdd 가 부족해서 하나 더 추가했다 - 이것이 opt/dlami/nvme 임임</span>
@@ -775,22 +866,42 @@ sudo umount ~/work_jonpark</p>
 </span></span><span style="display:flex;"><span>bash#:~$
 </span></span></code></pre></div><h2 id="답변">답변</h2>
 <p>이제 문제가 더 명확해졌습니다. EC2에서 <code>workspace</code>는 <code>/opt/dlami/nvme/</code>를 가리키는 심볼릭 링크입니다. SSHFS를 통한 마운트 시 심볼릭 링크 처리에 문제가 있는 것으로 보입니다.</p></p>
-      </li>
-    
-      <li>
-        <a href="http://localhost:1313/posts/sdlc/wsl-zone.identifier/">Zone.Identifier</a>
-        <p><h1 id="windows-에서-wsl로-복사하면-복사한-파일이름-zoneidenifier-파일이-생기지-않게-하는-방법">windows 에서 wsl로 복사하면 &ldquo;복사한 파일이름 zone.idenifier&rdquo; 파일이 생기지 않게 하는 방법.</h1>
+    </div>
+    <footer class="entry-footer">
+      <span>2025-03-10</span>
+      <span>
+        <a href="http://localhost:1313/tags/wsl">WSL</a>
+      </span>
+    </footer>
+    <a class="entry-link" href="http://localhost:1313/posts/sdlc/sshfs-win-wsl-ec2/"></a>
+  </div>
+  <div class="post-entry">
+    <header class="entry-header">
+      <h2>Zone.Identifier</h2>
+    </header>
+    <div class="entry-content">
+      <p><h1 id="windows-에서-wsl로-복사하면-복사한-파일이름-zoneidenifier-파일이-생기지-않게-하는-방법">windows 에서 wsl로 복사하면 &ldquo;복사한 파일이름 zone.idenifier&rdquo; 파일이 생기지 않게 하는 방법.</h1>
 <p>Zone.Identifier 파일은 Windows 시스템에서 외부 출처(인터넷, 이메일 등)에서 다운로드한 파일에 자동으로 추가되는 대체 데이터 스트림(Alternate Data Stream, ADS)입니다. 이 파일에는 원본 파일의 출처와 관련된 보안 정보가 포함되어 있습니다.</p>
 <p>파일을 WSL로 복사할 때 Windows에서는 이 메타데이터를 별도의 Zone.Identifier 파일로 변환합니다. 이는 NTFS 파일 시스템의 기능이지만 Linux 파일 시스템에서는 지원하지 않기 때문입니다.</p>
 <h2 id="zoneidentifier-파일이-생성되지-않게-하는-방법">Zone.Identifier 파일이 생성되지 않게 하는 방법:</h2>
 <ol>
 <li>
 <p><strong>Windows에서 파일 신뢰 설정</strong>:</p></p>
-      </li>
-    
-      <li>
-        <a href="http://localhost:1313/posts/sdlc/deno-install/">Deno Install</a>
-        <p><h1 id="install">Install</h1>
+    </div>
+    <footer class="entry-footer">
+      <span>2025-03-10</span>
+      <span>
+        <a href="http://localhost:1313/tags/wsl">WSL</a>
+      </span>
+    </footer>
+    <a class="entry-link" href="http://localhost:1313/posts/sdlc/wsl-zone.identifier/"></a>
+  </div>
+  <div class="post-entry">
+    <header class="entry-header">
+      <h2>Deno Install</h2>
+    </header>
+    <div class="entry-content">
+      <p><h1 id="install">Install</h1>
 <p>Deno는 JavaScript와 TypeScript를 위한 현대적인 런타임 환경으로, 설치 및 사용이 매우 간단합니다. 아래에 Deno를 설치하고 &ldquo;Hello, World!&rdquo; 프로그램을 작성하여 실행하는 방법을 안내해 드리겠습니다.</p>
 <h3 id="1-deno-설치하기">1. Deno 설치하기</h3>
 <p><strong>macOS 및 Linux</strong>:</p>
@@ -801,11 +912,21 @@ sudo umount ~/work_jonpark</p>
 <p>PowerShell을 관리자 권한으로 열고 다음 명령어를 실행합니다:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>iwr https<span style="color:#960050;background-color:#1e0010">:</span>//deno.land/install.ps1 -useb | iex
 </span></span></code></pre></div><p>또는, Windows에서 <a href="https://chocolatey.org/">Chocolatey</a> 패키지 관리자를 사용 중이라면, 다음과 같이 설치할 수 있습니다:</p></p>
-      </li>
-    
-      <li>
-        <a href="http://localhost:1313/posts/sdlc/go-install/">Go Install</a>
-        <p><h1 id="go-install">Go Install</h1>
+    </div>
+    <footer class="entry-footer">
+      <span>2025-02-27</span>
+      <span>
+        <a href="http://localhost:1313/tags/deno">Deno</a>
+      </span>
+    </footer>
+    <a class="entry-link" href="http://localhost:1313/posts/sdlc/deno-install/"></a>
+  </div>
+  <div class="post-entry">
+    <header class="entry-header">
+      <h2>Go Install</h2>
+    </header>
+    <div class="entry-content">
+      <p><h1 id="go-install">Go Install</h1>
 <p>기존 Go 1.22.2가 <code>/usr/bin/go</code>로 설치되어 있고, 새롭게 Go 1.23.1 및 Go 1.23.5를 <strong><code>~/local</code></strong> 폴더에 설치한 후 원하는 버전을 선택해서 사용하는 방법을 정리해 드리겠습니다. 🚀</p>
 <hr>
 <h2 id="-1-기존-go-1222-확인">✅ <strong>1. 기존 Go (1.22.2) 확인</strong></h2>
@@ -828,11 +949,21 @@ sudo umount ~/work_jonpark</p>
 </span></span><span style="display:flex;"><span>tar -xzf go1.23.5.linux-amd64.tar.gz
 </span></span><span style="display:flex;"><span>mv go go1.23.5
 </span></span></code></pre></div><p>설치 후 폴더 구조:</p></p>
-      </li>
-    
-      <li>
-        <a href="http://localhost:1313/posts/sdlc/mojo-install/">Mojo Install</a>
-        <p><h1 id="mojo-설치">Mojo 설치</h1>
+    </div>
+    <footer class="entry-footer">
+      <span>2025-02-27</span>
+      <span>
+        <a href="http://localhost:1313/tags/go">Go</a>
+      </span>
+    </footer>
+    <a class="entry-link" href="http://localhost:1313/posts/sdlc/go-install/"></a>
+  </div>
+  <div class="post-entry">
+    <header class="entry-header">
+      <h2>Mojo Install</h2>
+    </header>
+    <div class="entry-content">
+      <p><h1 id="mojo-설치">Mojo 설치</h1>
 <p>Mojo는 Modular가 개발한 새로운 프로그래밍 언어로, Python과 유사하지만 더 높은 성능을 제공합니다. WSL (Windows Subsystem for Linux)의 Ubuntu 환경에서 Mojo를 설치하려면 다음과 같은 단계를 따르면 됩니다.</p>
 <hr>
 <h3 id="1-wsl-및-ubuntu-확인"><strong>1. WSL 및 Ubuntu 확인</strong></h3>
@@ -846,11 +977,21 @@ sudo umount ~/work_jonpark</p>
 </span></span></code></pre></div><hr>
 <h3 id="2-mojo-설치-준비"><strong>2. Mojo 설치 준비</strong></h3>
 <p>Mojo는 아직 초기 단계의 언어이므로 공식적으로 지원되는 패키지 관리자가 없습니다. 따라서 Modular의 공식 웹사이트나 CLI 도구를 사용하여 설치해야 합니다.</p></p>
-      </li>
-    
-      <li>
-        <a href="http://localhost:1313/posts/sdlc/mojo-curl/">Mojo Sample Code like Curl</a>
-        <p><h2 id="-mojo로-curl과-비슷한-기능-구현하기"><strong>🚀 Mojo로 <code>curl</code>과 비슷한 기능 구현하기</strong></h2>
+    </div>
+    <footer class="entry-footer">
+      <span>2025-02-27</span>
+      <span>
+        <a href="http://localhost:1313/tags/mojo">Mojo</a>
+      </span>
+    </footer>
+    <a class="entry-link" href="http://localhost:1313/posts/sdlc/mojo-install/"></a>
+  </div>
+  <div class="post-entry">
+    <header class="entry-header">
+      <h2>Mojo Sample Code like Curl</h2>
+    </header>
+    <div class="entry-content">
+      <p><h2 id="-mojo로-curl과-비슷한-기능-구현하기"><strong>🚀 Mojo로 <code>curl</code>과 비슷한 기능 구현하기</strong></h2>
 <p>Mojo는 Python과 유사한 문법을 가지면서도, 시스템 프로그래밍에 적합한 고성능 언어입니다. 현재 Mojo는 공식적으로 네트워크 라이브러리를 제공하지 않으므로, <strong>소켓을 활용하여 HTTP 요청을 보내는 <code>curl</code> 대체 기능</strong>을 직접 구현할 수 있습니다.</p>
 <hr>
 <h1 id="-1-mojo에서-http-요청curl-기능-구현하기"><strong>📌 1. Mojo에서 HTTP 요청(<code>curl</code> 기능) 구현하기</strong></h1>
@@ -907,11 +1048,21 @@ fn main():
 </code></pre><hr>
 <h1 id="-2-mojo-설치-및-실행-방법"><strong>📌 2. Mojo 설치 및 실행 방법</strong></h1>
 <p>Mojo는 현재 <strong>Linux 및 macOS에서만 실행 가능</strong>합니다.</p></p>
-      </li>
-    
-      <li>
-        <a href="http://localhost:1313/posts/sdlc/beyond-compare-wsl/">Beyond Compare 4를 리눅스에 설치하기</a>
-        <p><h1 id="beyond-compare-4를-리눅스에-설치하기">Beyond Compare 4를 리눅스에 설치하기</h1>
+    </div>
+    <footer class="entry-footer">
+      <span>2025-02-27</span>
+      <span>
+        <a href="http://localhost:1313/tags/mojo">Mojo</a>
+      </span>
+    </footer>
+    <a class="entry-link" href="http://localhost:1313/posts/sdlc/mojo-curl/"></a>
+  </div>
+  <div class="post-entry">
+    <header class="entry-header">
+      <h2>Beyond Compare 4를 리눅스에 설치하기</h2>
+    </header>
+    <div class="entry-content">
+      <p><h1 id="beyond-compare-4를-리눅스에-설치하기">Beyond Compare 4를 리눅스에 설치하기</h1>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>bash#:~$ cd ~/Downloads/
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>bash#:~/Downloads$ wget https://www.scootersoftware.com/bcompare-4.4.6.27483_amd64.deb
@@ -1010,11 +1161,21 @@ fn main():
 </span></span><span style="display:flex;"><span><span style="color:#75715e">## Enter license</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">## Works</span>
 </span></span></code></pre></div></p>
-      </li>
-    
-      <li>
-        <a href="http://localhost:1313/posts/sdlc/mojo/">MOJO</a>
-        <p><h1 id="mojo-사용처">Mojo 사용처</h1>
+    </div>
+    <footer class="entry-footer">
+      <span>2025-02-25</span>
+      <span>
+        <a href="http://localhost:1313/tags/beyondcompare">BeyondCompare</a>
+      </span>
+    </footer>
+    <a class="entry-link" href="http://localhost:1313/posts/sdlc/beyond-compare-wsl/"></a>
+  </div>
+  <div class="post-entry">
+    <header class="entry-header">
+      <h2>MOJO</h2>
+    </header>
+    <div class="entry-content">
+      <p><h1 id="mojo-사용처">Mojo 사용처</h1>
 <p>Mojo는 2023년에 출시된 비교적 새로운 프로그래밍 언어로, 아직 초기 단계에 있습니다. 따라서 현재까지 Mojo를 사용한 대표적인 오픈소스 프로젝트나 상용 프로젝트는 많지 않습니다. 그러나 Modular(모듈러)가 Mojo를 설계한 목적과 특징을 기반으로, Mojo가 어떤 유형의 프로젝트에 적합할지 예측할 수 있으며, 이미 공개된 몇 가지 실험적 또는 데모 프로젝트를 통해 그 활용 가능성을 확인할 수 있습니다.</p>
 <hr>
 <h3 id="1-mojo를-사용한-주요-프로젝트-및-사례"><strong>1. Mojo를 사용한 주요 프로젝트 및 사례</strong></h3>
@@ -1085,11 +1246,21 @@ fn main():
 <hr>
 <h3 id="3-mojo의-잠재적-활용-분야"><strong>3. Mojo의 잠재적 활용 분야</strong></h3>
 <p>현재 Mojo는 초기 단계이지만, 다음과 같은 분야에서 활용될 가능성이 큽니다:</p></p>
-      </li>
-    
-      <li>
-        <a href="http://localhost:1313/posts/sdlc/public-ip-cidr/">Public IP &amp; CIDR</a>
-        <p><h1 id="windows-powershell-에서-public-ip와-cidr-얻기---claude">Windows Powershell 에서 public IP와 CIDR 얻기 - claude</h1>
+    </div>
+    <footer class="entry-footer">
+      <span>2025-02-24</span>
+      <span>
+        <a href="http://localhost:1313/tags/mojo">MOJO</a>
+      </span>
+    </footer>
+    <a class="entry-link" href="http://localhost:1313/posts/sdlc/mojo/"></a>
+  </div>
+  <div class="post-entry">
+    <header class="entry-header">
+      <h2>Public IP &amp; CIDR</h2>
+    </header>
+    <div class="entry-content">
+      <p><h1 id="windows-powershell-에서-public-ip와-cidr-얻기---claude">Windows Powershell 에서 public IP와 CIDR 얻기 - claude</h1>
 <h2 id="테스트">테스트</h2>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>(base) PS C:\workspace\blog\ryanpark-devsecops&gt; <span style="color:#75715e"># 방법 1: ipify API 사용</span>
 </span></span><span style="display:flex;"><span>(base) PS C:\workspace\blog\ryanpark-devsecops&gt; (Invoke-WebRequest -Uri <span style="color:#e6db74">&#34;https://api.ipify.org&#34;</span>).Content
@@ -1128,11 +1299,22 @@ fn main():
 </span></span></code></pre></div><hr>
 <h2 id="답변">답변</h2>
 <p>PowerShell에서 Public IP와 CIDR를 확인하는 방법을 알려드리겠습니다:</p></p>
-      </li>
-    
-      <li>
-        <a href="http://localhost:1313/posts/sdlc/chrome/">Chrome</a>
-        <p><h1 id="chrome-install-on-ubuntu">Chrome Install on Ubuntu</h1>
+    </div>
+    <footer class="entry-footer">
+      <span>2025-02-24</span>
+      <span>
+        <a href="http://localhost:1313/tags/ip">IP</a>, 
+        <a href="http://localhost:1313/tags/cidr">CIDR</a>
+      </span>
+    </footer>
+    <a class="entry-link" href="http://localhost:1313/posts/sdlc/public-ip-cidr/"></a>
+  </div>
+  <div class="post-entry">
+    <header class="entry-header">
+      <h2>Chrome</h2>
+    </header>
+    <div class="entry-content">
+      <p><h1 id="chrome-install-on-ubuntu">Chrome Install on Ubuntu</h1>
 <p>Ubuntu에서 Chrome을 완전히 제거하고 다시 설치하는 명령어 순서입니다:</p>
 <ol>
 <li>Chrome 제거:</li>
@@ -1163,16 +1345,37 @@ fn main():
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 다운로드한 설치 파일 제거 (선택사항)</span>
 </span></span><span style="display:flex;"><span>rm google-chrome-stable_current_amd64.deb
 </span></span></code></pre></div><p>설치가 완료되면 Applications 메뉴나 터미널에서 <code>google-chrome</code> 명령어로 Chrome을 실행할 수 있습니다.</p></p>
-      </li>
-    
-      <li>
-        <a href="http://localhost:1313/posts/sdlc/bash-powershell/">Bash &amp; PowerShell Script Comparison</a>
-        <p></p>
-      </li>
-    
-      <li>
-        <a href="http://localhost:1313/posts/sdlc/mobaxterm/">MobaXterm Usage</a>
-        <p><h1 id="issue">Issue</h1>
+    </div>
+    <footer class="entry-footer">
+      <span>2025-02-21</span>
+      <span>
+        <a href="http://localhost:1313/tags/chrome">Chrome</a>
+      </span>
+    </footer>
+    <a class="entry-link" href="http://localhost:1313/posts/sdlc/chrome/"></a>
+  </div>
+  <div class="post-entry">
+    <header class="entry-header">
+      <h2>Bash &amp; PowerShell Script Comparison</h2>
+    </header>
+    <div class="entry-content">
+      <p></p>
+    </div>
+    <footer class="entry-footer">
+      <span>2025-02-19</span>
+      <span>
+        <a href="http://localhost:1313/tags/bash">Bash</a>, 
+        <a href="http://localhost:1313/tags/powershell">PowerShell</a>
+      </span>
+    </footer>
+    <a class="entry-link" href="http://localhost:1313/posts/sdlc/bash-powershell/"></a>
+  </div>
+  <div class="post-entry">
+    <header class="entry-header">
+      <h2>MobaXterm Usage</h2>
+    </header>
+    <div class="entry-content">
+      <p><h1 id="issue">Issue</h1>
 <p>Remote side unexpectedly closed network connection</p>
 <p>────</p>
 <p>Session stopped
@@ -1183,11 +1386,21 @@ fn main():
 <h3 id="remove-saved-password">Remove saved password</h3>
 <p><img alt="alt text" loading="lazy" src=".md/mobaxterm/password-settings.png"></p>
 <p>It does not fix issue.</p></p>
-      </li>
-    
-      <li>
-        <a href="http://localhost:1313/posts/sdlc/git-branch/">Git - Change Branch</a>
-        <p><h1 id="clone-with-branch">Clone with branch</h1>
+    </div>
+    <footer class="entry-footer">
+      <span>2025-02-19</span>
+      <span>
+        <a href="http://localhost:1313/tags/mobaxterm">MobaXterm</a>
+      </span>
+    </footer>
+    <a class="entry-link" href="http://localhost:1313/posts/sdlc/mobaxterm/"></a>
+  </div>
+  <div class="post-entry">
+    <header class="entry-header">
+      <h2>Git - Change Branch</h2>
+    </header>
+    <div class="entry-content">
+      <p><h1 id="clone-with-branch">Clone with branch</h1>
 <p>특정 브랜치를 바로 클론하려면 다음 명령어를 사용하시면 됩니다:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone -b 2025.3.maint https://gitlab.host_name/group_name/repo_name.git
 </span></span></code></pre></div><p>이 명령어는 지정된 URL에서 2025.3.maint 브랜치를 클론합니다. 기본적으로 로컬 디렉토리 이름은 저장소 이름(cnc-umbrella-chart)으로 생성됩니다.</p>
@@ -1197,11 +1410,21 @@ fn main():
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone -b 2025.3.maint --single-branch https://gitlab.host_name/group_name/repo_name.git
 </span></span></code></pre></div><h1 id="change-branch">Change branch</h1>
 <p>이미 main 브랜치를 clone하였다. 2025.3.maint 브랜치를 가져오는 방법은?</p></p>
-      </li>
-    
-      <li>
-        <a href="http://localhost:1313/posts/sdlc/git/">Git Usage</a>
-        <p><hr>
+    </div>
+    <footer class="entry-footer">
+      <span>2025-02-17</span>
+      <span>
+        <a href="http://localhost:1313/tags/git">GIT</a>
+      </span>
+    </footer>
+    <a class="entry-link" href="http://localhost:1313/posts/sdlc/git-branch/"></a>
+  </div>
+  <div class="post-entry">
+    <header class="entry-header">
+      <h2>Git Usage</h2>
+    </header>
+    <div class="entry-content">
+      <p><hr>
 <hr>
 <h1 id="github에서-새로운-repository저장소를-생성하는-방법"><strong>GitHub에서 새로운 Repository(저장소)를 생성하는 방법</strong></h1>
 <h2 id="github에서-새로운-repository저장소를-생성하는-방법-1"><strong>GitHub에서 새로운 Repository(저장소)를 생성하는 방법</strong></h2>
@@ -1254,11 +1477,21 @@ fn main():
 </ul>
 <h3 id="6-로컬-프로젝트와-연결"><strong>6️⃣ 로컬 프로젝트와 연결</strong></h3>
 <p>이제 로컬에서 작업 중인 프로젝트를 GitHub 저장소에 연결할 수 있습니다.</p></p>
-      </li>
-    
-      <li>
-        <a href="http://localhost:1313/posts/sdlc/makefile-bash--variable-assignment/">Differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles</a>
-        <p><p>Differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles</p>
+    </div>
+    <footer class="entry-footer">
+      <span>2025-02-17</span>
+      <span>
+        <a href="http://localhost:1313/tags/git">GIT</a>
+      </span>
+    </footer>
+    <a class="entry-link" href="http://localhost:1313/posts/sdlc/git/"></a>
+  </div>
+  <div class="post-entry">
+    <header class="entry-header">
+      <h2>Differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles</h2>
+    </header>
+    <div class="entry-content">
+      <p><p>Differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles</p>
 <hr>
 <p>An Explanation of the differences, priorities, and Bash equivalents for :=, =, and ?= in Makefiles.</p>
 <p>Makefile variable assignment operators:</p>
@@ -1281,10 +1514,17 @@ fn main():
 </li>
 <li>
 <p>?= (Conditional assignment):</p></p>
-      </li>
-    
-  </ul>
-
+    </div>
+    <footer class="entry-footer">
+      <span>2025-02-03</span>
+      <span>
+        <a href="http://localhost:1313/tags/makefile">Makefile</a>, 
+        <a href="http://localhost:1313/tags/bash">Bash</a>
+      </span>
+    </footer>
+    <a class="entry-link" href="http://localhost:1313/posts/sdlc/makefile-bash--variable-assignment/"></a>
+  </div>
+</div>
     </main>
     
 <footer class="footer">

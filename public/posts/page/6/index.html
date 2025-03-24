@@ -100,18 +100,28 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/posts/" title="Posts">
-                    <span class="active">Posts</span>
+                <a href="http://localhost:1313/search/" title="검색">
+                    <span>검색</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/" title="Categories">
-                    <span>Categories</span>
+                <a href="http://localhost:1313/categories/" title="카테고리">
+                    <span>카테고리</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
-                    <span>Tags</span>
+                <a href="http://localhost:1313/tags/" title="태그">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archives/" title="연도">
+                    <span>연도</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="어바웃미">
+                    <span>어바웃미</span>
                 </a>
             </li>
         </ul>
@@ -130,13 +140,10 @@
     </h2>
   </header>
   <div class="entry-content">
-    <p>AUTOSAR C&#43;&#43; A2-10-5 규칙 가이드 목차 규칙 개요 핵심 개념 위반 사례 해결 방법 상세 설명 참고 사항 규칙 개요 AUTOSAR C&#43;&#43; A2-10-5 규칙은 다음과 같이 정의됩니다:
-“정적 저장 기간을 가진 함수 또는 외부/내부 연결을 가진 비멤버 객체의 식별자 이름은 재사용되어서는 안 된다.”
-규칙의 목적 코드의 명확성과 가독성 향상 유지보수성 개선 모호성과 오류 가능성 감소 자동차 소프트웨어의 안전성 강화 핵심 개념 1. Static Storage Duration (정적 저장 기간) C&#43;&#43;에서 모든 함수는 기본적으로 정적 저장 기간을 가짐 프로그램 시작부터 종료까지 메모리에 존재 static 키워드는 함수의 저장 기간이 아닌 링키지(linkage)를 변경 2. Non-member Object (비멤버 객체) 클래스나 구조체의 멤버가 아닌 변수나 객체 전역 변수, 네임스페이스 범위 변수, 블록 범위의 정적 변수 등 3. Linkage (연결) External Linkage: 다른 번역 단위에서도 참조 가능 Internal Linkage: 같은 번역 단위 내에서만 참조 가능 위반 사례 1. 함수 오버로딩 // 위반 예시 int32_t my_printf(char const* msg) { return printf(&#34;char: %s\n&#34;, msg); } int32_t my_printf(std::string const&amp; msg) { // 위반: 동일 식별자 재사용 return printf(&#34;string: %s\n&#34;, msg.c_str()); } 2. 다른 범위에서 식별자 재사용 // 위반 예시 int globalVar; // 외부 링키지를 가진 전역 변수 void func() { int globalVar = 5; // 위반: 외부 링키지를 가진 식별자 재사용 } 해결 방법 1. 함수 이름 구분 // 올바른 예시 int32_t my_printf_c_string(char const* msg) { return printf(&#34;char: %s\n&#34;, msg); } int32_t my_printf_cpp_string(std::string const&amp; msg) { return printf(&#34;string: %s\n&#34;, msg.c_str()); } 2. 변수 이름 구분 // 올바른 예시 int globalVar; void func() { int localGlobalVar = 5; // 명확한 이름 사용 } 상세 설명 Static Storage Duration vs Automatic Storage Duration Static Storage Duration 프로그램 시작 시점에 생성 프로그램 종료까지 존재 초기화되지 않으면 0 또는 nullptr로 자동 초기화 Automatic Storage Duration 선언된 블록 진입 시 생성 블록 종료 시 파괴 초기화되지 않으면 값이 불확정 상태 예시 코드 #include &lt;iostream&gt; // 정적 저장 기간 int globalStaticVar = 10; void staticFunction() { std::cout &lt;&lt; &#34;Static function is called&#34; &lt;&lt; std::endl; } void exampleFunction() { // 자동 저장 기간 int localAutoVar = 20; // 정적 저장 기간 static int localStaticVar = 30; localAutoVar&#43;&#43;; localStaticVar&#43;&#43;; std::cout &lt;&lt; &#34;localAutoVar: &#34; &lt;&lt; localAutoVar &lt;&lt; std::endl; std::cout &lt;&lt; &#34;localStaticVar: &#34; &lt;&lt; localStaticVar &lt;&lt; std::endl; } 참고 사항 오해 해소 함수에 static 키워드가 없더라도 모든 함수는 기본적으로 정적 저장 기간을 가짐 C&#43;&#43;에서는 함수 오버로딩이 합법적이지만, AUTOSAR C&#43;&#43;14는 더 엄격한 안전 기준을 적용 컴파일 및 검증 # 일반 컴파일 g&#43;&#43; -std=c&#43;&#43;14 -o test_a2_10_5 test_a2_10_5.cpp # AUTOSAR 검증 coverity scan --checker=AUTOSAR test_a2_10_5.cpp 결론 AUTOSAR C&#43;&#43;14 Rule A2-10-5는 자동차 소프트웨어의 안전성과 신뢰성을 위해 코드의 명확성을 강조하는 규칙입니다. 식별자의 재사용을 금지함으로써 코드의 가독성과 유지보수성을 향상시킵니다.
-...</p>
+    <p>Claude prompting guide General tips for effective prompting 1. Be clear and specific Clearly state your task or question at the beginning of your message. Provide context and details to help Claude understand your needs. Break complex tasks into smaller, manageable steps. Bad prompt: “Help me with a presentation.” Good prompt: “I need help creating a 10-slide presentation for our quarterly sales meeting. The presentation should cover our Q2 sales performance, top-selling products, and sales targets for Q3. Please provide an outline with key points for each slide.” ...</p>
   </div>
-  <footer class="entry-footer">4 min</footer>
-  <a class="entry-link" aria-label="post link to " href="http://localhost:1313/posts/checker/autosar-a2-10-5/"></a>
+  <footer class="entry-footer">21 min</footer>
+  <a class="entry-link" aria-label="post link to " href="http://localhost:1313/posts/ai/claude-prompt-guide/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -145,12 +152,25 @@
     </h2>
   </header>
   <div class="entry-content">
-    <p>Autosar AUTOSAR(Automotive Open System Architecture)는 여러 버전의 표준을 발표해왔습니다. 주요 버전들은 다음과 같습니다:
-AUTOSAR Classic Platform 버전 AUTOSAR 1.0 - 2005년 발표된 초기 버전 AUTOSAR 2.0 - 2006년 발표 AUTOSAR 2.1 - 2007년 발표 AUTOSAR 3.0 - 2008년 발표 AUTOSAR 3.1 - 2008년 발표 AUTOSAR 3.2 - 2011년 발표 AUTOSAR 4.0 - 2009년 발표 AUTOSAR 4.1 - 2013년 발표 AUTOSAR 4.2 - 2014년 발표 AUTOSAR 4.3 - 2016년 발표 AUTOSAR 4.4 - 2018년 발표 AUTOSAR 4.5 - 2018년 발표 AUTOSAR 4.6 - 2020년 발표 AUTOSAR 4.7 - 2021년 발표 AUTOSAR Adaptive Platform 버전 AUTOSAR AP 17-03 - 2017년 3월 발표 AUTOSAR AP 17-10 - 2017년 10월 발표 AUTOSAR AP 18-03 - 2018년 3월 발표 AUTOSAR AP 18-10 - 2018년 10월 발표 AUTOSAR AP 19-03 - 2019년 3월 발표 AUTOSAR AP 19-11 - 2019년 11월 발표 AUTOSAR AP 20-11 - 2020년 11월 발표 AUTOSAR AP 21-11 - 2021년 11월 발표 AUTOSAR AP 22-11 - 2022년 11월 발표 AUTOSAR AP 23-11 - 2023년 11월 발표 AUTOSAR C&#43;&#43; 가이드라인 AUTOSAR는 또한 자동차 산업을 위한 C&#43;&#43; 코딩 가이드라인을 제공합니다:
+    <p>perplexity Comprehensive Guide to Managing Multiple Projects in Coverity with Stream Optimization and Component-Based Analysis Modern software development workflows increasingly rely on sophisticated static analysis tools like Coverity to maintain code quality across complex, branching codebases. For teams managing multiple projects within a single repository, Coverity offers powerful features to streamline analysis while maintaining granular defect tracking. This report synthesizes best practices for configuring streams, implementing component-based analysis, and optimizing performance based on industry-proven methodologies and Coverity’s technical documentation[2][11].
+...</p>
+  </div>
+  <footer class="entry-footer">11 min</footer>
+  <a class="entry-link" aria-label="post link to " href="http://localhost:1313/posts/ai/cov-ai-hallucinations/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>테디노트 스타일과 비슷하게 설정 테디노트 스타일과 비슷하게 설정하기 위해 config.toml 파일을 수정하겠습니다.
+baseURL = &#39;https://jongyongpark.github.io/&#39; languageCode = &#39;ko-kr&#39; title = &#34;RyanPark&#39;s DevSecOps&#34; theme = &#39;PaperMod&#39; [params] defaultTheme = &#34;auto&#34; ShowReadingTime = true ShowShareButtons = true ShowPostNavLinks = true ShowBreadCrumbs = true ShowCodeCopyButtons = true mainSections = [&#34;posts&#34;] [params.profileMode] enabled = true title = &#34;RyanPark&#39;s DevSecOps&#34; subtitle = &#34;Security &amp; DevOps Engineering Blog&#34; imageUrl = &#34;profile.jpg&#34; imageTitle = &#34;profile&#34; [params.homeInfoParams] Title = &#34;RyanPark&#39;s DevSecOps Blog 👋&#34; Content = &#34;Security &amp; DevOps Engineering Blog&#34; [params.assets] favicon = &#34;favicon.ico&#34; favicon16x16 = &#34;favicon-16x16.png&#34; favicon32x32 = &#34;favicon-32x32.png&#34; apple_touch_icon = &#34;apple-touch-icon.png&#34; [taxonomies] category = &#34;categories&#34; tag = &#34;tags&#34; series = &#34;series&#34; [menu] [[menu.main]] identifier = &#34;search&#34; name = &#34;검색&#34; url = &#34;/search/&#34; weight = 10 [[menu.main]] identifier = &#34;categories&#34; name = &#34;카테고리&#34; url = &#34;/categories/&#34; weight = 20 [[menu.main]] identifier = &#34;tags&#34; name = &#34;태그&#34; url = &#34;/tags/&#34; weight = 30 [[menu.main]] identifier = &#34;archives&#34; name = &#34;연도&#34; url = &#34;/archives/&#34; weight = 40 [[menu.main]] identifier = &#34;about&#34; name = &#34;어바웃미&#34; url = &#34;/about/&#34; weight = 50 [outputs] home = [&#34;HTML&#34;, &#34;RSS&#34;, &#34;JSON&#34;] 주요 변경사항:
 ...</p>
   </div>
   <footer class="entry-footer">2 min</footer>
-  <a class="entry-link" aria-label="post link to " href="http://localhost:1313/posts/checker/autosar/"></a>
+  <a class="entry-link" aria-label="post link to " href="http://localhost:1313/posts/creator/github-page-update/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -256,20 +276,6 @@ Routing Rules Host Path Backend aws-sig-ts-jonpark.aws.internal / cnc-cim-cim:84
   </div>
   <footer class="entry-footer">11 min</footer>
   <a class="entry-link" aria-label="post link to " href="http://localhost:1313/posts/k8s_docker/k8s-network-debug/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>issue 1 error 현재 다른 cluster 에 있어서 발생하는 문제임
-&#43; [[ true == true ]] &#43; CNC_INSTALL_MINIO=true &#43;&#43; kubectl get nodes &#39;-o=jsonpath={.items[0].metadata.labels.pool-type}&#39; &#43; pool_type= &#43; &#39;[&#39; &#39;&#39; &#39;!=&#39; cnc-custom-node-pool-label &#39;]&#39; &#43; kubectl label nodes --overwrite kind-control-plane pool-type=cnc-custom-node-pool-label Error from server (NotFound): nodes &#34;kind-control-plane&#34; not found (base) jonpark@aws-sig-ts-jonpark:~/workspace/jonpark-work/cnc-umbrella-chart-2025.3.maint/local-dev$ ^C (base) jonpark@aws-sig-ts-jonpark:~/workspace/jonpark-work/cnc-umbrella-chart-20 (base) jonpark@aws-sig-ts-jonpark:~/workspace/jonpark-work/cnc-umbrella-chart-2025.3.maint/local-dev$ kubectl get nodes NAME STATUS ROLES AGE VERSION gke-jonpark-poc-clus-jonpark-poc-prim-6e8a38c0-nihf Ready &lt;none&gt; 8d v1.30.9-gke.1127000 gke-jonpark-poc-clus-jonpark-poc-prim-6e8a38c0-tbzg Ready &lt;none&gt; 8d v1.30.9-gke.1127000 fix issue #2 error (base) jonpark@aws-sig-ts-jonpark:~/workspace/jonpark-work$ kind get clusters kind (base) jonpark@aws-sig-ts-jonpark:~/workspace/jonpark-work$ (base) jonpark@aws-sig-ts-jonpark:~/workspace/jonpark-work$ docker ps | grep kind d14a3e645595 kindest/node:v1.25.2 &#34;/usr/local/bin/entr…&#34; 8 minutes ago Up 8 minutes kind-worker 5b1fa9e58560 kindest/node:v1.25.2 &#34;/usr/local/bin/entr…&#34; 8 minutes ago Up 8 minutes 0.0.0.0:80-&gt;80/tcp, 0.0.0.0:443-&gt;443/tcp, 0.0.0.0:9090-&gt;9090/tcp, 127.0.0.1:33693-&gt;6443/tcp, 0.0.0.0:18080-&gt;8080/tcp kind-control-plane a6b81d3559cd kindest/node:v1.25.2 &#34;/usr/local/bin/entr…&#34; 8 minutes ago Up 8 minutes kind-worker2 (base) jonpark@aws-sig-ts-jonpark:~/workspace/jonpark-work$ kubectl cluster-info E0310 06:34:49.335293 1159663 memcache.go:265] couldn&#39;t get current server API group list: Get &#34;https://127.0.0.1:44491/api?timeout=32s&#34;: dial tcp 127.0.0.1:44491: connect: connection refused E0310 06:34:49.335525 1159663 memcache.go:265] couldn&#39;t get current server API group list: Get &#34;https://127.0.0.1:44491/api?timeout=32s&#34;: dial tcp 127.0.0.1:44491: connect: connection refused E0310 06:34:49.336818 1159663 memcache.go:265] couldn&#39;t get current server API group list: Get &#34;https://127.0.0.1:44491/api?timeout=32s&#34;: dial tcp 127.0.0.1:44491: connect: connection refused E0310 06:34:49.337043 1159663 memcache.go:265] couldn&#39;t get current server API group list: Get &#34;https://127.0.0.1:44491/api?timeout=32s&#34;: dial tcp 127.0.0.1:44491: connect: connection refused E0310 06:34:49.338289 1159663 memcache.go:265] couldn&#39;t get current server API group list: Get &#34;https://127.0.0.1:44491/api?timeout=32s&#34;: dial tcp 127.0.0.1:44491: connect: connection refused To further debug and diagnose cluster problems, use &#39;kubectl cluster-info dump&#39;. The connection to the server 127.0.0.1:44491 was refused - did you specify the right host or port? (base) jonpark@aws-sig-ts-jonpark:~/workspace/jonpark-work$ kubectl cluster-info dump The connection to the server 127.0.0.1:44491 was refused - did you specify the right host or port? (base) jonpark@aws-sig-ts-jonpark:~/workspace/jonpark-work$ netstat -tulpn | grep 44491 (Not all processes could be identified, non-owned process info will not be shown, you would have to be root to see it all.) (base) jonpark@aws-sig-ts-jonpark:~/workspace/jonpark-work$ kind get clusters fix kind export kubeconfig --name kind issue #2 - doc kind 클러스터는 실행 중이지만, kubectl이 클러스터에 연결할 수 없는 상황입니다. 이는 일반적으로 kubeconfig 설정이 잘못되었거나 다른 포트를 가리키고 있는 경우에 발생합니다.
-...</p>
-  </div>
-  <footer class="entry-footer">4 min</footer>
-  <a class="entry-link" aria-label="post link to " href="http://localhost:1313/posts/k8s_docker/kind-k8s/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

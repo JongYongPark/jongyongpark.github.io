@@ -13,15 +13,15 @@ theme = 'PaperMod'
   mainSections = ["posts"]
   
 [params.profileMode]
-  enabled = true
-  title = "RyanPark's DevSecOps"
-  subtitle = "Security & DevOps Engineering Blog"
-  imageUrl = "profile.jpg"
-  imageTitle = "profile"
+  enabled = false
   
 [params.homeInfoParams]
   Title = "RyanPark's DevSecOps Blog 👋"
-  Content = "Security & DevOps Engineering Blog"
+  Content = """
+Security & DevOps Engineering Blog
+
+최신 보안 및 DevOps 관련 기술 정보를 공유합니다.
+"""
 
 [params.assets]
   favicon = "favicon.ico"

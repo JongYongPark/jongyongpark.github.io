@@ -1,12 +1,54 @@
-{{ define "main" }}
-  {{/*  <h1>Category: {{ .Title }}</h1>  */}}
-  <h1>{{ .Title }}</h1>
-  <ul>
-    {{ range .Pages }}
-      <li>
-        <a href="{{ .Permalink }}">{{ .Title }}</a>
-        <p>{{ .Summary }}</p>
-      </li>
-    {{ end }}
-  </ul>
-{{ end }}
+{{- define "main" }}
+
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">
+      {{ .Title }}
+    </h1>
+  </header>
+
+  {{/* Category Tag Cloud */}}
+  <div class="post-content">
+    <div class="tag-cloud">
+      {{- range $index, $category := site.Taxonomies.categories }}
+      <a href="{{ .Page.RelPermalink }}" style="font-size: 1rem;">
+        {{ .Page.Title }} {{ .Count }}
+      </a>
+      {{- end }}
+    </div>
+  </div>
+</article>
+
+{{/* List of posts in this category */}}
+<header class="page-header">
+  <h2>
+    {{ .Title }}
+  </h2>
+</header>
+
+<div class="posts-list">
+  {{- range .Pages }}
+  <div class="post-entry">
+    <header class="entry-header">
+      <h2>{{ .Title }}</h2>
+    </header>
+    <div class="entry-content">
+      <p>{{ .Summary }}</p>
+    </div>
+    <footer class="entry-footer">
+      <span>{{ .Date.Format "2006-01-02" }}</span>
+      {{- if .Params.tags }}
+      <span>
+        {{- range $index, $tag := .Params.tags }}
+        {{- if $index }}, {{ end }}
+        <a href="{{ "tags/" | absURL }}{{ $tag | urlize }}">{{ $tag }}</a>
+        {{- end }}
+      </span>
+      {{- end }}
+    </footer>
+    <a class="entry-link" href="{{ .Permalink }}"></a>
+  </div>
+  {{- end }}
+</div>
+
+{{- end }}

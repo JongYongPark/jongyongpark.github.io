@@ -247,6 +247,13 @@
       <description></description>
     </item>
     <item>
+      <title>AUTOSAR</title>
+      <link>http://localhost:1313/tags/autosar/</link>
+      <pubDate>Mon, 17 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/autosar/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>CERT</title>
       <link>http://localhost:1313/tags/cert/</link>
       <pubDate>Mon, 17 Feb 2025 00:00:00 +0000</pubDate>
@@ -440,6 +447,13 @@
       <link>http://localhost:1313/tags/python/</link>
       <pubDate>Fri, 31 Jan 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Standard</title>
+      <link>http://localhost:1313/tags/standard/</link>
+      <pubDate>Sat, 17 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/standard/</guid>
       <description></description>
     </item>
   </channel>

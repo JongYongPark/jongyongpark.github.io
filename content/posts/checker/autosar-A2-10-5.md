@@ -1,3 +1,10 @@
+---
+title: "AUTOSAR C++ A2-10-5"
+date: 2025-02-17
+categories: ["Checker"]
+tags: ["AUTOSAR", "Cpp", "Checker"]
+---
+
 # AUTOSAR C++ A2-10-5 규칙 가이드
 
 ## 목차

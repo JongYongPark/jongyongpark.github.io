@@ -1,5 +1,13 @@
-<!doctype html><html lang=ko dir=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Chrome | RyanLabs</title>
-<meta name=keywords content="Chrome"><meta name=description content="Chrome Install on Ubuntu
+<!DOCTYPE html>
+<html lang="ko" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Chrome | RyanLabs</title>
+<meta name="keywords" content="Chrome">
+<meta name="description" content="Chrome Install on Ubuntu
 Ubuntu에서 Chrome을 완전히 제거하고 다시 설치하는 명령어 순서입니다:
 
 Chrome 제거:
@@ -29,61 +37,255 @@ sudo apt-get install -f
 
 # 다운로드한 설치 파일 제거 (선택사항)
 rm google-chrome-stable_current_amd64.deb
-설치가 완료되면 Applications 메뉴나 터미널에서 google-chrome 명령어로 Chrome을 실행할 수 있습니다."><meta name=author content><link rel=canonical href=https://jongyongpark.github.io/posts/sdlc/chrome/><link crossorigin=anonymous href=/assets/css/stylesheet.9de45e225101e4f99701d2b68fc6b8a1ef6027928be6391fa15bf7f56326c909.css integrity="sha256-neReIlEB5PmXAdK2j8a4oe9gJ5KL5jkfoVv39WMmyQk=" rel="preload stylesheet" as=style><link rel=icon href=https://jongyongpark.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://jongyongpark.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://jongyongpark.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://jongyongpark.github.io/apple-touch-icon.png><link rel=mask-icon href=https://jongyongpark.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=ko href=https://jongyongpark.github.io/posts/sdlc/chrome/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><meta property="og:url" content="https://jongyongpark.github.io/posts/sdlc/chrome/"><meta property="og:site_name" content="RyanLabs"><meta property="og:title" content="Chrome"><meta property="og:description" content="Chrome Install on Ubuntu Ubuntu에서 Chrome을 완전히 제거하고 다시 설치하는 명령어 순서입니다:
-Chrome 제거: # Chrome 패키지 제거 sudo apt-get purge google-chrome-stable # 관련 의존성 패키지 제거 sudo apt-get autoremove # Chrome 설정 파일 제거 (선택사항) rm -rf ~/.config/google-chrome Chrome 다시 설치: # Chrome 다운로드를 위한 필요 패키지 설치 sudo apt-get install wget # Chrome 패키지 다운로드 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb # 다운로드한 패키지 설치 sudo dpkg -i google-chrome-stable_current_amd64.deb # 의존성 문제가 있다면 다음 명령어로 해결 sudo apt-get install -f # 다운로드한 설치 파일 제거 (선택사항) rm google-chrome-stable_current_amd64.deb 설치가 완료되면 Applications 메뉴나 터미널에서 google-chrome 명령어로 Chrome을 실행할 수 있습니다."><meta property="og:locale" content="ko"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2025-02-21T00:00:00+00:00"><meta property="article:modified_time" content="2025-02-21T00:00:00+00:00"><meta property="article:tag" content="Chrome"><meta name=twitter:card content="summary"><meta name=twitter:title content="Chrome"><meta name=twitter:description content="Chrome Install on Ubuntu
-Ubuntu에서 Chrome을 완전히 제거하고 다시 설치하는 명령어 순서입니다:
+설치가 완료되면 Applications 메뉴나 터미널에서 google-chrome 명령어로 Chrome을 실행할 수 있습니다.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/posts/sdlc/chrome/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.9de45e225101e4f99701d2b68fc6b8a1ef6027928be6391fa15bf7f56326c909.css" integrity="sha256-neReIlEB5PmXAdK2j8a4oe9gJ5KL5jkfoVv39WMmyQk=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/posts/sdlc/chrome/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
 
-Chrome 제거:
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
 
-# Chrome 패키지 제거
-sudo apt-get purge google-chrome-stable
+            .list {
+                background: var(--theme);
+            }
 
-# 관련 의존성 패키지 제거
-sudo apt-get autoremove
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
 
-# Chrome 설정 파일 제거 (선택사항)
-rm -rf ~/.config/google-chrome
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
 
-Chrome 다시 설치:
+    </style>
+</noscript>
+</head>
 
-# Chrome 다운로드를 위한 필요 패키지 설치
-sudo apt-get install wget
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
 
-# Chrome 패키지 다운로드
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+</script>
 
-# 다운로드한 패키지 설치
-sudo dpkg -i google-chrome-stable_current_amd64.deb
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="RyanLabs (Alt + H)">RyanLabs</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/search/" title="검색">
+                    <span>검색</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/" title="카테고리">
+                    <span>카테고리</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="태그">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archives/" title="연도">
+                    <span>연도</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/lectures/" title="강의">
+                    <span>강의</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/about/" title="어바웃미">
+                    <span>어바웃미</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
 
-# 의존성 문제가 있다면 다음 명령어로 해결
-sudo apt-get install -f
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Chrome
+    </h1>
+    <div class="post-meta"><span title='2025-02-21 00:00:00 +0000 UTC'>2월 21, 2025</span>
 
-# 다운로드한 설치 파일 제거 (선택사항)
-rm google-chrome-stable_current_amd64.deb
-설치가 완료되면 Applications 메뉴나 터미널에서 google-chrome 명령어로 Chrome을 실행할 수 있습니다."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://jongyongpark.github.io/posts/"},{"@type":"ListItem","position":2,"name":"Chrome","item":"https://jongyongpark.github.io/posts/sdlc/chrome/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Chrome","name":"Chrome","description":"Chrome Install on Ubuntu Ubuntu에서 Chrome을 완전히 제거하고 다시 설치하는 명령어 순서입니다:\nChrome 제거: # Chrome 패키지 제거 sudo apt-get purge google-chrome-stable # 관련 의존성 패키지 제거 sudo apt-get autoremove # Chrome 설정 파일 제거 (선택사항) rm -rf ~/.config/google-chrome Chrome 다시 설치: # Chrome 다운로드를 위한 필요 패키지 설치 sudo apt-get install wget # Chrome 패키지 다운로드 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb # 다운로드한 패키지 설치 sudo dpkg -i google-chrome-stable_current_amd64.deb # 의존성 문제가 있다면 다음 명령어로 해결 sudo apt-get install -f # 다운로드한 설치 파일 제거 (선택사항) rm google-chrome-stable_current_amd64.deb 설치가 완료되면 Applications 메뉴나 터미널에서 google-chrome 명령어로 Chrome을 실행할 수 있습니다.\n","keywords":["Chrome"],"articleBody":"Chrome Install on Ubuntu Ubuntu에서 Chrome을 완전히 제거하고 다시 설치하는 명령어 순서입니다:\nChrome 제거: # Chrome 패키지 제거 sudo apt-get purge google-chrome-stable # 관련 의존성 패키지 제거 sudo apt-get autoremove # Chrome 설정 파일 제거 (선택사항) rm -rf ~/.config/google-chrome Chrome 다시 설치: # Chrome 다운로드를 위한 필요 패키지 설치 sudo apt-get install wget # Chrome 패키지 다운로드 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb # 다운로드한 패키지 설치 sudo dpkg -i google-chrome-stable_current_amd64.deb # 의존성 문제가 있다면 다음 명령어로 해결 sudo apt-get install -f # 다운로드한 설치 파일 제거 (선택사항) rm google-chrome-stable_current_amd64.deb 설치가 완료되면 Applications 메뉴나 터미널에서 google-chrome 명령어로 Chrome을 실행할 수 있습니다.\n","wordCount":"97","inLanguage":"ko","datePublished":"2025-02-21T00:00:00Z","dateModified":"2025-02-21T00:00:00Z","mainEntityOfPage":{"@type":"WebPage","@id":"https://jongyongpark.github.io/posts/sdlc/chrome/"},"publisher":{"@type":"Organization","name":"RyanLabs","logo":{"@type":"ImageObject","url":"https://jongyongpark.github.io/favicon.ico"}}}</script></head><body id=top><script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://jongyongpark.github.io/ accesskey=h title="RyanLabs (Alt + H)">RyanLabs</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://jongyongpark.github.io/search/ title=검색><span>검색</span></a></li><li><a href=https://jongyongpark.github.io/categories/ title=카테고리><span>카테고리</span></a></li><li><a href=https://jongyongpark.github.io/tags/ title=태그><span>태그</span></a></li><li><a href=https://jongyongpark.github.io/archives/ title=연도><span>연도</span></a></li><li><a href=https://jongyongpark.github.io/lectures/ title=강의><span>강의</span></a></li><li><a href=https://jongyongpark.github.io/about/ title=어바웃미><span>어바웃미</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">Chrome</h1><div class=post-meta><span title='2025-02-21 00:00:00 +0000 UTC'>2월 21, 2025</span></div></header><div class=post-content><h1 id=chrome-install-on-ubuntu>Chrome Install on Ubuntu<a hidden class=anchor aria-hidden=true href=#chrome-install-on-ubuntu>#</a></h1><p>Ubuntu에서 Chrome을 완전히 제거하고 다시 설치하는 명령어 순서입니다:</p><ol><li>Chrome 제거:</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Chrome 패키지 제거</span>
-</span></span><span style=display:flex><span>sudo apt-get purge google-chrome-stable
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># 관련 의존성 패키지 제거</span>
-</span></span><span style=display:flex><span>sudo apt-get autoremove
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># Chrome 설정 파일 제거 (선택사항)</span>
-</span></span><span style=display:flex><span>rm -rf ~/.config/google-chrome
-</span></span></code></pre></div><ol start=2><li>Chrome 다시 설치:</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Chrome 다운로드를 위한 필요 패키지 설치</span>
-</span></span><span style=display:flex><span>sudo apt-get install wget
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># Chrome 패키지 다운로드</span>
-</span></span><span style=display:flex><span>wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># 다운로드한 패키지 설치</span>
-</span></span><span style=display:flex><span>sudo dpkg -i google-chrome-stable_current_amd64.deb
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># 의존성 문제가 있다면 다음 명령어로 해결</span>
-</span></span><span style=display:flex><span>sudo apt-get install -f
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#75715e># 다운로드한 설치 파일 제거 (선택사항)</span>
-</span></span><span style=display:flex><span>rm google-chrome-stable_current_amd64.deb
-</span></span></code></pre></div><p>설치가 완료되면 Applications 메뉴나 터미널에서 <code>google-chrome</code> 명령어로 Chrome을 실행할 수 있습니다.</p><hr></div><footer class=post-footer><ul class=post-tags><li><a href=https://jongyongpark.github.io/tags/chrome/>Chrome</a></li></ul></footer></article></main><footer class=footer><span>&copy; 2025 <a href=https://jongyongpark.github.io/>RyanLabs</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script></body></html>
+</div>
+  </header> 
+  <div class="post-content"><h1 id="chrome-install-on-ubuntu">Chrome Install on Ubuntu<a hidden class="anchor" aria-hidden="true" href="#chrome-install-on-ubuntu">#</a></h1>
+<p>Ubuntu에서 Chrome을 완전히 제거하고 다시 설치하는 명령어 순서입니다:</p>
+<ol>
+<li>Chrome 제거:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Chrome 패키지 제거</span>
+</span></span><span style="display:flex;"><span>sudo apt-get purge google-chrome-stable
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 관련 의존성 패키지 제거</span>
+</span></span><span style="display:flex;"><span>sudo apt-get autoremove
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Chrome 설정 파일 제거 (선택사항)</span>
+</span></span><span style="display:flex;"><span>rm -rf ~/.config/google-chrome
+</span></span></code></pre></div><ol start="2">
+<li>Chrome 다시 설치:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Chrome 다운로드를 위한 필요 패키지 설치</span>
+</span></span><span style="display:flex;"><span>sudo apt-get install wget
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Chrome 패키지 다운로드</span>
+</span></span><span style="display:flex;"><span>wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 다운로드한 패키지 설치</span>
+</span></span><span style="display:flex;"><span>sudo dpkg -i google-chrome-stable_current_amd64.deb
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 의존성 문제가 있다면 다음 명령어로 해결</span>
+</span></span><span style="display:flex;"><span>sudo apt-get install -f
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 다운로드한 설치 파일 제거 (선택사항)</span>
+</span></span><span style="display:flex;"><span>rm google-chrome-stable_current_amd64.deb
+</span></span></code></pre></div><p>설치가 완료되면 Applications 메뉴나 터미널에서 <code>google-chrome</code> 명령어로 Chrome을 실행할 수 있습니다.</p>
+<hr>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/chrome/">Chrome</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="http://localhost:1313/">RyanLabs</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

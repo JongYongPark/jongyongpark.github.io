@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="ko" dir="auto">
 
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>OpenCV | RyanPark&#39;s DevSecOps</title>
+<title>OpenCV | RyanLabs</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -19,7 +19,7 @@
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/opencv/index.xml">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/tags/opencv/">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/tags/opencv/">
 <noscript>
     <style>
         #theme-toggle,
@@ -74,7 +74,7 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="RyanPark&#39;s DevSecOps (Alt + H)">RyanPark&#39;s DevSecOps</a>
+            <a href="http://localhost:1313/" accesskey="h" title="RyanLabs (Alt + H)">RyanLabs</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -120,6 +120,11 @@
                 </a>
             </li>
             <li>
+                <a href="http://localhost:1313/lectures/" title="강의">
+                    <span>강의</span>
+                </a>
+            </li>
+            <li>
                 <a href="http://localhost:1313/about/" title="어바웃미">
                     <span>어바웃미</span>
                 </a>
@@ -128,7 +133,7 @@
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/tags/">Tags</a></div>
+<header class="page-header">
   <h1>
     OpenCV
   </h1>
@@ -145,13 +150,13 @@ PowerShell 스크립트를 다음과 같이 수정하여 해결할 수 있습니
 # OpenCV Windows Build Script for x64 and ARM64 # Prerequisites: Visual Studio 2022, CMake, Git # Configuration $OPENCV_VERSION = &#34;4.9.0&#34; $SOURCE_DIR = &#34;C:\workspace\jonpark-work\opencv_source&#34; $BUILD_BASE_DIR = &#34;C:\workspace\jonpark-work\opencv_build&#34; $INSTALL_BASE_DIR = &#34;C:\workspace\jonpark-work\opencv_install&#34; # Common CMake parameters $CMAKE_COMMON_PARAMS = @( &#34;-DCMAKE_MINIMUM_REQUIRED_VERSION=3.10&#34;, # 최소 CMake 버전 지정 &#34;-DBUILD_SHARED_LIBS=ON&#34;, &#34;-DBUILD_TESTS=OFF&#34;, &#34;-DBUILD_PERF_TESTS=OFF&#34;, &#34;-DBUILD_EXAMPLES=OFF&#34;, &#34;-DWITH_CUDA=OFF&#34;, &#34;-DBUILD_opencv_world=ON&#34;, &#34;-DBUILD_opencv_python2=OFF&#34;, &#34;-DBUILD_opencv_python3=OFF&#34;, &#34;-DWITH_IPP=ON&#34;, &#34;-DENABLE_CXX11=ON&#34;, &#34;-DOPENCV_ENABLE_NONFREE=ON&#34;, &#34;-DBUILD_WITH_STATIC_CRT=OFF&#34; ) # Download OpenCV source if (-not (Test-Path $SOURCE_DIR)) { git clone https://github.com/opencv/opencv.git $SOURCE_DIR Push-Location $SOURCE_DIR git checkout $OPENCV_VERSION Pop-Location } # Function to build OpenCV for specific architecture function Build-OpenCV { param ( [string]$arch, [string]$generator, [string]$platform ) $BUILD_DIR = &#34;$BUILD_BASE_DIR\$arch&#34; $INSTALL_DIR = &#34;$INSTALL_BASE_DIR\$arch&#34; # Remove existing build directory to ensure clean build if (Test-Path $BUILD_DIR) { Remove-Item -Path $BUILD_DIR -Recurse -Force } # Create build directory New-Item -ItemType Directory -Force -Path $BUILD_DIR Push-Location $BUILD_DIR # Configure CMake with explicit project name and build type cmake -G $generator -A $platform ` -DCMAKE_INSTALL_PREFIX=&#34;$INSTALL_DIR&#34; ` -DCMAKE_BUILD_TYPE=Release ` -DOpenCV_ARCH=$platform ` -DOpenCV_RUNTIME=vc17 ` $CMAKE_COMMON_PARAMS ` -S $SOURCE_DIR -B $BUILD_DIR if ($LASTEXITCODE -ne 0) { Write-Error &#34;CMake configuration failed for $arch&#34; Pop-Location exit 1 } # Build and install cmake --build $BUILD_DIR --config Release --target INSTALL --parallel 8 if ($LASTEXITCODE -ne 0) { Write-Error &#34;Build failed for $arch&#34; Pop-Location exit 1 } Pop-Location } # 빌드 전 Visual Studio 환경 설정 $VS_PATH = &#34;C:\Program Files\Microsoft Visual Studio\2022\Community&#34; $VS_TOOLS = &#34;$VS_PATH\VC\Auxiliary\Build&#34; if (Test-Path &#34;$VS_TOOLS\vcvarsall.bat&#34;) { Write-Host &#34;Setting up Visual Studio environment...&#34; # x64 환경 설정 cmd.exe /c &#34;call `&#34;$VS_TOOLS\vcvarsall.bat`&#34; x64 &amp;&amp; set &gt; %temp%\vcvars.txt&#34; Get-Content &#34;$env:temp\vcvars.txt&#34; | foreach-object { if ($_ -match &#34;^(.*?)=(.*)$&#34;) { Set-Content &#34;env:\$($matches[1])&#34; $matches[2] } } } else { Write-Error &#34;Visual Studio environment setup failed&#34; exit 1 } # Build for x64 Write-Host &#34;Building for x64...&#34; Build-OpenCV -arch &#34;x64&#34; -generator &#34;Visual Studio 17 2022&#34; -platform &#34;x64&#34; # ARM64 빌드 전 환경 재설정 if (Test-Path &#34;$VS_TOOLS\vcvarsall.bat&#34;) { Write-Host &#34;Setting up Visual Studio environment for ARM64...&#34; cmd.exe /c &#34;call `&#34;$VS_TOOLS\vcvarsall.bat`&#34; x64_arm64 &amp;&amp; set &gt; %temp%\vcvars.txt&#34; Get-Content &#34;$env:temp\vcvars.txt&#34; | foreach-object { if ($_ -match &#34;^(.*?)=(.*)$&#34;) { Set-Content &#34;env:\$($matches[1])&#34; $matches[2] } } } # Build for ARM64 Write-Host &#34;Building for ARM64...&#34; Build-OpenCV -arch &#34;arm64&#34; -generator &#34;Visual Studio 17 2022&#34; -platform &#34;ARM64&#34; 주요 변경사항과 해결방법:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-02-20 00:00:00 +0000 UTC'>February 20, 2025</span>&nbsp;·&nbsp;12 min</footer>
+  <footer class="entry-footer"><span title='2025-02-20 00:00:00 +0000 UTC'>2월 20, 2025</span></footer>
   <a class="entry-link" aria-label="post link to OpenCV compile on Windows" href="http://localhost:1313/posts/developer/opencv-win/"></a>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/">RyanPark&#39;s DevSecOps</a></span> · 
+        <span>&copy; 2025 <a href="http://localhost:1313/">RyanLabs</a></span> · 
 
     <span>
         Powered by

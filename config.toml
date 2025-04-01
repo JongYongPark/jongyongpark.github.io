@@ -1,12 +1,13 @@
 baseURL = 'https://jongyongpark.github.io/'
 title = "RyanLabs"
 theme = 'PaperMod'
-paginate = 10
+# paginate = 10
 languageCode = "ko"
 defaultContentLanguage = "ko"
 # paginate = 10
 
 ignoreFiles = ["/private/"]
+
 
 [params]
   homeInfoParams = false
@@ -101,9 +102,4 @@ ignoreFiles = ["/private/"]
 [taxonomies]
   category = "categories"
   tag = "tags"
-  archive = "archives"
-  about = "about"
 
-[permalinks]
-  archives = "/archives/:year/"
-  about = "/about/"

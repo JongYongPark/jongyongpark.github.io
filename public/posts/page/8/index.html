@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="ko" dir="auto">
 
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>Posts | RyanPark&#39;s DevSecOps</title>
+<title>Posts | RyanLabs</title>
 <meta name="keywords" content="">
-<meta name="description" content="Posts - RyanPark&#39;s DevSecOps">
+<meta name="description" content="Posts - RyanLabs">
 <meta name="author" content="">
 <link rel="canonical" href="http://localhost:1313/posts/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.9de45e225101e4f99701d2b68fc6b8a1ef6027928be6391fa15bf7f56326c909.css" integrity="sha256-neReIlEB5PmXAdK2j8a4oe9gJ5KL5jkfoVv39WMmyQk=" rel="preload stylesheet" as="style">
@@ -19,7 +19,7 @@
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/posts/index.xml">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/posts/">
 <noscript>
     <style>
         #theme-toggle,
@@ -74,7 +74,7 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="RyanPark&#39;s DevSecOps (Alt + H)">RyanPark&#39;s DevSecOps</a>
+            <a href="http://localhost:1313/" accesskey="h" title="RyanLabs (Alt + H)">RyanLabs</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -120,6 +120,11 @@
                 </a>
             </li>
             <li>
+                <a href="http://localhost:1313/lectures/" title="강의">
+                    <span>강의</span>
+                </a>
+            </li>
+            <li>
                 <a href="http://localhost:1313/about/" title="어바웃미">
                     <span>어바웃미</span>
                 </a>
@@ -128,11 +133,89 @@
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="http://localhost:1313/">Home</a></div>
+<header class="page-header">
   <h1>
     Posts
   </h1>
 </header>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>find out the items of vpc_private_subnets 입력 cluster_name = &#34;cnc-test-cluster&#34; cluster_region = &#34;ap-northeast-2&#34; vpc_cidr_block = &#34;10.0.0.0/16&#34; vpc_id = &#34;vpc-0ee6ce9b74a82d087&#34; vpc_nat_public_ips = tolist([ &#34;3.35.204.211&#34;, ]) vpc_private_subnets = [ &#34;subnet-0329309bce8fe3cd7&#34;, &#34;subnet-0a3426c348f958ac0&#34;, ] vpc_public_subnets = [ &#34;subnet-0a042f89e148e823e&#34;, &#34;subnet-0035ab195d22e6cd0&#34;, ] You can use the following sed command to find out the items of vpc_private_subnets:
+sed -n &#39;s/.*vpc_private_subnets = \[\(.*\)\].*/\1/p&#39; &lt;filename&gt; Replace &lt;filename&gt; with the name of the file containing the above configuration. The sed command will extract the contents of vpc_private_subnets and print them out.
+Here’s an explanation of the command:
+...</p>
+  </div>
+  <footer class="entry-footer"></footer>
+  <a class="entry-link" aria-label="post link to " href="http://localhost:1313/posts/technical-support/cnc/cnc-jonpark/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>curl -k -vvv https://bd-82898.local 실패 🔍 문제 분석: curl -k -vvv https://bd-82898.local 실패 (SSL_ERROR_SYSCALL) 🚨 문제 요약 curl -k -vvv https://bd-82898.local 실행 시 TLS 핸드셰이크 실패 (SSL_ERROR_SYSCALL). curl 로그: * OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to bd-82898.local:443 bd-82898.local의 IP 주소는 127.0.0.1로 해석됨 (로컬 호스트에서 실행 중). kubectl 로그에서 Ingress Nginx 컨트롤러가 정상적으로 실행되지 않음 (Deployment is not ready: 0 out of 1 expected pods are ready). 🔎 원인 분석 1️⃣ Ingress Nginx가 정상적으로 실행되지 않음 로그에서 Ingress Nginx 컨트롤러가 정상적으로 기동되지 않았다는 메시지가 반복됨: Deployment is not ready: ingress-nginx/my-nginx-ingress-nginx-controller. 0 out of 1 expected pods are ready kubectl get pods -n ingress-nginx 명령어를 실행하여 Ingress Controller Pod 상태를 확인해야 함. ✅ 해결 방법
+...</p>
+  </div>
+  <footer class="entry-footer"></footer>
+  <a class="entry-link" aria-label="post link to " href="http://localhost:1313/posts/technical-support/cnc/cnc-wsl/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Move Triage Store to Other My Work test-cpp-10 stream의 triage store를 ts-test 에서 ts-test-new 로 변경한 경우 triage data 는 모두 사라진다.
+export 한 후 새로운 triage store 이름으로 json 파일을 변경후 해당 stream을 새 triage store를 가지도록 하면 문제 해결.
+https://documentation.blackduck.com/bundle/coverity-docs/page/coverity-platform/topics/managing_triage_stores.html
+https://documentation.blackduck.com/bundle/coverity-docs/page/coverity-platform/topics/exported_triage_store_json_elements.html
+==== Test
+test-cpp-10 stream has ts-test-cpp triage store Create ts-test-new
+Export ts-test-cpp triage store
+test-cpp-10 stream has ts-test-new triage store
+All triage data is reset ...</p>
+  </div>
+  <footer class="entry-footer"></footer>
+  <a class="entry-link" aria-label="post link to " href="http://localhost:1313/posts/technical-support/coverity/cov-triage-store/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>g&#43;&#43; : preprocessed C&#43;&#43;에서 Preprocessed File 생성 방법 C&#43;&#43; 코드를 전처리(preprocessing) 단계까지 실행하면, 컴파일러는 헤더 파일 확장, 매크로 대체, 조건부 컴파일 처리 등의 작업을 수행한 결과를 담은 **전처리된 파일(preprocessed file)**을 생성합니다.
+1. 전처리 파일 생성 (1) GCC 또는 Clang 사용 g&#43;&#43; -E source.cpp -o preprocessed.cpp -E: 컴파일러가 전처리만 수행하고 결과를 출력합니다. source.cpp: 전처리할 소스 파일. -o preprocessed.cpp: 출력 파일 이름 지정. (2) MSVC (Microsoft C&#43;&#43; Compiler) 사용 cl /P source.cpp /P: 전처리된 출력 파일 생성. source.cpp: 전처리할 소스 파일. 결과 파일은 source.i로 저장됩니다. 2. 전처리 파일의 내용 전처리 파일은 컴파일러가 모든 헤더 파일 확장 및 매크로 치환을 완료한 코드입니다. 이를 통해 컴파일러는 소스 코드를 직접 컴파일할 준비를 합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"></footer>
+  <a class="entry-link" aria-label="post link to " href="http://localhost:1313/posts/technical-support/coverity/g&#43;&#43;/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>내 작업 v1 Visual Studio에서 clang-cl.exe 컴파일러를 사용한 샘플 코드를 작성해 드리겠습니다. 제공해주신 로그를 살펴보니 nlohmann::json 라이브러리를 사용하는 C&#43;&#43; 코드에서 컴파일 오류가 발생했습니다. 특히 C&#43;&#43;20 개념(concepts)과 관련된 오류가 보입니다.
+Visual Studio에서 clang-cl.exe 컴파일러를 사용하는 샘플 프로젝트를 만들었습니다. 제공해주신 로그를 분석한 결과, nlohmann::json 라이브러리와 C&#43;&#43;20 기능을 사용할 때 발생하는 문제를 해결하는 코드를 작성했습니다.
+주요 구성 요소 샘플 코드 (main.cpp)
+API 스펙을 정의하고 관리하는 클래스 nlohmann::json을 사용한 JSON 직렬화/역직렬화 기능 컴파일러 오류를 피하기 위한 적절한 C&#43;&#43; 문법 사용 Visual Studio Clang-cl 설정 방법
+...</p>
+  </div>
+  <footer class="entry-footer"></footer>
+  <a class="entry-link" aria-label="post link to " href="http://localhost:1313/posts/technical-support/coverity/msvc-clangcl-repro/"></a>
+</article>
 
 <article class="post-entry"> 
   <header class="entry-header">
@@ -145,7 +228,7 @@
 보안 가이드라인 준수: 프로그래밍 언어 및 프레임워크의 보안 가이드라인을 준수하고, 사용 중인 함수 및 라이브러리의 보안 취약점에 대해 인식하세요.
 ...</p>
   </div>
-  <footer class="entry-footer">3 min</footer>
+  <footer class="entry-footer"></footer>
   <a class="entry-link" aria-label="post link to " href="http://localhost:1313/posts/technical-support/coverity/sast/"></a>
 </article>
 
@@ -159,7 +242,7 @@
 1. Sign in to AWS Console Go to the AWS Management Console, and sign in with your credentials. 2. Open EC2 Dashboard From the AWS Management Console, type EC2 in the search bar and click on EC2 to open the EC2 dashboard. 3. Launch an EC2 Instance In the EC2 Dashboard, click Launch Instance. Give your instance a name, for example, “ML-GPU-Instance”. 4. Select an Amazon Machine Image (AMI) AWS provides deep learning AMIs that come with machine learning libraries pre-installed. In the Choose AMI section, search for “Deep Learning AMI” and select a version that is compatible with your needs (e.g., Ubuntu or Amazon Linux). These AMIs come pre-installed with frameworks like TensorFlow, PyTorch, and MXNet. 5. Choose an Instance Type Select an instance type that has a GPU. P-Series (e.g., p2.xlarge, p3.xlarge): These instances are optimized for machine learning and provide NVIDIA GPUs. G-Series (e.g., g4dn.xlarge): These instances are also suitable for ML tasks and offer GPUs with a better price-performance ratio. If you’re starting with lighter tasks, the g4dn.xlarge instance is a good choice. For more intense workloads, consider the p3.2xlarge. 6. Configure Instance Details Configure the instance as per your requirement. Usually, the defaults work fine for individual or smaller-scale experiments. If needed, you can add more details such as VPC, subnet, and Auto Scaling options. 7. Add Storage By default, AWS allocates a root volume, but for machine learning workloads, you might need more storage for datasets. Increase the storage size (e.g., 100 GB or more) if you’re working with large datasets. Ensure that the storage type is SSD (gp2 or gp3), which provides better performance. 8. Configure Security Group Create or select a security group to allow SSH access. Open port 22 for SSH if you want to connect to the instance. If you plan to use Jupyter Notebooks on the instance, you will also need to open port 8888 for HTTP access. 9. Launch the Instance Review your configuration and click on Launch. AWS will prompt you to select a key pair. Create a new key pair if you don’t have one, and download it (this is required to SSH into your instance). Click Launch Instances. 10. Connect to Your EC2 Instance After launching the instance, go to the Instances page, find your instance, and click Connect.
 ...</p>
   </div>
-  <footer class="entry-footer">53 min</footer>
+  <footer class="entry-footer"></footer>
   <a class="entry-link" aria-label="post link to " href="http://localhost:1313/posts/technical-support/ec2-setting/"></a>
 </article>
 
@@ -173,7 +256,7 @@
 find . -type d -name .terraform -exec rm -rf {} &#43; Explanation: find . – Start searching from the current directory (.). -type d – Search for directories only. -name .terraform – Match directories with the name .terraform. -exec – Execute a command on the found results. rm -rf {} – Remove the found directories and their contents recursively. r – Recursive deletion. f – Force deletion without prompting for confirmation. &#43; – Optimizes the deletion by passing multiple directories at once to rm. Important Notes: Backup: Double-check that you want to delete these directories, as this command cannot be undone. Dry-run (Optional): To see what will be deleted without actually deleting, run: find . -type d -name .terraform This will list all .terraform directories. Let me know if you’d like additional safety measures or scripts! 😊
 ...</p>
   </div>
-  <footer class="entry-footer">8 min</footer>
+  <footer class="entry-footer"></footer>
   <a class="entry-link" aria-label="post link to " href="http://localhost:1313/posts/technical-support/linux-utils/"></a>
 </article>
 
@@ -189,7 +272,7 @@ Outlook에서 새 메시지를 작성하거나 기존 메시지 초안을 엽니
 메시지 본문에서 Ctrl &#43; F를 누르면 “이메일 전달&#34;이 실행되므로, “찾기&#34;를 열려면: 메뉴에서 홈 탭 또는 메시지 탭을 클릭합니다. 오른쪽 상단의 돋보기 모양(찾기)을 클릭하거나, 키보드 단축키 Ctrl &#43; H를 누릅니다. Find and Replace 창 열기
 ...</p>
   </div>
-  <footer class="entry-footer">5 min</footer>
+  <footer class="entry-footer"></footer>
   <a class="entry-link" aria-label="post link to " href="http://localhost:1313/posts/technical-support/outlook/"></a>
 </article>
 
@@ -204,102 +287,22 @@ Outlook에서 새 메시지를 작성하거나 기존 메시지 초안을 엽니
 I took sole responsibility for every SRM case opened in the APnJ region. Despite limited team resources, I successfully provided support for this new product (SRM), ensuring seamless operations and achieving cost savings from a resource management perspective. By efficiently managing these cases on my own, I helped the team meet critical support demands while minimizing additional staffing expenses.
 ...</p>
   </div>
-  <footer class="entry-footer">5 min</footer>
+  <footer class="entry-footer"></footer>
   <a class="entry-link" aria-label="post link to " href="http://localhost:1313/posts/technical-support/performance-self-assessment/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Obfuscated 장단점 장점 보안 강화: 민감한 클래스나 패키지 이름을 숨겨 시스템 구조 노출 방지. 외부 노출 방지: 로그에서 내부 구현 세부사항 은닉. 단점 가독성 저하: 디버깅과 문제 해결이 복잡해짐. 유지보수 부담: 난독화된 이름 관리 및 매핑 필요. 결론 보안이 중요한 경우 유용하지만, 디버깅이 어렵고 관리가 복잡해질 수 있어 상황에 맞게 사용해야 합니다.
-Obfuscated(난독화된) 이름을 사용 Akka 프레임워크와 Logback을 사용하는 프로그램에서 logback.xml에 Obfuscated(난독화된) 이름을 사용하는 것은 특정 시나리오에서 유용하거나 부정적인 영향을 미칠 수 있습니다. 아래는 주요 장점과 단점을 정리한 내용입니다.
-...</p>
-  </div>
-  <footer class="entry-footer">7 min</footer>
-  <a class="entry-link" aria-label="post link to " href="http://localhost:1313/posts/technical-support/srm/srm-logback/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>database 크기가 중가하는지 체크하는 스크립트 MySQL에서 데이터베이스 크기를 주기적으로 확인하고 증가 여부를 체크하는 스크립트를 작성하려면, 데이터베이스의 크기를 측정하여 로그 파일에 기록하거나 다른 방식으로 저장해야 합니다. 아래는 MySQL에서 데이터베이스 크기를 확인하는 스크립트 예제입니다.
-1. MySQL에서 데이터베이스 크기 조회 MySQL에서 특정 데이터베이스의 크기를 확인하려면 다음 SQL 쿼리를 사용할 수 있습니다:
-SELECT table_schema AS `Database`, ROUND(SUM(data_length &#43; index_length) / 1024 / 1024, 2) AS `Size (MB)` FROM information_schema.tables WHERE table_schema = &#39;your_database_name&#39; GROUP BY table_schema; 여기서 &#39;your_database_name&#39;을 모니터링하고 싶은 데이터베이스 이름으로 변경하세요.
-2. Bash 스크립트 예제 아래는 Linux 환경에서 데이터베이스 크기를 주기적으로 체크하여 로그 파일에 기록하는 Bash 스크립트 예제입니다:
-...</p>
-  </div>
-  <footer class="entry-footer">2 min</footer>
-  <a class="entry-link" aria-label="post link to " href="http://localhost:1313/posts/technical-support/srm/srm-mariadb/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>기술지원 엔지니어가 일을 잘 하려면 기술지원 엔지니어가 일을 잘 하려면 몇 가지 핵심 역량과 태도가 필요합니다. 다음은 이를 위한 중요한 요소들입니다:
-기술적 전문성: 기술지원 엔지니어는 다양한 문제를 해결할 수 있는 깊이 있는 기술 지식을 가져야 합니다. 지속적인 학습을 통해 최신 기술 트렌드와 관련 도구에 대해 이해하고 있어야 합니다.
-문제 해결 능력: 고객이 겪는 문제를 빠르고 효과적으로 분석하고 해결할 수 있어야 합니다. 논리적 사고와 창의적인 접근 방식을 통해 다양한 상황에서 최선의 솔루션을 제공하는 것이 중요합니다.
-...</p>
-  </div>
-  <footer class="entry-footer">10 min</footer>
-  <a class="entry-link" aria-label="post link to " href="http://localhost:1313/posts/technical-support/technical-support-job/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>sshfs가 인식되지 않는다는 오류 sshfs가 인식되지 않는다는 오류가 발생한 이유는 sshfs-win이 설치되지 않았거나 sshfs 명령어가 PowerShell에서 인식되지 않기 때문입니다.
-해결 방법: sshfs-win 설치 확인
-sshfs를 사용하려면 WinFsp와 SSHFS-Win이 설치되어 있어야 합니다.
-WinFsp 다운로드 SSHFS-Win 다운로드 설치 후, PowerShell을 다시 실행하고 아래 명령어로 sshfs가 인식되는지 확인하세요:
-sshfs --version PowerShell에서 sshfs 실행 가능하도록 경로 설정
-sshfs.exe가 C:\Program Files\SSHFS-Win\bin에 위치해 있다면, 이를 PATH에 추가해야 합니다.
-PowerShell에서 다음 명령어를 실행하세요:
-$env:Path &#43;= &#34;;C:\Program Files\SSHFS-Win\bin&#34; 수정된 스크립트
-위 방법이 적용된 후, Mount-JonparkDrive 함수를 수정하여 정상적으로 실행되도록 변경했습니다.
-...</p>
-  </div>
-  <footer class="entry-footer">21 min</footer>
-  <a class="entry-link" aria-label="post link to " href="http://localhost:1313/posts/technical-support/windows-setting/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>윈도우에서 WSL(Windows Subsystem for Linux)로 파일을 복사하는 방법 윈도우에서 WSL(Windows Subsystem for Linux)로 파일을 복사하는 방법에는 여러 가지가 있습니다. 아래에 대표적인 방법들을 단계별로 설명드리겠습니다.
-1. 파일 탐색기를 이용하는 방법 WSL 파일 시스템 접근하기:
-파일 탐색기를 열고 주소 표시줄에 \\wsl$\을 입력한 후 Enter 키를 누릅니다. 설치된 WSL 배포판 목록이 나타납니다. 예를 들어, Ubuntu를 선택합니다. 파일 복사:
-복사하고자 하는 윈도우 파일을 선택하고 마우스 오른쪽 버튼을 클릭하여 “복사&#34;를 선택합니다. WSL 배포판 내 원하는 디렉토리로 이동한 후 마우스 오른쪽 버튼을 클릭하여 “붙여넣기&#34;를 선택합니다. 2. WSL 명령어를 이용하는 방법 WSL 터미널 열기:
-...</p>
-  </div>
-  <footer class="entry-footer">2 min</footer>
-  <a class="entry-link" aria-label="post link to " href="http://localhost:1313/posts/technical-support/wsl-setting/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="prev" href="http://localhost:1313/posts/page/7/">
-      «&nbsp;Prev&nbsp;
+      «&nbsp;이전 페이지&nbsp;
+    </a>
+    <a class="next" href="http://localhost:1313/posts/page/9/">다음 페이지&nbsp;&nbsp;»
     </a>
   </nav>
 </footer>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/">RyanPark&#39;s DevSecOps</a></span> · 
+        <span>&copy; 2025 <a href="http://localhost:1313/">RyanLabs</a></span> · 
 
     <span>
         Powered by

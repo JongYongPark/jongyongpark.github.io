@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="ko" dir="auto">
 
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>WSL | RyanPark&#39;s DevSecOps</title>
+<title>WSL | RyanLabs</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -19,7 +19,7 @@
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/wsl/index.xml">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/tags/wsl/">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/tags/wsl/">
 <noscript>
     <style>
         #theme-toggle,
@@ -74,7 +74,7 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="RyanPark&#39;s DevSecOps (Alt + H)">RyanPark&#39;s DevSecOps</a>
+            <a href="http://localhost:1313/" accesskey="h" title="RyanLabs (Alt + H)">RyanLabs</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -120,6 +120,11 @@
                 </a>
             </li>
             <li>
+                <a href="http://localhost:1313/lectures/" title="강의">
+                    <span>강의</span>
+                </a>
+            </li>
+            <li>
                 <a href="http://localhost:1313/about/" title="어바웃미">
                     <span>어바웃미</span>
                 </a>
@@ -128,7 +133,7 @@
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/tags/">Tags</a></div>
+<header class="page-header">
   <h1>
     WSL
   </h1>
@@ -143,7 +148,7 @@
     <p>Windows 에서 WSL을 통해 ec2 에 접근시 symbol link에 따른 문제점 내 작업 ### AWS ec2 # Hdd 가 부족해서 하나 더 추가했다 - 이것이 opt/dlami/nvme 임임 (base) ubuntu@ip-172-31-26-173:~$ df -Th Filesystem Type Size Used Avail Use% Mounted on /dev/root ext4 117G 69G 48G 60% / tmpfs tmpfs 32G 48M 32G 1% /dev/shm tmpfs tmpfs 13G 1.4M 13G 1% /run tmpfs tmpfs 5.0M 0 5.0M 0% /run/lock efivarfs efivarfs 128K 4.1K 119K 4% /sys/firmware/efi/efivars /dev/nvme0n1p15 vfat 105M 6.1M 99M 6% /boot/efi tmpfs tmpfs 6.3G 68K 6.3G 1% /run/user/126 /dev/mapper/vg.01-lv_ephemeral ext4 206G 76G 119G 39% /opt/dlami/nvme tmpfs tmpfs 6.3G 76K 6.3G 1% /run/user/1000 (base) ubuntu@ip-172-31-26-173:~$ ll workspace lrwxrwxrwx 1 ubuntu ubuntu 15 Jan 24 09:47 workspace -&gt; /opt/dlami/nvme/ ### WSL bash#:~$ cat .bashrc | grep ec2 alias mount_ec2=&#39;sudo sshfs -o uid=`id -u jonpark` -o gid=`id -g jonpark` -o allow_other ubuntu@jonpark-ec2:/home/ubuntu -o IdentityFile=~/jonpark-ec2.pem ~/work_ec2&#39; ## 수정 : -o follow_symlinks 추가 alias mount_ec2=&#39;sudo sshfs -o uid=`id -u jonpark` -o gid=`id -g jonpark` -o allow_other -o follow_symlinks ubuntu@jonpark-ec2:/home/ubuntu -o IdentityFile=~/jonpark-ec2.pem ~/work_ec2&#39; ## 실행 bash#:~$ sudo umount ~/work_ec2 bash#:~$ sudo sshfs -o uid=`id -u jonpark` -o gid=`id -g jonpark` -o allow_other -o follow_symlinks ubuntu@jonpark-ec2:/home/ubuntu -o IdentityFile=~/jonpark-ec2.pem ~/work_ec2 [sudo] password for jonpark: ## 결과 bash#:~$ ll -d work_ec2 drwx------ 1 jonpark jonpark 4.0K Feb 25 14:13 work_ec2/ bash#:~$ ls work_ec2 blackduck-oidc LINUX_PACKAGES_LICENSES Public/ THIRD_PARTY_SOURCE_CODE_URLS BUILD_FROM_SOURCE_PACKAGES_LICENCES LINUX_PACKAGES_LIST PYTHON_PACKAGES_LICENSES Videos/ Desktop/ Music/ srm-2024.12.1-0-linux-x64-installer.run* workspace/ Documents/ nvidia-acknowledgements/ srm-license.txt zed-linux-x86_64.tar.gz Downloads/ OSSNvidiaDriver_v550.90.07_license.txt Templates/ google-chrome-stable_current_amd64.deb Pictures/ thinclient_drives/ bash#:~$ ll -d work_ec2/workspace/ drwxrwxrwt 1 jonpark jonpark 4.0K Feb 24 19:20 work_ec2/workspace// bash#:~$ ls work_ec2/workspace/ ai/ dev_tool/ dockers/ jonpark-work/ lost&#43;found/ miniconda3/ open-webui/ bash#:~$ 답변 이제 문제가 더 명확해졌습니다. EC2에서 workspace는 /opt/dlami/nvme/를 가리키는 심볼릭 링크입니다. SSHFS를 통한 마운트 시 심볼릭 링크 처리에 문제가 있는 것으로 보입니다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-03-10 00:00:00 +0000 UTC'>March 10, 2025</span>&nbsp;·&nbsp;4 min</footer>
+  <footer class="entry-footer"><span title='2025-03-10 00:00:00 +0000 UTC'>3월 10, 2025</span></footer>
   <a class="entry-link" aria-label="post link to Windows 에서 WSL을 통해 ec2에 접근하기" href="http://localhost:1313/posts/sdlc/sshfs-win-wsl-ec2/"></a>
 </article>
 
@@ -158,13 +163,13 @@
 Zone.Identifier 파일이 생성되지 않게 하는 방법: Windows에서 파일 신뢰 설정:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-03-10 00:00:00 +0000 UTC'>March 10, 2025</span>&nbsp;·&nbsp;1 min</footer>
+  <footer class="entry-footer"><span title='2025-03-10 00:00:00 +0000 UTC'>3월 10, 2025</span></footer>
   <a class="entry-link" aria-label="post link to Zone.Identifier" href="http://localhost:1313/posts/sdlc/wsl-zone.identifier/"></a>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/">RyanPark&#39;s DevSecOps</a></span> · 
+        <span>&copy; 2025 <a href="http://localhost:1313/">RyanLabs</a></span> · 
 
     <span>
         Powered by

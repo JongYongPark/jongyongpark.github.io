@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="ko" dir="auto">
 
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>Posts | RyanPark&#39;s DevSecOps</title>
+<title>Posts | RyanLabs</title>
 <meta name="keywords" content="">
-<meta name="description" content="Posts - RyanPark&#39;s DevSecOps">
+<meta name="description" content="Posts - RyanLabs">
 <meta name="author" content="">
 <link rel="canonical" href="http://localhost:1313/posts/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.9de45e225101e4f99701d2b68fc6b8a1ef6027928be6391fa15bf7f56326c909.css" integrity="sha256-neReIlEB5PmXAdK2j8a4oe9gJ5KL5jkfoVv39WMmyQk=" rel="preload stylesheet" as="style">
@@ -19,7 +19,7 @@
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/posts/index.xml">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/posts/">
 <noscript>
     <style>
         #theme-toggle,
@@ -74,7 +74,7 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="RyanPark&#39;s DevSecOps (Alt + H)">RyanPark&#39;s DevSecOps</a>
+            <a href="http://localhost:1313/" accesskey="h" title="RyanLabs (Alt + H)">RyanLabs</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -120,6 +120,11 @@
                 </a>
             </li>
             <li>
+                <a href="http://localhost:1313/lectures/" title="강의">
+                    <span>강의</span>
+                </a>
+            </li>
+            <li>
                 <a href="http://localhost:1313/about/" title="어바웃미">
                     <span>어바웃미</span>
                 </a>
@@ -128,7 +133,7 @@
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="http://localhost:1313/">Home</a></div>
+<header class="page-header">
   <h1>
     Posts
   </h1>
@@ -146,7 +151,7 @@
 📝 방법 1: GitHub 웹사이트에서 직접 생성하기 1️⃣ GitHub에 로그인 GitHub 홈페이지에 접속 후 로그인합니다. 2️⃣ 새 저장소 생성 페이지 이동 우측 상단의 &#43; 버튼을 클릭한 후 “New repository” 선택 또는 직접 새 저장소 생성 페이지로 이동 3️⃣ 저장소 정보 입력 Repository name (필수): 저장소 이름을 입력합니다. (예: my-new-repo) Description (선택): 저장소에 대한 설명을 입력합니다. Visibility 선택: Public(공개) → 누구나 볼 수 있음. Private(비공개) → 본인과 초대한 사용자만 접근 가능. 4️⃣ 추가 설정 ✅ Initialize this repository with a README (선택) 체크하면 기본적인 README.md 파일이 생성됨. ✅ .gitignore (선택) 특정 파일을 Git에서 무시하도록 설정 (예: Python, Node.js 등). ✅ License (선택) 오픈소스 라이선스를 설정 (예: MIT, Apache 2.0 등). 5️⃣ 저장소 생성 “Create repository” 버튼을 클릭하면 저장소가 생성됩니다. 6️⃣ 로컬 프로젝트와 연결 이제 로컬에서 작업 중인 프로젝트를 GitHub 저장소에 연결할 수 있습니다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>February 17, 2025</span>&nbsp;·&nbsp;24 min</footer>
+  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>2월 17, 2025</span></footer>
   <a class="entry-link" aria-label="post link to Git Usage" href="http://localhost:1313/posts/sdlc/git/"></a>
 </article>
 
@@ -160,7 +165,7 @@
 1. 룰의 목적 데이터 보호: 클래스 내부의 데이터가 외부 코드에 의해 직접 수정되는 것을 방지하여 무결성을 유지합니다. 유지보수성 향상: 데이터 접근을 메서드를 통해 제어함으로써 코드 변경 시 영향 범위를 최소화합니다. 캡슐화 준수: 객체 지향 프로그래밍의 기본 원칙인 캡슐화를 통해 데이터와 메서드를 하나의 단위로 묶어 관리합니다. 2. 권장 사항 멤버 변수의 접근 제어: 모든 멤버 변수를 private 또는 protected로 선언하여 외부에서 직접 접근하지 못하도록 합니다. 접근자 메서드 제공: 필요한 경우, 멤버 변수에 접근하기 위한 getter 및 setter 메서드를 제공합니다. 불필요한 공개 멤버 제거: 외부에서 직접 접근할 필요가 없는 멤버는 공개하지 않습니다. 3. 예시 잘못된 예:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>February 17, 2025</span>&nbsp;·&nbsp;2 min</footer>
+  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>2월 17, 2025</span></footer>
   <a class="entry-link" aria-label="post link to Hyundai Cpp Checker" href="http://localhost:1313/posts/checker/hyundai-cpp-checker/"></a>
 </article>
 
@@ -175,7 +180,7 @@ https://documentation.blackduck.com/bundle/coverity-docs-2023.12/page/checker-re
 https://documentation.blackduck.com/bundle/coverity-docs/page/checker-ref/tables/sei-cert-java-coding-standard.html
 </p>
   </div>
-  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>February 17, 2025</span>&nbsp;·&nbsp;1 min</footer>
+  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>2월 17, 2025</span></footer>
   <a class="entry-link" aria-label="post link to Hyundai Java Checker" href="http://localhost:1313/posts/checker/hyundai-java-checker/"></a>
 </article>
 
@@ -187,7 +192,7 @@ https://documentation.blackduck.com/bundle/coverity-docs/page/checker-ref/tables
   <div class="entry-content">
     <p></p>
   </div>
-  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>February 17, 2025</span>&nbsp;·&nbsp;0 min</footer>
+  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>2월 17, 2025</span></footer>
   <a class="entry-link" aria-label="post link to Kiwoom" href="http://localhost:1313/posts/ai/kiwoon/"></a>
 </article>
 
@@ -205,7 +210,7 @@ curl -fsSL https://ollama.com/install.sh | sh 설치 확인:
 ollama --version 위 명령어를 실행하여 Ollama가 정상적으로 설치되었는지 확인합니다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>February 17, 2025</span>&nbsp;·&nbsp;13 min</footer>
+  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>2월 17, 2025</span></footer>
   <a class="entry-link" aria-label="post link to Ollama" href="http://localhost:1313/posts/ai/ollama/"></a>
 </article>
 
@@ -220,7 +225,7 @@ ollama --version 위 명령어를 실행하여 Ollama가 정상적으로 설치�
 React는 각 컴포넌트 인스턴스(실제로는 Fiber 노드)에 hook 정보를 저장합니다. 이 정보는 hook들이 호출된 순서대로 배열(혹은 연결 리스트)로 관리되며, 각 hook은 해당 컴포넌트의 렌더링 상태와 관련된 데이터를 보관합니다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>February 17, 2025</span>&nbsp;·&nbsp;10 min</footer>
+  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>2월 17, 2025</span></footer>
   <a class="entry-link" aria-label="post link to React Hook" href="http://localhost:1313/posts/developer/javascipt/react-hook/"></a>
 </article>
 
@@ -241,7 +246,7 @@ JavaScript와 네이티브 플랫폼 간의 통신은 “브리지(Bridge)“를
 React Native는 플랫폼에 최적화된 네이티브 UI 컴포넌트를 사용하여, 높은 성능과 원활한 사용자 경험을 제공합니다. 2. React (Web)와 React Native의 차이점 2.1 렌더링 대상 React (Web):
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>February 17, 2025</span>&nbsp;·&nbsp;8 min</footer>
+  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>2월 17, 2025</span></footer>
   <a class="entry-link" aria-label="post link to React Native" href="http://localhost:1313/posts/developer/javascipt/react-native/"></a>
 </article>
 
@@ -255,7 +260,7 @@ React Native는 플랫폼에 최적화된 네이티브 UI 컴포넌트를 사용
 📌 Git Repository URL Formats and Their Characteristics Git URL Format Protocol Used Authentication Method Pros Cons git@host:path/repo.git SSH SSH key authentication (Private/Public key pair) ✅ Secure authentication without storing passwords ✅ Supports read &amp; write access ✅ Works well in automation (CI/CD) ❌ Requires setting up SSH keys ❌ Firewalls may block SSH (port 22) ssh://git@host/path/repo.git SSH SSH key authentication ✅ Same as git@host:path/repo.git, but with explicit protocol ✅ More readable for some users ❌ Identical disadvantages as the git@ format https://host/path/repo.git HTTPS Username &#43; Password, or Personal Access Token (PAT) ✅ Works without additional setup ✅ Usually allowed through firewalls ✅ Supports 2FA via PAT ❌ Requires entering credentials or setting up a credential manager ❌ PATs need to be managed securely git://host/path/repo.git Git Daemon (read-only) No authentication required ✅ Fast and lightweight ✅ Ideal for public repositories ❌ No authentication, security risk ❌ Only supports read access /path/to/repo.git Local File System No authentication needed (local access) ✅ Fastest access (no network latency) ✅ No need for authentication ❌ Only works on the local machine ❌ Cannot be used for remote access 📌 Pros and Cons of Each Git Access Method 1️⃣ SSH (git@host:path/repo.git or ssh://git@host/path/repo.git) ✅ Pros:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-02-14 00:00:00 +0000 UTC'>February 14, 2025</span>&nbsp;·&nbsp;3 min</footer>
+  <footer class="entry-footer"><span title='2025-02-14 00:00:00 +0000 UTC'>2월 14, 2025</span></footer>
   <a class="entry-link" aria-label="post link to Different URL Formats for Accessing a Git Repository" href="http://localhost:1313/posts/technical-support/git--repo-access-url-formats/"></a>
 </article>
 
@@ -275,7 +280,7 @@ README.md 파일을 추가하는 것이 좋음
 git clone https://github.com/your-username/my-blog.git cd my-blog 2. GitHub Pages 활성화 GitHub 저장소로 이동 Settings &gt; Pages 탭으로 이동 Branch 선택: main 또는 gh-pages 브랜치를 선택하여 배포할 수 있음 저장 후 몇 분 내로 GitHub Pages가 활성화됨 배포된 사이트 URL 확인 (https://your-username.github.io/my-blog/) 3. HTML/CSS 파일 추가하여 웹사이트 배포 로컬 저장소에서 기본 웹페이지 생성: echo &#34;&lt;h1&gt;Welcome to My GitHub Page&lt;/h1&gt;&#34; &gt; index.html 변경 사항을 커밋하고 푸시: git add index.html git commit -m &#34;Add main page&#34; git push origin main GitHub Pages가 자동으로 index.html을 인식하여 배포함 4. Jekyll을 이용한 블로그 만들기 GitHub Pages는 Jekyll을 지원하므로, Jekyll을 활용하여 정적 블로그를 쉽게 만들 수 있음.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-02-14 00:00:00 +0000 UTC'>February 14, 2025</span>&nbsp;·&nbsp;11 min</footer>
+  <footer class="entry-footer"><span title='2025-02-14 00:00:00 +0000 UTC'>2월 14, 2025</span></footer>
   <a class="entry-link" aria-label="post link to Github Pages with Hugo" href="http://localhost:1313/posts/creator/github-page-with-hugo/"></a>
 </article>
 
@@ -289,22 +294,22 @@ git clone https://github.com/your-username/my-blog.git cd my-blog 2. GitHub Page
 Bash Script: setup_kind_cluster.sh #!/bin/bash # 스크립트 실행 중 오류 발생 시 중단 set -e # 변수 정의 KIND_VERSION=&#34;v0.20.0&#34; KUBECTL_VERSION=&#34;v1.28.0&#34; DOCKER_COMPOSE_VERSION=&#34;v2.22.0&#34; # 필요한 유틸리티 다운로드 및 설치 install_utilities() { # Docker 설치 (Docker가 설치되어 있지 않을 경우) if ! command -v docker &amp;&gt; /dev/null; then echo &#34;Docker를 설치 중입니다...&#34; curl -fsSL https://get.docker.com | bash sudo usermod -aG docker $USER echo &#34;Docker 설치 완료. 사용하려면 로그아웃 후 다시 로그인하세요.&#34; else echo &#34;Docker가 이미 설치되어 있습니다.&#34; fi # kind 설치 if ! command -v kind &amp;&gt; /dev/null; then echo &#34;Kind를 설치 중입니다...&#34; curl -Lo ./kind https://kind.sigs.k8s.io/dl/${KIND_VERSION}/kind-linux-amd64 chmod &#43;x ./kind sudo mv ./kind /usr/local/bin/kind echo &#34;Kind 설치 완료.&#34; else echo &#34;Kind가 이미 설치되어 있습니다.&#34; fi # kubectl 설치 if ! command -v kubectl &amp;&gt; /dev/null; then echo &#34;Kubectl을 설치 중입니다...&#34; curl -LO &#34;https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl&#34; chmod &#43;x ./kubectl sudo mv ./kubectl /usr/local/bin/kubectl echo &#34;Kubectl 설치 완료.&#34; else echo &#34;Kubectl이 이미 설치되어 있습니다.&#34; fi # Docker Compose 설치 (필요한 경우) if ! command -v docker-compose &amp;&gt; /dev/null; then echo &#34;Docker Compose를 설치 중입니다...&#34; curl -L &#34;https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)&#34; -o /usr/local/bin/docker-compose chmod &#43;x /usr/local/bin/docker-compose echo &#34;Docker Compose 설치 완료.&#34; else echo &#34;Docker Compose가 이미 설치되어 있습니다.&#34; fi } # Kind 클러스터 설정 파일 생성 create_kind_cluster_config() { echo &#34;Kind 클러스터 설정 파일을 생성합니다...&#34; cat &lt;&lt;EOF &gt; kind-cluster-config.yaml kind: Cluster apiVersion: kind.x-k8s.io/v1alpha4 nodes: - role: control-plane - role: worker - role: worker - role: worker EOF echo &#34;Kind 클러스터 설정 파일 생성 완료.&#34; } # Kind 클러스터 생성 create_kind_cluster() { echo &#34;Kind 클러스터를 생성합니다...&#34; kind create cluster --config kind-cluster-config.yaml echo &#34;Kind 클러스터 생성 완료.&#34; } # 주요 함수 호출 install_utilities create_kind_cluster_config create_kind_cluster # 클러스터 정보 출력 kubectl get nodes echo &#34;3개의 worker 노드를 포함한 Kind 클러스터가 성공적으로 생성되었습니다.&#34; 스크립트 설명 필수 유틸리티 설치: Docker, kind, kubectl, docker-compose가 설치되지 않은 경우 자동으로 다운로드하고 설치합니다. 클러스터 구성 파일: kind-cluster-config.yaml 파일을 생성하며, 하나의 control-plane 노드와 3개의 worker 노드를 포함합니다. 클러스터 생성: kind를 이용해 클러스터를 생성합니다. kubectl로 클러스터 상태 확인: kubectl 명령어를 통해 생성된 클러스터의 노드 상태를 확인할 수 있습니다. 사용 방법: 스크립트를 파일로 저장 (예: setup_kind_cluster.sh). 파일에 실행 권한을 부여: chmod &#43;x setup_kind_cluster.sh 스크립트 실행: ./setup_kind_cluster.sh 클러스터가 성공적으로 생성되면 kubectl get nodes 명령을 통해 노드 상태를 확인할 수 있습니다. 이 스크립트는 KinD를 활용하여 간단하게 3개의 worker 노드가 있는 클러스터를 설정할 수 있도록 도와줍니다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-02-14 00:00:00 +0000 UTC'>February 14, 2025</span>&nbsp;·&nbsp;2 min</footer>
+  <footer class="entry-footer"><span title='2025-02-14 00:00:00 +0000 UTC'>2월 14, 2025</span></footer>
   <a class="entry-link" aria-label="post link to KinD for k8s" href="http://localhost:1313/posts/k8s_docker/k8s-kind/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="prev" href="http://localhost:1313/posts/page/3/">
-      «&nbsp;Prev&nbsp;
+      «&nbsp;이전 페이지&nbsp;
     </a>
-    <a class="next" href="http://localhost:1313/posts/page/5/">Next&nbsp;&nbsp;»
+    <a class="next" href="http://localhost:1313/posts/page/5/">다음 페이지&nbsp;&nbsp;»
     </a>
   </nav>
 </footer>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/">RyanPark&#39;s DevSecOps</a></span> · 
+        <span>&copy; 2025 <a href="http://localhost:1313/">RyanLabs</a></span> · 
 
     <span>
         Powered by

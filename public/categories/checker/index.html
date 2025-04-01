@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="ko" dir="auto">
 
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>Checker | RyanPark&#39;s DevSecOps</title>
+<title>Checker | RyanLabs</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -19,7 +19,7 @@
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/categories/checker/index.xml">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/categories/checker/">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/categories/checker/">
 <noscript>
     <style>
         #theme-toggle,
@@ -74,7 +74,7 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="RyanPark&#39;s DevSecOps (Alt + H)">RyanPark&#39;s DevSecOps</a>
+            <a href="http://localhost:1313/" accesskey="h" title="RyanLabs (Alt + H)">RyanLabs</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -120,6 +120,11 @@
                 </a>
             </li>
             <li>
+                <a href="http://localhost:1313/lectures/" title="강의">
+                    <span>강의</span>
+                </a>
+            </li>
+            <li>
                 <a href="http://localhost:1313/about/" title="어바웃미">
                     <span>어바웃미</span>
                 </a>
@@ -127,444 +132,101 @@
         </ul>
     </nav>
 </header>
-<main class="main">
-
-<article class="post-single">
-  <header class="post-header">
-    <h1 class="post-title">
-      Checker
-    </h1>
-  </header>
-
-  
-  <div class="post-content">
-    <div class="tag-cloud">
-      <a href="/categories/ai/" style="font-size: 1rem;">
-        AI 3
-      </a>
-      <a href="/categories/checker/" style="font-size: 1rem;">
-        Checker 6
-      </a>
-      <a href="/categories/creator/" style="font-size: 1rem;">
-        Creator 1
-      </a>
-      <a href="/categories/developer/" style="font-size: 1rem;">
-        Developer 10
-      </a>
-      <a href="/categories/devsecops/" style="font-size: 1rem;">
-        DevSecOps 1
-      </a>
-      <a href="/categories/k8s/" style="font-size: 1rem;">
-        K8s 2
-      </a>
-      <a href="/categories/ops/" style="font-size: 1rem;">
-        Ops 8
-      </a>
-      <a href="/categories/sdlc/" style="font-size: 1rem;">
-        SDLC 18
-      </a>
-      <a href="/categories/travel/" style="font-size: 1rem;">
-        Travel 1
-      </a>
-    </div>
-  </div>
-</article>
-
-
+<main class="main"> 
 <header class="page-header">
-  <h2>
+  <h1>
     Checker
-  </h2>
+  </h1>
 </header>
 
-<div class="posts-list">
-  <div class="post-entry">
-    <header class="entry-header">
-      <h2>AUTOSAR C&#43;&#43; A2-10-5</h2>
-    </header>
-    <div class="entry-content">
-      <p><h1 id="autosar-c-a2-10-5-규칙-가이드">AUTOSAR C++ A2-10-5 규칙 가이드</h1>
-<h2 id="목차">목차</h2>
-<ol>
-<li><a href="#%EA%B7%9C%EC%B9%99-%EA%B0%9C%EC%9A%94">규칙 개요</a></li>
-<li><a href="#%ED%95%B5%EC%8B%AC-%EA%B0%9C%EB%85%90">핵심 개념</a></li>
-<li><a href="#%EC%9C%84%EB%B0%98-%EC%82%AC%EB%A1%80">위반 사례</a></li>
-<li><a href="#%ED%95%B4%EA%B2%B0-%EB%B0%A9%EB%B2%95">해결 방법</a></li>
-<li><a href="#%EC%83%81%EC%84%B8-%EC%84%A4%EB%AA%85">상세 설명</a></li>
-<li><a href="#%EC%B0%B8%EA%B3%A0-%EC%82%AC%ED%95%AD">참고 사항</a></li>
-</ol>
-<h2 id="규칙-개요">규칙 개요</h2>
-<p>AUTOSAR C++ A2-10-5 규칙은 다음과 같이 정의됩니다:</p>
-<blockquote>
-<p>&ldquo;정적 저장 기간을 가진 함수 또는 외부/내부 연결을 가진 비멤버 객체의 식별자 이름은 재사용되어서는 안 된다.&rdquo;</p>
-</blockquote>
-<h3 id="규칙의-목적">규칙의 목적</h3>
-<ul>
-<li>코드의 명확성과 가독성 향상</li>
-<li>유지보수성 개선</li>
-<li>모호성과 오류 가능성 감소</li>
-<li>자동차 소프트웨어의 안전성 강화</li>
-</ul>
-<h2 id="핵심-개념">핵심 개념</h2>
-<h3 id="1-static-storage-duration-정적-저장-기간">1. Static Storage Duration (정적 저장 기간)</h3>
-<ul>
-<li>C++에서 모든 함수는 기본적으로 정적 저장 기간을 가짐</li>
-<li>프로그램 시작부터 종료까지 메모리에 존재</li>
-<li><code>static</code> 키워드는 함수의 저장 기간이 아닌 링키지(linkage)를 변경</li>
-</ul>
-<h3 id="2-non-member-object-비멤버-객체">2. Non-member Object (비멤버 객체)</h3>
-<ul>
-<li>클래스나 구조체의 멤버가 아닌 변수나 객체</li>
-<li>전역 변수, 네임스페이스 범위 변수, 블록 범위의 정적 변수 등</li>
-</ul>
-<h3 id="3-linkage-연결">3. Linkage (연결)</h3>
-<ul>
-<li><strong>External Linkage</strong>: 다른 번역 단위에서도 참조 가능</li>
-<li><strong>Internal Linkage</strong>: 같은 번역 단위 내에서만 참조 가능</li>
-</ul>
-<h2 id="위반-사례">위반 사례</h2>
-<h3 id="1-함수-오버로딩">1. 함수 오버로딩</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 위반 예시
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int32_t</span> <span style="color:#a6e22e">my_printf</span>(<span style="color:#66d9ef">char</span> <span style="color:#66d9ef">const</span><span style="color:#f92672">*</span> msg) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> printf(<span style="color:#e6db74">&#34;char: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, msg);
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int32_t</span> <span style="color:#a6e22e">my_printf</span>(std<span style="color:#f92672">::</span>string <span style="color:#66d9ef">const</span><span style="color:#f92672">&amp;</span> msg) {  <span style="color:#75715e">// 위반: 동일 식별자 재사용
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> printf(<span style="color:#e6db74">&#34;string: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, msg.c_str());
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="2-다른-범위에서-식별자-재사용">2. 다른 범위에서 식별자 재사용</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 위반 예시
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> globalVar;  <span style="color:#75715e">// 외부 링키지를 가진 전역 변수
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">func</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> globalVar <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;  <span style="color:#75715e">// 위반: 외부 링키지를 가진 식별자 재사용
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
-</span></span></code></pre></div><h2 id="해결-방법">해결 방법</h2>
-<h3 id="1-함수-이름-구분">1. 함수 이름 구분</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 올바른 예시
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int32_t</span> <span style="color:#a6e22e">my_printf_c_string</span>(<span style="color:#66d9ef">char</span> <span style="color:#66d9ef">const</span><span style="color:#f92672">*</span> msg) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> printf(<span style="color:#e6db74">&#34;char: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, msg);
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int32_t</span> <span style="color:#a6e22e">my_printf_cpp_string</span>(std<span style="color:#f92672">::</span>string <span style="color:#66d9ef">const</span><span style="color:#f92672">&amp;</span> msg) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> printf(<span style="color:#e6db74">&#34;string: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, msg.c_str());
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="2-변수-이름-구분">2. 변수 이름 구분</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">// 올바른 예시
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> globalVar;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">func</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> localGlobalVar <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;  <span style="color:#75715e">// 명확한 이름 사용
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
-</span></span></code></pre></div><h2 id="상세-설명">상세 설명</h2>
-<h3 id="static-storage-duration-vs-automatic-storage-duration">Static Storage Duration vs Automatic Storage Duration</h3>
-<h4 id="static-storage-duration">Static Storage Duration</h4>
-<ul>
-<li>프로그램 시작 시점에 생성</li>
-<li>프로그램 종료까지 존재</li>
-<li>초기화되지 않으면 0 또는 nullptr로 자동 초기화</li>
-</ul>
-<h4 id="automatic-storage-duration">Automatic Storage Duration</h4>
-<ul>
-<li>선언된 블록 진입 시 생성</li>
-<li>블록 종료 시 파괴</li>
-<li>초기화되지 않으면 값이 불확정 상태</li>
-</ul>
-<h3 id="예시-코드">예시 코드</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// 정적 저장 기간
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> globalStaticVar <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">staticFunction</span>() {
-</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Static function is called&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">exampleFunction</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 자동 저장 기간
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> localAutoVar <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;  
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 정적 저장 기간
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> localStaticVar <span style="color:#f92672">=</span> <span style="color:#ae81ff">30</span>;  
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    localAutoVar<span style="color:#f92672">++</span>;
-</span></span><span style="display:flex;"><span>    localStaticVar<span style="color:#f92672">++</span>;
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;localAutoVar: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> localAutoVar <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
-</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;localStaticVar: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> localStaticVar <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h2 id="참고-사항">참고 사항</h2>
-<h3 id="오해-해소">오해 해소</h3>
-<ul>
-<li>함수에 <code>static</code> 키워드가 없더라도 모든 함수는 기본적으로 정적 저장 기간을 가짐</li>
-<li>C++에서는 함수 오버로딩이 합법적이지만, AUTOSAR C++14는 더 엄격한 안전 기준을 적용</li>
-</ul>
-<h3 id="컴파일-및-검증">컴파일 및 검증</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 일반 컴파일</span>
-</span></span><span style="display:flex;"><span>g++ -std<span style="color:#f92672">=</span>c++14 -o test_a2_10_5 test_a2_10_5.cpp
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># AUTOSAR 검증</span>
-</span></span><span style="display:flex;"><span>coverity scan --checker<span style="color:#f92672">=</span>AUTOSAR test_a2_10_5.cpp
-</span></span></code></pre></div><h3 id="결론">결론</h3>
-<p>AUTOSAR C++14 Rule A2-10-5는 자동차 소프트웨어의 안전성과 신뢰성을 위해 코드의 명확성을 강조하는 규칙입니다. 식별자의 재사용을 금지함으로써 코드의 가독성과 유지보수성을 향상시킵니다.</p></p>
-    </div>
-    <footer class="entry-footer">
-      <span>2025-02-17</span>
-      <span>
-        <a href="http://localhost:1313/tags/autosar">AUTOSAR</a>, 
-        <a href="http://localhost:1313/tags/cpp">Cpp</a>, 
-        <a href="http://localhost:1313/tags/checker">Checker</a>
-      </span>
-    </footer>
-    <a class="entry-link" href="http://localhost:1313/posts/checker/autosar-a2-10-5/"></a>
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AUTOSAR C&#43;&#43; A2-10-5
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>AUTOSAR C&#43;&#43; A2-10-5 규칙 가이드 목차 규칙 개요 핵심 개념 위반 사례 해결 방법 상세 설명 참고 사항 규칙 개요 AUTOSAR C&#43;&#43; A2-10-5 규칙은 다음과 같이 정의됩니다:
+“정적 저장 기간을 가진 함수 또는 외부/내부 연결을 가진 비멤버 객체의 식별자 이름은 재사용되어서는 안 된다.”
+규칙의 목적 코드의 명확성과 가독성 향상 유지보수성 개선 모호성과 오류 가능성 감소 자동차 소프트웨어의 안전성 강화 핵심 개념 1. Static Storage Duration (정적 저장 기간) C&#43;&#43;에서 모든 함수는 기본적으로 정적 저장 기간을 가짐 프로그램 시작부터 종료까지 메모리에 존재 static 키워드는 함수의 저장 기간이 아닌 링키지(linkage)를 변경 2. Non-member Object (비멤버 객체) 클래스나 구조체의 멤버가 아닌 변수나 객체 전역 변수, 네임스페이스 범위 변수, 블록 범위의 정적 변수 등 3. Linkage (연결) External Linkage: 다른 번역 단위에서도 참조 가능 Internal Linkage: 같은 번역 단위 내에서만 참조 가능 위반 사례 1. 함수 오버로딩 // 위반 예시 int32_t my_printf(char const* msg) { return printf(&#34;char: %s\n&#34;, msg); } int32_t my_printf(std::string const&amp; msg) { // 위반: 동일 식별자 재사용 return printf(&#34;string: %s\n&#34;, msg.c_str()); } 2. 다른 범위에서 식별자 재사용 // 위반 예시 int globalVar; // 외부 링키지를 가진 전역 변수 void func() { int globalVar = 5; // 위반: 외부 링키지를 가진 식별자 재사용 } 해결 방법 1. 함수 이름 구분 // 올바른 예시 int32_t my_printf_c_string(char const* msg) { return printf(&#34;char: %s\n&#34;, msg); } int32_t my_printf_cpp_string(std::string const&amp; msg) { return printf(&#34;string: %s\n&#34;, msg.c_str()); } 2. 변수 이름 구분 // 올바른 예시 int globalVar; void func() { int localGlobalVar = 5; // 명확한 이름 사용 } 상세 설명 Static Storage Duration vs Automatic Storage Duration Static Storage Duration 프로그램 시작 시점에 생성 프로그램 종료까지 존재 초기화되지 않으면 0 또는 nullptr로 자동 초기화 Automatic Storage Duration 선언된 블록 진입 시 생성 블록 종료 시 파괴 초기화되지 않으면 값이 불확정 상태 예시 코드 #include &lt;iostream&gt; // 정적 저장 기간 int globalStaticVar = 10; void staticFunction() { std::cout &lt;&lt; &#34;Static function is called&#34; &lt;&lt; std::endl; } void exampleFunction() { // 자동 저장 기간 int localAutoVar = 20; // 정적 저장 기간 static int localStaticVar = 30; localAutoVar&#43;&#43;; localStaticVar&#43;&#43;; std::cout &lt;&lt; &#34;localAutoVar: &#34; &lt;&lt; localAutoVar &lt;&lt; std::endl; std::cout &lt;&lt; &#34;localStaticVar: &#34; &lt;&lt; localStaticVar &lt;&lt; std::endl; } 참고 사항 오해 해소 함수에 static 키워드가 없더라도 모든 함수는 기본적으로 정적 저장 기간을 가짐 C&#43;&#43;에서는 함수 오버로딩이 합법적이지만, AUTOSAR C&#43;&#43;14는 더 엄격한 안전 기준을 적용 컴파일 및 검증 # 일반 컴파일 g&#43;&#43; -std=c&#43;&#43;14 -o test_a2_10_5 test_a2_10_5.cpp # AUTOSAR 검증 coverity scan --checker=AUTOSAR test_a2_10_5.cpp 결론 AUTOSAR C&#43;&#43;14 Rule A2-10-5는 자동차 소프트웨어의 안전성과 신뢰성을 위해 코드의 명확성을 강조하는 규칙입니다. 식별자의 재사용을 금지함으로써 코드의 가독성과 유지보수성을 향상시킵니다.
+...</p>
   </div>
-  <div class="post-entry">
-    <header class="entry-header">
-      <h2>CERT Cpp Checker</h2>
-    </header>
-    <div class="entry-content">
-      <p><hr></p>
-    </div>
-    <footer class="entry-footer">
-      <span>2025-02-17</span>
-      <span>
-        <a href="http://localhost:1313/tags/cert">CERT</a>, 
-        <a href="http://localhost:1313/tags/cpp">Cpp</a>, 
-        <a href="http://localhost:1313/tags/checker">Checker</a>
-      </span>
-    </footer>
-    <a class="entry-link" href="http://localhost:1313/posts/checker/cert-cpp-checker/"></a>
+  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>2월 17, 2025</span></footer>
+  <a class="entry-link" aria-label="post link to AUTOSAR C&#43;&#43; A2-10-5" href="http://localhost:1313/posts/checker/autosar-a2-10-5/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">CERT Cpp Checker
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p></p>
   </div>
-  <div class="post-entry">
-    <header class="entry-header">
-      <h2>CERT Java Checker</h2>
-    </header>
-    <div class="entry-content">
-      <p><h1 id="cert-ser03-j--do-not-serialize-unencrypted-sensitive-data">CERT SER03-J : Do not serialize unencrypted sensitive data.</h1>
-<p>죄송합니다. 이전에 제공된 정보에서 혼란을 드려 죄송합니다. CERT Java 보안 코딩 표준에서 <strong>SER03-J: 민감한 데이터를 암호화하지 않고 직렬화하지 마십시오</strong>라는 규칙은 민감한 정보가 직렬화 과정에서 노출되지 않도록 보호하기 위한 지침을 제공합니다.</p>
-<h3 id="취약한-코드-예시">취약한 코드 예시</h3>
-<p>아래 코드는 사용자의 비밀번호를 평문으로 직렬화하여 파일에 저장하는 취약한 예제입니다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.*;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UserInfo</span> <span style="color:#66d9ef">implements</span> Serializable {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">long</span> serialVersionUID <span style="color:#f92672">=</span> 1L;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> String username;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> String password; <span style="color:#75715e">// 민감한 데이터</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">UserInfo</span>(String username, String password) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">username</span> <span style="color:#f92672">=</span> username;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">password</span> <span style="color:#f92672">=</span> password;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// getter 및 setter 생략</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
-</span></span><span style="display:flex;"><span>        UserInfo user <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> UserInfo(<span style="color:#e6db74">&#34;user1&#34;</span>, <span style="color:#e6db74">&#34;password123&#34;</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 객체를 파일에 직렬화</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> (ObjectOutputStream oos <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ObjectOutputStream(<span style="color:#66d9ef">new</span> FileOutputStream(<span style="color:#e6db74">&#34;user.ser&#34;</span>))) {
-</span></span><span style="display:flex;"><span>            oos.<span style="color:#a6e22e">writeObject</span>(user);
-</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (IOException e) {
-</span></span><span style="display:flex;"><span>            e.<span style="color:#a6e22e">printStackTrace</span>();
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>위 코드에서는 <code>UserInfo</code> 객체를 직렬화하여 <code>user.ser</code> 파일에 저장합니다. 그러나 <code>password</code> 필드는 암호화되지 않은 상태로 저장되므로, 파일이 유출되면 비밀번호가 노출될 수 있습니다.</p></p>
-    </div>
-    <footer class="entry-footer">
-      <span>2025-02-17</span>
-      <span>
-        <a href="http://localhost:1313/tags/cert">CERT</a>, 
-        <a href="http://localhost:1313/tags/java">Java</a>, 
-        <a href="http://localhost:1313/tags/checker">Checker</a>
-      </span>
-    </footer>
-    <a class="entry-link" href="http://localhost:1313/posts/checker/cert-java-checker/"></a>
+  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>2월 17, 2025</span></footer>
+  <a class="entry-link" aria-label="post link to CERT Cpp Checker" href="http://localhost:1313/posts/checker/cert-cpp-checker/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">CERT Java Checker
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>CERT SER03-J : Do not serialize unencrypted sensitive data. 죄송합니다. 이전에 제공된 정보에서 혼란을 드려 죄송합니다. CERT Java 보안 코딩 표준에서 SER03-J: 민감한 데이터를 암호화하지 않고 직렬화하지 마십시오라는 규칙은 민감한 정보가 직렬화 과정에서 노출되지 않도록 보호하기 위한 지침을 제공합니다.
+취약한 코드 예시 아래 코드는 사용자의 비밀번호를 평문으로 직렬화하여 파일에 저장하는 취약한 예제입니다.
+import java.io.*; public class UserInfo implements Serializable { private static final long serialVersionUID = 1L; private String username; private String password; // 민감한 데이터 public UserInfo(String username, String password) { this.username = username; this.password = password; } // getter 및 setter 생략 public static void main(String[] args) { UserInfo user = new UserInfo(&#34;user1&#34;, &#34;password123&#34;); // 객체를 파일에 직렬화 try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(&#34;user.ser&#34;))) { oos.writeObject(user); } catch (IOException e) { e.printStackTrace(); } } } 위 코드에서는 UserInfo 객체를 직렬화하여 user.ser 파일에 저장합니다. 그러나 password 필드는 암호화되지 않은 상태로 저장되므로, 파일이 유출되면 비밀번호가 노출될 수 있습니다.
+...</p>
   </div>
-  <div class="post-entry">
-    <header class="entry-header">
-      <h2>Hyundai Cpp Checker</h2>
-    </header>
-    <div class="entry-content">
-      <p><h1 id="hyundai-mp-oop-011">HYUNDAI MP-OOP-011</h1>
-<p>HYUNDAI MP-OOP-011 룰은 C++ 프로그래밍에서 <strong>클래스의 멤버 변수를 직접적으로 노출하지 말고, 적절한 접근 제어를 통해 캡슐화(encapsulation)를 유지하라</strong>는 원칙을 강조합니다.</p>
-<h3 id="1-룰의-목적"><strong>1. 룰의 목적</strong></h3>
-<ul>
-<li><strong>데이터 보호</strong>: 클래스 내부의 데이터가 외부 코드에 의해 직접 수정되는 것을 방지하여 무결성을 유지합니다.</li>
-<li><strong>유지보수성 향상</strong>: 데이터 접근을 메서드를 통해 제어함으로써 코드 변경 시 영향 범위를 최소화합니다.</li>
-<li><strong>캡슐화 준수</strong>: 객체 지향 프로그래밍의 기본 원칙인 캡슐화를 통해 데이터와 메서드를 하나의 단위로 묶어 관리합니다.</li>
-</ul>
-<h3 id="2-권장-사항"><strong>2. 권장 사항</strong></h3>
-<ul>
-<li><strong>멤버 변수의 접근 제어</strong>: 모든 멤버 변수를 <code>private</code> 또는 <code>protected</code>로 선언하여 외부에서 직접 접근하지 못하도록 합니다.</li>
-<li><strong>접근자 메서드 제공</strong>: 필요한 경우, 멤버 변수에 접근하기 위한 <code>getter</code> 및 <code>setter</code> 메서드를 제공합니다.</li>
-<li><strong>불필요한 공개 멤버 제거</strong>: 외부에서 직접 접근할 필요가 없는 멤버는 공개하지 않습니다.</li>
-</ul>
-<h3 id="3-예시"><strong>3. 예시</strong></h3>
-<p><strong>잘못된 예:</strong></p></p>
-    </div>
-    <footer class="entry-footer">
-      <span>2025-02-17</span>
-      <span>
-        <a href="http://localhost:1313/tags/hyundai">Hyundai</a>, 
-        <a href="http://localhost:1313/tags/cpp">Cpp</a>, 
-        <a href="http://localhost:1313/tags/checker">Checker</a>
-      </span>
-    </footer>
-    <a class="entry-link" href="http://localhost:1313/posts/checker/hyundai-cpp-checker/"></a>
+  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>2월 17, 2025</span></footer>
+  <a class="entry-link" aria-label="post link to CERT Java Checker" href="http://localhost:1313/posts/checker/cert-java-checker/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hyundai Cpp Checker
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>HYUNDAI MP-OOP-011 HYUNDAI MP-OOP-011 룰은 C&#43;&#43; 프로그래밍에서 클래스의 멤버 변수를 직접적으로 노출하지 말고, 적절한 접근 제어를 통해 캡슐화(encapsulation)를 유지하라는 원칙을 강조합니다.
+1. 룰의 목적 데이터 보호: 클래스 내부의 데이터가 외부 코드에 의해 직접 수정되는 것을 방지하여 무결성을 유지합니다. 유지보수성 향상: 데이터 접근을 메서드를 통해 제어함으로써 코드 변경 시 영향 범위를 최소화합니다. 캡슐화 준수: 객체 지향 프로그래밍의 기본 원칙인 캡슐화를 통해 데이터와 메서드를 하나의 단위로 묶어 관리합니다. 2. 권장 사항 멤버 변수의 접근 제어: 모든 멤버 변수를 private 또는 protected로 선언하여 외부에서 직접 접근하지 못하도록 합니다. 접근자 메서드 제공: 필요한 경우, 멤버 변수에 접근하기 위한 getter 및 setter 메서드를 제공합니다. 불필요한 공개 멤버 제거: 외부에서 직접 접근할 필요가 없는 멤버는 공개하지 않습니다. 3. 예시 잘못된 예:
+...</p>
   </div>
-  <div class="post-entry">
-    <header class="entry-header">
-      <h2>Hyundai Java Checker</h2>
-    </header>
-    <div class="entry-content">
-      <p><h1 id="mj-ser-002--do-not-serialize-unencrypted-sensitive-data">MJ-SER-002 : Do not serialize unencrypted sensitive data.</h1>
-<p>CERT SER03-J 에 매핑됨</p>
-<p><a href="https://documentation.blackduck.com/bundle/coverity-docs-2023.12/page/checker-ref/tables/hyundai-java.html">https://documentation.blackduck.com/bundle/coverity-docs-2023.12/page/checker-ref/tables/hyundai-java.html</a></p>
-<p><a href="https://documentation.blackduck.com/bundle/coverity-docs/page/checker-ref/tables/sei-cert-java-coding-standard.html">https://documentation.blackduck.com/bundle/coverity-docs/page/checker-ref/tables/sei-cert-java-coding-standard.html</a></p></p>
-    </div>
-    <footer class="entry-footer">
-      <span>2025-02-17</span>
-      <span>
-        <a href="http://localhost:1313/tags/hyundai">Hyundai</a>, 
-        <a href="http://localhost:1313/tags/java">Java</a>, 
-        <a href="http://localhost:1313/tags/checker">Checker</a>
-      </span>
-    </footer>
-    <a class="entry-link" href="http://localhost:1313/posts/checker/hyundai-java-checker/"></a>
+  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>2월 17, 2025</span></footer>
+  <a class="entry-link" aria-label="post link to Hyundai Cpp Checker" href="http://localhost:1313/posts/checker/hyundai-cpp-checker/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Hyundai Java Checker
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>MJ-SER-002 : Do not serialize unencrypted sensitive data. CERT SER03-J 에 매핑됨
+https://documentation.blackduck.com/bundle/coverity-docs-2023.12/page/checker-ref/tables/hyundai-java.html
+https://documentation.blackduck.com/bundle/coverity-docs/page/checker-ref/tables/sei-cert-java-coding-standard.html
+</p>
   </div>
-  <div class="post-entry">
-    <header class="entry-header">
-      <h2>AUTOSAR</h2>
-    </header>
-    <div class="entry-content">
-      <p><h1 id="autosar-automotive-open-system-architecture">AUTOSAR (Automotive Open System Architecture)</h1>
-<h2 id="목차">목차</h2>
-<ul>
-<li><a href="#autosar-automotive-open-system-architecture">AUTOSAR (Automotive Open System Architecture)</a>
-<ul>
-<li><a href="#%EB%AA%A9%EC%B0%A8">목차</a></li>
-<li><a href="#autosar-classic-platform">AUTOSAR Classic Platform</a>
-<ul>
-<li><a href="#%EB%B2%84%EC%A0%84-%ED%9E%88%EC%8A%A4%ED%86%A0%EB%A6%AC">버전 히스토리</a></li>
-</ul>
-</li>
-<li><a href="#autosar-adaptive-platform">AUTOSAR Adaptive Platform</a>
-<ul>
-<li><a href="#%EB%B2%84%EC%A0%84-%ED%9E%88%EC%8A%A4%ED%86%A0%EB%A6%AC-1">버전 히스토리</a></li>
-</ul>
-</li>
-<li><a href="#autosar-c-%EA%B0%80%EC%9D%B4%EB%93%9C%EB%9D%BC%EC%9D%B8">AUTOSAR C++ 가이드라인</a>
-<ul>
-<li><a href="#%EC%A3%BC%EC%9A%94-%EB%B2%84%EC%A0%84">주요 버전</a></li>
-<li><a href="#%EA%B0%80%EC%9D%B4%EB%93%9C%EB%9D%BC%EC%9D%B8-%ED%8A%B9%EC%A7%95">가이드라인 특징</a></li>
-<li><a href="#%EC%A3%BC%EC%9A%94-%EB%AA%A9%EC%A0%81">주요 목적</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="autosar-classic-platform">AUTOSAR Classic Platform</h2>
-<p>AUTOSAR Classic Platform은 자동차의 기본적인 전자 제어 시스템을 위한 표준입니다.</p>
-<h3 id="버전-히스토리">버전 히스토리</h3>
-<table>
-  <thead>
-      <tr>
-          <th>버전</th>
-          <th>발표 연도</th>
-          <th>주요 특징</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>AUTOSAR 1.0</td>
-          <td>2005</td>
-          <td>초기 버전</td>
-      </tr>
-      <tr>
-          <td>AUTOSAR 2.0</td>
-          <td>2006</td>
-          <td>-</td>
-      </tr>
-      <tr>
-          <td>AUTOSAR 2.1</td>
-          <td>2007</td>
-          <td>-</td>
-      </tr>
-      <tr>
-          <td>AUTOSAR 3.0</td>
-          <td>2008</td>
-          <td>-</td>
-      </tr>
-      <tr>
-          <td>AUTOSAR 3.1</td>
-          <td>2008</td>
-          <td>-</td>
-      </tr>
-      <tr>
-          <td>AUTOSAR 3.2</td>
-          <td>2011</td>
-          <td>-</td>
-      </tr>
-      <tr>
-          <td>AUTOSAR 4.0</td>
-          <td>2009</td>
-          <td>-</td>
-      </tr>
-      <tr>
-          <td>AUTOSAR 4.1</td>
-          <td>2013</td>
-          <td>-</td>
-      </tr>
-      <tr>
-          <td>AUTOSAR 4.2</td>
-          <td>2014</td>
-          <td>-</td>
-      </tr>
-      <tr>
-          <td>AUTOSAR 4.3</td>
-          <td>2016</td>
-          <td>-</td>
-      </tr>
-      <tr>
-          <td>AUTOSAR 4.4</td>
-          <td>2018</td>
-          <td>-</td>
-      </tr>
-      <tr>
-          <td>AUTOSAR 4.5</td>
-          <td>2018</td>
-          <td>-</td>
-      </tr>
-      <tr>
-          <td>AUTOSAR 4.6</td>
-          <td>2020</td>
-          <td>-</td>
-      </tr>
-      <tr>
-          <td>AUTOSAR 4.7</td>
-          <td>2021</td>
-          <td>최신 버전</td>
-      </tr>
-  </tbody>
-</table>
-<h2 id="autosar-adaptive-platform">AUTOSAR Adaptive Platform</h2>
-<p>AUTOSAR Adaptive Platform은 고성능 컴퓨팅과 자동화된 운전을 위한 표준입니다.</p></p>
-    </div>
-    <footer class="entry-footer">
-      <span>2024-02-17</span>
-      <span>
-        <a href="http://localhost:1313/tags/autosar">AUTOSAR</a>, 
-        <a href="http://localhost:1313/tags/standard">Standard</a>, 
-        <a href="http://localhost:1313/tags/checker">Checker</a>
-      </span>
-    </footer>
-    <a class="entry-link" href="http://localhost:1313/posts/checker/autosar/"></a>
+  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>2월 17, 2025</span></footer>
+  <a class="entry-link" aria-label="post link to Hyundai Java Checker" href="http://localhost:1313/posts/checker/hyundai-java-checker/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AUTOSAR
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>AUTOSAR (Automotive Open System Architecture) 목차 AUTOSAR (Automotive Open System Architecture) 목차 AUTOSAR Classic Platform 버전 히스토리 AUTOSAR Adaptive Platform 버전 히스토리 AUTOSAR C&#43;&#43; 가이드라인 주요 버전 가이드라인 특징 주요 목적 AUTOSAR Classic Platform AUTOSAR Classic Platform은 자동차의 기본적인 전자 제어 시스템을 위한 표준입니다.
+버전 히스토리 버전 발표 연도 주요 특징 AUTOSAR 1.0 2005 초기 버전 AUTOSAR 2.0 2006 - AUTOSAR 2.1 2007 - AUTOSAR 3.0 2008 - AUTOSAR 3.1 2008 - AUTOSAR 3.2 2011 - AUTOSAR 4.0 2009 - AUTOSAR 4.1 2013 - AUTOSAR 4.2 2014 - AUTOSAR 4.3 2016 - AUTOSAR 4.4 2018 - AUTOSAR 4.5 2018 - AUTOSAR 4.6 2020 - AUTOSAR 4.7 2021 최신 버전 AUTOSAR Adaptive Platform AUTOSAR Adaptive Platform은 고성능 컴퓨팅과 자동화된 운전을 위한 표준입니다.
+...</p>
   </div>
-</div>
+  <footer class="entry-footer"><span title='2024-02-17 00:00:00 +0000 UTC'>2월 17, 2024</span></footer>
+  <a class="entry-link" aria-label="post link to AUTOSAR" href="http://localhost:1313/posts/checker/autosar/"></a>
+</article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/">RyanPark&#39;s DevSecOps</a></span> · 
+        <span>&copy; 2025 <a href="http://localhost:1313/">RyanLabs</a></span> · 
 
     <span>
         Powered by

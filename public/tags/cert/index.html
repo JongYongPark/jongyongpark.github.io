@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="ko" dir="auto">
 
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>CERT | RyanPark&#39;s DevSecOps</title>
+<title>CERT | RyanLabs</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -19,7 +19,7 @@
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/cert/index.xml">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/tags/cert/">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/tags/cert/">
 <noscript>
     <style>
         #theme-toggle,
@@ -74,7 +74,7 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="RyanPark&#39;s DevSecOps (Alt + H)">RyanPark&#39;s DevSecOps</a>
+            <a href="http://localhost:1313/" accesskey="h" title="RyanLabs (Alt + H)">RyanLabs</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -120,6 +120,11 @@
                 </a>
             </li>
             <li>
+                <a href="http://localhost:1313/lectures/" title="강의">
+                    <span>강의</span>
+                </a>
+            </li>
+            <li>
                 <a href="http://localhost:1313/about/" title="어바웃미">
                     <span>어바웃미</span>
                 </a>
@@ -128,7 +133,7 @@
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/tags/">Tags</a></div>
+<header class="page-header">
   <h1>
     CERT
   </h1>
@@ -142,7 +147,7 @@
   <div class="entry-content">
     <p></p>
   </div>
-  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>February 17, 2025</span>&nbsp;·&nbsp;0 min</footer>
+  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>2월 17, 2025</span></footer>
   <a class="entry-link" aria-label="post link to CERT Cpp Checker" href="http://localhost:1313/posts/checker/cert-cpp-checker/"></a>
 </article>
 
@@ -157,13 +162,13 @@
 import java.io.*; public class UserInfo implements Serializable { private static final long serialVersionUID = 1L; private String username; private String password; // 민감한 데이터 public UserInfo(String username, String password) { this.username = username; this.password = password; } // getter 및 setter 생략 public static void main(String[] args) { UserInfo user = new UserInfo(&#34;user1&#34;, &#34;password123&#34;); // 객체를 파일에 직렬화 try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(&#34;user.ser&#34;))) { oos.writeObject(user); } catch (IOException e) { e.printStackTrace(); } } } 위 코드에서는 UserInfo 객체를 직렬화하여 user.ser 파일에 저장합니다. 그러나 password 필드는 암호화되지 않은 상태로 저장되므로, 파일이 유출되면 비밀번호가 노출될 수 있습니다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>February 17, 2025</span>&nbsp;·&nbsp;3 min</footer>
+  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>2월 17, 2025</span></footer>
   <a class="entry-link" aria-label="post link to CERT Java Checker" href="http://localhost:1313/posts/checker/cert-java-checker/"></a>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/">RyanPark&#39;s DevSecOps</a></span> · 
+        <span>&copy; 2025 <a href="http://localhost:1313/">RyanLabs</a></span> · 
 
     <span>
         Powered by

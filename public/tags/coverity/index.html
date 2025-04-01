@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="ko" dir="auto">
 
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>Coverity | RyanPark&#39;s DevSecOps</title>
+<title>Coverity | RyanLabs</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -19,7 +19,7 @@
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/coverity/index.xml">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/tags/coverity/">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/tags/coverity/">
 <noscript>
     <style>
         #theme-toggle,
@@ -74,7 +74,7 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="RyanPark&#39;s DevSecOps (Alt + H)">RyanPark&#39;s DevSecOps</a>
+            <a href="http://localhost:1313/" accesskey="h" title="RyanLabs (Alt + H)">RyanLabs</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -120,6 +120,11 @@
                 </a>
             </li>
             <li>
+                <a href="http://localhost:1313/lectures/" title="강의">
+                    <span>강의</span>
+                </a>
+            </li>
+            <li>
                 <a href="http://localhost:1313/about/" title="어바웃미">
                     <span>어바웃미</span>
                 </a>
@@ -128,7 +133,7 @@
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/tags/">Tags</a></div>
+<header class="page-header">
   <h1>
     Coverity
   </h1>
@@ -147,7 +152,7 @@ __attribute__ ((__visibility__(&#34;hidden&#34;))) - 이 속성은 컴파일러�
 이 심볼은 공유 라이브러리/실행 파일에서 내보내지지 않습니다 다른 모듈에서 동적 링크를 통해 접근할 수 없습니다 정의된 컴파일 단위나 라이브러리 내에서만 접근 가능합니다 __attribute__ ((__exclude_from_explicit_instantiation__)) - 이 속성은 컴파일러에게 이 함수를 어떤 명시적 템플릿 인스턴스화에도 포함시키지 말라고 지시합니다. 이는 코드 크기를 줄이고 중복 정의를 방지하는 데 도움이 됩니다.
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-03-04 00:00:00 +0000 UTC'>March 4, 2025</span>&nbsp;·&nbsp;4 min</footer>
+  <footer class="entry-footer"><span title='2025-03-04 00:00:00 +0000 UTC'>3월 4, 2025</span></footer>
   <a class="entry-link" aria-label="post link to Gcc Visibility" href="http://localhost:1313/posts/technical-support/coverity/cov-gcc-visibility/"></a>
 </article>
 
@@ -164,7 +169,7 @@ __attribute__ ((__visibility__(&#34;hidden&#34;))) - 이 속성은 컴파일러�
 ERROR - Creating a new NewHttpClient instance failed with: Response validation for [Coverity Session Cookie] encountered 1 error:1. Expected a [COVJSESSIONID-build] cookie in the response, but it was missing. Coverity 서버의 응답에서 COVJSESSIONID-build 세션 쿠키가 누락됨 고객 확인 사항:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-02-27 00:00:00 +0000 UTC'>February 27, 2025</span>&nbsp;·&nbsp;2 min</footer>
+  <footer class="entry-footer"><span title='2025-02-27 00:00:00 +0000 UTC'>2월 27, 2025</span></footer>
   <a class="entry-link" aria-label="post link to SRM Coverity Tool Connector Issues" href="http://localhost:1313/posts/technical-support/srm/srm-coverity-tool-connector/"></a>
 </article>
 
@@ -178,7 +183,7 @@ ERROR - Creating a new NewHttpClient instance failed with: Response validation f
 import javax.net.ssl.*; import java.io.*; import java.net.HttpURLConnection; import java.net.URL; import java.security.cert.X509Certificate; import java.nio.charset.StandardCharsets; public class BlackDuckApiClient { private static void disableSSLVerification() { try { TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() { public X509Certificate[] getAcceptedIssuers() { return null; } public void checkClientTrusted(X509Certificate[] certs, String authType) { } public void checkServerTrusted(X509Certificate[] certs, String authType) { } } }; SSLContext sc = SSLContext.getInstance(&#34;SSL&#34;); sc.init(null, trustAllCerts, new java.security.SecureRandom()); HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory()); HostnameVerifier allHostsValid = (hostname, session) -&gt; true; HttpsURLConnection.setDefaultHostnameVerifier(allHostsValid); } catch (Exception e) { e.printStackTrace(); } } public static String authenticate(String baseUrl, String username, String password) { try { URL url = new URL(baseUrl &#43; &#34;/api/tokens/authenticate&#34;); HttpURLConnection conn = (HttpURLConnection) url.openConnection(); // 요청 설정 conn.setRequestMethod(&#34;POST&#34;); conn.setRequestProperty(&#34;Accept&#34;, &#34;application/vnd.blackducksoftware.user-4&#43;json&#34;); conn.setRequestProperty(&#34;Content-Type&#34;, &#34;application/json&#34;); // Basic Auth 설정 String auth = username &#43; &#34;:&#34; &#43; password; String encodedAuth = java.util.Base64.getEncoder().encodeToString(auth.getBytes()); conn.setRequestProperty(&#34;Authorization&#34;, &#34;Basic &#34; &#43; encodedAuth); conn.setDoOutput(true); // 응답 읽기 int responseCode = conn.getResponseCode(); if (responseCode == HttpURLConnection.HTTP_OK) { BufferedReader in = new BufferedReader( new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8)); String inputLine; StringBuilder response = new StringBuilder(); while ((inputLine = in.readLine()) != null) { response.append(inputLine); } in.close(); return response.toString(); } else { System.out.println(&#34;Response Code: &#34; &#43; responseCode); return null; } } catch (Exception e) { e.printStackTrace(); return null; } } public static void main(String[] args) { // SSL 검증 비활성화 disableSSLVerification(); String baseUrl = &#34;https://your-blackduck-server&#34;; String username = &#34;your-username&#34;; String password = &#34;your-password&#34;; String response = authenticate(baseUrl, username, password); System.out.println(&#34;Response: &#34; &#43; response); } } 안전한 운영 환경을 위한 인증서 설정 방법:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-02-24 00:00:00 +0000 UTC'>February 24, 2025</span>&nbsp;·&nbsp;5 min</footer>
+  <footer class="entry-footer"><span title='2025-02-24 00:00:00 +0000 UTC'>2월 24, 2025</span></footer>
   <a class="entry-link" aria-label="post link to Coverity API SSL Issue" href="http://localhost:1313/posts/technical-support/coverity/cov-api-ssl/"></a>
 </article>
 
@@ -195,13 +200,13 @@ Expected a [COVJSESSIONID-build] cookie in the response, but it was missing 추�
 세션 관련:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-02-21 00:00:00 +0000 UTC'>February 21, 2025</span>&nbsp;·&nbsp;4 min</footer>
+  <footer class="entry-footer"><span title='2025-02-21 00:00:00 +0000 UTC'>2월 21, 2025</span></footer>
   <a class="entry-link" aria-label="post link to Coverity Performance" href="http://localhost:1313/posts/technical-support/coverity/cov-performance/"></a>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/">RyanPark&#39;s DevSecOps</a></span> · 
+        <span>&copy; 2025 <a href="http://localhost:1313/">RyanLabs</a></span> · 
 
     <span>
         Powered by

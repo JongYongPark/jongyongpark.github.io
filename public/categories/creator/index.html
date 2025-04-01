@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="ko" dir="auto">
 
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>Creator | RyanPark&#39;s DevSecOps</title>
+<title>Creator | RyanLabs</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -19,7 +19,7 @@
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" type="application/rss+xml" href="http://localhost:1313/categories/creator/index.xml">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/categories/creator/">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/categories/creator/">
 <noscript>
     <style>
         #theme-toggle,
@@ -74,7 +74,7 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="RyanPark&#39;s DevSecOps (Alt + H)">RyanPark&#39;s DevSecOps</a>
+            <a href="http://localhost:1313/" accesskey="h" title="RyanLabs (Alt + H)">RyanLabs</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -120,6 +120,11 @@
                 </a>
             </li>
             <li>
+                <a href="http://localhost:1313/lectures/" title="강의">
+                    <span>강의</span>
+                </a>
+            </li>
+            <li>
                 <a href="http://localhost:1313/about/" title="어바웃미">
                     <span>어바웃미</span>
                 </a>
@@ -127,71 +132,36 @@
         </ul>
     </nav>
 </header>
-<main class="main">
-  
-  <h1>Creator</h1>
-  <ul>
-    
-      <li>
-        <a href="http://localhost:1313/posts/creator/github-page-with-hugo/">Github Pages with Hugo</a>
-        <p><h1 id="github-pages">Github Pages</h1>
-<p>GitHub Pages는 GitHub 저장소를 사용하여 정적 웹사이트를 쉽게 배포할 수 있는 기능입니다.<br>
-다음은 <strong>GitHub Pages를 설정하고 사용하는 방법</strong>을 단계별로 설명합니다.</p>
-<hr>
-<h2 id="1-github-pages-활성화하기"><strong>1. GitHub Pages 활성화하기</strong></h2>
-<h3 id="1-github-저장소-생성"><strong>(1) GitHub 저장소 생성</strong></h3>
-<ol>
-<li>
-<p>GitHub에 로그인하고 <strong>새로운 저장소(New Repository)</strong> 생성</p>
-</li>
-<li>
-<p>저장소 이름을 설정 (예: <code>my-blog</code>)</p>
-</li>
-<li>
-<p><code>Public</code>(공개) 저장소로 설정해야 GitHub Pages에서 무료로 사용할 수 있음</p>
-</li>
-<li>
-<p><code>README.md</code> 파일을 추가하는 것이 좋음</p>
-</li>
-<li>
-<p>저장소 생성 후 <code>git clone</code>으로 로컬에 다운로드</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/your-username/my-blog.git
-</span></span><span style="display:flex;"><span>cd my-blog
-</span></span></code></pre></div></li>
-</ol>
-<hr>
-<h2 id="2-github-pages-활성화"><strong>2. GitHub Pages 활성화</strong></h2>
-<ol>
-<li>GitHub 저장소로 이동</li>
-<li><strong>Settings &gt; Pages</strong> 탭으로 이동</li>
-<li><strong>Branch 선택</strong>: <code>main</code> 또는 <code>gh-pages</code> 브랜치를 선택하여 배포할 수 있음</li>
-<li>저장 후 몇 분 내로 GitHub Pages가 활성화됨</li>
-<li>배포된 사이트 URL 확인 (<code>https://your-username.github.io/my-blog/</code>)</li>
-</ol>
-<hr>
-<h2 id="3-htmlcss-파일-추가하여-웹사이트-배포"><strong>3. HTML/CSS 파일 추가하여 웹사이트 배포</strong></h2>
-<ol>
-<li>로컬 저장소에서 기본 웹페이지 생성:
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;&lt;h1&gt;Welcome to My GitHub Page&lt;/h1&gt;&#34;</span> &gt; index.html
-</span></span></code></pre></div></li>
-<li>변경 사항을 커밋하고 푸시:
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git add index.html
-</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;Add main page&#34;</span>
-</span></span><span style="display:flex;"><span>git push origin main
-</span></span></code></pre></div></li>
-<li>GitHub Pages가 자동으로 <code>index.html</code>을 인식하여 배포함</li>
-</ol>
-<hr>
-<h2 id="4-jekyll을-이용한-블로그-만들기"><strong>4. Jekyll을 이용한 블로그 만들기</strong></h2>
-<p>GitHub Pages는 Jekyll을 지원하므로, Jekyll을 활용하여 정적 블로그를 쉽게 만들 수 있음.</p></p>
-      </li>
-    
-  </ul>
+<main class="main"> 
+<header class="page-header">
+  <h1>
+    Creator
+  </h1>
+</header>
 
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Github Pages with Hugo
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Github Pages GitHub Pages는 GitHub 저장소를 사용하여 정적 웹사이트를 쉽게 배포할 수 있는 기능입니다.
+다음은 GitHub Pages를 설정하고 사용하는 방법을 단계별로 설명합니다.
+1. GitHub Pages 활성화하기 (1) GitHub 저장소 생성 GitHub에 로그인하고 새로운 저장소(New Repository) 생성
+저장소 이름을 설정 (예: my-blog)
+Public(공개) 저장소로 설정해야 GitHub Pages에서 무료로 사용할 수 있음
+README.md 파일을 추가하는 것이 좋음
+저장소 생성 후 git clone으로 로컬에 다운로드
+git clone https://github.com/your-username/my-blog.git cd my-blog 2. GitHub Pages 활성화 GitHub 저장소로 이동 Settings &gt; Pages 탭으로 이동 Branch 선택: main 또는 gh-pages 브랜치를 선택하여 배포할 수 있음 저장 후 몇 분 내로 GitHub Pages가 활성화됨 배포된 사이트 URL 확인 (https://your-username.github.io/my-blog/) 3. HTML/CSS 파일 추가하여 웹사이트 배포 로컬 저장소에서 기본 웹페이지 생성: echo &#34;&lt;h1&gt;Welcome to My GitHub Page&lt;/h1&gt;&#34; &gt; index.html 변경 사항을 커밋하고 푸시: git add index.html git commit -m &#34;Add main page&#34; git push origin main GitHub Pages가 자동으로 index.html을 인식하여 배포함 4. Jekyll을 이용한 블로그 만들기 GitHub Pages는 Jekyll을 지원하므로, Jekyll을 활용하여 정적 블로그를 쉽게 만들 수 있음.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-02-14 00:00:00 +0000 UTC'>2월 14, 2025</span></footer>
+  <a class="entry-link" aria-label="post link to Github Pages with Hugo" href="http://localhost:1313/posts/creator/github-page-with-hugo/"></a>
+</article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/">RyanPark&#39;s DevSecOps</a></span> · 
+        <span>&copy; 2025 <a href="http://localhost:1313/">RyanLabs</a></span> · 
 
     <span>
         Powered by

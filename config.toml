@@ -1,7 +1,7 @@
-baseURL = 'https://jongyongpark.github.io/'
+baseURL = "https://jongyongpark.github.io/"
+publishDir = "public"
 title = "RyanLabs"
-theme = 'PaperMod'
-# paginate = 10
+theme = "PaperMod"
 languageCode = "ko"
 defaultContentLanguage = "ko"
 # paginate = 10
@@ -19,44 +19,25 @@ ignoreFiles = ["/private/"]
     imageUrl = "images/profile.png"
     imageTitle = "RyanLabs"
 
-  [[params.profileMode.buttons]]
-    name = "Email"
-    url = "mailto:lovemoneyjoy@gmail.com"
+    [[params.profileMode.buttons]]
+      name = "📧 Email"
+      url = "mailto:lovemoneyjoy@gmail.com"
 
-  [[params.profileMode.buttons]]
-    name = "Website"
-    url = "https://your-site.com"
+    [[params.profileMode.buttons]]
+      name = "🌐 Website"
+      url = "https://ryanpark.dev"
 
-  [[params.profileMode.buttons]]
-    name = "YouTube"
-    url = "https://youtube.com/yourchannel"
+    [[params.profileMode.buttons]]
+      name = "▶ YouTube"
+      url = "https://youtube.com/@ryan"
 
-  [[params.profileMode.buttons]]
-    name = "GitHub"
-    url = "https://github.com/JongYongPark"
+    [[params.profileMode.buttons]]
+      name = "🐙 GitHub"
+      url = "https://github.com/JongYongPark"
 
-  [[params.profileMode.buttons]]
-    name = "Instagram"
-    url = "https://instagram.com/yourhandle"
-
-# [params]
-#   description = "DevSecOps 개발자 노트"
-#   author = "Ryan"
-#   defaultTheme = "auto"
-#   homeInfoParams = false # 최근 포스트만 보이도록 true → false 설정
-#   [params.profileMode]
-#     enabled = true
-#     title = "Ryan"
-#     subtitle = "Creator & Data Lover"
-#     imageUrl = "/images/profile.jpg"
-#     imageWidth = 150
-#     imageHeight = 150
-
-# [params.social]
-#   github = "https://github.com/JongYongPark"
-#   email = "lovemoneyjoy@gmail.com"
-#   youtube = ""
-#   instagram = ""
+    [[params.profileMode.buttons]]
+      name = "📸 Instagram"
+      url = "https://instagram.com/ryan.dev"
 
 [menu]
   [[menu.main]]
@@ -102,4 +83,3 @@ ignoreFiles = ["/private/"]
 [taxonomies]
   category = "categories"
   tag = "tags"
-

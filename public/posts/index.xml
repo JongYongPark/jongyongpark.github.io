@@ -2584,6 +2584,13 @@ React Native는 플랫폼에 최적화된 네이티브 UI 컴포넌트를 사용
       <description>&lt;p&gt;A review of a bus trip in Korea is written here.&lt;/p&gt;</description>
     </item>
     <item>
+      <title>비공개 테스트 문서 in posts</title>
+      <link>http://localhost:1313/posts/my-private-in-posts/</link>
+      <pubDate>Sat, 30 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/my-private-in-posts/</guid>
+      <description>&lt;p&gt;비공개 이어야 함.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>AUTOSAR</title>
       <link>http://localhost:1313/posts/checker/autosar/</link>
       <pubDate>Sat, 17 Feb 2024 00:00:00 +0000</pubDate>

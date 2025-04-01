@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="ko" dir="auto">
-
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
-<title>SRM : Reset Admin Password on MariaDB | RyanLabs</title>
-<meta name="keywords" content="SRM, MariaDB">
-<meta name="description" content="How to reset admin password on MariaDB from SRM (Softeware Risk Manager).
+<!doctype html><html lang=ko dir=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>SRM : Reset Admin Password on MariaDB | RyanLabs</title>
+<meta name=keywords content="SRM,MariaDB"><meta name=description content='How to reset admin password on MariaDB from SRM (Softeware Risk Manager).
 
 This script recovers from a lost or forgotten super-admin password. It resets both the super-admin password and the database root user password to the provided value By SRM
 
@@ -19,19 +11,19 @@ This script recovers from a lost or forgotten super-admin password. It resets bo
 
 function admin-password-recover-script() {
   ### Validate input and set SRM installation path
-  if [ &#34;$#&#34; -ne 1 ] &amp;&amp; [ &#34;$#&#34; -ne 0 ]; then
-    echo &#34;Usage: $0 [path to SRM installation folder]&#34;
-    echo &#34;If path contains spaces, wrap it in double quotes.&#34;
-    echo &#34;Example:&#34;
-    echo &#34;   $0 /opt/srm&#34;
+  if [ "$#" -ne 1 ] && [ "$#" -ne 0 ]; then
+    echo "Usage: $0 [path to SRM installation folder]"
+    echo "If path contains spaces, wrap it in double quotes."
+    echo "Example:"
+    echo "   $0 /opt/srm"
     exit 1
   fi
 
   local SRM_PATH
-  if [ &#34;$#&#34; -eq 1 ]; then
+  if [ "$#" -eq 1 ]; then
     SRM_PATH=$1
   else
-    echo &#34;Enter path to SRM installation folder:&#34;
+    echo "Enter path to SRM installation folder:"
     read -r SRM_PATH
   fi
 
@@ -39,408 +31,298 @@ function admin-password-recover-script() {
   SRM_PATH=${SRM_PATH%/}
 
   # Check for MariaDB binary file
-  if [ ! -f &#34;$SRM_PATH/mysql/bin/mysqld&#34; ]; then
-    echo &#34;The given SRM directory does not appear to have appropriate mysql files&#34;
+  if [ ! -f "$SRM_PATH/mysql/bin/mysqld" ]; then
+    echo "The given SRM directory does not appear to have appropriate mysql files"
     exit 2
   fi
 
   ### Get new password
-  echo &#34;Enter new administrator password:&#34;
+  echo "Enter new administrator password:"
   read -rs NEW_PASSWORD
 
   ### Create temporary initialization file
   TEMP_INIT_FILE=$(mktemp)
 
   ### Check MariaDB configuration file
-  echo &#34;Looking for MariaDB configuration file...&#34;
+  echo "Looking for MariaDB configuration file..."
   DB_CONFIG=$SRM_PATH/mysql/my.cnf
 
-  if [ ! -f &#34;$DB_CONFIG&#34; ]; then
-    echo &#34;$DB_CONFIG not found. Aborting&#34;
+  if [ ! -f "$DB_CONFIG" ]; then
+    echo "$DB_CONFIG not found. Aborting"
     exit 2
   fi
 
   ### Check MariaDB data directory from SRM properties file
-  echo &#34;Found MariaDB configuration at $DB_CONFIG&#34;
-  echo &#34;Looking for SRM database...&#34;
-  DB_DATA=$(grep &#34;mysql_data_directory&#34; &#34;$SRM_PATH/properties.ini&#34; | cut -d&#39;=&#39; -f2)
+  echo "Found MariaDB configuration at $DB_CONFIG"
+  echo "Looking for SRM database..."
+  DB_DATA=$(grep "mysql_data_directory" "$SRM_PATH/properties.ini" | cut -d&#39;=&#39; -f2)
 
-  if [ ! -d &#34;$DB_DATA&#34; ]; then
-    echo &#34;MariaDB data directory not found (looked at $DB_DATA). Aborting&#34;
+  if [ ! -d "$DB_DATA" ]; then
+    echo "MariaDB data directory not found (looked at $DB_DATA). Aborting"
     exit 2
   fi
 
   ### Verify SRM database
-  echo &#34;Found MariaDB data directory at $DB_DATA&#34;
+  echo "Found MariaDB data directory at $DB_DATA"
   DB_NAME=srm
-  if [ ! -d &#34;$DB_DATA/$DB_NAME&#34; ]; then
+  if [ ! -d "$DB_DATA/$DB_NAME" ]; then
     DB_NAME=bitnami_srm
   fi
-  if [ ! -d &#34;$DB_DATA/$DB_NAME&#34; ]; then
-    echo &#34;SRM database not found. Aborting&#34;
+  if [ ! -d "$DB_DATA/$DB_NAME" ]; then
+    echo "SRM database not found. Aborting"
     exit 2
   fi
-  echo &#34;Found SRM database $DB_NAME&#34;
+  echo "Found SRM database $DB_NAME"
 
   ### Generate MariaDB initialization file
-  echo &#34;Generating MariaDB recovery init file...&#34;
+  echo "Generating MariaDB recovery init file..."
   {
-    echo &#34;SET PASSWORD FOR &#39;root&#39;@&#39;localhost&#39; = PASSWORD(&#39;${NEW_PASSWORD//\&#39;/\&#39;\&#39;}&#39;);&#34;
-    echo &#34;UPDATE \`$DB_NAME\`.\`LOCAL_USERS\` SET \`PASSWORD\`=SHA2(&#39;${NEW_PASSWORD//\&#39;/\&#39;\&#39;}&#39;, 256) WHERE \`ID\`=1;&#34;
-    echo &#34;SHUTDOWN;&#34;
-  } &gt; &#34;$TEMP_INIT_FILE&#34;
+    echo "SET PASSWORD FOR &#39;root&#39;@&#39;localhost&#39; = PASSWORD(&#39;${NEW_PASSWORD//\&#39;/\&#39;\&#39;}&#39;);"
+    echo "UPDATE \`$DB_NAME\`.\`LOCAL_USERS\` SET \`PASSWORD\`=SHA2(&#39;${NEW_PASSWORD//\&#39;/\&#39;\&#39;}&#39;, 256) WHERE \`ID\`=1;"
+    echo "SHUTDOWN;"
+  } > "$TEMP_INIT_FILE"
 
   ### Stop SRM services
-  echo &#34;Shutting down SRM services&#34;
-  &#34;$SRM_PATH/ctlscript.sh&#34; stop
+  echo "Shutting down SRM services"
+  "$SRM_PATH/ctlscript.sh" stop
 
   ### Reset passwords
-  echo &#34;Resetting passwords...&#34;
+  echo "Resetting passwords..."
 
   # If root user, set file permissions and run as mysql user
   if (( EUID == 0 )); then 
-    chown mysql &#34;$TEMP_INIT_FILE&#34;
-    &#34;$SRM_PATH/mysql/bin/mysqld&#34; --defaults-file=&#34;$DB_CONFIG&#34; --init-file=&#34;$TEMP_INIT_FILE&#34; --console --user=mysql
+    chown mysql "$TEMP_INIT_FILE"
+    "$SRM_PATH/mysql/bin/mysqld" --defaults-file="$DB_CONFIG" --init-file="$TEMP_INIT_FILE" --console --user=mysql
   else
-    &#34;$SRM_PATH/mysql/bin/mysqld&#34; --defaults-file=&#34;$DB_CONFIG&#34; --init-file=&#34;$TEMP_INIT_FILE&#34; --console
+    "$SRM_PATH/mysql/bin/mysqld" --defaults-file="$DB_CONFIG" --init-file="$TEMP_INIT_FILE" --console
   fi
 
   ### Clean up and display completion message
-  echo &#34;Removing recovery init file...&#34;
-  rm -f &#34;$TEMP_INIT_FILE&#34;
-  echo &#34;Done! You may start SRM again.&#34;
+  echo "Removing recovery init file..."
+  rm -f "$TEMP_INIT_FILE"
+  echo "Done! You may start SRM again."
 }
 
 # Execute the function
-admin-password-recover-script &#34;$@&#34;
+admin-password-recover-script "$@"
 
 Ex) admin-password-recover-script ~/workspace/dev_tool/codedx/srm-2024.12.1/srm
-">
-<meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/posts/technical-support/srm/srm-reset-mariadb-admin-password/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.9de45e225101e4f99701d2b68fc6b8a1ef6027928be6391fa15bf7f56326c909.css" integrity="sha256-neReIlEB5PmXAdK2j8a4oe9gJ5KL5jkfoVv39WMmyQk=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="ko" href="http://localhost:1313/posts/technical-support/srm/srm-reset-mariadb-admin-password/">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
+'><meta name=author content><link rel=canonical href=https://jongyongpark.github.io/posts/technical-support/srm/srm-reset-mariadb-admin-password/><link crossorigin=anonymous href=/assets/css/stylesheet.9de45e225101e4f99701d2b68fc6b8a1ef6027928be6391fa15bf7f56326c909.css integrity="sha256-neReIlEB5PmXAdK2j8a4oe9gJ5KL5jkfoVv39WMmyQk=" rel="preload stylesheet" as=style><link rel=icon href=https://jongyongpark.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://jongyongpark.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://jongyongpark.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://jongyongpark.github.io/apple-touch-icon.png><link rel=mask-icon href=https://jongyongpark.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=ko href=https://jongyongpark.github.io/posts/technical-support/srm/srm-reset-mariadb-admin-password/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><meta property="og:url" content="https://jongyongpark.github.io/posts/technical-support/srm/srm-reset-mariadb-admin-password/"><meta property="og:site_name" content="RyanLabs"><meta property="og:title" content="SRM : Reset Admin Password on MariaDB"><meta property="og:description" content='How to reset admin password on MariaDB from SRM (Softeware Risk Manager).
+This script recovers from a lost or forgotten super-admin password. It resets both the super-admin password and the database root user password to the provided value By SRM
+#!/bin/bash # This script recovers from a lost or forgotten super-admin password. # It resets both the super-admin password and the database root user password to the provided value. # By SRM function admin-password-recover-script() { ### Validate input and set SRM installation path if [ "$#" -ne 1 ] && [ "$#" -ne 0 ]; then echo "Usage: $0 [path to SRM installation folder]" echo "If path contains spaces, wrap it in double quotes." echo "Example:" echo " $0 /opt/srm" exit 1 fi local SRM_PATH if [ "$#" -eq 1 ]; then SRM_PATH=$1 else echo "Enter path to SRM installation folder:" read -r SRM_PATH fi # Remove trailing slash from the input path SRM_PATH=${SRM_PATH%/} # Check for MariaDB binary file if [ ! -f "$SRM_PATH/mysql/bin/mysqld" ]; then echo "The given SRM directory does not appear to have appropriate mysql files" exit 2 fi ### Get new password echo "Enter new administrator password:" read -rs NEW_PASSWORD ### Create temporary initialization file TEMP_INIT_FILE=$(mktemp) ### Check MariaDB configuration file echo "Looking for MariaDB configuration file..." DB_CONFIG=$SRM_PATH/mysql/my.cnf if [ ! -f "$DB_CONFIG" ]; then echo "$DB_CONFIG not found. Aborting" exit 2 fi ### Check MariaDB data directory from SRM properties file echo "Found MariaDB configuration at $DB_CONFIG" echo "Looking for SRM database..." DB_DATA=$(grep "mysql_data_directory" "$SRM_PATH/properties.ini" | cut -d&#39;=&#39; -f2) if [ ! -d "$DB_DATA" ]; then echo "MariaDB data directory not found (looked at $DB_DATA). Aborting" exit 2 fi ### Verify SRM database echo "Found MariaDB data directory at $DB_DATA" DB_NAME=srm if [ ! -d "$DB_DATA/$DB_NAME" ]; then DB_NAME=bitnami_srm fi if [ ! -d "$DB_DATA/$DB_NAME" ]; then echo "SRM database not found. Aborting" exit 2 fi echo "Found SRM database $DB_NAME" ### Generate MariaDB initialization file echo "Generating MariaDB recovery init file..." { echo "SET PASSWORD FOR &#39;root&#39;@&#39;localhost&#39; = PASSWORD(&#39;${NEW_PASSWORD//\&#39;/\&#39;\&#39;}&#39;);" echo "UPDATE \`$DB_NAME\`.\`LOCAL_USERS\` SET \`PASSWORD\`=SHA2(&#39;${NEW_PASSWORD//\&#39;/\&#39;\&#39;}&#39;, 256) WHERE \`ID\`=1;" echo "SHUTDOWN;" } > "$TEMP_INIT_FILE" ### Stop SRM services echo "Shutting down SRM services" "$SRM_PATH/ctlscript.sh" stop ### Reset passwords echo "Resetting passwords..." # If root user, set file permissions and run as mysql user if (( EUID == 0 )); then chown mysql "$TEMP_INIT_FILE" "$SRM_PATH/mysql/bin/mysqld" --defaults-file="$DB_CONFIG" --init-file="$TEMP_INIT_FILE" --console --user=mysql else "$SRM_PATH/mysql/bin/mysqld" --defaults-file="$DB_CONFIG" --init-file="$TEMP_INIT_FILE" --console fi ### Clean up and display completion message echo "Removing recovery init file..." rm -f "$TEMP_INIT_FILE" echo "Done! You may start SRM again." } # Execute the function admin-password-recover-script "$@" Ex) admin-password-recover-script ~/workspace/dev_tool/codedx/srm-2024.12.1/srm '><meta property="og:locale" content="ko"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2025-02-03T00:00:00+00:00"><meta property="article:modified_time" content="2025-02-03T00:00:00+00:00"><meta property="article:tag" content="SRM"><meta property="article:tag" content="MariaDB"><meta name=twitter:card content="summary"><meta name=twitter:title content="SRM : Reset Admin Password on MariaDB"><meta name=twitter:description content='How to reset admin password on MariaDB from SRM (Softeware Risk Manager).
 
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-            }
+This script recovers from a lost or forgotten super-admin password. It resets both the super-admin password and the database root user password to the provided value By SRM
 
-            .list {
-                background: var(--theme);
-            }
+#!/bin/bash
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
+# This script recovers from a lost or forgotten super-admin password.
+# It resets both the super-admin password and the database root user password to the provided value.
+# By SRM
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
+function admin-password-recover-script() {
+  ### Validate input and set SRM installation path
+  if [ "$#" -ne 1 ] && [ "$#" -ne 0 ]; then
+    echo "Usage: $0 [path to SRM installation folder]"
+    echo "If path contains spaces, wrap it in double quotes."
+    echo "Example:"
+    echo "   $0 /opt/srm"
+    exit 1
+  fi
 
-    </style>
-</noscript>
-</head>
+  local SRM_PATH
+  if [ "$#" -eq 1 ]; then
+    SRM_PATH=$1
+  else
+    echo "Enter path to SRM installation folder:"
+    read -r SRM_PATH
+  fi
 
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
+  # Remove trailing slash from the input path
+  SRM_PATH=${SRM_PATH%/}
 
-</script>
+  # Check for MariaDB binary file
+  if [ ! -f "$SRM_PATH/mysql/bin/mysqld" ]; then
+    echo "The given SRM directory does not appear to have appropriate mysql files"
+    exit 2
+  fi
 
-<header class="header">
-    <nav class="nav">
-        <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="RyanLabs (Alt + H)">RyanLabs</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <ul id="menu">
-            <li>
-                <a href="http://localhost:1313/search/" title="검색">
-                    <span>검색</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/categories/" title="카테고리">
-                    <span>카테고리</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/tags/" title="태그">
-                    <span>태그</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/archives/" title="연도">
-                    <span>연도</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/lectures/" title="강의">
-                    <span>강의</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/about/" title="어바웃미">
-                    <span>어바웃미</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<main class="main">
+  ### Get new password
+  echo "Enter new administrator password:"
+  read -rs NEW_PASSWORD
 
-<article class="post-single">
-  <header class="post-header">
-    
-    <h1 class="post-title entry-hint-parent">
-      SRM : Reset Admin Password on MariaDB
-    </h1>
-    <div class="post-meta"><span title='2025-02-03 00:00:00 +0000 UTC'>2월 3, 2025</span>
+  ### Create temporary initialization file
+  TEMP_INIT_FILE=$(mktemp)
 
-</div>
-  </header> 
-  <div class="post-content"><p>How to reset admin password on MariaDB from SRM (Softeware Risk Manager).</p>
-<hr>
-<p>This script recovers from a lost or forgotten super-admin password. It resets both the super-admin password and the database root user password to the provided value By SRM</p>
-<hr>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># This script recovers from a lost or forgotten super-admin password.</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># It resets both the super-admin password and the database root user password to the provided value.</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># By SRM</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> admin-password-recover-script<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">### Validate input and set SRM installation path</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span>$#<span style="color:#e6db74">&#34;</span> -ne <span style="color:#ae81ff">1</span> <span style="color:#f92672">]</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span>$#<span style="color:#e6db74">&#34;</span> -ne <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Usage: </span>$0<span style="color:#e6db74"> [path to SRM installation folder]&#34;</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;If path contains spaces, wrap it in double quotes.&#34;</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Example:&#34;</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;   </span>$0<span style="color:#e6db74"> /opt/srm&#34;</span>
-</span></span><span style="display:flex;"><span>    exit <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  local SRM_PATH
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span>$#<span style="color:#e6db74">&#34;</span> -eq <span style="color:#ae81ff">1</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
-</span></span><span style="display:flex;"><span>    SRM_PATH<span style="color:#f92672">=</span>$1
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Enter path to SRM installation folder:&#34;</span>
-</span></span><span style="display:flex;"><span>    read -r SRM_PATH
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Remove trailing slash from the input path</span>
-</span></span><span style="display:flex;"><span>  SRM_PATH<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>SRM_PATH%/<span style="color:#e6db74">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Check for MariaDB binary file</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> ! -f <span style="color:#e6db74">&#34;</span>$SRM_PATH<span style="color:#e6db74">/mysql/bin/mysqld&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;The given SRM directory does not appear to have appropriate mysql files&#34;</span>
-</span></span><span style="display:flex;"><span>    exit <span style="color:#ae81ff">2</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">### Get new password</span>
-</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;Enter new administrator password:&#34;</span>
-</span></span><span style="display:flex;"><span>  read -rs NEW_PASSWORD
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">### Create temporary initialization file</span>
-</span></span><span style="display:flex;"><span>  TEMP_INIT_FILE<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>mktemp<span style="color:#66d9ef">)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">### Check MariaDB configuration file</span>
-</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;Looking for MariaDB configuration file...&#34;</span>
-</span></span><span style="display:flex;"><span>  DB_CONFIG<span style="color:#f92672">=</span>$SRM_PATH/mysql/my.cnf
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> ! -f <span style="color:#e6db74">&#34;</span>$DB_CONFIG<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;</span>$DB_CONFIG<span style="color:#e6db74"> not found. Aborting&#34;</span>
-</span></span><span style="display:flex;"><span>    exit <span style="color:#ae81ff">2</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">### Check MariaDB data directory from SRM properties file</span>
-</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;Found MariaDB configuration at </span>$DB_CONFIG<span style="color:#e6db74">&#34;</span>
-</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;Looking for SRM database...&#34;</span>
-</span></span><span style="display:flex;"><span>  DB_DATA<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>grep <span style="color:#e6db74">&#34;mysql_data_directory&#34;</span> <span style="color:#e6db74">&#34;</span>$SRM_PATH<span style="color:#e6db74">/properties.ini&#34;</span> | cut -d<span style="color:#e6db74">&#39;=&#39;</span> -f2<span style="color:#66d9ef">)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> ! -d <span style="color:#e6db74">&#34;</span>$DB_DATA<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;MariaDB data directory not found (looked at </span>$DB_DATA<span style="color:#e6db74">). Aborting&#34;</span>
-</span></span><span style="display:flex;"><span>    exit <span style="color:#ae81ff">2</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">### Verify SRM database</span>
-</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;Found MariaDB data directory at </span>$DB_DATA<span style="color:#e6db74">&#34;</span>
-</span></span><span style="display:flex;"><span>  DB_NAME<span style="color:#f92672">=</span>srm
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> ! -d <span style="color:#e6db74">&#34;</span>$DB_DATA<span style="color:#e6db74">/</span>$DB_NAME<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
-</span></span><span style="display:flex;"><span>    DB_NAME<span style="color:#f92672">=</span>bitnami_srm
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> ! -d <span style="color:#e6db74">&#34;</span>$DB_DATA<span style="color:#e6db74">/</span>$DB_NAME<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;SRM database not found. Aborting&#34;</span>
-</span></span><span style="display:flex;"><span>    exit <span style="color:#ae81ff">2</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
-</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;Found SRM database </span>$DB_NAME<span style="color:#e6db74">&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">### Generate MariaDB initialization file</span>
-</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;Generating MariaDB recovery init file...&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;SET PASSWORD FOR &#39;root&#39;@&#39;localhost&#39; = PASSWORD(&#39;</span><span style="color:#e6db74">${</span>NEW_PASSWORD//<span style="color:#ae81ff">\&#39;</span>/<span style="color:#ae81ff">\&#39;\&#39;</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;);&#34;</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;UPDATE \`</span>$DB_NAME<span style="color:#e6db74">\`.\`LOCAL_USERS\` SET \`PASSWORD\`=SHA2(&#39;</span><span style="color:#e6db74">${</span>NEW_PASSWORD//<span style="color:#ae81ff">\&#39;</span>/<span style="color:#ae81ff">\&#39;\&#39;</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;, 256) WHERE \`ID\`=1;&#34;</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;SHUTDOWN;&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span> &gt; <span style="color:#e6db74">&#34;</span>$TEMP_INIT_FILE<span style="color:#e6db74">&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">### Stop SRM services</span>
-</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;Shutting down SRM services&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;</span>$SRM_PATH<span style="color:#e6db74">/ctlscript.sh&#34;</span> stop
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">### Reset passwords</span>
-</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;Resetting passwords...&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># If root user, set file permissions and run as mysql user</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">((</span> EUID <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">))</span>; <span style="color:#66d9ef">then</span> 
-</span></span><span style="display:flex;"><span>    chown mysql <span style="color:#e6db74">&#34;</span>$TEMP_INIT_FILE<span style="color:#e6db74">&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;</span>$SRM_PATH<span style="color:#e6db74">/mysql/bin/mysqld&#34;</span> --defaults-file<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$DB_CONFIG<span style="color:#e6db74">&#34;</span> --init-file<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$TEMP_INIT_FILE<span style="color:#e6db74">&#34;</span> --console --user<span style="color:#f92672">=</span>mysql
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;</span>$SRM_PATH<span style="color:#e6db74">/mysql/bin/mysqld&#34;</span> --defaults-file<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$DB_CONFIG<span style="color:#e6db74">&#34;</span> --init-file<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$TEMP_INIT_FILE<span style="color:#e6db74">&#34;</span> --console
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">### Clean up and display completion message</span>
-</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;Removing recovery init file...&#34;</span>
-</span></span><span style="display:flex;"><span>  rm -f <span style="color:#e6db74">&#34;</span>$TEMP_INIT_FILE<span style="color:#e6db74">&#34;</span>
-</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;Done! You may start SRM again.&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Execute the function</span>
-</span></span><span style="display:flex;"><span>admin-password-recover-script <span style="color:#e6db74">&#34;</span>$@<span style="color:#e6db74">&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Ex<span style="color:#f92672">)</span> admin-password-recover-script ~/workspace/dev_tool/codedx/srm-2024.12.1/srm
-</span></span></code></pre></div>
+  ### Check MariaDB configuration file
+  echo "Looking for MariaDB configuration file..."
+  DB_CONFIG=$SRM_PATH/mysql/my.cnf
 
-  </div>
+  if [ ! -f "$DB_CONFIG" ]; then
+    echo "$DB_CONFIG not found. Aborting"
+    exit 2
+  fi
 
-  <footer class="post-footer">
-    <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/srm/">SRM</a></li>
-      <li><a href="http://localhost:1313/tags/mariadb/">MariaDB</a></li>
-    </ul>
-  </footer>
-</article>
-    </main>
-    
-<footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/">RyanLabs</a></span> · 
+  ### Check MariaDB data directory from SRM properties file
+  echo "Found MariaDB configuration at $DB_CONFIG"
+  echo "Looking for SRM database..."
+  DB_DATA=$(grep "mysql_data_directory" "$SRM_PATH/properties.ini" | cut -d&#39;=&#39; -f2)
 
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
-</footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
-    </svg>
-</a>
+  if [ ! -d "$DB_DATA" ]; then
+    echo "MariaDB data directory not found (looked at $DB_DATA). Aborting"
+    exit 2
+  fi
 
-<script>
-    let menu = document.getElementById('menu')
-    if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
-    }
+  ### Verify SRM database
+  echo "Found MariaDB data directory at $DB_DATA"
+  DB_NAME=srm
+  if [ ! -d "$DB_DATA/$DB_NAME" ]; then
+    DB_NAME=bitnami_srm
+  fi
+  if [ ! -d "$DB_DATA/$DB_NAME" ]; then
+    echo "SRM database not found. Aborting"
+    exit 2
+  fi
+  echo "Found SRM database $DB_NAME"
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
+  ### Generate MariaDB initialization file
+  echo "Generating MariaDB recovery init file..."
+  {
+    echo "SET PASSWORD FOR &#39;root&#39;@&#39;localhost&#39; = PASSWORD(&#39;${NEW_PASSWORD//\&#39;/\&#39;\&#39;}&#39;);"
+    echo "UPDATE \`$DB_NAME\`.\`LOCAL_USERS\` SET \`PASSWORD\`=SHA2(&#39;${NEW_PASSWORD//\&#39;/\&#39;\&#39;}&#39;, 256) WHERE \`ID\`=1;"
+    echo "SHUTDOWN;"
+  } > "$TEMP_INIT_FILE"
 
-</script>
-<script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
+  ### Stop SRM services
+  echo "Shutting down SRM services"
+  "$SRM_PATH/ctlscript.sh" stop
 
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            document.body.classList.add('dark');
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
+  ### Reset passwords
+  echo "Resetting passwords..."
 
-</script>
-</body>
+  # If root user, set file permissions and run as mysql user
+  if (( EUID == 0 )); then 
+    chown mysql "$TEMP_INIT_FILE"
+    "$SRM_PATH/mysql/bin/mysqld" --defaults-file="$DB_CONFIG" --init-file="$TEMP_INIT_FILE" --console --user=mysql
+  else
+    "$SRM_PATH/mysql/bin/mysqld" --defaults-file="$DB_CONFIG" --init-file="$TEMP_INIT_FILE" --console
+  fi
 
-</html>
+  ### Clean up and display completion message
+  echo "Removing recovery init file..."
+  rm -f "$TEMP_INIT_FILE"
+  echo "Done! You may start SRM again."
+}
+
+# Execute the function
+admin-password-recover-script "$@"
+
+Ex) admin-password-recover-script ~/workspace/dev_tool/codedx/srm-2024.12.1/srm
+'><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://jongyongpark.github.io/posts/"},{"@type":"ListItem","position":2,"name":"SRM : Reset Admin Password on MariaDB","item":"https://jongyongpark.github.io/posts/technical-support/srm/srm-reset-mariadb-admin-password/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"SRM : Reset Admin Password on MariaDB","name":"SRM : Reset Admin Password on MariaDB","description":"How to reset admin password on MariaDB from SRM (Softeware Risk Manager).\nThis script recovers from a lost or forgotten super-admin password. It resets both the super-admin password and the database root user password to the provided value By SRM\n#!/bin/bash # This script recovers from a lost or forgotten super-admin password. # It resets both the super-admin password and the database root user password to the provided value. # By SRM function admin-password-recover-script() { ### Validate input and set SRM installation path if [ \u0026#34;$#\u0026#34; -ne 1 ] \u0026amp;\u0026amp; [ \u0026#34;$#\u0026#34; -ne 0 ]; then echo \u0026#34;Usage: $0 [path to SRM installation folder]\u0026#34; echo \u0026#34;If path contains spaces, wrap it in double quotes.\u0026#34; echo \u0026#34;Example:\u0026#34; echo \u0026#34; $0 /opt/srm\u0026#34; exit 1 fi local SRM_PATH if [ \u0026#34;$#\u0026#34; -eq 1 ]; then SRM_PATH=$1 else echo \u0026#34;Enter path to SRM installation folder:\u0026#34; read -r SRM_PATH fi # Remove trailing slash from the input path SRM_PATH=${SRM_PATH%/} # Check for MariaDB binary file if [ ! -f \u0026#34;$SRM_PATH/mysql/bin/mysqld\u0026#34; ]; then echo \u0026#34;The given SRM directory does not appear to have appropriate mysql files\u0026#34; exit 2 fi ### Get new password echo \u0026#34;Enter new administrator password:\u0026#34; read -rs NEW_PASSWORD ### Create temporary initialization file TEMP_INIT_FILE=$(mktemp) ### Check MariaDB configuration file echo \u0026#34;Looking for MariaDB configuration file...\u0026#34; DB_CONFIG=$SRM_PATH/mysql/my.cnf if [ ! -f \u0026#34;$DB_CONFIG\u0026#34; ]; then echo \u0026#34;$DB_CONFIG not found. Aborting\u0026#34; exit 2 fi ### Check MariaDB data directory from SRM properties file echo \u0026#34;Found MariaDB configuration at $DB_CONFIG\u0026#34; echo \u0026#34;Looking for SRM database...\u0026#34; DB_DATA=$(grep \u0026#34;mysql_data_directory\u0026#34; \u0026#34;$SRM_PATH/properties.ini\u0026#34; | cut -d\u0026#39;=\u0026#39; -f2) if [ ! -d \u0026#34;$DB_DATA\u0026#34; ]; then echo \u0026#34;MariaDB data directory not found (looked at $DB_DATA). Aborting\u0026#34; exit 2 fi ### Verify SRM database echo \u0026#34;Found MariaDB data directory at $DB_DATA\u0026#34; DB_NAME=srm if [ ! -d \u0026#34;$DB_DATA/$DB_NAME\u0026#34; ]; then DB_NAME=bitnami_srm fi if [ ! -d \u0026#34;$DB_DATA/$DB_NAME\u0026#34; ]; then echo \u0026#34;SRM database not found. Aborting\u0026#34; exit 2 fi echo \u0026#34;Found SRM database $DB_NAME\u0026#34; ### Generate MariaDB initialization file echo \u0026#34;Generating MariaDB recovery init file...\u0026#34; { echo \u0026#34;SET PASSWORD FOR \u0026#39;root\u0026#39;@\u0026#39;localhost\u0026#39; = PASSWORD(\u0026#39;${NEW_PASSWORD//\\\u0026#39;/\\\u0026#39;\\\u0026#39;}\u0026#39;);\u0026#34; echo \u0026#34;UPDATE \\`$DB_NAME\\`.\\`LOCAL_USERS\\` SET \\`PASSWORD\\`=SHA2(\u0026#39;${NEW_PASSWORD//\\\u0026#39;/\\\u0026#39;\\\u0026#39;}\u0026#39;, 256) WHERE \\`ID\\`=1;\u0026#34; echo \u0026#34;SHUTDOWN;\u0026#34; } \u0026gt; \u0026#34;$TEMP_INIT_FILE\u0026#34; ### Stop SRM services echo \u0026#34;Shutting down SRM services\u0026#34; \u0026#34;$SRM_PATH/ctlscript.sh\u0026#34; stop ### Reset passwords echo \u0026#34;Resetting passwords...\u0026#34; # If root user, set file permissions and run as mysql user if (( EUID == 0 )); then chown mysql \u0026#34;$TEMP_INIT_FILE\u0026#34; \u0026#34;$SRM_PATH/mysql/bin/mysqld\u0026#34; --defaults-file=\u0026#34;$DB_CONFIG\u0026#34; --init-file=\u0026#34;$TEMP_INIT_FILE\u0026#34; --console --user=mysql else \u0026#34;$SRM_PATH/mysql/bin/mysqld\u0026#34; --defaults-file=\u0026#34;$DB_CONFIG\u0026#34; --init-file=\u0026#34;$TEMP_INIT_FILE\u0026#34; --console fi ### Clean up and display completion message echo \u0026#34;Removing recovery init file...\u0026#34; rm -f \u0026#34;$TEMP_INIT_FILE\u0026#34; echo \u0026#34;Done! You may start SRM again.\u0026#34; } # Execute the function admin-password-recover-script \u0026#34;$@\u0026#34; Ex) admin-password-recover-script ~/workspace/dev_tool/codedx/srm-2024.12.1/srm ","keywords":["SRM","MariaDB"],"articleBody":"How to reset admin password on MariaDB from SRM (Softeware Risk Manager).\nThis script recovers from a lost or forgotten super-admin password. It resets both the super-admin password and the database root user password to the provided value By SRM\n#!/bin/bash # This script recovers from a lost or forgotten super-admin password. # It resets both the super-admin password and the database root user password to the provided value. # By SRM function admin-password-recover-script() { ### Validate input and set SRM installation path if [ \"$#\" -ne 1 ] \u0026\u0026 [ \"$#\" -ne 0 ]; then echo \"Usage: $0 [path to SRM installation folder]\" echo \"If path contains spaces, wrap it in double quotes.\" echo \"Example:\" echo \" $0 /opt/srm\" exit 1 fi local SRM_PATH if [ \"$#\" -eq 1 ]; then SRM_PATH=$1 else echo \"Enter path to SRM installation folder:\" read -r SRM_PATH fi # Remove trailing slash from the input path SRM_PATH=${SRM_PATH%/} # Check for MariaDB binary file if [ ! -f \"$SRM_PATH/mysql/bin/mysqld\" ]; then echo \"The given SRM directory does not appear to have appropriate mysql files\" exit 2 fi ### Get new password echo \"Enter new administrator password:\" read -rs NEW_PASSWORD ### Create temporary initialization file TEMP_INIT_FILE=$(mktemp) ### Check MariaDB configuration file echo \"Looking for MariaDB configuration file...\" DB_CONFIG=$SRM_PATH/mysql/my.cnf if [ ! -f \"$DB_CONFIG\" ]; then echo \"$DB_CONFIG not found. Aborting\" exit 2 fi ### Check MariaDB data directory from SRM properties file echo \"Found MariaDB configuration at $DB_CONFIG\" echo \"Looking for SRM database...\" DB_DATA=$(grep \"mysql_data_directory\" \"$SRM_PATH/properties.ini\" | cut -d'=' -f2) if [ ! -d \"$DB_DATA\" ]; then echo \"MariaDB data directory not found (looked at $DB_DATA). Aborting\" exit 2 fi ### Verify SRM database echo \"Found MariaDB data directory at $DB_DATA\" DB_NAME=srm if [ ! -d \"$DB_DATA/$DB_NAME\" ]; then DB_NAME=bitnami_srm fi if [ ! -d \"$DB_DATA/$DB_NAME\" ]; then echo \"SRM database not found. Aborting\" exit 2 fi echo \"Found SRM database $DB_NAME\" ### Generate MariaDB initialization file echo \"Generating MariaDB recovery init file...\" { echo \"SET PASSWORD FOR 'root'@'localhost' = PASSWORD('${NEW_PASSWORD//\\'/\\'\\'}');\" echo \"UPDATE \\`$DB_NAME\\`.\\`LOCAL_USERS\\` SET \\`PASSWORD\\`=SHA2('${NEW_PASSWORD//\\'/\\'\\'}', 256) WHERE \\`ID\\`=1;\" echo \"SHUTDOWN;\" } \u003e \"$TEMP_INIT_FILE\" ### Stop SRM services echo \"Shutting down SRM services\" \"$SRM_PATH/ctlscript.sh\" stop ### Reset passwords echo \"Resetting passwords...\" # If root user, set file permissions and run as mysql user if (( EUID == 0 )); then chown mysql \"$TEMP_INIT_FILE\" \"$SRM_PATH/mysql/bin/mysqld\" --defaults-file=\"$DB_CONFIG\" --init-file=\"$TEMP_INIT_FILE\" --console --user=mysql else \"$SRM_PATH/mysql/bin/mysqld\" --defaults-file=\"$DB_CONFIG\" --init-file=\"$TEMP_INIT_FILE\" --console fi ### Clean up and display completion message echo \"Removing recovery init file...\" rm -f \"$TEMP_INIT_FILE\" echo \"Done! You may start SRM again.\" } # Execute the function admin-password-recover-script \"$@\" Ex) admin-password-recover-script ~/workspace/dev_tool/codedx/srm-2024.12.1/srm ","wordCount":"431","inLanguage":"ko","datePublished":"2025-02-03T00:00:00Z","dateModified":"2025-02-03T00:00:00Z","mainEntityOfPage":{"@type":"WebPage","@id":"https://jongyongpark.github.io/posts/technical-support/srm/srm-reset-mariadb-admin-password/"},"publisher":{"@type":"Organization","name":"RyanLabs","logo":{"@type":"ImageObject","url":"https://jongyongpark.github.io/favicon.ico"}}}</script></head><body id=top><script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://jongyongpark.github.io/ accesskey=h title="RyanLabs (Alt + H)">RyanLabs</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://jongyongpark.github.io/search/ title=검색><span>검색</span></a></li><li><a href=https://jongyongpark.github.io/categories/ title=카테고리><span>카테고리</span></a></li><li><a href=https://jongyongpark.github.io/tags/ title=태그><span>태그</span></a></li><li><a href=https://jongyongpark.github.io/archives/ title=연도><span>연도</span></a></li><li><a href=https://jongyongpark.github.io/lectures/ title=강의><span>강의</span></a></li><li><a href=https://jongyongpark.github.io/about/ title=어바웃미><span>어바웃미</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">SRM : Reset Admin Password on MariaDB</h1><div class=post-meta><span title='2025-02-03 00:00:00 +0000 UTC'>2월 3, 2025</span></div></header><div class=post-content><p>How to reset admin password on MariaDB from SRM (Softeware Risk Manager).</p><hr><p>This script recovers from a lost or forgotten super-admin password. It resets both the super-admin password and the database root user password to the provided value By SRM</p><hr><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/bash
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e># This script recovers from a lost or forgotten super-admin password.</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># It resets both the super-admin password and the database root user password to the provided value.</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># By SRM</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> admin-password-recover-script<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>### Validate input and set SRM installation path</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> <span style=color:#e6db74>&#34;</span>$#<span style=color:#e6db74>&#34;</span> -ne <span style=color:#ae81ff>1</span> <span style=color:#f92672>]</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#f92672>[</span> <span style=color:#e6db74>&#34;</span>$#<span style=color:#e6db74>&#34;</span> -ne <span style=color:#ae81ff>0</span> <span style=color:#f92672>]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>    echo <span style=color:#e6db74>&#34;Usage: </span>$0<span style=color:#e6db74> [path to SRM installation folder]&#34;</span>
+</span></span><span style=display:flex><span>    echo <span style=color:#e6db74>&#34;If path contains spaces, wrap it in double quotes.&#34;</span>
+</span></span><span style=display:flex><span>    echo <span style=color:#e6db74>&#34;Example:&#34;</span>
+</span></span><span style=display:flex><span>    echo <span style=color:#e6db74>&#34;   </span>$0<span style=color:#e6db74> /opt/srm&#34;</span>
+</span></span><span style=display:flex><span>    exit <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  local SRM_PATH
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> <span style=color:#e6db74>&#34;</span>$#<span style=color:#e6db74>&#34;</span> -eq <span style=color:#ae81ff>1</span> <span style=color:#f92672>]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>    SRM_PATH<span style=color:#f92672>=</span>$1
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>    echo <span style=color:#e6db74>&#34;Enter path to SRM installation folder:&#34;</span>
+</span></span><span style=display:flex><span>    read -r SRM_PATH
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e># Remove trailing slash from the input path</span>
+</span></span><span style=display:flex><span>  SRM_PATH<span style=color:#f92672>=</span><span style=color:#e6db74>${</span>SRM_PATH%/<span style=color:#e6db74>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e># Check for MariaDB binary file</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> ! -f <span style=color:#e6db74>&#34;</span>$SRM_PATH<span style=color:#e6db74>/mysql/bin/mysqld&#34;</span> <span style=color:#f92672>]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>    echo <span style=color:#e6db74>&#34;The given SRM directory does not appear to have appropriate mysql files&#34;</span>
+</span></span><span style=display:flex><span>    exit <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>### Get new password</span>
+</span></span><span style=display:flex><span>  echo <span style=color:#e6db74>&#34;Enter new administrator password:&#34;</span>
+</span></span><span style=display:flex><span>  read -rs NEW_PASSWORD
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>### Create temporary initialization file</span>
+</span></span><span style=display:flex><span>  TEMP_INIT_FILE<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>mktemp<span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>### Check MariaDB configuration file</span>
+</span></span><span style=display:flex><span>  echo <span style=color:#e6db74>&#34;Looking for MariaDB configuration file...&#34;</span>
+</span></span><span style=display:flex><span>  DB_CONFIG<span style=color:#f92672>=</span>$SRM_PATH/mysql/my.cnf
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> ! -f <span style=color:#e6db74>&#34;</span>$DB_CONFIG<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>    echo <span style=color:#e6db74>&#34;</span>$DB_CONFIG<span style=color:#e6db74> not found. Aborting&#34;</span>
+</span></span><span style=display:flex><span>    exit <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>### Check MariaDB data directory from SRM properties file</span>
+</span></span><span style=display:flex><span>  echo <span style=color:#e6db74>&#34;Found MariaDB configuration at </span>$DB_CONFIG<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>  echo <span style=color:#e6db74>&#34;Looking for SRM database...&#34;</span>
+</span></span><span style=display:flex><span>  DB_DATA<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>grep <span style=color:#e6db74>&#34;mysql_data_directory&#34;</span> <span style=color:#e6db74>&#34;</span>$SRM_PATH<span style=color:#e6db74>/properties.ini&#34;</span> | cut -d<span style=color:#e6db74>&#39;=&#39;</span> -f2<span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> ! -d <span style=color:#e6db74>&#34;</span>$DB_DATA<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>    echo <span style=color:#e6db74>&#34;MariaDB data directory not found (looked at </span>$DB_DATA<span style=color:#e6db74>). Aborting&#34;</span>
+</span></span><span style=display:flex><span>    exit <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>### Verify SRM database</span>
+</span></span><span style=display:flex><span>  echo <span style=color:#e6db74>&#34;Found MariaDB data directory at </span>$DB_DATA<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>  DB_NAME<span style=color:#f92672>=</span>srm
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> ! -d <span style=color:#e6db74>&#34;</span>$DB_DATA<span style=color:#e6db74>/</span>$DB_NAME<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>    DB_NAME<span style=color:#f92672>=</span>bitnami_srm
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> ! -d <span style=color:#e6db74>&#34;</span>$DB_DATA<span style=color:#e6db74>/</span>$DB_NAME<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>    echo <span style=color:#e6db74>&#34;SRM database not found. Aborting&#34;</span>
+</span></span><span style=display:flex><span>    exit <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>  echo <span style=color:#e6db74>&#34;Found SRM database </span>$DB_NAME<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>### Generate MariaDB initialization file</span>
+</span></span><span style=display:flex><span>  echo <span style=color:#e6db74>&#34;Generating MariaDB recovery init file...&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>    echo <span style=color:#e6db74>&#34;SET PASSWORD FOR &#39;root&#39;@&#39;localhost&#39; = PASSWORD(&#39;</span><span style=color:#e6db74>${</span>NEW_PASSWORD//<span style=color:#ae81ff>\&#39;</span>/<span style=color:#ae81ff>\&#39;\&#39;</span><span style=color:#e6db74>}</span><span style=color:#e6db74>&#39;);&#34;</span>
+</span></span><span style=display:flex><span>    echo <span style=color:#e6db74>&#34;UPDATE \`</span>$DB_NAME<span style=color:#e6db74>\`.\`LOCAL_USERS\` SET \`PASSWORD\`=SHA2(&#39;</span><span style=color:#e6db74>${</span>NEW_PASSWORD//<span style=color:#ae81ff>\&#39;</span>/<span style=color:#ae81ff>\&#39;\&#39;</span><span style=color:#e6db74>}</span><span style=color:#e6db74>&#39;, 256) WHERE \`ID\`=1;&#34;</span>
+</span></span><span style=display:flex><span>    echo <span style=color:#e6db74>&#34;SHUTDOWN;&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>}</span> &gt; <span style=color:#e6db74>&#34;</span>$TEMP_INIT_FILE<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>### Stop SRM services</span>
+</span></span><span style=display:flex><span>  echo <span style=color:#e6db74>&#34;Shutting down SRM services&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#e6db74>&#34;</span>$SRM_PATH<span style=color:#e6db74>/ctlscript.sh&#34;</span> stop
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>### Reset passwords</span>
+</span></span><span style=display:flex><span>  echo <span style=color:#e6db74>&#34;Resetting passwords...&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e># If root user, set file permissions and run as mysql user</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> <span style=color:#f92672>((</span> EUID <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span> <span style=color:#f92672>))</span>; <span style=color:#66d9ef>then</span> 
+</span></span><span style=display:flex><span>    chown mysql <span style=color:#e6db74>&#34;</span>$TEMP_INIT_FILE<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;</span>$SRM_PATH<span style=color:#e6db74>/mysql/bin/mysqld&#34;</span> --defaults-file<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span>$DB_CONFIG<span style=color:#e6db74>&#34;</span> --init-file<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span>$TEMP_INIT_FILE<span style=color:#e6db74>&#34;</span> --console --user<span style=color:#f92672>=</span>mysql
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;</span>$SRM_PATH<span style=color:#e6db74>/mysql/bin/mysqld&#34;</span> --defaults-file<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span>$DB_CONFIG<span style=color:#e6db74>&#34;</span> --init-file<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span>$TEMP_INIT_FILE<span style=color:#e6db74>&#34;</span> --console
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>### Clean up and display completion message</span>
+</span></span><span style=display:flex><span>  echo <span style=color:#e6db74>&#34;Removing recovery init file...&#34;</span>
+</span></span><span style=display:flex><span>  rm -f <span style=color:#e6db74>&#34;</span>$TEMP_INIT_FILE<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>  echo <span style=color:#e6db74>&#34;Done! You may start SRM again.&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Execute the function</span>
+</span></span><span style=display:flex><span>admin-password-recover-script <span style=color:#e6db74>&#34;</span>$@<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Ex<span style=color:#f92672>)</span> admin-password-recover-script ~/workspace/dev_tool/codedx/srm-2024.12.1/srm
+</span></span></code></pre></div></div><footer class=post-footer><ul class=post-tags><li><a href=https://jongyongpark.github.io/tags/srm/>SRM</a></li><li><a href=https://jongyongpark.github.io/tags/mariadb/>MariaDB</a></li></ul></footer></article></main><footer class=footer><span>&copy; 2025 <a href=https://jongyongpark.github.io/>RyanLabs</a></span> ·
+<span>Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script></body></html>

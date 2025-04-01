@@ -329,6 +329,65 @@
   <div class="post-list">
     
       <div class="post-card">
+        <a href="/posts/sample-post-1/" class="post-title">샘플 포스트 1</a>
+        <div class="post-meta">
+          📅 2025년 04월 01일
+           | 🏷️ 테스트, 샘플
+        </div>
+        <div class="post-summary">
+          <p>이것은 요약입니다.</p>
+        </div>
+      </div>
+    
+      <div class="post-card">
+        <a href="/posts/sample-post-2/" class="post-title">샘플 포스트 2</a>
+        <div class="post-meta">
+          📅 2025년 04월 01일
+           | 🏷️ 테스트, 샘플
+        </div>
+        <div class="post-summary">
+          <p>이것은 샘플 포스트 2의 본문입니다.<br>
+Hugo 블로그가 잘 작동하는지 확인하기 위한 글입니다.</p>
+        </div>
+      </div>
+    
+      <div class="post-card">
+        <a href="/posts/sample-post-3/" class="post-title">샘플 포스트 3</a>
+        <div class="post-meta">
+          📅 2025년 04월 01일
+           | 🏷️ 테스트, 샘플
+        </div>
+        <div class="post-summary">
+          <p>이것은 샘플 포스트 3의 본문입니다.<br>
+Hugo 블로그가 잘 작동하는지 확인하기 위한 글입니다.</p>
+        </div>
+      </div>
+    
+      <div class="post-card">
+        <a href="/posts/sample-post-4/" class="post-title">샘플 포스트 4</a>
+        <div class="post-meta">
+          📅 2025년 04월 01일
+           | 🏷️ 테스트, 샘플
+        </div>
+        <div class="post-summary">
+          <p>이것은 샘플 포스트 4의 본문입니다.<br>
+Hugo 블로그가 잘 작동하는지 확인하기 위한 글입니다.</p>
+        </div>
+      </div>
+    
+      <div class="post-card">
+        <a href="/posts/sample-post-5/" class="post-title">샘플 포스트 5</a>
+        <div class="post-meta">
+          📅 2025년 04월 01일
+           | 🏷️ 테스트, 샘플
+        </div>
+        <div class="post-summary">
+          <p>이것은 샘플 포스트 5의 본문입니다.<br>
+Hugo 블로그가 잘 작동하는지 확인하기 위한 글입니다.</p>
+        </div>
+      </div>
+    
+      <div class="post-card">
         <a href="/posts/sdlc/apt/" class="post-title">Apt proxy issue</a>
         <div class="post-meta">
           📅 2025년 03월 14일
@@ -1037,128 +1096,6 @@ sudo umount ~/work_jonpark</p>
 </span></span><span style="display:flex;"><span>bash#:~$
 </span></span></code></pre></div><h2 id="답변">답변</h2>
 <p>이제 문제가 더 명확해졌습니다. EC2에서 <code>workspace</code>는 <code>/opt/dlami/nvme/</code>를 가리키는 심볼릭 링크입니다. SSHFS를 통한 마운트 시 심볼릭 링크 처리에 문제가 있는 것으로 보입니다.</p>
-        </div>
-      </div>
-    
-      <div class="post-card">
-        <a href="/posts/sdlc/wsl-zone.identifier/" class="post-title">Zone.Identifier</a>
-        <div class="post-meta">
-          📅 2025년 03월 10일
-           | 🏷️ WSL
-        </div>
-        <div class="post-summary">
-          <h1 id="windows-에서-wsl로-복사하면-복사한-파일이름-zoneidenifier-파일이-생기지-않게-하는-방법">windows 에서 wsl로 복사하면 &ldquo;복사한 파일이름 zone.idenifier&rdquo; 파일이 생기지 않게 하는 방법.</h1>
-<p>Zone.Identifier 파일은 Windows 시스템에서 외부 출처(인터넷, 이메일 등)에서 다운로드한 파일에 자동으로 추가되는 대체 데이터 스트림(Alternate Data Stream, ADS)입니다. 이 파일에는 원본 파일의 출처와 관련된 보안 정보가 포함되어 있습니다.</p>
-<p>파일을 WSL로 복사할 때 Windows에서는 이 메타데이터를 별도의 Zone.Identifier 파일로 변환합니다. 이는 NTFS 파일 시스템의 기능이지만 Linux 파일 시스템에서는 지원하지 않기 때문입니다.</p>
-<h2 id="zoneidentifier-파일이-생성되지-않게-하는-방법">Zone.Identifier 파일이 생성되지 않게 하는 방법:</h2>
-<ol>
-<li>
-<p><strong>Windows에서 파일 신뢰 설정</strong>:</p>
-        </div>
-      </div>
-    
-      <div class="post-card">
-        <a href="/posts/technical-support/coverity/cov-gcc-visibility/" class="post-title">Gcc Visibility</a>
-        <div class="post-meta">
-          📅 2025년 03월 04일
-           | 🏷️ Coverity, Gcc
-        </div>
-        <div class="post-summary">
-          <h1 id="gcc-visibility">Gcc Visibility</h1>
-<p>전처리된 파일에서 보이는 <code>basic_string</code> 함수의 속성과 컴파일러 옵션이 CIM 소스 창에서 이 함수들이 보이지 않는 이유에 대해 자세히 설명해 드리겠습니다.</p>
-<h2 id="가시성-속성-상세-설명">가시성 속성 상세 설명</h2>
-<p>다음 코드 라인을 살펴보겠습니다:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">inline</span> __attribute__ ((__visibility__(<span style="color:#e6db74">&#34;hidden&#34;</span>))) __attribute__ ((__exclude_from_explicit_instantiation__))
-</span></span></code></pre></div><p>이것은 함수에 두 가지 중요한 GCC/Clang 속성을 적용하고 있습니다:</p>
-<ol>
-<li>
-<p><code>__attribute__ ((__visibility__(&quot;hidden&quot;)))</code> - 이 속성은 컴파일러에게 함수에 &ldquo;hidden&rdquo; 가시성을 부여하도록 지시합니다:</p>
-<ul>
-<li>이 심볼은 공유 라이브러리/실행 파일에서 내보내지지 않습니다</li>
-<li>다른 모듈에서 동적 링크를 통해 접근할 수 없습니다</li>
-<li>정의된 컴파일 단위나 라이브러리 내에서만 접근 가능합니다</li>
-</ul>
-</li>
-<li>
-<p><code>__attribute__ ((__exclude_from_explicit_instantiation__))</code> - 이 속성은 컴파일러에게 이 함수를 어떤 명시적 템플릿 인스턴스화에도 포함시키지 말라고 지시합니다. 이는 코드 크기를 줄이고 중복 정의를 방지하는 데 도움이 됩니다.</p>
-        </div>
-      </div>
-    
-      <div class="post-card">
-        <a href="/posts/sdlc/deno-install/" class="post-title">Deno Install</a>
-        <div class="post-meta">
-          📅 2025년 02월 27일
-           | 🏷️ Deno
-        </div>
-        <div class="post-summary">
-          <h1 id="install">Install</h1>
-<p>Deno는 JavaScript와 TypeScript를 위한 현대적인 런타임 환경으로, 설치 및 사용이 매우 간단합니다. 아래에 Deno를 설치하고 &ldquo;Hello, World!&rdquo; 프로그램을 작성하여 실행하는 방법을 안내해 드리겠습니다.</p>
-<h3 id="1-deno-설치하기">1. Deno 설치하기</h3>
-<p><strong>macOS 및 Linux</strong>:</p>
-<p>터미널을 열고 다음 명령어를 입력하여 Deno를 설치할 수 있습니다:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>curl -fsSL https://deno.land/install.sh | sh
-</span></span></code></pre></div><p>이 명령어는 공식 설치 스크립트를 다운로드하여 실행합니다.</p>
-<p><strong>Windows</strong>:</p>
-<p>PowerShell을 관리자 권한으로 열고 다음 명령어를 실행합니다:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>iwr https<span style="color:#960050;background-color:#1e0010">:</span>//deno.land/install.ps1 -useb | iex
-</span></span></code></pre></div><p>또는, Windows에서 <a href="https://chocolatey.org/">Chocolatey</a> 패키지 관리자를 사용 중이라면, 다음과 같이 설치할 수 있습니다:</p>
-        </div>
-      </div>
-    
-      <div class="post-card">
-        <a href="/posts/sdlc/go-install/" class="post-title">Go Install</a>
-        <div class="post-meta">
-          📅 2025년 02월 27일
-           | 🏷️ Go
-        </div>
-        <div class="post-summary">
-          <h1 id="go-install">Go Install</h1>
-<p>기존 Go 1.22.2가 <code>/usr/bin/go</code>로 설치되어 있고, 새롭게 Go 1.23.1 및 Go 1.23.5를 <strong><code>~/local</code></strong> 폴더에 설치한 후 원하는 버전을 선택해서 사용하는 방법을 정리해 드리겠습니다. 🚀</p>
-<hr>
-<h2 id="-1-기존-go-1222-확인">✅ <strong>1. 기존 Go (1.22.2) 확인</strong></h2>
-<p>현재 기본 Go(1.22.2)가 <code>/usr/bin/go</code>에 설치되어 있음.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>/usr/bin/go version
-</span></span></code></pre></div><p>출력 예시:</p>
-<pre tabindex="0"><code>go version go1.22.2 linux/amd64
-</code></pre><hr>
-<h2 id="-2-새로운-go-버전-1231--1235-설치">✅ <strong>2. 새로운 Go 버전 (1.23.1 &amp; 1.23.5) 설치</strong></h2>
-<p>기존 Go(1.22.2)는 유지하면서, 추가 Go 버전을 설치하겠습니다.</p>
-<h3 id="-go-1231-다운로드-및-설치">🔹 <strong>Go 1.23.1 다운로드 및 설치</strong></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>mkdir -p ~/local
-</span></span><span style="display:flex;"><span>cd ~/local
-</span></span><span style="display:flex;"><span>wget https://go.dev/dl/go1.23.1.linux-amd64.tar.gz
-</span></span><span style="display:flex;"><span>tar -xzf go1.23.1.linux-amd64.tar.gz
-</span></span><span style="display:flex;"><span>mv go go1.23.1
-</span></span></code></pre></div><h3 id="-go-1235-다운로드-및-설치">🔹 <strong>Go 1.23.5 다운로드 및 설치</strong></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>cd ~/local
-</span></span><span style="display:flex;"><span>wget https://go.dev/dl/go1.23.5.linux-amd64.tar.gz
-</span></span><span style="display:flex;"><span>tar -xzf go1.23.5.linux-amd64.tar.gz
-</span></span><span style="display:flex;"><span>mv go go1.23.5
-</span></span></code></pre></div><p>설치 후 폴더 구조:</p>
-        </div>
-      </div>
-    
-      <div class="post-card">
-        <a href="/posts/sdlc/mojo-install/" class="post-title">Mojo Install</a>
-        <div class="post-meta">
-          📅 2025년 02월 27일
-           | 🏷️ Mojo
-        </div>
-        <div class="post-summary">
-          <h1 id="mojo-설치">Mojo 설치</h1>
-<p>Mojo는 Modular가 개발한 새로운 프로그래밍 언어로, Python과 유사하지만 더 높은 성능을 제공합니다. WSL (Windows Subsystem for Linux)의 Ubuntu 환경에서 Mojo를 설치하려면 다음과 같은 단계를 따르면 됩니다.</p>
-<hr>
-<h3 id="1-wsl-및-ubuntu-확인"><strong>1. WSL 및 Ubuntu 확인</strong></h3>
-<p>먼저 WSL이 설치되어 있고 Ubuntu가 실행 중인지 확인하세요.</p>
-<ul>
-<li>WSL이 설치되어 있지 않다면 <a href="https://learn.microsoft.com/ko-kr/windows/wsl/install">Microsoft 공식 문서</a>를 참고하여 설치하세요.</li>
-<li>Ubuntu는 Microsoft Store에서 다운로드하거나 명령줄에서 설치할 수 있습니다.</li>
-</ul>
-<p>WSL Ubuntu가 이미 설치되어 있다면, 터미널을 열고 다음 명령어로 Ubuntu 버전을 확인하세요:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>lsb_release -a
-</span></span></code></pre></div><hr>
-<h3 id="2-mojo-설치-준비"><strong>2. Mojo 설치 준비</strong></h3>
-<p>Mojo는 아직 초기 단계의 언어이므로 공식적으로 지원되는 패키지 관리자가 없습니다. 따라서 Modular의 공식 웹사이트나 CLI 도구를 사용하여 설치해야 합니다.</p>
         </div>
       </div>
     

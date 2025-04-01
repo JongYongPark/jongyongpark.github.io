@@ -6,8 +6,22 @@
     <description>Recent content in Categories on RyanLabs</description>
     <generator>Hugo -- 0.142.0</generator>
     <language>ko</language>
-    <lastBuildDate>Fri, 14 Mar 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 01 Apr 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Category1</title>
+      <link>http://localhost:1313/categories/category1/</link>
+      <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/category1/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>DevSecOps</title>
+      <link>http://localhost:1313/categories/devsecops/</link>
+      <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/categories/devsecops/</guid>
+      <description></description>
+    </item>
     <item>
       <title>SDLC</title>
       <link>http://localhost:1313/categories/sdlc/</link>
@@ -58,24 +72,10 @@
       <description></description>
     </item>
     <item>
-      <title>DevSecOps</title>
-      <link>http://localhost:1313/categories/devsecops/</link>
-      <pubDate>Fri, 31 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/devsecops/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Travel</title>
       <link>http://localhost:1313/categories/travel/</link>
       <pubDate>Fri, 31 Jan 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/categories/travel/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Category1</title>
-      <link>http://localhost:1313/categories/category1/</link>
-      <pubDate>Sun, 24 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/categories/category1/</guid>
       <description></description>
     </item>
   </channel>

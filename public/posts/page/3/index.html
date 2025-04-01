@@ -141,6 +141,79 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Public IP &amp; CIDR
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Windows Powershell 에서 public IP와 CIDR 얻기 - claude 테스트 (base) PS C:\workspace\blog\ryanpark-devsecops&gt; # 방법 1: ipify API 사용 (base) PS C:\workspace\blog\ryanpark-devsecops&gt; (Invoke-WebRequest -Uri &#34;https://api.ipify.org&#34;).Content 44.214.210.109 (base) PS C:\workspace\blog\ryanpark-devsecops&gt; (base) PS C:\workspace\blog\ryanpark-devsecops&gt; # 방방법법 2: ifconfig.me 사사용용 (base) PS C:\workspace\blog\ryanpark-devsecops&gt; (Invoke-WebRequest -Uri &#34;https://ifconfig.me/ip&#34;).Content (base) PS C:\workspace\blog\ryanpark-devsecops&gt; (base) PS C:\workspace\blog\ryanpark-devsecops&gt; # 방법 3: ipinfo.io 사용 (더 자세한 정보) (base) PS C:\workspace\blog\ryanpark-devsecops&gt; (Invoke-WebRequest -Uri &#34;https://ipinfo.io/json&#34;).Content | ConvertFrom-Json ip : 44.214.210.109 hostname : vpn-aws.blackduck.com city : Ashburn region : Virginia country : US loc : 39.0437,-77.4875 org : AS14618 Amazon.com, Inc. postal : 20147 timezone : America/New_York readme : https://ipinfo.io/missingauth (base) PS C:\workspace\blog\ryanpark-devsecops&gt; Start-Process &#34;https://whois.domaintools.com/$ip&#34; Quick Stats IP Location	United States United States Ashburn Amazon Data Services Nova ASN	United States AS14618 AMAZON-AES, US (registered Nov 04, 2005) Resolve Host	vpn-aws.blackduck.com Whois Server	whois.arin.net IP Address	44.214.210.109 NetRange: 44.192.0.0 - 44.255.255.255 CIDR: 44.192.0.0/10 답변 PowerShell에서 Public IP와 CIDR를 확인하는 방법을 알려드리겠습니다:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-02-24 00:00:00 +0000 UTC'>2월 24, 2025</span></footer>
+  <a class="entry-link" aria-label="post link to Public IP & CIDR" href="http://localhost:1313/posts/sdlc/public-ip-cidr/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Chrome
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Chrome Install on Ubuntu Ubuntu에서 Chrome을 완전히 제거하고 다시 설치하는 명령어 순서입니다:
+Chrome 제거: # Chrome 패키지 제거 sudo apt-get purge google-chrome-stable # 관련 의존성 패키지 제거 sudo apt-get autoremove # Chrome 설정 파일 제거 (선택사항) rm -rf ~/.config/google-chrome Chrome 다시 설치: # Chrome 다운로드를 위한 필요 패키지 설치 sudo apt-get install wget # Chrome 패키지 다운로드 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb # 다운로드한 패키지 설치 sudo dpkg -i google-chrome-stable_current_amd64.deb # 의존성 문제가 있다면 다음 명령어로 해결 sudo apt-get install -f # 다운로드한 설치 파일 제거 (선택사항) rm google-chrome-stable_current_amd64.deb 설치가 완료되면 Applications 메뉴나 터미널에서 google-chrome 명령어로 Chrome을 실행할 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-02-21 00:00:00 +0000 UTC'>2월 21, 2025</span></footer>
+  <a class="entry-link" aria-label="post link to Chrome" href="http://localhost:1313/posts/sdlc/chrome/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Coverity Performance
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Expected a [COVJSESSIONID-build] cookie in the response, but it was missing 추가 로그 분석을 통해 더 자세한 상황을 파악할 수 있습니다:
+원래 문제:
+Expected a [COVJSESSIONID-build] cookie in the response, but it was missing 추가 로그 분석:
+인증 상태: Authentication=CovUsernameAuthenticationToken [Principal=admin (Admin User),Authenticated=true,RemoteIpAddress=10.2.150.57,SessionId=69FB1C3437377E29D3B887C9FDFA5403,Granted Authorities=[ROLE_AUTHENTICATED_USER]] 서버 측에서는 admin 사용자가 성공적으로 인증됨 세션이 정상적으로 생성됨 백그라운드 프로세스: com.coverity.ces.service.GarbageCollectionServiceImpl.runGarbageCollection GarbageCollection 서비스가 정상적으로 동작 중 수정된 해결 방안:
+세션 관련:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-02-21 00:00:00 +0000 UTC'>2월 21, 2025</span></footer>
+  <a class="entry-link" aria-label="post link to Coverity Performance" href="http://localhost:1313/posts/technical-support/coverity/cov-performance/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Dart
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Dart 와 JavaScript 비교교 Dart와 JavaScript 중 어떤 언어를 배우는 것이 더 좋은지는 Ryan의 목표와 개발하려는 서비스의 방향에 따라 다릅니다.
+✅ Dart를 배우는 것이 좋은 경우 Flutter를 활용한 크로스 플랫폼 앱 개발 Ryan이 모바일 앱 개발(특히 iOS &amp; Android) 을 목표로 한다면 Dart &#43; Flutter 조합이 유리합니다. 하나의 코드베이스로 iOS, Android, 웹까지 개발 가능하여 유지보수 비용을 절감할 수 있습니다. 안정적이고 타입 안정성이 중요한 경우 Dart는 정적 타입을 제공하여 코드의 안정성이 높고, 유지보수가 쉬운 편입니다. JavaScript보다 더 안전한 프로그래밍이 가능합니다. Google 생태계에 관심이 있다면 Dart는 Google이 적극적으로 지원하는 언어이므로, Google 관련 기술과 함께 사용하기 좋습니다. ✅ JavaScript를 배우는 것이 좋은 경우 웹 서비스 개발이 목표라면 Ryan이 웹 기반 서비스(프론트엔드 &amp; 백엔드) 를 개발하려면 JavaScript가 훨씬 강력한 선택지입니다. React, Vue, Angular 등 다양한 웹 프레임워크를 활용할 수 있습니다. 서버 개발도 Node.js 를 활용해 JavaScript로 가능하므로 전체 개발이 JavaScript로 통일됩니다. 더 많은 오픈 소스 및 커뮤니티 지원을 원한다면 JavaScript는 웹 개발의 표준이며, 가장 많은 라이브러리와 프레임워크가 존재합니다. Dart에 비해 커뮤니티가 훨씬 크며, 문제 해결이 빠릅니다. 프론트엔드 개발자가 되고 싶다면 JavaScript는 웹 브라우저에서 기본적으로 실행되는 언어이므로, 프론트엔드 개발자 를 목표로 한다면 필수입니다. ⚖️ 결론: Ryan에게 적합한 선택 웹 서비스를 중심으로 개발하려면? → JavaScript 모바일 앱을 중심으로 개발하려면? → Dart &#43; Flutter 웹과 모바일을 모두 고려한다면? 웹이 더 중요하면 JavaScript 모바일이 더 중요하면 Dart Ryan이 만들고 싶은 서비스가 웹 기반이라면 JavaScript가 더 적합할 가능성이 큽니다.
+어떤 서비스를 만들고 싶은지 더 구체적으로 이야기해주면 더 적합한 선택을 도와줄 수 있어요!
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-02-21 00:00:00 +0000 UTC'>2월 21, 2025</span></footer>
+  <a class="entry-link" aria-label="post link to Dart" href="http://localhost:1313/posts/developer/dart/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Nest.js
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Next.js 와와 SpringBoot 비교 속도비교 NestJS와 Spring Boot는 각각의 장단점이 있지만, 개발 속도 측면에서 비교할 때는 NestJS가 더 빠를 수 있는 몇 가지 이유가 있습니다. 다만, 최종 선택은 프로젝트의 요구 사항과 팀의 경험에 따라 달라질 수 있습니다. 아래에서 두 프레임워크를 비교해보겠습니다.
+1. NestJS의 빠른 개발 속도 JavaScript/TypeScript 기반: NestJS는 TypeScript를 기본으로 사용합니다. TypeScript는 자바스크립트를 확장한 언어로, 컴파일 시 타입 검사를 제공하여 코드 작성 중 버그를 미리 잡을 수 있습니다. 또한, JavaScript와 TypeScript는 웹 프론트엔드 개발에서 널리 사용되기 때문에, 프론트엔드와 백엔드 개발자들이 같은 언어를 사용할 수 있어 통합 개발 속도가 빨라질 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-02-21 00:00:00 +0000 UTC'>2월 21, 2025</span></footer>
+  <a class="entry-link" aria-label="post link to Nest.js" href="http://localhost:1313/posts/developer/javascipt/nestjs/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Rust Web
     </h2>
   </header>
@@ -211,79 +284,6 @@ OpenAI API Manage OpenAI API Connections https://api.openai.com/v1 API Key Ollam
   </div>
   <footer class="entry-footer"><span title='2025-02-19 00:00:00 +0000 UTC'>2월 19, 2025</span></footer>
   <a class="entry-link" aria-label="post link to OpenWebUI" href="http://localhost:1313/posts/ai/openwebui/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">AUTOSAR C&#43;&#43; A2-10-5
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>AUTOSAR C&#43;&#43; A2-10-5 규칙 가이드 목차 규칙 개요 핵심 개념 위반 사례 해결 방법 상세 설명 참고 사항 규칙 개요 AUTOSAR C&#43;&#43; A2-10-5 규칙은 다음과 같이 정의됩니다:
-“정적 저장 기간을 가진 함수 또는 외부/내부 연결을 가진 비멤버 객체의 식별자 이름은 재사용되어서는 안 된다.”
-규칙의 목적 코드의 명확성과 가독성 향상 유지보수성 개선 모호성과 오류 가능성 감소 자동차 소프트웨어의 안전성 강화 핵심 개념 1. Static Storage Duration (정적 저장 기간) C&#43;&#43;에서 모든 함수는 기본적으로 정적 저장 기간을 가짐 프로그램 시작부터 종료까지 메모리에 존재 static 키워드는 함수의 저장 기간이 아닌 링키지(linkage)를 변경 2. Non-member Object (비멤버 객체) 클래스나 구조체의 멤버가 아닌 변수나 객체 전역 변수, 네임스페이스 범위 변수, 블록 범위의 정적 변수 등 3. Linkage (연결) External Linkage: 다른 번역 단위에서도 참조 가능 Internal Linkage: 같은 번역 단위 내에서만 참조 가능 위반 사례 1. 함수 오버로딩 // 위반 예시 int32_t my_printf(char const* msg) { return printf(&#34;char: %s\n&#34;, msg); } int32_t my_printf(std::string const&amp; msg) { // 위반: 동일 식별자 재사용 return printf(&#34;string: %s\n&#34;, msg.c_str()); } 2. 다른 범위에서 식별자 재사용 // 위반 예시 int globalVar; // 외부 링키지를 가진 전역 변수 void func() { int globalVar = 5; // 위반: 외부 링키지를 가진 식별자 재사용 } 해결 방법 1. 함수 이름 구분 // 올바른 예시 int32_t my_printf_c_string(char const* msg) { return printf(&#34;char: %s\n&#34;, msg); } int32_t my_printf_cpp_string(std::string const&amp; msg) { return printf(&#34;string: %s\n&#34;, msg.c_str()); } 2. 변수 이름 구분 // 올바른 예시 int globalVar; void func() { int localGlobalVar = 5; // 명확한 이름 사용 } 상세 설명 Static Storage Duration vs Automatic Storage Duration Static Storage Duration 프로그램 시작 시점에 생성 프로그램 종료까지 존재 초기화되지 않으면 0 또는 nullptr로 자동 초기화 Automatic Storage Duration 선언된 블록 진입 시 생성 블록 종료 시 파괴 초기화되지 않으면 값이 불확정 상태 예시 코드 #include &lt;iostream&gt; // 정적 저장 기간 int globalStaticVar = 10; void staticFunction() { std::cout &lt;&lt; &#34;Static function is called&#34; &lt;&lt; std::endl; } void exampleFunction() { // 자동 저장 기간 int localAutoVar = 20; // 정적 저장 기간 static int localStaticVar = 30; localAutoVar&#43;&#43;; localStaticVar&#43;&#43;; std::cout &lt;&lt; &#34;localAutoVar: &#34; &lt;&lt; localAutoVar &lt;&lt; std::endl; std::cout &lt;&lt; &#34;localStaticVar: &#34; &lt;&lt; localStaticVar &lt;&lt; std::endl; } 참고 사항 오해 해소 함수에 static 키워드가 없더라도 모든 함수는 기본적으로 정적 저장 기간을 가짐 C&#43;&#43;에서는 함수 오버로딩이 합법적이지만, AUTOSAR C&#43;&#43;14는 더 엄격한 안전 기준을 적용 컴파일 및 검증 # 일반 컴파일 g&#43;&#43; -std=c&#43;&#43;14 -o test_a2_10_5 test_a2_10_5.cpp # AUTOSAR 검증 coverity scan --checker=AUTOSAR test_a2_10_5.cpp 결론 AUTOSAR C&#43;&#43;14 Rule A2-10-5는 자동차 소프트웨어의 안전성과 신뢰성을 위해 코드의 명확성을 강조하는 규칙입니다. 식별자의 재사용을 금지함으로써 코드의 가독성과 유지보수성을 향상시킵니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>2월 17, 2025</span></footer>
-  <a class="entry-link" aria-label="post link to AUTOSAR C&#43;&#43; A2-10-5" href="http://localhost:1313/posts/checker/autosar-a2-10-5/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">CERT Cpp Checker
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p></p>
-  </div>
-  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>2월 17, 2025</span></footer>
-  <a class="entry-link" aria-label="post link to CERT Cpp Checker" href="http://localhost:1313/posts/checker/cert-cpp-checker/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">CERT Java Checker
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>CERT SER03-J : Do not serialize unencrypted sensitive data. 죄송합니다. 이전에 제공된 정보에서 혼란을 드려 죄송합니다. CERT Java 보안 코딩 표준에서 SER03-J: 민감한 데이터를 암호화하지 않고 직렬화하지 마십시오라는 규칙은 민감한 정보가 직렬화 과정에서 노출되지 않도록 보호하기 위한 지침을 제공합니다.
-취약한 코드 예시 아래 코드는 사용자의 비밀번호를 평문으로 직렬화하여 파일에 저장하는 취약한 예제입니다.
-import java.io.*; public class UserInfo implements Serializable { private static final long serialVersionUID = 1L; private String username; private String password; // 민감한 데이터 public UserInfo(String username, String password) { this.username = username; this.password = password; } // getter 및 setter 생략 public static void main(String[] args) { UserInfo user = new UserInfo(&#34;user1&#34;, &#34;password123&#34;); // 객체를 파일에 직렬화 try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(&#34;user.ser&#34;))) { oos.writeObject(user); } catch (IOException e) { e.printStackTrace(); } } } 위 코드에서는 UserInfo 객체를 직렬화하여 user.ser 파일에 저장합니다. 그러나 password 필드는 암호화되지 않은 상태로 저장되므로, 파일이 유출되면 비밀번호가 노출될 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>2월 17, 2025</span></footer>
-  <a class="entry-link" aria-label="post link to CERT Java Checker" href="http://localhost:1313/posts/checker/cert-java-checker/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Cpp Lamda
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Cpp Lamda Variable is Private C&#43;&#43;에서 람다 함수는 외부 변수들을 캡처하여 내부에서 사용할 수 있습니다. 이때, 캡처된 변수들은 람다 객체의 멤버 변수로 저장되며, 이러한 멤버 변수들은 컴파일러에 의해 private 접근 지정자로 선언됩니다. 따라서, 람다 객체 외부에서는 이들 멤버 변수에 직접 접근할 수 없습니다.
-예제 코드 #include &lt;iostream&gt; #include &lt;functional&gt; int main() { int x = 10; // x를 값으로 캡처하는 람다 함수 auto lambda = [x]() mutable { std::cout &lt;&lt; &#34;Captured x: &#34; &lt;&lt; x &lt;&lt; std::endl; x&#43;&#43;; }; lambda(); // Captured x: 10 lambda(); // Captured x: 11 // 람다 객체의 멤버 변수 x에 직접 접근하려는 시도 // std::cout &lt;&lt; &#34;Internal x: &#34; &lt;&lt; lambda.x &lt;&lt; std::endl; // 오류: &#39;lambda&#39;의 &#39;x&#39;에 접근할 수 없음 return 0; } 분석 캡처된 변수의 저장: 람다 함수 [x]는 외부 변수 x를 값으로 캡처하여 람다 객체의 멤버 변수로 저장합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>2월 17, 2025</span></footer>
-  <a class="entry-link" aria-label="post link to Cpp Lamda" href="http://localhost:1313/posts/developer/cpp-lamda/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Git - Change Branch
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Clone with branch 특정 브랜치를 바로 클론하려면 다음 명령어를 사용하시면 됩니다:
-git clone -b 2025.3.maint https://gitlab.host_name/group_name/repo_name.git 이 명령어는 지정된 URL에서 2025.3.maint 브랜치를 클론합니다. 기본적으로 로컬 디렉토리 이름은 저장소 이름(cnc-umbrella-chart)으로 생성됩니다.
-다른 디렉토리 이름을 지정하고 싶다면 URL 뒤에 원하는 디렉토리 이름을 추가하면 됩니다:
-git clone -b 2025.3.maint https://gitlab.host_name/group_name/repo_name.git custom-directory-name 이 명령어를 실행하면 2025.3.maint 브랜치만 가져오게 됩니다. 더 빠른 클론을 원한다면 --single-branch 옵션을 추가할 수 있습니다:
-git clone -b 2025.3.maint --single-branch https://gitlab.host_name/group_name/repo_name.git Change branch 이미 main 브랜치를 clone하였다. 2025.3.maint 브랜치를 가져오는 방법은?
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-02-17 00:00:00 +0000 UTC'>2월 17, 2025</span></footer>
-  <a class="entry-link" aria-label="post link to Git - Change Branch" href="http://localhost:1313/posts/sdlc/git-branch/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

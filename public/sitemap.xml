@@ -2,16 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/categories/</loc>
+    <lastmod>2025-04-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/category1/</loc>
+    <lastmod>2025-04-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/devsecops/</loc>
+    <lastmod>2025-04-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/</loc>
+    <lastmod>2025-04-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2025-04-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/%EC%83%98%ED%94%8C/</loc>
+    <lastmod>2025-04-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/sample-post-1/</loc>
+    <lastmod>2025-04-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/sample-post-2/</loc>
+    <lastmod>2025-04-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/sample-post-3/</loc>
+    <lastmod>2025-04-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/sample-post-4/</loc>
+    <lastmod>2025-04-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/sample-post-5/</loc>
+    <lastmod>2025-04-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/%ED%85%8C%EC%8A%A4%ED%8A%B8/</loc>
+    <lastmod>2025-04-01T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/tags/apt/</loc>
     <lastmod>2025-03-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/sdlc/apt/</loc>
-    <lastmod>2025-03-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/</loc>
-    <lastmod>2025-03-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/</loc>
     <lastmod>2025-03-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/sdlc/</loc>
@@ -21,9 +51,6 @@
     <lastmod>2025-03-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/special-chars/</loc>
-    <lastmod>2025-03-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
     <lastmod>2025-03-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/ubuntu/</loc>
@@ -341,9 +368,6 @@
     <loc>http://localhost:1313/posts/developer/cyclomatic-complexity-in-c&#43;&#43;-code/</loc>
     <lastmod>2025-01-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/devsecops/</loc>
-    <lastmod>2025-01-31T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/posts/welcome-to-my-blog/</loc>
     <lastmod>2025-01-31T00:00:00+00:00</lastmod>
   </url><url>
@@ -377,29 +401,8 @@
     <loc>http://localhost:1313/categories/travel/</loc>
     <lastmod>2025-01-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/category1/</loc>
-    <lastmod>2024-03-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/%EC%83%98%ED%94%8C/</loc>
-    <lastmod>2024-03-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/sample-post-1/</loc>
-    <lastmod>2024-03-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/sample-post-2/</loc>
-    <lastmod>2024-03-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/sample-post-3/</loc>
-    <lastmod>2024-03-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/sample-post-4/</loc>
-    <lastmod>2024-03-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/sample-post-5/</loc>
-    <lastmod>2024-03-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/%ED%85%8C%EC%8A%A4%ED%8A%B8/</loc>
-    <lastmod>2024-03-24T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/posts/my-private-in-posts/</loc>
+    <lastmod>2024-03-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/checker/autosar/</loc>
     <lastmod>2024-02-17T00:00:00+00:00</lastmod>

@@ -141,6 +141,90 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Zone.Identifier
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>windows 에서 wsl로 복사하면 “복사한 파일이름 zone.idenifier” 파일이 생기지 않게 하는 방법. Zone.Identifier 파일은 Windows 시스템에서 외부 출처(인터넷, 이메일 등)에서 다운로드한 파일에 자동으로 추가되는 대체 데이터 스트림(Alternate Data Stream, ADS)입니다. 이 파일에는 원본 파일의 출처와 관련된 보안 정보가 포함되어 있습니다.
+파일을 WSL로 복사할 때 Windows에서는 이 메타데이터를 별도의 Zone.Identifier 파일로 변환합니다. 이는 NTFS 파일 시스템의 기능이지만 Linux 파일 시스템에서는 지원하지 않기 때문입니다.
+Zone.Identifier 파일이 생성되지 않게 하는 방법: Windows에서 파일 신뢰 설정:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-03-10 00:00:00 +0000 UTC'>3월 10, 2025</span></footer>
+  <a class="entry-link" aria-label="post link to Zone.Identifier" href="http://localhost:1313/posts/sdlc/wsl-zone.identifier/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Gcc Visibility
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Gcc Visibility 전처리된 파일에서 보이는 basic_string 함수의 속성과 컴파일러 옵션이 CIM 소스 창에서 이 함수들이 보이지 않는 이유에 대해 자세히 설명해 드리겠습니다.
+가시성 속성 상세 설명 다음 코드 라인을 살펴보겠습니다:
+inline __attribute__ ((__visibility__(&#34;hidden&#34;))) __attribute__ ((__exclude_from_explicit_instantiation__)) 이것은 함수에 두 가지 중요한 GCC/Clang 속성을 적용하고 있습니다:
+__attribute__ ((__visibility__(&#34;hidden&#34;))) - 이 속성은 컴파일러에게 함수에 “hidden” 가시성을 부여하도록 지시합니다:
+이 심볼은 공유 라이브러리/실행 파일에서 내보내지지 않습니다 다른 모듈에서 동적 링크를 통해 접근할 수 없습니다 정의된 컴파일 단위나 라이브러리 내에서만 접근 가능합니다 __attribute__ ((__exclude_from_explicit_instantiation__)) - 이 속성은 컴파일러에게 이 함수를 어떤 명시적 템플릿 인스턴스화에도 포함시키지 말라고 지시합니다. 이는 코드 크기를 줄이고 중복 정의를 방지하는 데 도움이 됩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-03-04 00:00:00 +0000 UTC'>3월 4, 2025</span></footer>
+  <a class="entry-link" aria-label="post link to Gcc Visibility" href="http://localhost:1313/posts/technical-support/coverity/cov-gcc-visibility/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Deno Install
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Install Deno는 JavaScript와 TypeScript를 위한 현대적인 런타임 환경으로, 설치 및 사용이 매우 간단합니다. 아래에 Deno를 설치하고 “Hello, World!” 프로그램을 작성하여 실행하는 방법을 안내해 드리겠습니다.
+1. Deno 설치하기 macOS 및 Linux:
+터미널을 열고 다음 명령어를 입력하여 Deno를 설치할 수 있습니다:
+curl -fsSL https://deno.land/install.sh | sh 이 명령어는 공식 설치 스크립트를 다운로드하여 실행합니다.
+Windows:
+PowerShell을 관리자 권한으로 열고 다음 명령어를 실행합니다:
+iwr https://deno.land/install.ps1 -useb | iex 또는, Windows에서 Chocolatey 패키지 관리자를 사용 중이라면, 다음과 같이 설치할 수 있습니다:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-02-27 00:00:00 +0000 UTC'>2월 27, 2025</span></footer>
+  <a class="entry-link" aria-label="post link to Deno Install" href="http://localhost:1313/posts/sdlc/deno-install/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Go Install
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Go Install 기존 Go 1.22.2가 /usr/bin/go로 설치되어 있고, 새롭게 Go 1.23.1 및 Go 1.23.5를 ~/local 폴더에 설치한 후 원하는 버전을 선택해서 사용하는 방법을 정리해 드리겠습니다. 🚀
+✅ 1. 기존 Go (1.22.2) 확인 현재 기본 Go(1.22.2)가 /usr/bin/go에 설치되어 있음.
+/usr/bin/go version 출력 예시:
+go version go1.22.2 linux/amd64 ✅ 2. 새로운 Go 버전 (1.23.1 &amp; 1.23.5) 설치 기존 Go(1.22.2)는 유지하면서, 추가 Go 버전을 설치하겠습니다.
+🔹 Go 1.23.1 다운로드 및 설치 mkdir -p ~/local cd ~/local wget https://go.dev/dl/go1.23.1.linux-amd64.tar.gz tar -xzf go1.23.1.linux-amd64.tar.gz mv go go1.23.1 🔹 Go 1.23.5 다운로드 및 설치 cd ~/local wget https://go.dev/dl/go1.23.5.linux-amd64.tar.gz tar -xzf go1.23.5.linux-amd64.tar.gz mv go go1.23.5 설치 후 폴더 구조:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-02-27 00:00:00 +0000 UTC'>2월 27, 2025</span></footer>
+  <a class="entry-link" aria-label="post link to Go Install" href="http://localhost:1313/posts/sdlc/go-install/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Mojo Install
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Mojo 설치 Mojo는 Modular가 개발한 새로운 프로그래밍 언어로, Python과 유사하지만 더 높은 성능을 제공합니다. WSL (Windows Subsystem for Linux)의 Ubuntu 환경에서 Mojo를 설치하려면 다음과 같은 단계를 따르면 됩니다.
+1. WSL 및 Ubuntu 확인 먼저 WSL이 설치되어 있고 Ubuntu가 실행 중인지 확인하세요.
+WSL이 설치되어 있지 않다면 Microsoft 공식 문서를 참고하여 설치하세요. Ubuntu는 Microsoft Store에서 다운로드하거나 명령줄에서 설치할 수 있습니다. WSL Ubuntu가 이미 설치되어 있다면, 터미널을 열고 다음 명령어로 Ubuntu 버전을 확인하세요:
+lsb_release -a 2. Mojo 설치 준비 Mojo는 아직 초기 단계의 언어이므로 공식적으로 지원되는 패키지 관리자가 없습니다. 따라서 Modular의 공식 웹사이트나 CLI 도구를 사용하여 설치해야 합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-02-27 00:00:00 +0000 UTC'>2월 27, 2025</span></footer>
+  <a class="entry-link" aria-label="post link to Mojo Install" href="http://localhost:1313/posts/sdlc/mojo-install/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Mojo Sample Code like Curl
     </h2>
   </header>
@@ -210,79 +294,6 @@ import javax.net.ssl.*; import java.io.*; import java.net.HttpURLConnection; imp
   </div>
   <footer class="entry-footer"><span title='2025-02-24 00:00:00 +0000 UTC'>2월 24, 2025</span></footer>
   <a class="entry-link" aria-label="post link to MOJO" href="http://localhost:1313/posts/sdlc/mojo/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Public IP &amp; CIDR
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Windows Powershell 에서 public IP와 CIDR 얻기 - claude 테스트 (base) PS C:\workspace\blog\ryanpark-devsecops&gt; # 방법 1: ipify API 사용 (base) PS C:\workspace\blog\ryanpark-devsecops&gt; (Invoke-WebRequest -Uri &#34;https://api.ipify.org&#34;).Content 44.214.210.109 (base) PS C:\workspace\blog\ryanpark-devsecops&gt; (base) PS C:\workspace\blog\ryanpark-devsecops&gt; # 방방법법 2: ifconfig.me 사사용용 (base) PS C:\workspace\blog\ryanpark-devsecops&gt; (Invoke-WebRequest -Uri &#34;https://ifconfig.me/ip&#34;).Content (base) PS C:\workspace\blog\ryanpark-devsecops&gt; (base) PS C:\workspace\blog\ryanpark-devsecops&gt; # 방법 3: ipinfo.io 사용 (더 자세한 정보) (base) PS C:\workspace\blog\ryanpark-devsecops&gt; (Invoke-WebRequest -Uri &#34;https://ipinfo.io/json&#34;).Content | ConvertFrom-Json ip : 44.214.210.109 hostname : vpn-aws.blackduck.com city : Ashburn region : Virginia country : US loc : 39.0437,-77.4875 org : AS14618 Amazon.com, Inc. postal : 20147 timezone : America/New_York readme : https://ipinfo.io/missingauth (base) PS C:\workspace\blog\ryanpark-devsecops&gt; Start-Process &#34;https://whois.domaintools.com/$ip&#34; Quick Stats IP Location	United States United States Ashburn Amazon Data Services Nova ASN	United States AS14618 AMAZON-AES, US (registered Nov 04, 2005) Resolve Host	vpn-aws.blackduck.com Whois Server	whois.arin.net IP Address	44.214.210.109 NetRange: 44.192.0.0 - 44.255.255.255 CIDR: 44.192.0.0/10 답변 PowerShell에서 Public IP와 CIDR를 확인하는 방법을 알려드리겠습니다:
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-02-24 00:00:00 +0000 UTC'>2월 24, 2025</span></footer>
-  <a class="entry-link" aria-label="post link to Public IP & CIDR" href="http://localhost:1313/posts/sdlc/public-ip-cidr/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Chrome
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Chrome Install on Ubuntu Ubuntu에서 Chrome을 완전히 제거하고 다시 설치하는 명령어 순서입니다:
-Chrome 제거: # Chrome 패키지 제거 sudo apt-get purge google-chrome-stable # 관련 의존성 패키지 제거 sudo apt-get autoremove # Chrome 설정 파일 제거 (선택사항) rm -rf ~/.config/google-chrome Chrome 다시 설치: # Chrome 다운로드를 위한 필요 패키지 설치 sudo apt-get install wget # Chrome 패키지 다운로드 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb # 다운로드한 패키지 설치 sudo dpkg -i google-chrome-stable_current_amd64.deb # 의존성 문제가 있다면 다음 명령어로 해결 sudo apt-get install -f # 다운로드한 설치 파일 제거 (선택사항) rm google-chrome-stable_current_amd64.deb 설치가 완료되면 Applications 메뉴나 터미널에서 google-chrome 명령어로 Chrome을 실행할 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-02-21 00:00:00 +0000 UTC'>2월 21, 2025</span></footer>
-  <a class="entry-link" aria-label="post link to Chrome" href="http://localhost:1313/posts/sdlc/chrome/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Coverity Performance
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Expected a [COVJSESSIONID-build] cookie in the response, but it was missing 추가 로그 분석을 통해 더 자세한 상황을 파악할 수 있습니다:
-원래 문제:
-Expected a [COVJSESSIONID-build] cookie in the response, but it was missing 추가 로그 분석:
-인증 상태: Authentication=CovUsernameAuthenticationToken [Principal=admin (Admin User),Authenticated=true,RemoteIpAddress=10.2.150.57,SessionId=69FB1C3437377E29D3B887C9FDFA5403,Granted Authorities=[ROLE_AUTHENTICATED_USER]] 서버 측에서는 admin 사용자가 성공적으로 인증됨 세션이 정상적으로 생성됨 백그라운드 프로세스: com.coverity.ces.service.GarbageCollectionServiceImpl.runGarbageCollection GarbageCollection 서비스가 정상적으로 동작 중 수정된 해결 방안:
-세션 관련:
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-02-21 00:00:00 +0000 UTC'>2월 21, 2025</span></footer>
-  <a class="entry-link" aria-label="post link to Coverity Performance" href="http://localhost:1313/posts/technical-support/coverity/cov-performance/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Dart
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Dart 와 JavaScript 비교교 Dart와 JavaScript 중 어떤 언어를 배우는 것이 더 좋은지는 Ryan의 목표와 개발하려는 서비스의 방향에 따라 다릅니다.
-✅ Dart를 배우는 것이 좋은 경우 Flutter를 활용한 크로스 플랫폼 앱 개발 Ryan이 모바일 앱 개발(특히 iOS &amp; Android) 을 목표로 한다면 Dart &#43; Flutter 조합이 유리합니다. 하나의 코드베이스로 iOS, Android, 웹까지 개발 가능하여 유지보수 비용을 절감할 수 있습니다. 안정적이고 타입 안정성이 중요한 경우 Dart는 정적 타입을 제공하여 코드의 안정성이 높고, 유지보수가 쉬운 편입니다. JavaScript보다 더 안전한 프로그래밍이 가능합니다. Google 생태계에 관심이 있다면 Dart는 Google이 적극적으로 지원하는 언어이므로, Google 관련 기술과 함께 사용하기 좋습니다. ✅ JavaScript를 배우는 것이 좋은 경우 웹 서비스 개발이 목표라면 Ryan이 웹 기반 서비스(프론트엔드 &amp; 백엔드) 를 개발하려면 JavaScript가 훨씬 강력한 선택지입니다. React, Vue, Angular 등 다양한 웹 프레임워크를 활용할 수 있습니다. 서버 개발도 Node.js 를 활용해 JavaScript로 가능하므로 전체 개발이 JavaScript로 통일됩니다. 더 많은 오픈 소스 및 커뮤니티 지원을 원한다면 JavaScript는 웹 개발의 표준이며, 가장 많은 라이브러리와 프레임워크가 존재합니다. Dart에 비해 커뮤니티가 훨씬 크며, 문제 해결이 빠릅니다. 프론트엔드 개발자가 되고 싶다면 JavaScript는 웹 브라우저에서 기본적으로 실행되는 언어이므로, 프론트엔드 개발자 를 목표로 한다면 필수입니다. ⚖️ 결론: Ryan에게 적합한 선택 웹 서비스를 중심으로 개발하려면? → JavaScript 모바일 앱을 중심으로 개발하려면? → Dart &#43; Flutter 웹과 모바일을 모두 고려한다면? 웹이 더 중요하면 JavaScript 모바일이 더 중요하면 Dart Ryan이 만들고 싶은 서비스가 웹 기반이라면 JavaScript가 더 적합할 가능성이 큽니다.
-어떤 서비스를 만들고 싶은지 더 구체적으로 이야기해주면 더 적합한 선택을 도와줄 수 있어요!
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-02-21 00:00:00 +0000 UTC'>2월 21, 2025</span></footer>
-  <a class="entry-link" aria-label="post link to Dart" href="http://localhost:1313/posts/developer/dart/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Nest.js
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Next.js 와와 SpringBoot 비교 속도비교 NestJS와 Spring Boot는 각각의 장단점이 있지만, 개발 속도 측면에서 비교할 때는 NestJS가 더 빠를 수 있는 몇 가지 이유가 있습니다. 다만, 최종 선택은 프로젝트의 요구 사항과 팀의 경험에 따라 달라질 수 있습니다. 아래에서 두 프레임워크를 비교해보겠습니다.
-1. NestJS의 빠른 개발 속도 JavaScript/TypeScript 기반: NestJS는 TypeScript를 기본으로 사용합니다. TypeScript는 자바스크립트를 확장한 언어로, 컴파일 시 타입 검사를 제공하여 코드 작성 중 버그를 미리 잡을 수 있습니다. 또한, JavaScript와 TypeScript는 웹 프론트엔드 개발에서 널리 사용되기 때문에, 프론트엔드와 백엔드 개발자들이 같은 언어를 사용할 수 있어 통합 개발 속도가 빨라질 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-02-21 00:00:00 +0000 UTC'>2월 21, 2025</span></footer>
-  <a class="entry-link" aria-label="post link to Nest.js" href="http://localhost:1313/posts/developer/javascipt/nestjs/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

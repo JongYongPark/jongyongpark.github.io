@@ -145,6 +145,23 @@
     </h2>
   </header>
   <div class="entry-content">
+    <p>걸린 시간 측정 Windows CMD 명령어를 실행할 때 걸리는 시간을 측정하는 방법은 몇 가지가 있습니다. PowerShell에서는 더 강력한 방법을 제공합니다:
+PowerShell에서 명령어 실행 시간 측정하기 1. Measure-Command 사용하기 PowerShell의 Measure-Command cmdlet을 사용하면 명령어 실행 시간을 정확하게 측정할 수 있습니다:
+Measure-Command { Get-ChildItem } 이 명령어는 Get-ChildItem(ls와 동일) 실행에 걸린 시간을 상세히 보여줍니다.
+2. 시작/종료 시간 기록하기 Stopwatch 객체를 사용하여 시간을 측정할 수도 있습니다:
+$stopwatch = [System.Diagnostics.Stopwatch]::StartNew() Get-ChildItem $stopwatch.Stop() $stopwatch.Elapsed 3. CMD 명령어 실행 시간 측정하기 CMD 명령어의 실행 시간을 측정하려면:
+...</p>
+  </div>
+  <footer class="entry-footer"></footer>
+  <a class="entry-link" aria-label="post link to " href="http://localhost:1313/posts/sdlc/win-time-measure/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">
+    </h2>
+  </header>
+  <div class="entry-content">
     <p>find out the items of vpc_private_subnets 입력 cluster_name = &#34;cnc-test-cluster&#34; cluster_region = &#34;ap-northeast-2&#34; vpc_cidr_block = &#34;10.0.0.0/16&#34; vpc_id = &#34;vpc-0ee6ce9b74a82d087&#34; vpc_nat_public_ips = tolist([ &#34;3.35.204.211&#34;, ]) vpc_private_subnets = [ &#34;subnet-0329309bce8fe3cd7&#34;, &#34;subnet-0a3426c348f958ac0&#34;, ] vpc_public_subnets = [ &#34;subnet-0a042f89e148e823e&#34;, &#34;subnet-0035ab195d22e6cd0&#34;, ] You can use the following sed command to find out the items of vpc_private_subnets:
 sed -n &#39;s/.*vpc_private_subnets = \[\(.*\)\].*/\1/p&#39; &lt;filename&gt; Replace &lt;filename&gt; with the name of the file containing the above configuration. The sed command will extract the contents of vpc_private_subnets and print them out.
 Here’s an explanation of the command:
@@ -274,21 +291,6 @@ Outlook에서 새 메시지를 작성하거나 기존 메시지 초안을 엽니
   </div>
   <footer class="entry-footer"></footer>
   <a class="entry-link" aria-label="post link to " href="http://localhost:1313/posts/technical-support/outlook/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Performance Self Assessment Below is a revised English version of your self-assessment. I have elevated the language and tone so it reflects a more impactful contribution and a higher level of professionalism.
-1. What are 1-2 examples of how you have impacted the success of your team/department/organization over fiscal year 2024? • Comprehensive Support for SRM Cases in APnJ
-I took sole responsibility for every SRM case opened in the APnJ region. Despite limited team resources, I successfully provided support for this new product (SRM), ensuring seamless operations and achieving cost savings from a resource management perspective. By efficiently managing these cases on my own, I helped the team meet critical support demands while minimizing additional staffing expenses.
-...</p>
-  </div>
-  <footer class="entry-footer"></footer>
-  <a class="entry-link" aria-label="post link to " href="http://localhost:1313/posts/technical-support/performance-self-assessment/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

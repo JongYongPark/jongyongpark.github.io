@@ -6,8 +6,47 @@
     <description>Recent content in Posts on RyanLabs</description>
     <generator>Hugo -- 0.142.0</generator>
     <language>ko</language>
-    <lastBuildDate>Fri, 14 Mar 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 01 Apr 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>샘플 포스트 1</title>
+      <link>http://localhost:1313/posts/sample-post-1/</link>
+      <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/sample-post-1/</guid>
+      <description>&lt;p&gt;이것은 요약입니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>샘플 포스트 2</title>
+      <link>http://localhost:1313/posts/sample-post-2/</link>
+      <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/sample-post-2/</guid>
+      <description>&lt;p&gt;이것은 샘플 포스트 2의 본문입니다.&lt;br&gt;
+Hugo 블로그가 잘 작동하는지 확인하기 위한 글입니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>샘플 포스트 3</title>
+      <link>http://localhost:1313/posts/sample-post-3/</link>
+      <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/sample-post-3/</guid>
+      <description>&lt;p&gt;이것은 샘플 포스트 3의 본문입니다.&lt;br&gt;
+Hugo 블로그가 잘 작동하는지 확인하기 위한 글입니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>샘플 포스트 4</title>
+      <link>http://localhost:1313/posts/sample-post-4/</link>
+      <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/sample-post-4/</guid>
+      <description>&lt;p&gt;이것은 샘플 포스트 4의 본문입니다.&lt;br&gt;
+Hugo 블로그가 잘 작동하는지 확인하기 위한 글입니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>샘플 포스트 5</title>
+      <link>http://localhost:1313/posts/sample-post-5/</link>
+      <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/sample-post-5/</guid>
+      <description>&lt;p&gt;이것은 샘플 포스트 5의 본문입니다.&lt;br&gt;
+Hugo 블로그가 잘 작동하는지 확인하기 위한 글입니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Apt proxy issue</title>
       <link>http://localhost:1313/posts/sdlc/apt/</link>
@@ -2537,43 +2576,11 @@ React Native는 플랫폼에 최적화된 네이티브 UI 컴포넌트를 사용
       <description>&lt;p&gt;A review of a bus trip in Korea is written here.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>샘플 포스트 1</title>
-      <link>http://localhost:1313/posts/sample-post-1/</link>
-      <pubDate>Sun, 24 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/sample-post-1/</guid>
-      <description>&lt;p&gt;이것은 요약입니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>샘플 포스트 2</title>
-      <link>http://localhost:1313/posts/sample-post-2/</link>
-      <pubDate>Sun, 24 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/sample-post-2/</guid>
-      <description>&lt;p&gt;이것은 샘플 포스트 2의 본문입니다.&lt;br&gt;
-Hugo 블로그가 잘 작동하는지 확인하기 위한 글입니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>샘플 포스트 3</title>
-      <link>http://localhost:1313/posts/sample-post-3/</link>
-      <pubDate>Sun, 24 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/sample-post-3/</guid>
-      <description>&lt;p&gt;이것은 샘플 포스트 3의 본문입니다.&lt;br&gt;
-Hugo 블로그가 잘 작동하는지 확인하기 위한 글입니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>샘플 포스트 4</title>
-      <link>http://localhost:1313/posts/sample-post-4/</link>
-      <pubDate>Sun, 24 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/sample-post-4/</guid>
-      <description>&lt;p&gt;이것은 샘플 포스트 4의 본문입니다.&lt;br&gt;
-Hugo 블로그가 잘 작동하는지 확인하기 위한 글입니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>샘플 포스트 5</title>
-      <link>http://localhost:1313/posts/sample-post-5/</link>
-      <pubDate>Sun, 24 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/sample-post-5/</guid>
-      <description>&lt;p&gt;이것은 샘플 포스트 5의 본문입니다.&lt;br&gt;
-Hugo 블로그가 잘 작동하는지 확인하기 위한 글입니다.&lt;/p&gt;</description>
+      <title>비공개 테스트 문서 in posts</title>
+      <link>http://localhost:1313/posts/my-private-in-posts/</link>
+      <pubDate>Sat, 30 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/my-private-in-posts/</guid>
+      <description>&lt;p&gt;비공개 이어야 함.&lt;/p&gt;</description>
     </item>
     <item>
       <title>AUTOSAR</title>

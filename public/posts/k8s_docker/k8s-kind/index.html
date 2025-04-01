@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="ko" dir="auto">
-
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
-<title>KinD for k8s | RyanLabs</title>
-<meta name="keywords" content="KinD">
-<meta name="description" content="
+<!doctype html><html lang=ko dir=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>KinD for k8s | RyanLabs</title>
+<meta name=keywords content="KinD"><meta name=description content='
 KinD로 3개의 worker node를 포함한 클러스터를 만드는 Bash 스크립트
 다음은 KinD(Kubernetes in Docker)를 사용하여 프라이빗 클라우드를 생성하고, 3개의 worker node를 포함한 클러스터를 만드는 Bash 스크립트입니다. 이 스크립트는 필요한 유틸리티를 다운로드하고 설치하며, kind 클러스터를 구성합니다.
 Bash Script: setup_kind_cluster.sh
@@ -17,60 +9,60 @@ Bash Script: setup_kind_cluster.sh
 set -e
 
 # 변수 정의
-KIND_VERSION=&#34;v0.20.0&#34;
-KUBECTL_VERSION=&#34;v1.28.0&#34;
-DOCKER_COMPOSE_VERSION=&#34;v2.22.0&#34;
+KIND_VERSION="v0.20.0"
+KUBECTL_VERSION="v1.28.0"
+DOCKER_COMPOSE_VERSION="v2.22.0"
 
 # 필요한 유틸리티 다운로드 및 설치
 install_utilities() {
   # Docker 설치 (Docker가 설치되어 있지 않을 경우)
-  if ! command -v docker &amp;&gt; /dev/null; then
-    echo &#34;Docker를 설치 중입니다...&#34;
+  if ! command -v docker &> /dev/null; then
+    echo "Docker를 설치 중입니다..."
     curl -fsSL https://get.docker.com | bash
     sudo usermod -aG docker $USER
-    echo &#34;Docker 설치 완료. 사용하려면 로그아웃 후 다시 로그인하세요.&#34;
+    echo "Docker 설치 완료. 사용하려면 로그아웃 후 다시 로그인하세요."
   else
-    echo &#34;Docker가 이미 설치되어 있습니다.&#34;
+    echo "Docker가 이미 설치되어 있습니다."
   fi
 
   # kind 설치
-  if ! command -v kind &amp;&gt; /dev/null; then
-    echo &#34;Kind를 설치 중입니다...&#34;
+  if ! command -v kind &> /dev/null; then
+    echo "Kind를 설치 중입니다..."
     curl -Lo ./kind https://kind.sigs.k8s.io/dl/${KIND_VERSION}/kind-linux-amd64
-    chmod &#43;x ./kind
+    chmod +x ./kind
     sudo mv ./kind /usr/local/bin/kind
-    echo &#34;Kind 설치 완료.&#34;
+    echo "Kind 설치 완료."
   else
-    echo &#34;Kind가 이미 설치되어 있습니다.&#34;
+    echo "Kind가 이미 설치되어 있습니다."
   fi
 
   # kubectl 설치
-  if ! command -v kubectl &amp;&gt; /dev/null; then
-    echo &#34;Kubectl을 설치 중입니다...&#34;
-    curl -LO &#34;https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl&#34;
-    chmod &#43;x ./kubectl
+  if ! command -v kubectl &> /dev/null; then
+    echo "Kubectl을 설치 중입니다..."
+    curl -LO "https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl"
+    chmod +x ./kubectl
     sudo mv ./kubectl /usr/local/bin/kubectl
-    echo &#34;Kubectl 설치 완료.&#34;
+    echo "Kubectl 설치 완료."
   else
-    echo &#34;Kubectl이 이미 설치되어 있습니다.&#34;
+    echo "Kubectl이 이미 설치되어 있습니다."
   fi
 
   # Docker Compose 설치 (필요한 경우)
-  if ! command -v docker-compose &amp;&gt; /dev/null; then
-    echo &#34;Docker Compose를 설치 중입니다...&#34;
-    curl -L &#34;https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)&#34; -o /usr/local/bin/docker-compose
-    chmod &#43;x /usr/local/bin/docker-compose
-    echo &#34;Docker Compose 설치 완료.&#34;
+  if ! command -v docker-compose &> /dev/null; then
+    echo "Docker Compose를 설치 중입니다..."
+    curl -L "https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    chmod +x /usr/local/bin/docker-compose
+    echo "Docker Compose 설치 완료."
   else
-    echo &#34;Docker Compose가 이미 설치되어 있습니다.&#34;
+    echo "Docker Compose가 이미 설치되어 있습니다."
   fi
 }
 
 # Kind 클러스터 설정 파일 생성
 create_kind_cluster_config() {
-  echo &#34;Kind 클러스터 설정 파일을 생성합니다...&#34;
+  echo "Kind 클러스터 설정 파일을 생성합니다..."
 
-  cat &lt;&lt;EOF &gt; kind-cluster-config.yaml
+  cat <<EOF > kind-cluster-config.yaml
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 nodes:
@@ -80,16 +72,16 @@ nodes:
   - role: worker
 EOF
 
-  echo &#34;Kind 클러스터 설정 파일 생성 완료.&#34;
+  echo "Kind 클러스터 설정 파일 생성 완료."
 }
 
 # Kind 클러스터 생성
 create_kind_cluster() {
-  echo &#34;Kind 클러스터를 생성합니다...&#34;
+  echo "Kind 클러스터를 생성합니다..."
 
   kind create cluster --config kind-cluster-config.yaml
 
-  echo &#34;Kind 클러스터 생성 완료.&#34;
+  echo "Kind 클러스터 생성 완료."
 }
 
 # 주요 함수 호출
@@ -100,7 +92,7 @@ create_kind_cluster
 # 클러스터 정보 출력
 kubectl get nodes
 
-echo &#34;3개의 worker 노드를 포함한 Kind 클러스터가 성공적으로 생성되었습니다.&#34;
+echo "3개의 worker 노드를 포함한 Kind 클러스터가 성공적으로 생성되었습니다."
 스크립트 설명
 
 필수 유틸리티 설치:
@@ -128,359 +120,236 @@ kubectl 명령어를 통해 생성된 클러스터의 노드 상태를 확인할
 
 스크립트를 파일로 저장 (예: setup_kind_cluster.sh).
 파일에 실행 권한을 부여:
-chmod &#43;x setup_kind_cluster.sh
+chmod +x setup_kind_cluster.sh
 
 스크립트 실행:
 ./setup_kind_cluster.sh
 
 클러스터가 성공적으로 생성되면 kubectl get nodes 명령을 통해 노드 상태를 확인할 수 있습니다.
 
-이 스크립트는 KinD를 활용하여 간단하게 3개의 worker 노드가 있는 클러스터를 설정할 수 있도록 도와줍니다.">
-<meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/posts/k8s_docker/k8s-kind/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.9de45e225101e4f99701d2b68fc6b8a1ef6027928be6391fa15bf7f56326c909.css" integrity="sha256-neReIlEB5PmXAdK2j8a4oe9gJ5KL5jkfoVv39WMmyQk=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="ko" href="http://localhost:1313/posts/k8s_docker/k8s-kind/">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
+이 스크립트는 KinD를 활용하여 간단하게 3개의 worker 노드가 있는 클러스터를 설정할 수 있도록 도와줍니다.'><meta name=author content><link rel=canonical href=https://jongyongpark.github.io/posts/k8s_docker/k8s-kind/><link crossorigin=anonymous href=/assets/css/stylesheet.9de45e225101e4f99701d2b68fc6b8a1ef6027928be6391fa15bf7f56326c909.css integrity="sha256-neReIlEB5PmXAdK2j8a4oe9gJ5KL5jkfoVv39WMmyQk=" rel="preload stylesheet" as=style><link rel=icon href=https://jongyongpark.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://jongyongpark.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://jongyongpark.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://jongyongpark.github.io/apple-touch-icon.png><link rel=mask-icon href=https://jongyongpark.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=ko href=https://jongyongpark.github.io/posts/k8s_docker/k8s-kind/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><meta property="og:url" content="https://jongyongpark.github.io/posts/k8s_docker/k8s-kind/"><meta property="og:site_name" content="RyanLabs"><meta property="og:title" content="KinD for k8s"><meta property="og:description" content=' KinD로 3개의 worker node를 포함한 클러스터를 만드는 Bash 스크립트 다음은 KinD(Kubernetes in Docker)를 사용하여 프라이빗 클라우드를 생성하고, 3개의 worker node를 포함한 클러스터를 만드는 Bash 스크립트입니다. 이 스크립트는 필요한 유틸리티를 다운로드하고 설치하며, kind 클러스터를 구성합니다.
+Bash Script: setup_kind_cluster.sh #!/bin/bash # 스크립트 실행 중 오류 발생 시 중단 set -e # 변수 정의 KIND_VERSION="v0.20.0" KUBECTL_VERSION="v1.28.0" DOCKER_COMPOSE_VERSION="v2.22.0" # 필요한 유틸리티 다운로드 및 설치 install_utilities() { # Docker 설치 (Docker가 설치되어 있지 않을 경우) if ! command -v docker &> /dev/null; then echo "Docker를 설치 중입니다..." curl -fsSL https://get.docker.com | bash sudo usermod -aG docker $USER echo "Docker 설치 완료. 사용하려면 로그아웃 후 다시 로그인하세요." else echo "Docker가 이미 설치되어 있습니다." fi # kind 설치 if ! command -v kind &> /dev/null; then echo "Kind를 설치 중입니다..." curl -Lo ./kind https://kind.sigs.k8s.io/dl/${KIND_VERSION}/kind-linux-amd64 chmod +x ./kind sudo mv ./kind /usr/local/bin/kind echo "Kind 설치 완료." else echo "Kind가 이미 설치되어 있습니다." fi # kubectl 설치 if ! command -v kubectl &> /dev/null; then echo "Kubectl을 설치 중입니다..." curl -LO "https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl" chmod +x ./kubectl sudo mv ./kubectl /usr/local/bin/kubectl echo "Kubectl 설치 완료." else echo "Kubectl이 이미 설치되어 있습니다." fi # Docker Compose 설치 (필요한 경우) if ! command -v docker-compose &> /dev/null; then echo "Docker Compose를 설치 중입니다..." curl -L "https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose chmod +x /usr/local/bin/docker-compose echo "Docker Compose 설치 완료." else echo "Docker Compose가 이미 설치되어 있습니다." fi } # Kind 클러스터 설정 파일 생성 create_kind_cluster_config() { echo "Kind 클러스터 설정 파일을 생성합니다..." cat <<EOF > kind-cluster-config.yaml kind: Cluster apiVersion: kind.x-k8s.io/v1alpha4 nodes: - role: control-plane - role: worker - role: worker - role: worker EOF echo "Kind 클러스터 설정 파일 생성 완료." } # Kind 클러스터 생성 create_kind_cluster() { echo "Kind 클러스터를 생성합니다..." kind create cluster --config kind-cluster-config.yaml echo "Kind 클러스터 생성 완료." } # 주요 함수 호출 install_utilities create_kind_cluster_config create_kind_cluster # 클러스터 정보 출력 kubectl get nodes echo "3개의 worker 노드를 포함한 Kind 클러스터가 성공적으로 생성되었습니다." 스크립트 설명 필수 유틸리티 설치: Docker, kind, kubectl, docker-compose가 설치되지 않은 경우 자동으로 다운로드하고 설치합니다. 클러스터 구성 파일: kind-cluster-config.yaml 파일을 생성하며, 하나의 control-plane 노드와 3개의 worker 노드를 포함합니다. 클러스터 생성: kind를 이용해 클러스터를 생성합니다. kubectl로 클러스터 상태 확인: kubectl 명령어를 통해 생성된 클러스터의 노드 상태를 확인할 수 있습니다. 사용 방법: 스크립트를 파일로 저장 (예: setup_kind_cluster.sh). 파일에 실행 권한을 부여: chmod +x setup_kind_cluster.sh 스크립트 실행: ./setup_kind_cluster.sh 클러스터가 성공적으로 생성되면 kubectl get nodes 명령을 통해 노드 상태를 확인할 수 있습니다. 이 스크립트는 KinD를 활용하여 간단하게 3개의 worker 노드가 있는 클러스터를 설정할 수 있도록 도와줍니다.'><meta property="og:locale" content="ko"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2025-02-14T00:00:00+00:00"><meta property="article:modified_time" content="2025-02-14T00:00:00+00:00"><meta property="article:tag" content="KinD"><meta name=twitter:card content="summary"><meta name=twitter:title content="KinD for k8s"><meta name=twitter:description content='
+KinD로 3개의 worker node를 포함한 클러스터를 만드는 Bash 스크립트
+다음은 KinD(Kubernetes in Docker)를 사용하여 프라이빗 클라우드를 생성하고, 3개의 worker node를 포함한 클러스터를 만드는 Bash 스크립트입니다. 이 스크립트는 필요한 유틸리티를 다운로드하고 설치하며, kind 클러스터를 구성합니다.
+Bash Script: setup_kind_cluster.sh
+#!/bin/bash
 
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-            }
+# 스크립트 실행 중 오류 발생 시 중단
+set -e
 
-            .list {
-                background: var(--theme);
-            }
+# 변수 정의
+KIND_VERSION="v0.20.0"
+KUBECTL_VERSION="v1.28.0"
+DOCKER_COMPOSE_VERSION="v2.22.0"
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
+# 필요한 유틸리티 다운로드 및 설치
+install_utilities() {
+  # Docker 설치 (Docker가 설치되어 있지 않을 경우)
+  if ! command -v docker &> /dev/null; then
+    echo "Docker를 설치 중입니다..."
+    curl -fsSL https://get.docker.com | bash
+    sudo usermod -aG docker $USER
+    echo "Docker 설치 완료. 사용하려면 로그아웃 후 다시 로그인하세요."
+  else
+    echo "Docker가 이미 설치되어 있습니다."
+  fi
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
+  # kind 설치
+  if ! command -v kind &> /dev/null; then
+    echo "Kind를 설치 중입니다..."
+    curl -Lo ./kind https://kind.sigs.k8s.io/dl/${KIND_VERSION}/kind-linux-amd64
+    chmod +x ./kind
+    sudo mv ./kind /usr/local/bin/kind
+    echo "Kind 설치 완료."
+  else
+    echo "Kind가 이미 설치되어 있습니다."
+  fi
 
-    </style>
-</noscript>
-</head>
+  # kubectl 설치
+  if ! command -v kubectl &> /dev/null; then
+    echo "Kubectl을 설치 중입니다..."
+    curl -LO "https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl"
+    chmod +x ./kubectl
+    sudo mv ./kubectl /usr/local/bin/kubectl
+    echo "Kubectl 설치 완료."
+  else
+    echo "Kubectl이 이미 설치되어 있습니다."
+  fi
 
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
+  # Docker Compose 설치 (필요한 경우)
+  if ! command -v docker-compose &> /dev/null; then
+    echo "Docker Compose를 설치 중입니다..."
+    curl -L "https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    chmod +x /usr/local/bin/docker-compose
+    echo "Docker Compose 설치 완료."
+  else
+    echo "Docker Compose가 이미 설치되어 있습니다."
+  fi
+}
 
-</script>
+# Kind 클러스터 설정 파일 생성
+create_kind_cluster_config() {
+  echo "Kind 클러스터 설정 파일을 생성합니다..."
 
-<header class="header">
-    <nav class="nav">
-        <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="RyanLabs (Alt + H)">RyanLabs</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <ul id="menu">
-            <li>
-                <a href="http://localhost:1313/search/" title="검색">
-                    <span>검색</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/categories/" title="카테고리">
-                    <span>카테고리</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/tags/" title="태그">
-                    <span>태그</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/archives/" title="연도">
-                    <span>연도</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/lectures/" title="강의">
-                    <span>강의</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/about/" title="어바웃미">
-                    <span>어바웃미</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<main class="main">
+  cat <<EOF > kind-cluster-config.yaml
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+  - role: control-plane
+  - role: worker
+  - role: worker
+  - role: worker
+EOF
 
-<article class="post-single">
-  <header class="post-header">
-    
-    <h1 class="post-title entry-hint-parent">
-      KinD for k8s
-    </h1>
-    <div class="post-meta"><span title='2025-02-14 00:00:00 +0000 UTC'>2월 14, 2025</span>
+  echo "Kind 클러스터 설정 파일 생성 완료."
+}
 
-</div>
-  </header> 
-  <div class="post-content"><hr>
-<h1 id="kind로-3개의-worker-node를-포함한-클러스터를-만드는-bash-스크립트">KinD로 3개의 worker node를 포함한 클러스터를 만드는 Bash 스크립트<a hidden class="anchor" aria-hidden="true" href="#kind로-3개의-worker-node를-포함한-클러스터를-만드는-bash-스크립트">#</a></h1>
-<p>다음은 <code>KinD</code>(Kubernetes in Docker)를 사용하여 프라이빗 클라우드를 생성하고, 3개의 worker node를 포함한 클러스터를 만드는 Bash 스크립트입니다. 이 스크립트는 필요한 유틸리티를 다운로드하고 설치하며, <code>kind</code> 클러스터를 구성합니다.</p>
-<h3 id="bash-script-setup_kind_clustersh"><strong>Bash Script: <code>setup_kind_cluster.sh</code></strong><a hidden class="anchor" aria-hidden="true" href="#bash-script-setup_kind_clustersh">#</a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 스크립트 실행 중 오류 발생 시 중단</span>
-</span></span><span style="display:flex;"><span>set -e
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 변수 정의</span>
-</span></span><span style="display:flex;"><span>KIND_VERSION<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;v0.20.0&#34;</span>
-</span></span><span style="display:flex;"><span>KUBECTL_VERSION<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;v1.28.0&#34;</span>
-</span></span><span style="display:flex;"><span>DOCKER_COMPOSE_VERSION<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;v2.22.0&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 필요한 유틸리티 다운로드 및 설치</span>
-</span></span><span style="display:flex;"><span>install_utilities<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Docker 설치 (Docker가 설치되어 있지 않을 경우)</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> ! command -v docker &amp;&gt; /dev/null; <span style="color:#66d9ef">then</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Docker를 설치 중입니다...&#34;</span>
-</span></span><span style="display:flex;"><span>    curl -fsSL https://get.docker.com | bash
-</span></span><span style="display:flex;"><span>    sudo usermod -aG docker $USER
-</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Docker 설치 완료. 사용하려면 로그아웃 후 다시 로그인하세요.&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Docker가 이미 설치되어 있습니다.&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># kind 설치</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> ! command -v kind &amp;&gt; /dev/null; <span style="color:#66d9ef">then</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Kind를 설치 중입니다...&#34;</span>
-</span></span><span style="display:flex;"><span>    curl -Lo ./kind https://kind.sigs.k8s.io/dl/<span style="color:#e6db74">${</span>KIND_VERSION<span style="color:#e6db74">}</span>/kind-linux-amd64
-</span></span><span style="display:flex;"><span>    chmod +x ./kind
-</span></span><span style="display:flex;"><span>    sudo mv ./kind /usr/local/bin/kind
-</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Kind 설치 완료.&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Kind가 이미 설치되어 있습니다.&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># kubectl 설치</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> ! command -v kubectl &amp;&gt; /dev/null; <span style="color:#66d9ef">then</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Kubectl을 설치 중입니다...&#34;</span>
-</span></span><span style="display:flex;"><span>    curl -LO <span style="color:#e6db74">&#34;https://dl.k8s.io/release/</span><span style="color:#e6db74">${</span>KUBECTL_VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">/bin/linux/amd64/kubectl&#34;</span>
-</span></span><span style="display:flex;"><span>    chmod +x ./kubectl
-</span></span><span style="display:flex;"><span>    sudo mv ./kubectl /usr/local/bin/kubectl
-</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Kubectl 설치 완료.&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Kubectl이 이미 설치되어 있습니다.&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Docker Compose 설치 (필요한 경우)</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> ! command -v docker-compose &amp;&gt; /dev/null; <span style="color:#66d9ef">then</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Docker Compose를 설치 중입니다...&#34;</span>
-</span></span><span style="display:flex;"><span>    curl -L <span style="color:#e6db74">&#34;https://github.com/docker/compose/releases/download/</span><span style="color:#e6db74">${</span>DOCKER_COMPOSE_VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">/docker-compose-</span><span style="color:#66d9ef">$(</span>uname -s<span style="color:#66d9ef">)</span><span style="color:#e6db74">-</span><span style="color:#66d9ef">$(</span>uname -m<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> -o /usr/local/bin/docker-compose
-</span></span><span style="display:flex;"><span>    chmod +x /usr/local/bin/docker-compose
-</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Docker Compose 설치 완료.&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Docker Compose가 이미 설치되어 있습니다.&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">fi</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Kind 클러스터 설정 파일 생성</span>
-</span></span><span style="display:flex;"><span>create_kind_cluster_config<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;Kind 클러스터 설정 파일을 생성합니다...&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  cat <span style="color:#e6db74">&lt;&lt;EOF &gt; kind-cluster-config.yaml
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">kind: Cluster
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">apiVersion: kind.x-k8s.io/v1alpha4
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">nodes:
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  - role: control-plane
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  - role: worker
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  - role: worker
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  - role: worker
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;Kind 클러스터 설정 파일 생성 완료.&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Kind 클러스터 생성</span>
-</span></span><span style="display:flex;"><span>create_kind_cluster<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
-</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;Kind 클러스터를 생성합니다...&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  kind create cluster --config kind-cluster-config.yaml
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  echo <span style="color:#e6db74">&#34;Kind 클러스터 생성 완료.&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 주요 함수 호출</span>
-</span></span><span style="display:flex;"><span>install_utilities
-</span></span><span style="display:flex;"><span>create_kind_cluster_config
-</span></span><span style="display:flex;"><span>create_kind_cluster
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 클러스터 정보 출력</span>
-</span></span><span style="display:flex;"><span>kubectl get nodes
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;3개의 worker 노드를 포함한 Kind 클러스터가 성공적으로 생성되었습니다.&#34;</span>
-</span></span></code></pre></div><h3 id="스크립트-설명"><strong>스크립트 설명</strong><a hidden class="anchor" aria-hidden="true" href="#스크립트-설명">#</a></h3>
-<ol>
-<li><strong>필수 유틸리티 설치</strong>:
-<ul>
-<li><code>Docker</code>, <code>kind</code>, <code>kubectl</code>, <code>docker-compose</code>가 설치되지 않은 경우 자동으로 다운로드하고 설치합니다.</li>
-</ul>
-</li>
-<li><strong>클러스터 구성 파일</strong>:
-<ul>
-<li><code>kind-cluster-config.yaml</code> 파일을 생성하며, 하나의 control-plane 노드와 3개의 worker 노드를 포함합니다.</li>
-</ul>
-</li>
-<li><strong>클러스터 생성</strong>:
-<ul>
-<li><code>kind</code>를 이용해 클러스터를 생성합니다.</li>
-</ul>
-</li>
-<li><strong>kubectl로 클러스터 상태 확인</strong>:
-<ul>
-<li><code>kubectl</code> 명령어를 통해 생성된 클러스터의 노드 상태를 확인할 수 있습니다.</li>
-</ul>
-</li>
-</ol>
-<h3 id="사용-방법"><strong>사용 방법</strong>:<a hidden class="anchor" aria-hidden="true" href="#사용-방법">#</a></h3>
-<ol>
-<li>스크립트를 파일로 저장 (예: <code>setup_kind_cluster.sh</code>).</li>
-<li>파일에 실행 권한을 부여:
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chmod +x setup_kind_cluster.sh
-</span></span></code></pre></div></li>
-<li>스크립트 실행:
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./setup_kind_cluster.sh
-</span></span></code></pre></div></li>
-<li>클러스터가 성공적으로 생성되면 <code>kubectl get nodes</code> 명령을 통해 노드 상태를 확인할 수 있습니다.</li>
-</ol>
-<p>이 스크립트는 <code>KinD</code>를 활용하여 간단하게 3개의 worker 노드가 있는 클러스터를 설정할 수 있도록 도와줍니다.</p>
+# Kind 클러스터 생성
+create_kind_cluster() {
+  echo "Kind 클러스터를 생성합니다..."
+
+  kind create cluster --config kind-cluster-config.yaml
+
+  echo "Kind 클러스터 생성 완료."
+}
+
+# 주요 함수 호출
+install_utilities
+create_kind_cluster_config
+create_kind_cluster
+
+# 클러스터 정보 출력
+kubectl get nodes
+
+echo "3개의 worker 노드를 포함한 Kind 클러스터가 성공적으로 생성되었습니다."
+스크립트 설명
+
+필수 유틸리티 설치:
+
+Docker, kind, kubectl, docker-compose가 설치되지 않은 경우 자동으로 다운로드하고 설치합니다.
 
 
-  </div>
+클러스터 구성 파일:
 
-  <footer class="post-footer">
-    <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/kind/">KinD</a></li>
-    </ul>
-  </footer>
-</article>
-    </main>
-    
-<footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/">RyanLabs</a></span> · 
+kind-cluster-config.yaml 파일을 생성하며, 하나의 control-plane 노드와 3개의 worker 노드를 포함합니다.
 
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
-</footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
-    </svg>
-</a>
 
-<script>
-    let menu = document.getElementById('menu')
-    if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
-    }
+클러스터 생성:
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
+kind를 이용해 클러스터를 생성합니다.
 
-</script>
-<script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
 
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            document.body.classList.add('dark');
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
+kubectl로 클러스터 상태 확인:
 
-</script>
-</body>
+kubectl 명령어를 통해 생성된 클러스터의 노드 상태를 확인할 수 있습니다.
 
-</html>
+
+
+사용 방법:
+
+스크립트를 파일로 저장 (예: setup_kind_cluster.sh).
+파일에 실행 권한을 부여:
+chmod +x setup_kind_cluster.sh
+
+스크립트 실행:
+./setup_kind_cluster.sh
+
+클러스터가 성공적으로 생성되면 kubectl get nodes 명령을 통해 노드 상태를 확인할 수 있습니다.
+
+이 스크립트는 KinD를 활용하여 간단하게 3개의 worker 노드가 있는 클러스터를 설정할 수 있도록 도와줍니다.'><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://jongyongpark.github.io/posts/"},{"@type":"ListItem","position":2,"name":"KinD for k8s","item":"https://jongyongpark.github.io/posts/k8s_docker/k8s-kind/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"KinD for k8s","name":"KinD for k8s","description":" KinD로 3개의 worker node를 포함한 클러스터를 만드는 Bash 스크립트 다음은 KinD(Kubernetes in Docker)를 사용하여 프라이빗 클라우드를 생성하고, 3개의 worker node를 포함한 클러스터를 만드는 Bash 스크립트입니다. 이 스크립트는 필요한 유틸리티를 다운로드하고 설치하며, kind 클러스터를 구성합니다.\nBash Script: setup_kind_cluster.sh #!/bin/bash # 스크립트 실행 중 오류 발생 시 중단 set -e # 변수 정의 KIND_VERSION=\u0026#34;v0.20.0\u0026#34; KUBECTL_VERSION=\u0026#34;v1.28.0\u0026#34; DOCKER_COMPOSE_VERSION=\u0026#34;v2.22.0\u0026#34; # 필요한 유틸리티 다운로드 및 설치 install_utilities() { # Docker 설치 (Docker가 설치되어 있지 않을 경우) if ! command -v docker \u0026amp;\u0026gt; /dev/null; then echo \u0026#34;Docker를 설치 중입니다...\u0026#34; curl -fsSL https://get.docker.com | bash sudo usermod -aG docker $USER echo \u0026#34;Docker 설치 완료. 사용하려면 로그아웃 후 다시 로그인하세요.\u0026#34; else echo \u0026#34;Docker가 이미 설치되어 있습니다.\u0026#34; fi # kind 설치 if ! command -v kind \u0026amp;\u0026gt; /dev/null; then echo \u0026#34;Kind를 설치 중입니다...\u0026#34; curl -Lo ./kind https://kind.sigs.k8s.io/dl/${KIND_VERSION}/kind-linux-amd64 chmod +x ./kind sudo mv ./kind /usr/local/bin/kind echo \u0026#34;Kind 설치 완료.\u0026#34; else echo \u0026#34;Kind가 이미 설치되어 있습니다.\u0026#34; fi # kubectl 설치 if ! command -v kubectl \u0026amp;\u0026gt; /dev/null; then echo \u0026#34;Kubectl을 설치 중입니다...\u0026#34; curl -LO \u0026#34;https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl\u0026#34; chmod +x ./kubectl sudo mv ./kubectl /usr/local/bin/kubectl echo \u0026#34;Kubectl 설치 완료.\u0026#34; else echo \u0026#34;Kubectl이 이미 설치되어 있습니다.\u0026#34; fi # Docker Compose 설치 (필요한 경우) if ! command -v docker-compose \u0026amp;\u0026gt; /dev/null; then echo \u0026#34;Docker Compose를 설치 중입니다...\u0026#34; curl -L \u0026#34;https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)\u0026#34; -o /usr/local/bin/docker-compose chmod +x /usr/local/bin/docker-compose echo \u0026#34;Docker Compose 설치 완료.\u0026#34; else echo \u0026#34;Docker Compose가 이미 설치되어 있습니다.\u0026#34; fi } # Kind 클러스터 설정 파일 생성 create_kind_cluster_config() { echo \u0026#34;Kind 클러스터 설정 파일을 생성합니다...\u0026#34; cat \u0026lt;\u0026lt;EOF \u0026gt; kind-cluster-config.yaml kind: Cluster apiVersion: kind.x-k8s.io/v1alpha4 nodes: - role: control-plane - role: worker - role: worker - role: worker EOF echo \u0026#34;Kind 클러스터 설정 파일 생성 완료.\u0026#34; } # Kind 클러스터 생성 create_kind_cluster() { echo \u0026#34;Kind 클러스터를 생성합니다...\u0026#34; kind create cluster --config kind-cluster-config.yaml echo \u0026#34;Kind 클러스터 생성 완료.\u0026#34; } # 주요 함수 호출 install_utilities create_kind_cluster_config create_kind_cluster # 클러스터 정보 출력 kubectl get nodes echo \u0026#34;3개의 worker 노드를 포함한 Kind 클러스터가 성공적으로 생성되었습니다.\u0026#34; 스크립트 설명 필수 유틸리티 설치: Docker, kind, kubectl, docker-compose가 설치되지 않은 경우 자동으로 다운로드하고 설치합니다. 클러스터 구성 파일: kind-cluster-config.yaml 파일을 생성하며, 하나의 control-plane 노드와 3개의 worker 노드를 포함합니다. 클러스터 생성: kind를 이용해 클러스터를 생성합니다. kubectl로 클러스터 상태 확인: kubectl 명령어를 통해 생성된 클러스터의 노드 상태를 확인할 수 있습니다. 사용 방법: 스크립트를 파일로 저장 (예: setup_kind_cluster.sh). 파일에 실행 권한을 부여: chmod +x setup_kind_cluster.sh 스크립트 실행: ./setup_kind_cluster.sh 클러스터가 성공적으로 생성되면 kubectl get nodes 명령을 통해 노드 상태를 확인할 수 있습니다. 이 스크립트는 KinD를 활용하여 간단하게 3개의 worker 노드가 있는 클러스터를 설정할 수 있도록 도와줍니다.\n","keywords":["KinD"],"articleBody":" KinD로 3개의 worker node를 포함한 클러스터를 만드는 Bash 스크립트 다음은 KinD(Kubernetes in Docker)를 사용하여 프라이빗 클라우드를 생성하고, 3개의 worker node를 포함한 클러스터를 만드는 Bash 스크립트입니다. 이 스크립트는 필요한 유틸리티를 다운로드하고 설치하며, kind 클러스터를 구성합니다.\nBash Script: setup_kind_cluster.sh #!/bin/bash # 스크립트 실행 중 오류 발생 시 중단 set -e # 변수 정의 KIND_VERSION=\"v0.20.0\" KUBECTL_VERSION=\"v1.28.0\" DOCKER_COMPOSE_VERSION=\"v2.22.0\" # 필요한 유틸리티 다운로드 및 설치 install_utilities() { # Docker 설치 (Docker가 설치되어 있지 않을 경우) if ! command -v docker \u0026\u003e /dev/null; then echo \"Docker를 설치 중입니다...\" curl -fsSL https://get.docker.com | bash sudo usermod -aG docker $USER echo \"Docker 설치 완료. 사용하려면 로그아웃 후 다시 로그인하세요.\" else echo \"Docker가 이미 설치되어 있습니다.\" fi # kind 설치 if ! command -v kind \u0026\u003e /dev/null; then echo \"Kind를 설치 중입니다...\" curl -Lo ./kind https://kind.sigs.k8s.io/dl/${KIND_VERSION}/kind-linux-amd64 chmod +x ./kind sudo mv ./kind /usr/local/bin/kind echo \"Kind 설치 완료.\" else echo \"Kind가 이미 설치되어 있습니다.\" fi # kubectl 설치 if ! command -v kubectl \u0026\u003e /dev/null; then echo \"Kubectl을 설치 중입니다...\" curl -LO \"https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl\" chmod +x ./kubectl sudo mv ./kubectl /usr/local/bin/kubectl echo \"Kubectl 설치 완료.\" else echo \"Kubectl이 이미 설치되어 있습니다.\" fi # Docker Compose 설치 (필요한 경우) if ! command -v docker-compose \u0026\u003e /dev/null; then echo \"Docker Compose를 설치 중입니다...\" curl -L \"https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)\" -o /usr/local/bin/docker-compose chmod +x /usr/local/bin/docker-compose echo \"Docker Compose 설치 완료.\" else echo \"Docker Compose가 이미 설치되어 있습니다.\" fi } # Kind 클러스터 설정 파일 생성 create_kind_cluster_config() { echo \"Kind 클러스터 설정 파일을 생성합니다...\" cat \u003c kind-cluster-config.yaml kind: Cluster apiVersion: kind.x-k8s.io/v1alpha4 nodes: - role: control-plane - role: worker - role: worker - role: worker EOF echo \"Kind 클러스터 설정 파일 생성 완료.\" } # Kind 클러스터 생성 create_kind_cluster() { echo \"Kind 클러스터를 생성합니다...\" kind create cluster --config kind-cluster-config.yaml echo \"Kind 클러스터 생성 완료.\" } # 주요 함수 호출 install_utilities create_kind_cluster_config create_kind_cluster # 클러스터 정보 출력 kubectl get nodes echo \"3개의 worker 노드를 포함한 Kind 클러스터가 성공적으로 생성되었습니다.\" 스크립트 설명 필수 유틸리티 설치: Docker, kind, kubectl, docker-compose가 설치되지 않은 경우 자동으로 다운로드하고 설치합니다. 클러스터 구성 파일: kind-cluster-config.yaml 파일을 생성하며, 하나의 control-plane 노드와 3개의 worker 노드를 포함합니다. 클러스터 생성: kind를 이용해 클러스터를 생성합니다. kubectl로 클러스터 상태 확인: kubectl 명령어를 통해 생성된 클러스터의 노드 상태를 확인할 수 있습니다. 사용 방법: 스크립트를 파일로 저장 (예: setup_kind_cluster.sh). 파일에 실행 권한을 부여: chmod +x setup_kind_cluster.sh 스크립트 실행: ./setup_kind_cluster.sh 클러스터가 성공적으로 생성되면 kubectl get nodes 명령을 통해 노드 상태를 확인할 수 있습니다. 이 스크립트는 KinD를 활용하여 간단하게 3개의 worker 노드가 있는 클러스터를 설정할 수 있도록 도와줍니다.\n","wordCount":"404","inLanguage":"ko","datePublished":"2025-02-14T00:00:00Z","dateModified":"2025-02-14T00:00:00Z","mainEntityOfPage":{"@type":"WebPage","@id":"https://jongyongpark.github.io/posts/k8s_docker/k8s-kind/"},"publisher":{"@type":"Organization","name":"RyanLabs","logo":{"@type":"ImageObject","url":"https://jongyongpark.github.io/favicon.ico"}}}</script></head><body id=top><script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://jongyongpark.github.io/ accesskey=h title="RyanLabs (Alt + H)">RyanLabs</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://jongyongpark.github.io/search/ title=검색><span>검색</span></a></li><li><a href=https://jongyongpark.github.io/categories/ title=카테고리><span>카테고리</span></a></li><li><a href=https://jongyongpark.github.io/tags/ title=태그><span>태그</span></a></li><li><a href=https://jongyongpark.github.io/archives/ title=연도><span>연도</span></a></li><li><a href=https://jongyongpark.github.io/lectures/ title=강의><span>강의</span></a></li><li><a href=https://jongyongpark.github.io/about/ title=어바웃미><span>어바웃미</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">KinD for k8s</h1><div class=post-meta><span title='2025-02-14 00:00:00 +0000 UTC'>2월 14, 2025</span></div></header><div class=post-content><hr><h1 id=kind로-3개의-worker-node를-포함한-클러스터를-만드는-bash-스크립트>KinD로 3개의 worker node를 포함한 클러스터를 만드는 Bash 스크립트<a hidden class=anchor aria-hidden=true href=#kind로-3개의-worker-node를-포함한-클러스터를-만드는-bash-스크립트>#</a></h1><p>다음은 <code>KinD</code>(Kubernetes in Docker)를 사용하여 프라이빗 클라우드를 생성하고, 3개의 worker node를 포함한 클러스터를 만드는 Bash 스크립트입니다. 이 스크립트는 필요한 유틸리티를 다운로드하고 설치하며, <code>kind</code> 클러스터를 구성합니다.</p><h3 id=bash-script-setup_kind_clustersh><strong>Bash Script: <code>setup_kind_cluster.sh</code></strong><a hidden class=anchor aria-hidden=true href=#bash-script-setup_kind_clustersh>#</a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/bash
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 스크립트 실행 중 오류 발생 시 중단</span>
+</span></span><span style=display:flex><span>set -e
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 변수 정의</span>
+</span></span><span style=display:flex><span>KIND_VERSION<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;v0.20.0&#34;</span>
+</span></span><span style=display:flex><span>KUBECTL_VERSION<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;v1.28.0&#34;</span>
+</span></span><span style=display:flex><span>DOCKER_COMPOSE_VERSION<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;v2.22.0&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 필요한 유틸리티 다운로드 및 설치</span>
+</span></span><span style=display:flex><span>install_utilities<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e># Docker 설치 (Docker가 설치되어 있지 않을 경우)</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> ! command -v docker &amp;&gt; /dev/null; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>    echo <span style=color:#e6db74>&#34;Docker를 설치 중입니다...&#34;</span>
+</span></span><span style=display:flex><span>    curl -fsSL https://get.docker.com | bash
+</span></span><span style=display:flex><span>    sudo usermod -aG docker $USER
+</span></span><span style=display:flex><span>    echo <span style=color:#e6db74>&#34;Docker 설치 완료. 사용하려면 로그아웃 후 다시 로그인하세요.&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>    echo <span style=color:#e6db74>&#34;Docker가 이미 설치되어 있습니다.&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e># kind 설치</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> ! command -v kind &amp;&gt; /dev/null; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>    echo <span style=color:#e6db74>&#34;Kind를 설치 중입니다...&#34;</span>
+</span></span><span style=display:flex><span>    curl -Lo ./kind https://kind.sigs.k8s.io/dl/<span style=color:#e6db74>${</span>KIND_VERSION<span style=color:#e6db74>}</span>/kind-linux-amd64
+</span></span><span style=display:flex><span>    chmod +x ./kind
+</span></span><span style=display:flex><span>    sudo mv ./kind /usr/local/bin/kind
+</span></span><span style=display:flex><span>    echo <span style=color:#e6db74>&#34;Kind 설치 완료.&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>    echo <span style=color:#e6db74>&#34;Kind가 이미 설치되어 있습니다.&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e># kubectl 설치</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> ! command -v kubectl &amp;&gt; /dev/null; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>    echo <span style=color:#e6db74>&#34;Kubectl을 설치 중입니다...&#34;</span>
+</span></span><span style=display:flex><span>    curl -LO <span style=color:#e6db74>&#34;https://dl.k8s.io/release/</span><span style=color:#e6db74>${</span>KUBECTL_VERSION<span style=color:#e6db74>}</span><span style=color:#e6db74>/bin/linux/amd64/kubectl&#34;</span>
+</span></span><span style=display:flex><span>    chmod +x ./kubectl
+</span></span><span style=display:flex><span>    sudo mv ./kubectl /usr/local/bin/kubectl
+</span></span><span style=display:flex><span>    echo <span style=color:#e6db74>&#34;Kubectl 설치 완료.&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>    echo <span style=color:#e6db74>&#34;Kubectl이 이미 설치되어 있습니다.&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e># Docker Compose 설치 (필요한 경우)</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> ! command -v docker-compose &amp;&gt; /dev/null; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>    echo <span style=color:#e6db74>&#34;Docker Compose를 설치 중입니다...&#34;</span>
+</span></span><span style=display:flex><span>    curl -L <span style=color:#e6db74>&#34;https://github.com/docker/compose/releases/download/</span><span style=color:#e6db74>${</span>DOCKER_COMPOSE_VERSION<span style=color:#e6db74>}</span><span style=color:#e6db74>/docker-compose-</span><span style=color:#66d9ef>$(</span>uname -s<span style=color:#66d9ef>)</span><span style=color:#e6db74>-</span><span style=color:#66d9ef>$(</span>uname -m<span style=color:#66d9ef>)</span><span style=color:#e6db74>&#34;</span> -o /usr/local/bin/docker-compose
+</span></span><span style=display:flex><span>    chmod +x /usr/local/bin/docker-compose
+</span></span><span style=display:flex><span>    echo <span style=color:#e6db74>&#34;Docker Compose 설치 완료.&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>    echo <span style=color:#e6db74>&#34;Docker Compose가 이미 설치되어 있습니다.&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Kind 클러스터 설정 파일 생성</span>
+</span></span><span style=display:flex><span>create_kind_cluster_config<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>  echo <span style=color:#e6db74>&#34;Kind 클러스터 설정 파일을 생성합니다...&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  cat <span style=color:#e6db74>&lt;&lt;EOF &gt; kind-cluster-config.yaml
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>kind: Cluster
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>apiVersion: kind.x-k8s.io/v1alpha4
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>nodes:
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  - role: control-plane
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  - role: worker
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  - role: worker
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  - role: worker
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>EOF</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  echo <span style=color:#e6db74>&#34;Kind 클러스터 설정 파일 생성 완료.&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Kind 클러스터 생성</span>
+</span></span><span style=display:flex><span>create_kind_cluster<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>  echo <span style=color:#e6db74>&#34;Kind 클러스터를 생성합니다...&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  kind create cluster --config kind-cluster-config.yaml
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  echo <span style=color:#e6db74>&#34;Kind 클러스터 생성 완료.&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 주요 함수 호출</span>
+</span></span><span style=display:flex><span>install_utilities
+</span></span><span style=display:flex><span>create_kind_cluster_config
+</span></span><span style=display:flex><span>create_kind_cluster
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 클러스터 정보 출력</span>
+</span></span><span style=display:flex><span>kubectl get nodes
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;3개의 worker 노드를 포함한 Kind 클러스터가 성공적으로 생성되었습니다.&#34;</span>
+</span></span></code></pre></div><h3 id=스크립트-설명><strong>스크립트 설명</strong><a hidden class=anchor aria-hidden=true href=#스크립트-설명>#</a></h3><ol><li><strong>필수 유틸리티 설치</strong>:<ul><li><code>Docker</code>, <code>kind</code>, <code>kubectl</code>, <code>docker-compose</code>가 설치되지 않은 경우 자동으로 다운로드하고 설치합니다.</li></ul></li><li><strong>클러스터 구성 파일</strong>:<ul><li><code>kind-cluster-config.yaml</code> 파일을 생성하며, 하나의 control-plane 노드와 3개의 worker 노드를 포함합니다.</li></ul></li><li><strong>클러스터 생성</strong>:<ul><li><code>kind</code>를 이용해 클러스터를 생성합니다.</li></ul></li><li><strong>kubectl로 클러스터 상태 확인</strong>:<ul><li><code>kubectl</code> 명령어를 통해 생성된 클러스터의 노드 상태를 확인할 수 있습니다.</li></ul></li></ol><h3 id=사용-방법><strong>사용 방법</strong>:<a hidden class=anchor aria-hidden=true href=#사용-방법>#</a></h3><ol><li>스크립트를 파일로 저장 (예: <code>setup_kind_cluster.sh</code>).</li><li>파일에 실행 권한을 부여:<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>chmod +x setup_kind_cluster.sh
+</span></span></code></pre></div></li><li>스크립트 실행:<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>./setup_kind_cluster.sh
+</span></span></code></pre></div></li><li>클러스터가 성공적으로 생성되면 <code>kubectl get nodes</code> 명령을 통해 노드 상태를 확인할 수 있습니다.</li></ol><p>이 스크립트는 <code>KinD</code>를 활용하여 간단하게 3개의 worker 노드가 있는 클러스터를 설정할 수 있도록 도와줍니다.</p></div><footer class=post-footer><ul class=post-tags><li><a href=https://jongyongpark.github.io/tags/kind/>KinD</a></li></ul></footer></article></main><footer class=footer><span>&copy; 2025 <a href=https://jongyongpark.github.io/>RyanLabs</a></span> ·
+<span>Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script></body></html>

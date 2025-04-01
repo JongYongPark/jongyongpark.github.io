@@ -1,379 +1,81 @@
-<!DOCTYPE html>
-<html lang="ko" dir="auto">
-
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
-<title>Posts | RyanLabs</title>
-<meta name="keywords" content="">
-<meta name="description" content="Posts - RyanLabs">
-<meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/posts/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.9de45e225101e4f99701d2b68fc6b8a1ef6027928be6391fa15bf7f56326c909.css" integrity="sha256-neReIlEB5PmXAdK2j8a4oe9gJ5KL5jkfoVv39WMmyQk=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/posts/index.xml">
-<link rel="alternate" hreflang="ko" href="http://localhost:1313/posts/">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
-
-    </style>
-</noscript>
-</head>
-
-<body class="list" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
-    <nav class="nav">
-        <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="RyanLabs (Alt + H)">RyanLabs</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <ul id="menu">
-            <li>
-                <a href="http://localhost:1313/search/" title="검색">
-                    <span>검색</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/categories/" title="카테고리">
-                    <span>카테고리</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/tags/" title="태그">
-                    <span>태그</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/archives/" title="연도">
-                    <span>연도</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/lectures/" title="강의">
-                    <span>강의</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/about/" title="어바웃미">
-                    <span>어바웃미</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<main class="main"> 
-<header class="page-header">
-  <h1>
-    Posts
-  </h1>
-</header>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Windows 에서 WSL을 통해 ec2에 접근하기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Windows 에서 WSL을 통해 ec2 에 접근시 symbol link에 따른 문제점 내 작업 ### AWS ec2 # Hdd 가 부족해서 하나 더 추가했다 - 이것이 opt/dlami/nvme 임임 (base) ubuntu@ip-172-31-26-173:~$ df -Th Filesystem Type Size Used Avail Use% Mounted on /dev/root ext4 117G 69G 48G 60% / tmpfs tmpfs 32G 48M 32G 1% /dev/shm tmpfs tmpfs 13G 1.4M 13G 1% /run tmpfs tmpfs 5.0M 0 5.0M 0% /run/lock efivarfs efivarfs 128K 4.1K 119K 4% /sys/firmware/efi/efivars /dev/nvme0n1p15 vfat 105M 6.1M 99M 6% /boot/efi tmpfs tmpfs 6.3G 68K 6.3G 1% /run/user/126 /dev/mapper/vg.01-lv_ephemeral ext4 206G 76G 119G 39% /opt/dlami/nvme tmpfs tmpfs 6.3G 76K 6.3G 1% /run/user/1000 (base) ubuntu@ip-172-31-26-173:~$ ll workspace lrwxrwxrwx 1 ubuntu ubuntu 15 Jan 24 09:47 workspace -&gt; /opt/dlami/nvme/ ### WSL bash#:~$ cat .bashrc | grep ec2 alias mount_ec2=&#39;sudo sshfs -o uid=`id -u jonpark` -o gid=`id -g jonpark` -o allow_other ubuntu@jonpark-ec2:/home/ubuntu -o IdentityFile=~/jonpark-ec2.pem ~/work_ec2&#39; ## 수정 : -o follow_symlinks 추가 alias mount_ec2=&#39;sudo sshfs -o uid=`id -u jonpark` -o gid=`id -g jonpark` -o allow_other -o follow_symlinks ubuntu@jonpark-ec2:/home/ubuntu -o IdentityFile=~/jonpark-ec2.pem ~/work_ec2&#39; ## 실행 bash#:~$ sudo umount ~/work_ec2 bash#:~$ sudo sshfs -o uid=`id -u jonpark` -o gid=`id -g jonpark` -o allow_other -o follow_symlinks ubuntu@jonpark-ec2:/home/ubuntu -o IdentityFile=~/jonpark-ec2.pem ~/work_ec2 [sudo] password for jonpark: ## 결과 bash#:~$ ll -d work_ec2 drwx------ 1 jonpark jonpark 4.0K Feb 25 14:13 work_ec2/ bash#:~$ ls work_ec2 blackduck-oidc LINUX_PACKAGES_LICENSES Public/ THIRD_PARTY_SOURCE_CODE_URLS BUILD_FROM_SOURCE_PACKAGES_LICENCES LINUX_PACKAGES_LIST PYTHON_PACKAGES_LICENSES Videos/ Desktop/ Music/ srm-2024.12.1-0-linux-x64-installer.run* workspace/ Documents/ nvidia-acknowledgements/ srm-license.txt zed-linux-x86_64.tar.gz Downloads/ OSSNvidiaDriver_v550.90.07_license.txt Templates/ google-chrome-stable_current_amd64.deb Pictures/ thinclient_drives/ bash#:~$ ll -d work_ec2/workspace/ drwxrwxrwt 1 jonpark jonpark 4.0K Feb 24 19:20 work_ec2/workspace// bash#:~$ ls work_ec2/workspace/ ai/ dev_tool/ dockers/ jonpark-work/ lost&#43;found/ miniconda3/ open-webui/ bash#:~$ 답변 이제 문제가 더 명확해졌습니다. EC2에서 workspace는 /opt/dlami/nvme/를 가리키는 심볼릭 링크입니다. SSHFS를 통한 마운트 시 심볼릭 링크 처리에 문제가 있는 것으로 보입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-03-10 00:00:00 +0000 UTC'>3월 10, 2025</span></footer>
-  <a class="entry-link" aria-label="post link to Windows 에서 WSL을 통해 ec2에 접근하기" href="http://localhost:1313/posts/sdlc/sshfs-win-wsl-ec2/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Zone.Identifier
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>windows 에서 wsl로 복사하면 “복사한 파일이름 zone.idenifier” 파일이 생기지 않게 하는 방법. Zone.Identifier 파일은 Windows 시스템에서 외부 출처(인터넷, 이메일 등)에서 다운로드한 파일에 자동으로 추가되는 대체 데이터 스트림(Alternate Data Stream, ADS)입니다. 이 파일에는 원본 파일의 출처와 관련된 보안 정보가 포함되어 있습니다.
+<!doctype html><html lang=ko dir=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Posts | RyanLabs</title>
+<meta name=keywords content><meta name=description content="Posts - RyanLabs"><meta name=author content><link rel=canonical href=https://jongyongpark.github.io/posts/><link crossorigin=anonymous href=/assets/css/stylesheet.9de45e225101e4f99701d2b68fc6b8a1ef6027928be6391fa15bf7f56326c909.css integrity="sha256-neReIlEB5PmXAdK2j8a4oe9gJ5KL5jkfoVv39WMmyQk=" rel="preload stylesheet" as=style><link rel=icon href=https://jongyongpark.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://jongyongpark.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://jongyongpark.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://jongyongpark.github.io/apple-touch-icon.png><link rel=mask-icon href=https://jongyongpark.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate type=application/rss+xml href=https://jongyongpark.github.io/posts/index.xml><link rel=alternate hreflang=ko href=https://jongyongpark.github.io/posts/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><meta property="og:url" content="https://jongyongpark.github.io/posts/"><meta property="og:site_name" content="RyanLabs"><meta property="og:title" content="Posts"><meta property="og:locale" content="ko"><meta property="og:type" content="website"><meta name=twitter:card content="summary"><meta name=twitter:title content="Posts"><meta name=twitter:description content><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://jongyongpark.github.io/posts/"}]}</script></head><body class=list id=top><script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://jongyongpark.github.io/ accesskey=h title="RyanLabs (Alt + H)">RyanLabs</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://jongyongpark.github.io/search/ title=검색><span>검색</span></a></li><li><a href=https://jongyongpark.github.io/categories/ title=카테고리><span>카테고리</span></a></li><li><a href=https://jongyongpark.github.io/tags/ title=태그><span>태그</span></a></li><li><a href=https://jongyongpark.github.io/archives/ title=연도><span>연도</span></a></li><li><a href=https://jongyongpark.github.io/lectures/ title=강의><span>강의</span></a></li><li><a href=https://jongyongpark.github.io/about/ title=어바웃미><span>어바웃미</span></a></li></ul></nav></header><main class=main><header class=page-header><h1>Posts</h1></header><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>Windows 에서 WSL을 통해 ec2에 접근하기</h2></header><div class=entry-content><p>Windows 에서 WSL을 통해 ec2 에 접근시 symbol link에 따른 문제점 내 작업 ### AWS ec2 # Hdd 가 부족해서 하나 더 추가했다 - 이것이 opt/dlami/nvme 임임 (base) ubuntu@ip-172-31-26-173:~$ df -Th Filesystem Type Size Used Avail Use% Mounted on /dev/root ext4 117G 69G 48G 60% / tmpfs tmpfs 32G 48M 32G 1% /dev/shm tmpfs tmpfs 13G 1.4M 13G 1% /run tmpfs tmpfs 5.0M 0 5.0M 0% /run/lock efivarfs efivarfs 128K 4.1K 119K 4% /sys/firmware/efi/efivars /dev/nvme0n1p15 vfat 105M 6.1M 99M 6% /boot/efi tmpfs tmpfs 6.3G 68K 6.3G 1% /run/user/126 /dev/mapper/vg.01-lv_ephemeral ext4 206G 76G 119G 39% /opt/dlami/nvme tmpfs tmpfs 6.3G 76K 6.3G 1% /run/user/1000 (base) ubuntu@ip-172-31-26-173:~$ ll workspace lrwxrwxrwx 1 ubuntu ubuntu 15 Jan 24 09:47 workspace -> /opt/dlami/nvme/ ### WSL bash#:~$ cat .bashrc | grep ec2 alias mount_ec2='sudo sshfs -o uid=`id -u jonpark` -o gid=`id -g jonpark` -o allow_other ubuntu@jonpark-ec2:/home/ubuntu -o IdentityFile=~/jonpark-ec2.pem ~/work_ec2' ## 수정 : -o follow_symlinks 추가 alias mount_ec2='sudo sshfs -o uid=`id -u jonpark` -o gid=`id -g jonpark` -o allow_other -o follow_symlinks ubuntu@jonpark-ec2:/home/ubuntu -o IdentityFile=~/jonpark-ec2.pem ~/work_ec2' ## 실행 bash#:~$ sudo umount ~/work_ec2 bash#:~$ sudo sshfs -o uid=`id -u jonpark` -o gid=`id -g jonpark` -o allow_other -o follow_symlinks ubuntu@jonpark-ec2:/home/ubuntu -o IdentityFile=~/jonpark-ec2.pem ~/work_ec2 [sudo] password for jonpark: ## 결과 bash#:~$ ll -d work_ec2 drwx------ 1 jonpark jonpark 4.0K Feb 25 14:13 work_ec2/ bash#:~$ ls work_ec2 blackduck-oidc LINUX_PACKAGES_LICENSES Public/ THIRD_PARTY_SOURCE_CODE_URLS BUILD_FROM_SOURCE_PACKAGES_LICENCES LINUX_PACKAGES_LIST PYTHON_PACKAGES_LICENSES Videos/ Desktop/ Music/ srm-2024.12.1-0-linux-x64-installer.run* workspace/ Documents/ nvidia-acknowledgements/ srm-license.txt zed-linux-x86_64.tar.gz Downloads/ OSSNvidiaDriver_v550.90.07_license.txt Templates/ google-chrome-stable_current_amd64.deb Pictures/ thinclient_drives/ bash#:~$ ll -d work_ec2/workspace/ drwxrwxrwt 1 jonpark jonpark 4.0K Feb 24 19:20 work_ec2/workspace// bash#:~$ ls work_ec2/workspace/ ai/ dev_tool/ dockers/ jonpark-work/ lost+found/ miniconda3/ open-webui/ bash#:~$ 답변 이제 문제가 더 명확해졌습니다. EC2에서 workspace는 /opt/dlami/nvme/를 가리키는 심볼릭 링크입니다. SSHFS를 통한 마운트 시 심볼릭 링크 처리에 문제가 있는 것으로 보입니다.
+...</p></div><footer class=entry-footer><span title='2025-03-10 00:00:00 +0000 UTC'>3월 10, 2025</span></footer><a class=entry-link aria-label="post link to Windows 에서 WSL을 통해 ec2에 접근하기" href=https://jongyongpark.github.io/posts/sdlc/sshfs-win-wsl-ec2/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>Zone.Identifier</h2></header><div class=entry-content><p>windows 에서 wsl로 복사하면 “복사한 파일이름 zone.idenifier” 파일이 생기지 않게 하는 방법. Zone.Identifier 파일은 Windows 시스템에서 외부 출처(인터넷, 이메일 등)에서 다운로드한 파일에 자동으로 추가되는 대체 데이터 스트림(Alternate Data Stream, ADS)입니다. 이 파일에는 원본 파일의 출처와 관련된 보안 정보가 포함되어 있습니다.
 파일을 WSL로 복사할 때 Windows에서는 이 메타데이터를 별도의 Zone.Identifier 파일로 변환합니다. 이는 NTFS 파일 시스템의 기능이지만 Linux 파일 시스템에서는 지원하지 않기 때문입니다.
 Zone.Identifier 파일이 생성되지 않게 하는 방법: Windows에서 파일 신뢰 설정:
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-03-10 00:00:00 +0000 UTC'>3월 10, 2025</span></footer>
-  <a class="entry-link" aria-label="post link to Zone.Identifier" href="http://localhost:1313/posts/sdlc/wsl-zone.identifier/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Gcc Visibility
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Gcc Visibility 전처리된 파일에서 보이는 basic_string 함수의 속성과 컴파일러 옵션이 CIM 소스 창에서 이 함수들이 보이지 않는 이유에 대해 자세히 설명해 드리겠습니다.
+...</p></div><footer class=entry-footer><span title='2025-03-10 00:00:00 +0000 UTC'>3월 10, 2025</span></footer><a class=entry-link aria-label="post link to Zone.Identifier" href=https://jongyongpark.github.io/posts/sdlc/wsl-zone.identifier/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>Gcc Visibility</h2></header><div class=entry-content><p>Gcc Visibility 전처리된 파일에서 보이는 basic_string 함수의 속성과 컴파일러 옵션이 CIM 소스 창에서 이 함수들이 보이지 않는 이유에 대해 자세히 설명해 드리겠습니다.
 가시성 속성 상세 설명 다음 코드 라인을 살펴보겠습니다:
-inline __attribute__ ((__visibility__(&#34;hidden&#34;))) __attribute__ ((__exclude_from_explicit_instantiation__)) 이것은 함수에 두 가지 중요한 GCC/Clang 속성을 적용하고 있습니다:
-__attribute__ ((__visibility__(&#34;hidden&#34;))) - 이 속성은 컴파일러에게 함수에 “hidden” 가시성을 부여하도록 지시합니다:
+inline __attribute__ ((__visibility__("hidden"))) __attribute__ ((__exclude_from_explicit_instantiation__)) 이것은 함수에 두 가지 중요한 GCC/Clang 속성을 적용하고 있습니다:
+__attribute__ ((__visibility__("hidden"))) - 이 속성은 컴파일러에게 함수에 “hidden” 가시성을 부여하도록 지시합니다:
 이 심볼은 공유 라이브러리/실행 파일에서 내보내지지 않습니다 다른 모듈에서 동적 링크를 통해 접근할 수 없습니다 정의된 컴파일 단위나 라이브러리 내에서만 접근 가능합니다 __attribute__ ((__exclude_from_explicit_instantiation__)) - 이 속성은 컴파일러에게 이 함수를 어떤 명시적 템플릿 인스턴스화에도 포함시키지 말라고 지시합니다. 이는 코드 크기를 줄이고 중복 정의를 방지하는 데 도움이 됩니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-03-04 00:00:00 +0000 UTC'>3월 4, 2025</span></footer>
-  <a class="entry-link" aria-label="post link to Gcc Visibility" href="http://localhost:1313/posts/technical-support/coverity/cov-gcc-visibility/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Deno Install
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Install Deno는 JavaScript와 TypeScript를 위한 현대적인 런타임 환경으로, 설치 및 사용이 매우 간단합니다. 아래에 Deno를 설치하고 “Hello, World!” 프로그램을 작성하여 실행하는 방법을 안내해 드리겠습니다.
+...</p></div><footer class=entry-footer><span title='2025-03-04 00:00:00 +0000 UTC'>3월 4, 2025</span></footer><a class=entry-link aria-label="post link to Gcc Visibility" href=https://jongyongpark.github.io/posts/technical-support/coverity/cov-gcc-visibility/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>Deno Install</h2></header><div class=entry-content><p>Install Deno는 JavaScript와 TypeScript를 위한 현대적인 런타임 환경으로, 설치 및 사용이 매우 간단합니다. 아래에 Deno를 설치하고 “Hello, World!” 프로그램을 작성하여 실행하는 방법을 안내해 드리겠습니다.
 1. Deno 설치하기 macOS 및 Linux:
 터미널을 열고 다음 명령어를 입력하여 Deno를 설치할 수 있습니다:
 curl -fsSL https://deno.land/install.sh | sh 이 명령어는 공식 설치 스크립트를 다운로드하여 실행합니다.
 Windows:
 PowerShell을 관리자 권한으로 열고 다음 명령어를 실행합니다:
 iwr https://deno.land/install.ps1 -useb | iex 또는, Windows에서 Chocolatey 패키지 관리자를 사용 중이라면, 다음과 같이 설치할 수 있습니다:
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-02-27 00:00:00 +0000 UTC'>2월 27, 2025</span></footer>
-  <a class="entry-link" aria-label="post link to Deno Install" href="http://localhost:1313/posts/sdlc/deno-install/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Go Install
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Go Install 기존 Go 1.22.2가 /usr/bin/go로 설치되어 있고, 새롭게 Go 1.23.1 및 Go 1.23.5를 ~/local 폴더에 설치한 후 원하는 버전을 선택해서 사용하는 방법을 정리해 드리겠습니다. 🚀
+...</p></div><footer class=entry-footer><span title='2025-02-27 00:00:00 +0000 UTC'>2월 27, 2025</span></footer><a class=entry-link aria-label="post link to Deno Install" href=https://jongyongpark.github.io/posts/sdlc/deno-install/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>Go Install</h2></header><div class=entry-content><p>Go Install 기존 Go 1.22.2가 /usr/bin/go로 설치되어 있고, 새롭게 Go 1.23.1 및 Go 1.23.5를 ~/local 폴더에 설치한 후 원하는 버전을 선택해서 사용하는 방법을 정리해 드리겠습니다. 🚀
 ✅ 1. 기존 Go (1.22.2) 확인 현재 기본 Go(1.22.2)가 /usr/bin/go에 설치되어 있음.
 /usr/bin/go version 출력 예시:
-go version go1.22.2 linux/amd64 ✅ 2. 새로운 Go 버전 (1.23.1 &amp; 1.23.5) 설치 기존 Go(1.22.2)는 유지하면서, 추가 Go 버전을 설치하겠습니다.
+go version go1.22.2 linux/amd64 ✅ 2. 새로운 Go 버전 (1.23.1 & 1.23.5) 설치 기존 Go(1.22.2)는 유지하면서, 추가 Go 버전을 설치하겠습니다.
 🔹 Go 1.23.1 다운로드 및 설치 mkdir -p ~/local cd ~/local wget https://go.dev/dl/go1.23.1.linux-amd64.tar.gz tar -xzf go1.23.1.linux-amd64.tar.gz mv go go1.23.1 🔹 Go 1.23.5 다운로드 및 설치 cd ~/local wget https://go.dev/dl/go1.23.5.linux-amd64.tar.gz tar -xzf go1.23.5.linux-amd64.tar.gz mv go go1.23.5 설치 후 폴더 구조:
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-02-27 00:00:00 +0000 UTC'>2월 27, 2025</span></footer>
-  <a class="entry-link" aria-label="post link to Go Install" href="http://localhost:1313/posts/sdlc/go-install/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Mojo Install
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Mojo 설치 Mojo는 Modular가 개발한 새로운 프로그래밍 언어로, Python과 유사하지만 더 높은 성능을 제공합니다. WSL (Windows Subsystem for Linux)의 Ubuntu 환경에서 Mojo를 설치하려면 다음과 같은 단계를 따르면 됩니다.
+...</p></div><footer class=entry-footer><span title='2025-02-27 00:00:00 +0000 UTC'>2월 27, 2025</span></footer><a class=entry-link aria-label="post link to Go Install" href=https://jongyongpark.github.io/posts/sdlc/go-install/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>Mojo Install</h2></header><div class=entry-content><p>Mojo 설치 Mojo는 Modular가 개발한 새로운 프로그래밍 언어로, Python과 유사하지만 더 높은 성능을 제공합니다. WSL (Windows Subsystem for Linux)의 Ubuntu 환경에서 Mojo를 설치하려면 다음과 같은 단계를 따르면 됩니다.
 1. WSL 및 Ubuntu 확인 먼저 WSL이 설치되어 있고 Ubuntu가 실행 중인지 확인하세요.
 WSL이 설치되어 있지 않다면 Microsoft 공식 문서를 참고하여 설치하세요. Ubuntu는 Microsoft Store에서 다운로드하거나 명령줄에서 설치할 수 있습니다. WSL Ubuntu가 이미 설치되어 있다면, 터미널을 열고 다음 명령어로 Ubuntu 버전을 확인하세요:
 lsb_release -a 2. Mojo 설치 준비 Mojo는 아직 초기 단계의 언어이므로 공식적으로 지원되는 패키지 관리자가 없습니다. 따라서 Modular의 공식 웹사이트나 CLI 도구를 사용하여 설치해야 합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-02-27 00:00:00 +0000 UTC'>2월 27, 2025</span></footer>
-  <a class="entry-link" aria-label="post link to Mojo Install" href="http://localhost:1313/posts/sdlc/mojo-install/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Mojo Sample Code like Curl
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>🚀 Mojo로 curl과 비슷한 기능 구현하기 Mojo는 Python과 유사한 문법을 가지면서도, 시스템 프로그래밍에 적합한 고성능 언어입니다. 현재 Mojo는 공식적으로 네트워크 라이브러리를 제공하지 않으므로, 소켓을 활용하여 HTTP 요청을 보내는 curl 대체 기능을 직접 구현할 수 있습니다.
+...</p></div><footer class=entry-footer><span title='2025-02-27 00:00:00 +0000 UTC'>2월 27, 2025</span></footer><a class=entry-link aria-label="post link to Mojo Install" href=https://jongyongpark.github.io/posts/sdlc/mojo-install/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>Mojo Sample Code like Curl</h2></header><div class=entry-content><p>🚀 Mojo로 curl과 비슷한 기능 구현하기 Mojo는 Python과 유사한 문법을 가지면서도, 시스템 프로그래밍에 적합한 고성능 언어입니다. 현재 Mojo는 공식적으로 네트워크 라이브러리를 제공하지 않으므로, 소켓을 활용하여 HTTP 요청을 보내는 curl 대체 기능을 직접 구현할 수 있습니다.
 📌 1. Mojo에서 HTTP 요청(curl 기능) 구현하기 다음 코드는 Mojo에서 curl과 유사한 기능을 수행하는 HTTP GET 요청 함수입니다.
 💾 mojo_curl.mojo 파일 생성 아래 코드를 mojo_curl.mojo라는 파일에 저장하세요.
-import sysimport socket# HTTP GET 요청 함수fn http_get(url: str) -&gt; str:# URL 파싱let parts = url.split(&#34;://&#34;)if parts.size() != 2 or parts[0] != &#34;http&#34;:return &#34;❌ 지원되지 않는 URL 형식입니다! (http만 지원)&#34;let domain_path = parts[1].split(&#34;/&#34;, 1)let host = domain_path[0]let path = &#34;/&#34; &#43; domain_path[1] if domain_path.size() &gt; 1 else &#34;/&#34;# 소켓 생성 및 서버 연결let sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)sock.connect((host, 80))# HTTP 요청 작성let request = &#34;GET &#34; &#43; path &#43; &#34; HTTP/1.1\r\n&#34;request &#43;= &#34;Host: &#34; &#43; host &#43; &#34;\r\n&#34;request &#43;= &#34;User-Agent: Mojo-Curl/1.0\r\n&#34;request &#43;= &#34;Connection: close\r\n\r\n&#34;# 요청 전송sock.send(request.encode())# 응답 수신let response = &#34;&#34;while True:let data = sock.recv(1024)if not data:breakresponse &#43;= data.decode()sock.close()return response# 명령줄에서 URL 입력 받기fn main():if sys.argv.size() &lt; 2:print(&#34;🛠 사용법: mojo run mojo_curl.mojo &lt;URL&gt;&#34;)returnlet url = sys.argv[1]let response = http_get(url)print(response) 📌 2. Mojo 설치 및 실행 방법 Mojo는 현재 Linux 및 macOS에서만 실행 가능합니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-02-27 00:00:00 +0000 UTC'>2월 27, 2025</span></footer>
-  <a class="entry-link" aria-label="post link to Mojo Sample Code like Curl" href="http://localhost:1313/posts/sdlc/mojo-curl/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">SRM Coverity Tool Connector Issues
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>An unexpected error occurred while validating the connection 01207318
+import sys
+import socket
+# HTTP GET 요청 함수
+fn http_get(url: str) -> str:
+# URL 파싱
+let parts = url.split("://")
+if parts.size() != 2 or parts[0] != "http":
+return "❌ 지원되지 않는 URL 형식입니다! (http만 지원)"
+let domain_path = parts[1].split("/", 1)
+let host = domain_path[0]
+let path = "/" + domain_path[1] if domain_path.size() > 1 else "/"
+# 소켓 생성 및 서버 연결
+let sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+sock.connect((host, 80))
+# HTTP 요청 작성
+let request = "GET " + path + " HTTP/1.1\r\n"
+request += "Host: " + host + "\r\n"
+request += "User-Agent: Mojo-Curl/1.0\r\n"
+request += "Connection: close\r\n\r\n"
+# 요청 전송
+sock.send(request.encode())
+# 응답 수신
+let response = ""
+while True:
+let data = sock.recv(1024)
+if not data:
+break
+response += data.decode()
+sock.close()
+return response
+# 명령줄에서 URL 입력 받기
+fn main():
+if sys.argv.size() &lt; 2:
+print("🛠 사용법: mojo run mojo_curl.mojo &lt;URL>")
+return
+let url = sys.argv[1]
+let response = http_get(url)
+print(response) 📌 2. Mojo 설치 및 실행 방법 Mojo는 현재 Linux 및 macOS에서만 실행 가능합니다.
+...</p></div><footer class=entry-footer><span title='2025-02-27 00:00:00 +0000 UTC'>2월 27, 2025</span></footer><a class=entry-link aria-label="post link to Mojo Sample Code like Curl" href=https://jongyongpark.github.io/posts/sdlc/mojo-curl/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>SRM Coverity Tool Connector Issues</h2></header><div class=entry-content><p>An unexpected error occurred while validating the connection 01207318
 🔍 문제 요약 및 해결 방법 ✅ 문제 요약 고객이 **Coverity(HTTP, 8080 포트)**에 대한 툴 커넥터 설정 중 “An unexpected error occurred while validating the connection” 오류가 발생했다고 보고함.
 로그를 확인한 결과, 다음과 같은 문제가 발생함:
 오류 메시지:
-ERROR - Creating a new NewHttpClient instance failed with: Response validation for [Coverity Session Cookie] encountered 1 error:1. Expected a [COVJSESSIONID-build] cookie in the response, but it was missing. Coverity 서버의 응답에서 COVJSESSIONID-build 세션 쿠키가 누락됨 고객 확인 사항:
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-02-27 00:00:00 +0000 UTC'>2월 27, 2025</span></footer>
-  <a class="entry-link" aria-label="post link to SRM Coverity Tool Connector Issues" href="http://localhost:1313/posts/technical-support/srm/srm-coverity-tool-connector/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Beyond Compare 4를 리눅스에 설치하기
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Beyond Compare 4를 리눅스에 설치하기 bash#:~$ cd ~/Downloads/ bash#:~/Downloads$ wget https://www.scootersoftware.com/bcompare-4.4.6.27483_amd64.deb --2025-02-25 14:58:16-- https://www.scootersoftware.com/bcompare-4.4.6.27483_amd64.deb Resolving www.scootersoftware.com (www.scootersoftware.com)... 72.32.90.250 Connecting to www.scootersoftware.com (www.scootersoftware.com)|72.32.90.250|:443... connected. HTTP request sent, awaiting response... 200 OK Length: 20609066 (20M) [application/octet-stream] Saving to: ‘bcompare-4.4.6.27483_amd64.deb’ bcompare-4.4.6.27483_amd64.deb 100%[=============================================================================&gt;] 19.65M 3.55MB/s in 6.7s 2025-02-25 14:58:24 (2.93 MB/s) - ‘bcompare-4.4.6.27483_amd64.deb’ saved [20609066/20609066] bash#:~/Downloads$ sudo apt install ./bcompare-4.4.6.27483_amd64.deb [sudo] password for jonpark: Reading package lists... Done Building dependency tree... Done Reading state information... Done Note, selecting &#39;bcompare&#39; instead of &#39;./bcompare-4.4.6.27483_amd64.deb&#39; The following package was automatically installed and is no longer required: libllvm17t64 Use &#39;sudo apt autoremove&#39; to remove it. The following NEW packages will be installed: bcompare 0 upgraded, 1 newly installed, 0 to remove and 16 not upgraded. Need to get 0 B/20.6 MB of archives. After this operation, 60.9 MB of additional disk space will be used. Get:1 /home/jonpark/Downloads/bcompare-4.4.6.27483_amd64.deb bcompare amd64 4.4.6-27483 [20.6 MB] Selecting previously unselected package bcompare. (Reading database ... 130187 files and directories currently installed.) Preparing to unpack .../bcompare-4.4.6.27483_amd64.deb ... Unpacking bcompare (4.4.6-27483) ... Setting up bcompare (4.4.6-27483) ... cp: cannot create regular file &#39;/usr/share/kservices5/&#39;: Not a directory Processing triggers for bamfdaemon (0.5.6&#43;22.04.20220217-0ubuntu5) ... Rebuilding /usr/share/applications/bamf-2.index... Processing triggers for desktop-file-utils (0.27-2build1) ... Processing triggers for gnome-menus (3.36.0-1.1ubuntu3) ... Processing triggers for shared-mime-info (2.4-4) ... Processing triggers for libc-bin (2.39-0ubuntu8.4) ... localepurge: Disk space freed: 0 KiB in /usr/share/locale localepurge: Disk space freed: 0 KiB in /usr/share/man localepurge: Disk space freed: 0 KiB in /usr/share/tcltk localepurge: Disk space freed: 0 KiB in /usr/share/cups/templates localepurge: Disk space freed: 0 KiB in /usr/share/cups/locale localepurge: Disk space freed: 0 KiB in /usr/share/cups/doc-root localepurge: Disk space freed: 0 KiB in /usr/share/cups/templates localepurge: Disk space freed: 0 KiB in /usr/share/cups/locale localepurge: Disk space freed: 0 KiB in /usr/share/cups/doc-root localepurge: Disk space freed: 0 KiB in /usr/share/help localepurge: Disk space freed: 0 KiB in /usr/share/vim/vim91/lang Total disk space freed by localepurge: 0 KiB N: Download is performed unsandboxed as root as file &#39;/home/jonpark/Downloads/bcompare-4.4.6.27483_amd64.deb&#39; couldn&#39;t be accessed by user &#39;_apt&#39;. - pkgAcquire::Run (13: Permission denied) ######################################## ## 아래부터는 옵션임. bash#:~/Downloads$ ls ~/.config/bcompare/ -al total 28K drwxrwxr-x 2 jonpark jonpark 4.0K Feb 25 15:05 ./ drwx------ 23 jonpark jonpark 4.0K Feb 25 15:05 ../ -rw-rw-r-- 1 jonpark jonpark 0 Feb 25 15:05 BCLOCK_11.0 -rw-rw-r-- 1 jonpark jonpark 546 Feb 25 15:05 BCState.xml -rw-rw-r-- 1 jonpark jonpark 204 Feb 25 15:05 BCState.xml.bak -rw-rw-r-- 1 jonpark jonpark 1 Feb 25 15:05 IsPro -rw-rw-r-- 1 jonpark jonpark 563 Feb 25 15:05 menu.ini -rw-rw-r-- 1 jonpark jonpark 48 Feb 25 15:07 registry.dat bash#:~/Downloads$ ls /usr/lib/beyondcompare/ bcmount32* bcmount.sh* BCompare.mad GPG-KEY-scootersoftware lib7z.so* libunrar.so* qt4/ scootersoftware.list bcmount64* BCompare* ext/ help/ libQt4Pas.so.5* mime.types scootersoftware-keyring.gpg bash#:~/Downloads$ cd /usr/lib/beyondcompare/ bash#:/usr/lib/beyondcompare$ ls bcmount32* bcmount.sh* BCompare.mad GPG-KEY-scootersoftware lib7z.so* libunrar.so* qt4/ scootersoftware.list bcmount64* BCompare* ext/ help/ libQt4Pas.so.5* mime.types scootersoftware-keyring.gpg bash#:/usr/lib/beyondcompare$ sudo cp BCompare BCompare.org bash#:/usr/lib/beyondcompare$ sudo cp -r ~/.config/bcompare ~/.config/bcompare.org bash#:/usr/lib/beyondcompare$ rm -rf ~/.config/bcompare bash#:/usr/lib/beyondcompare$ echo &#34;kill BC&#34; kill BC bash#:/usr/lib/beyondcompare$ sudo rm -rf ~/.config/bcompare #thinks bensonkb sudo sed -i &#34;s/??????????????????????/g&#34; /usr/lib/beyondcompare/BCompare bash#:/usr/lib/beyondcompare$ ## Start BC ## Enter license ## Works </p>
-  </div>
-  <footer class="entry-footer"><span title='2025-02-25 00:00:00 +0000 UTC'>2월 25, 2025</span></footer>
-  <a class="entry-link" aria-label="post link to Beyond Compare 4를 리눅스에 설치하기" href="http://localhost:1313/posts/sdlc/beyond-compare-wsl/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Coverity API SSL Issue
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Blackduck API 호출 시 발생하는 SSL 인증서 문제를 해결하는 Java 코드 - disable SSL Blackduck API 호출 시 발생하는 SSL 인증서 문제를 해결하는 Java 코드를 작성해드리겠습니다:
-import javax.net.ssl.*; import java.io.*; import java.net.HttpURLConnection; import java.net.URL; import java.security.cert.X509Certificate; import java.nio.charset.StandardCharsets; public class BlackDuckApiClient { private static void disableSSLVerification() { try { TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() { public X509Certificate[] getAcceptedIssuers() { return null; } public void checkClientTrusted(X509Certificate[] certs, String authType) { } public void checkServerTrusted(X509Certificate[] certs, String authType) { } } }; SSLContext sc = SSLContext.getInstance(&#34;SSL&#34;); sc.init(null, trustAllCerts, new java.security.SecureRandom()); HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory()); HostnameVerifier allHostsValid = (hostname, session) -&gt; true; HttpsURLConnection.setDefaultHostnameVerifier(allHostsValid); } catch (Exception e) { e.printStackTrace(); } } public static String authenticate(String baseUrl, String username, String password) { try { URL url = new URL(baseUrl &#43; &#34;/api/tokens/authenticate&#34;); HttpURLConnection conn = (HttpURLConnection) url.openConnection(); // 요청 설정 conn.setRequestMethod(&#34;POST&#34;); conn.setRequestProperty(&#34;Accept&#34;, &#34;application/vnd.blackducksoftware.user-4&#43;json&#34;); conn.setRequestProperty(&#34;Content-Type&#34;, &#34;application/json&#34;); // Basic Auth 설정 String auth = username &#43; &#34;:&#34; &#43; password; String encodedAuth = java.util.Base64.getEncoder().encodeToString(auth.getBytes()); conn.setRequestProperty(&#34;Authorization&#34;, &#34;Basic &#34; &#43; encodedAuth); conn.setDoOutput(true); // 응답 읽기 int responseCode = conn.getResponseCode(); if (responseCode == HttpURLConnection.HTTP_OK) { BufferedReader in = new BufferedReader( new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8)); String inputLine; StringBuilder response = new StringBuilder(); while ((inputLine = in.readLine()) != null) { response.append(inputLine); } in.close(); return response.toString(); } else { System.out.println(&#34;Response Code: &#34; &#43; responseCode); return null; } } catch (Exception e) { e.printStackTrace(); return null; } } public static void main(String[] args) { // SSL 검증 비활성화 disableSSLVerification(); String baseUrl = &#34;https://your-blackduck-server&#34;; String username = &#34;your-username&#34;; String password = &#34;your-password&#34;; String response = authenticate(baseUrl, username, password); System.out.println(&#34;Response: &#34; &#43; response); } } 안전한 운영 환경을 위한 인증서 설정 방법:
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-02-24 00:00:00 +0000 UTC'>2월 24, 2025</span></footer>
-  <a class="entry-link" aria-label="post link to Coverity API SSL Issue" href="http://localhost:1313/posts/technical-support/coverity/cov-api-ssl/"></a>
-</article>
-<footer class="page-footer">
-  <nav class="pagination">
-    <a class="prev" href="http://localhost:1313/posts/">
-      «&nbsp;이전 페이지&nbsp;
-    </a>
-    <a class="next" href="http://localhost:1313/posts/page/3/">다음 페이지&nbsp;&nbsp;»
-    </a>
-  </nav>
-</footer>
-    </main>
-    
-<footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/">RyanLabs</a></span> · 
-
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
-</footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
-    </svg>
-</a>
-
-<script>
-    let menu = document.getElementById('menu')
-    if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
-    }
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
-
-</script>
-<script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
-
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            document.body.classList.add('dark');
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
-</script>
-</body>
-
-</html>
+ERROR - Creating a new NewHttpClient instance failed with: Response validation for [Coverity Session Cookie] encountered 1 error:
+1. Expected a [COVJSESSIONID-build] cookie in the response, but it was missing. Coverity 서버의 응답에서 COVJSESSIONID-build 세션 쿠키가 누락됨 고객 확인 사항:
+...</p></div><footer class=entry-footer><span title='2025-02-27 00:00:00 +0000 UTC'>2월 27, 2025</span></footer><a class=entry-link aria-label="post link to SRM Coverity Tool Connector Issues" href=https://jongyongpark.github.io/posts/technical-support/srm/srm-coverity-tool-connector/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>Beyond Compare 4를 리눅스에 설치하기</h2></header><div class=entry-content><p>Beyond Compare 4를 리눅스에 설치하기 bash#:~$ cd ~/Downloads/ bash#:~/Downloads$ wget https://www.scootersoftware.com/bcompare-4.4.6.27483_amd64.deb --2025-02-25 14:58:16-- https://www.scootersoftware.com/bcompare-4.4.6.27483_amd64.deb Resolving www.scootersoftware.com (www.scootersoftware.com)... 72.32.90.250 Connecting to www.scootersoftware.com (www.scootersoftware.com)|72.32.90.250|:443... connected. HTTP request sent, awaiting response... 200 OK Length: 20609066 (20M) [application/octet-stream] Saving to: ‘bcompare-4.4.6.27483_amd64.deb’ bcompare-4.4.6.27483_amd64.deb 100%[=============================================================================>] 19.65M 3.55MB/s in 6.7s 2025-02-25 14:58:24 (2.93 MB/s) - ‘bcompare-4.4.6.27483_amd64.deb’ saved [20609066/20609066] bash#:~/Downloads$ sudo apt install ./bcompare-4.4.6.27483_amd64.deb [sudo] password for jonpark: Reading package lists... Done Building dependency tree... Done Reading state information... Done Note, selecting 'bcompare' instead of './bcompare-4.4.6.27483_amd64.deb' The following package was automatically installed and is no longer required: libllvm17t64 Use 'sudo apt autoremove' to remove it. The following NEW packages will be installed: bcompare 0 upgraded, 1 newly installed, 0 to remove and 16 not upgraded. Need to get 0 B/20.6 MB of archives. After this operation, 60.9 MB of additional disk space will be used. Get:1 /home/jonpark/Downloads/bcompare-4.4.6.27483_amd64.deb bcompare amd64 4.4.6-27483 [20.6 MB] Selecting previously unselected package bcompare. (Reading database ... 130187 files and directories currently installed.) Preparing to unpack .../bcompare-4.4.6.27483_amd64.deb ... Unpacking bcompare (4.4.6-27483) ... Setting up bcompare (4.4.6-27483) ... cp: cannot create regular file '/usr/share/kservices5/': Not a directory Processing triggers for bamfdaemon (0.5.6+22.04.20220217-0ubuntu5) ... Rebuilding /usr/share/applications/bamf-2.index... Processing triggers for desktop-file-utils (0.27-2build1) ... Processing triggers for gnome-menus (3.36.0-1.1ubuntu3) ... Processing triggers for shared-mime-info (2.4-4) ... Processing triggers for libc-bin (2.39-0ubuntu8.4) ... localepurge: Disk space freed: 0 KiB in /usr/share/locale localepurge: Disk space freed: 0 KiB in /usr/share/man localepurge: Disk space freed: 0 KiB in /usr/share/tcltk localepurge: Disk space freed: 0 KiB in /usr/share/cups/templates localepurge: Disk space freed: 0 KiB in /usr/share/cups/locale localepurge: Disk space freed: 0 KiB in /usr/share/cups/doc-root localepurge: Disk space freed: 0 KiB in /usr/share/cups/templates localepurge: Disk space freed: 0 KiB in /usr/share/cups/locale localepurge: Disk space freed: 0 KiB in /usr/share/cups/doc-root localepurge: Disk space freed: 0 KiB in /usr/share/help localepurge: Disk space freed: 0 KiB in /usr/share/vim/vim91/lang Total disk space freed by localepurge: 0 KiB N: Download is performed unsandboxed as root as file '/home/jonpark/Downloads/bcompare-4.4.6.27483_amd64.deb' couldn't be accessed by user '_apt'. - pkgAcquire::Run (13: Permission denied) ######################################## ## 아래부터는 옵션임. bash#:~/Downloads$ ls ~/.config/bcompare/ -al total 28K drwxrwxr-x 2 jonpark jonpark 4.0K Feb 25 15:05 ./ drwx------ 23 jonpark jonpark 4.0K Feb 25 15:05 ../ -rw-rw-r-- 1 jonpark jonpark 0 Feb 25 15:05 BCLOCK_11.0 -rw-rw-r-- 1 jonpark jonpark 546 Feb 25 15:05 BCState.xml -rw-rw-r-- 1 jonpark jonpark 204 Feb 25 15:05 BCState.xml.bak -rw-rw-r-- 1 jonpark jonpark 1 Feb 25 15:05 IsPro -rw-rw-r-- 1 jonpark jonpark 563 Feb 25 15:05 menu.ini -rw-rw-r-- 1 jonpark jonpark 48 Feb 25 15:07 registry.dat bash#:~/Downloads$ ls /usr/lib/beyondcompare/ bcmount32* bcmount.sh* BCompare.mad GPG-KEY-scootersoftware lib7z.so* libunrar.so* qt4/ scootersoftware.list bcmount64* BCompare* ext/ help/ libQt4Pas.so.5* mime.types scootersoftware-keyring.gpg bash#:~/Downloads$ cd /usr/lib/beyondcompare/ bash#:/usr/lib/beyondcompare$ ls bcmount32* bcmount.sh* BCompare.mad GPG-KEY-scootersoftware lib7z.so* libunrar.so* qt4/ scootersoftware.list bcmount64* BCompare* ext/ help/ libQt4Pas.so.5* mime.types scootersoftware-keyring.gpg bash#:/usr/lib/beyondcompare$ sudo cp BCompare BCompare.org bash#:/usr/lib/beyondcompare$ sudo cp -r ~/.config/bcompare ~/.config/bcompare.org bash#:/usr/lib/beyondcompare$ rm -rf ~/.config/bcompare bash#:/usr/lib/beyondcompare$ echo "kill BC" kill BC bash#:/usr/lib/beyondcompare$ sudo rm -rf ~/.config/bcompare #thinks bensonkb sudo sed -i "s/??????????????????????/g" /usr/lib/beyondcompare/BCompare bash#:/usr/lib/beyondcompare$ ## Start BC ## Enter license ## Works</p></div><footer class=entry-footer><span title='2025-02-25 00:00:00 +0000 UTC'>2월 25, 2025</span></footer><a class=entry-link aria-label="post link to Beyond Compare 4를 리눅스에 설치하기" href=https://jongyongpark.github.io/posts/sdlc/beyond-compare-wsl/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>Coverity API SSL Issue</h2></header><div class=entry-content><p>Blackduck API 호출 시 발생하는 SSL 인증서 문제를 해결하는 Java 코드 - disable SSL Blackduck API 호출 시 발생하는 SSL 인증서 문제를 해결하는 Java 코드를 작성해드리겠습니다:
+import javax.net.ssl.*; import java.io.*; import java.net.HttpURLConnection; import java.net.URL; import java.security.cert.X509Certificate; import java.nio.charset.StandardCharsets; public class BlackDuckApiClient { private static void disableSSLVerification() { try { TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() { public X509Certificate[] getAcceptedIssuers() { return null; } public void checkClientTrusted(X509Certificate[] certs, String authType) { } public void checkServerTrusted(X509Certificate[] certs, String authType) { } } }; SSLContext sc = SSLContext.getInstance("SSL"); sc.init(null, trustAllCerts, new java.security.SecureRandom()); HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory()); HostnameVerifier allHostsValid = (hostname, session) -> true; HttpsURLConnection.setDefaultHostnameVerifier(allHostsValid); } catch (Exception e) { e.printStackTrace(); } } public static String authenticate(String baseUrl, String username, String password) { try { URL url = new URL(baseUrl + "/api/tokens/authenticate"); HttpURLConnection conn = (HttpURLConnection) url.openConnection(); // 요청 설정 conn.setRequestMethod("POST"); conn.setRequestProperty("Accept", "application/vnd.blackducksoftware.user-4+json"); conn.setRequestProperty("Content-Type", "application/json"); // Basic Auth 설정 String auth = username + ":" + password; String encodedAuth = java.util.Base64.getEncoder().encodeToString(auth.getBytes()); conn.setRequestProperty("Authorization", "Basic " + encodedAuth); conn.setDoOutput(true); // 응답 읽기 int responseCode = conn.getResponseCode(); if (responseCode == HttpURLConnection.HTTP_OK) { BufferedReader in = new BufferedReader( new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8)); String inputLine; StringBuilder response = new StringBuilder(); while ((inputLine = in.readLine()) != null) { response.append(inputLine); } in.close(); return response.toString(); } else { System.out.println("Response Code: " + responseCode); return null; } } catch (Exception e) { e.printStackTrace(); return null; } } public static void main(String[] args) { // SSL 검증 비활성화 disableSSLVerification(); String baseUrl = "https://your-blackduck-server"; String username = "your-username"; String password = "your-password"; String response = authenticate(baseUrl, username, password); System.out.println("Response: " + response); } } 안전한 운영 환경을 위한 인증서 설정 방법:
+...</p></div><footer class=entry-footer><span title='2025-02-24 00:00:00 +0000 UTC'>2월 24, 2025</span></footer><a class=entry-link aria-label="post link to Coverity API SSL Issue" href=https://jongyongpark.github.io/posts/technical-support/coverity/cov-api-ssl/></a></article><footer class=page-footer><nav class=pagination><a class=prev href=https://jongyongpark.github.io/posts/>«&nbsp;이전 페이지&nbsp;
+</a><a class=next href=https://jongyongpark.github.io/posts/page/3/>다음 페이지&nbsp;&nbsp;»</a></nav></footer></main><footer class=footer><span>&copy; 2025 <a href=https://jongyongpark.github.io/>RyanLabs</a></span> ·
+<span>Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script></body></html>

@@ -1,15 +1,22 @@
 baseURL = 'https://jongyongpark.github.io/'
-languageCode = 'ko-kr'
 title = "RyanLabs"
 theme = 'PaperMod'
 paginate = 10
+languageCode = "ko"
+defaultContentLanguage = "ko"
+paginate = 10
 
-[params.profileMode]
-  enabled = true
-  title = "RyanLabs"
-  subtitle = "DevSecOps Lab"
-  imageUrl = "images/profile.png"   # static/images/profile.png 파일 필요
-  imageTitle = "RyanLabs"
+ignoreFiles = ["/private/"]
+
+[params]
+  homeInfoParams = false
+
+  [params.profileMode]
+    enabled = true
+    title = "Ryan"
+    subtitle = "💻 DevSecOps Engineer"
+    imageUrl = "images/profile.png"
+    imageTitle = "RyanLabs"
 
   [[params.profileMode.buttons]]
     name = "Email"
@@ -52,40 +59,50 @@ paginate = 10
 
 [menu]
   [[menu.main]]
-    identifier = "search"
     name = "검색"
     url = "/search/"
-    weight = 10
+    weight = 1
+
   [[menu.main]]
-    identifier = "categories"
     name = "카테고리"
     url = "/categories/"
-    weight = 20
+    weight = 2
+
   [[menu.main]]
-    identifier = "tags"
     name = "태그"
     url = "/tags/"
-    weight = 30
+    weight = 3
+
   [[menu.main]]
-    identifier = "archives"
     name = "연도"
     url = "/archives/"
-    weight = 40
+    weight = 4
+
   [[menu.main]]
-    identifier = "about"
+    name = "강의"
+    url = "/lectures/"
+    weight = 5
+
+  [[menu.main]]
     name = "어바웃미"
     url = "/about/"
-    weight = 50
+    weight = 6
+
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]   # 반드시 있어야 함
+
+[params.search]
+  enabled = true
+
+[params.assets]
+  customCSS = ["css/custom.css"]
 
 [taxonomies]
   category = "categories"
   tag = "tags"
   archive = "archives"
   about = "about"
-
-[outputs]
-  home = ["HTML", "RSS", "JSON"]
-  page = ["HTML"]
 
 [permalinks]
   archives = "/archives/:year/"

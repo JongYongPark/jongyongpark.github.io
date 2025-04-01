@@ -1,22 +1,47 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>SDLC on RyanLabs</title><link>https://jongyongpark.github.io/tags/sdlc/</link><description>Recent content in SDLC on RyanLabs</description><generator>Hugo -- 0.142.0</generator><language>ko</language><lastBuildDate>Thu, 27 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://jongyongpark.github.io/tags/sdlc/index.xml" rel="self" type="application/rss+xml"/><item><title>SRM Coverity Tool Connector Issues</title><link>https://jongyongpark.github.io/posts/technical-support/srm/srm-coverity-tool-connector/</link><pubDate>Thu, 27 Feb 2025 00:00:00 +0000</pubDate><guid>https://jongyongpark.github.io/posts/technical-support/srm/srm-coverity-tool-connector/</guid><description>&lt;h1 id="an-unexpected-error-occurred-while-validating-the-connection">An unexpected error occurred while validating the connection&lt;/h1>
-&lt;p>01207318&lt;/p>
-&lt;h3 id="-문제-요약-및-해결-방법">&lt;strong>🔍 문제 요약 및 해결 방법&lt;/strong>&lt;/h3>
-&lt;h4 id="-문제-요약">✅ &lt;strong>문제 요약&lt;/strong>&lt;/h4>
-&lt;p>고객이 **Coverity(HTTP, 8080 포트)**에 대한 툴 커넥터 설정 중 &lt;strong>&amp;ldquo;An unexpected error occurred while validating the connection&amp;rdquo;&lt;/strong> 오류가 발생했다고 보고함.&lt;br>
-로그를 확인한 결과, 다음과 같은 문제가 발생함:&lt;/p>
-&lt;ol>
-&lt;li>
-&lt;p>&lt;strong>오류 메시지:&lt;/strong>&lt;/p>
-&lt;pre tabindex="0">&lt;code>ERROR - Creating a new NewHttpClient instance failed with: Response validation for [Coverity Session Cookie] encountered 1 error:
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>SDLC on RyanLabs</title>
+    <link>http://localhost:1313/tags/sdlc/</link>
+    <description>Recent content in SDLC on RyanLabs</description>
+    <generator>Hugo -- 0.142.0</generator>
+    <language>ko</language>
+    <lastBuildDate>Thu, 27 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/sdlc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SRM Coverity Tool Connector Issues</title>
+      <link>http://localhost:1313/posts/technical-support/srm/srm-coverity-tool-connector/</link>
+      <pubDate>Thu, 27 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/technical-support/srm/srm-coverity-tool-connector/</guid>
+      <description>&lt;h1 id=&#34;an-unexpected-error-occurred-while-validating-the-connection&#34;&gt;An unexpected error occurred while validating the connection&lt;/h1&gt;
+&lt;p&gt;01207318&lt;/p&gt;
+&lt;h3 id=&#34;-문제-요약-및-해결-방법&#34;&gt;&lt;strong&gt;🔍 문제 요약 및 해결 방법&lt;/strong&gt;&lt;/h3&gt;
+&lt;h4 id=&#34;-문제-요약&#34;&gt;✅ &lt;strong&gt;문제 요약&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;고객이 **Coverity(HTTP, 8080 포트)**에 대한 툴 커넥터 설정 중 &lt;strong&gt;&amp;ldquo;An unexpected error occurred while validating the connection&amp;rdquo;&lt;/strong&gt; 오류가 발생했다고 보고함.&lt;br&gt;
+로그를 확인한 결과, 다음과 같은 문제가 발생함:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;오류 메시지:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;ERROR - Creating a new NewHttpClient instance failed with: Response validation for [Coverity Session Cookie] encountered 1 error:
 1. Expected a [COVJSESSIONID-build] cookie in the response, but it was missing.
-&lt;/code>&lt;/pre>&lt;ul>
-&lt;li>Coverity 서버의 응답에서 &lt;strong>&lt;code>COVJSESSIONID-build&lt;/code> 세션 쿠키가 누락됨&lt;/strong>&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>고객 확인 사항:&lt;/strong>&lt;/p></description></item><item><title>How to send findings from SRM (Software Risk Management) to Azure DevOps Work Items</title><link>https://jongyongpark.github.io/posts/technical-support/srm/srm-findings-to-azure-devops-work/</link><pubDate>Fri, 31 Jan 2025 00:00:00 +0000</pubDate><guid>https://jongyongpark.github.io/posts/technical-support/srm/srm-findings-to-azure-devops-work/</guid><description>&lt;p>how to check Azure DevOps Work Items API rate limit&lt;/p>
-&lt;h2 id="how-to-send-findings-from-srm-software-risk-management-to-azure-devops-work-items">How to send findings from SRM (Software Risk Management) to Azure DevOps Work Items&lt;/h2>
-&lt;p>To send findings from &lt;strong>SRM (Software Risk Management)&lt;/strong> to &lt;strong>Azure DevOps Work Items&lt;/strong>, you can follow the steps outlined below. This process involves using the Azure DevOps REST API to create or update work items based on the SRM findings. Here&amp;rsquo;s a detailed guide:&lt;/p>
-&lt;hr>
-&lt;h3 id="1-prerequisites">&lt;strong>1. Prerequisites&lt;/strong>&lt;/h3>
-&lt;p>Before starting, ensure the following:&lt;/p></description></item></channel></rss>
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;Coverity 서버의 응답에서 &lt;strong&gt;&lt;code&gt;COVJSESSIONID-build&lt;/code&gt; 세션 쿠키가 누락됨&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;고객 확인 사항:&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>How to send findings from SRM (Software Risk Management) to Azure DevOps Work Items</title>
+      <link>http://localhost:1313/posts/technical-support/srm/srm-findings-to-azure-devops-work/</link>
+      <pubDate>Fri, 31 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/technical-support/srm/srm-findings-to-azure-devops-work/</guid>
+      <description>&lt;p&gt;how to check Azure DevOps Work Items API rate limit&lt;/p&gt;
+&lt;h2 id=&#34;how-to-send-findings-from-srm-software-risk-management-to-azure-devops-work-items&#34;&gt;How to send findings from SRM (Software Risk Management) to Azure DevOps Work Items&lt;/h2&gt;
+&lt;p&gt;To send findings from &lt;strong&gt;SRM (Software Risk Management)&lt;/strong&gt; to &lt;strong&gt;Azure DevOps Work Items&lt;/strong&gt;, you can follow the steps outlined below. This process involves using the Azure DevOps REST API to create or update work items based on the SRM findings. Here&amp;rsquo;s a detailed guide:&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;1-prerequisites&#34;&gt;&lt;strong&gt;1. Prerequisites&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Before starting, ensure the following:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

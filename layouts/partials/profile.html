@@ -1,0 +1,23 @@
+<div class="profile-wrapper">
+  <div class="profile">
+    {{ with site.Params.profileMode.imageUrl }}
+      <img src="{{ . | relURL }}" alt="{{ site.Params.profileMode.imageTitle }}" class="profile-avatar" />
+    {{ end }}
+
+    <h1 class="profile-title">{{ site.Params.profileMode.title }}</h1>
+
+    {{ with site.Params.profileMode.subtitle }}
+      <p class="profile-subtitle">{{ . }}</p>
+    {{ end }}
+
+    {{ with site.Params.profileMode.buttons }}
+      <div class="profile-buttons">
+        {{ range . }}
+          <a href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+            {{ .name }}
+          </a>
+        {{ end }}
+      </div>
+    {{ end }}
+  </div>
+</div>

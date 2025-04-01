@@ -1,149 +1,117 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Git on RyanPark&#39;s DevSecOps</title>
-    <link>http://localhost:1313/tags/git/</link>
-    <description>Recent content in Git on RyanPark&#39;s DevSecOps</description>
-    <generator>Hugo -- 0.142.0</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Mon, 17 Feb 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/git/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Git - Change Branch</title>
-      <link>http://localhost:1313/posts/sdlc/git-branch/</link>
-      <pubDate>Mon, 17 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/sdlc/git-branch/</guid>
-      <description>&lt;h1 id=&#34;clone-with-branch&#34;&gt;Clone with branch&lt;/h1&gt;
-&lt;p&gt;특정 브랜치를 바로 클론하려면 다음 명령어를 사용하시면 됩니다:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone -b 2025.3.maint https://gitlab.host_name/group_name/repo_name.git
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;이 명령어는 지정된 URL에서 2025.3.maint 브랜치를 클론합니다. 기본적으로 로컬 디렉토리 이름은 저장소 이름(cnc-umbrella-chart)으로 생성됩니다.&lt;/p&gt;
-&lt;p&gt;다른 디렉토리 이름을 지정하고 싶다면 URL 뒤에 원하는 디렉토리 이름을 추가하면 됩니다:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone -b 2025.3.maint https://gitlab.host_name/group_name/repo_name.git custom-directory-name
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;이 명령어를 실행하면 2025.3.maint 브랜치만 가져오게 됩니다. 더 빠른 클론을 원한다면 &lt;code&gt;--single-branch&lt;/code&gt; 옵션을 추가할 수 있습니다:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone -b 2025.3.maint --single-branch https://gitlab.host_name/group_name/repo_name.git
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;change-branch&#34;&gt;Change branch&lt;/h1&gt;
-&lt;p&gt;이미 main 브랜치를 clone하였다. 2025.3.maint 브랜치를 가져오는 방법은?&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Git Usage</title>
-      <link>http://localhost:1313/posts/sdlc/git/</link>
-      <pubDate>Mon, 17 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/sdlc/git/</guid>
-      <description>&lt;hr&gt;
-&lt;hr&gt;
-&lt;h1 id=&#34;github에서-새로운-repository저장소를-생성하는-방법&#34;&gt;&lt;strong&gt;GitHub에서 새로운 Repository(저장소)를 생성하는 방법&lt;/strong&gt;&lt;/h1&gt;
-&lt;h2 id=&#34;github에서-새로운-repository저장소를-생성하는-방법-1&#34;&gt;&lt;strong&gt;GitHub에서 새로운 Repository(저장소)를 생성하는 방법&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;GitHub에서 새로운 **Repository(저장소)**를 생성하는 방법을 단계별로 설명하겠습니다.&lt;br&gt;
-&lt;strong&gt;방법 1:&lt;/strong&gt; GitHub 웹사이트에서 직접 생성하는 방법&lt;br&gt;
-&lt;strong&gt;방법 2:&lt;/strong&gt; Git CLI를 사용하여 터미널에서 생성하는 방법&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;-방법-1-github-웹사이트에서-직접-생성하기&#34;&gt;&lt;strong&gt;📝 방법 1: GitHub 웹사이트에서 직접 생성하기&lt;/strong&gt;&lt;/h2&gt;
-&lt;h3 id=&#34;1-github에-로그인&#34;&gt;&lt;strong&gt;1️⃣ GitHub에 로그인&lt;/strong&gt;&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/&#34;&gt;GitHub 홈페이지&lt;/a&gt;에 접속 후 로그인합니다.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;2-새-저장소-생성-페이지-이동&#34;&gt;&lt;strong&gt;2️⃣ 새 저장소 생성 페이지 이동&lt;/strong&gt;&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;우측 상단의 &lt;strong&gt;&lt;code&gt;+&lt;/code&gt; 버튼&lt;/strong&gt;을 클릭한 후 &lt;strong&gt;&amp;ldquo;New repository&amp;rdquo;&lt;/strong&gt; 선택&lt;/li&gt;
-&lt;li&gt;또는 직접 &lt;a href=&#34;https://github.com/new&#34;&gt;새 저장소 생성 페이지&lt;/a&gt;로 이동&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;3-저장소-정보-입력&#34;&gt;&lt;strong&gt;3️⃣ 저장소 정보 입력&lt;/strong&gt;&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Repository name (필수):&lt;/strong&gt; 저장소 이름을 입력합니다. (예: &lt;code&gt;my-new-repo&lt;/code&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Description (선택):&lt;/strong&gt; 저장소에 대한 설명을 입력합니다.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Visibility 선택:&lt;/strong&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;Public&lt;/code&gt;(공개) → 누구나 볼 수 있음.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Private&lt;/code&gt;(비공개) → 본인과 초대한 사용자만 접근 가능.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;4-추가-설정&#34;&gt;&lt;strong&gt;4️⃣ 추가 설정&lt;/strong&gt;&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;✅ &lt;code&gt;Initialize this repository with a README&lt;/code&gt; (선택)
-&lt;ul&gt;
-&lt;li&gt;체크하면 기본적인 &lt;code&gt;README.md&lt;/code&gt; 파일이 생성됨.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;✅ &lt;code&gt;.gitignore&lt;/code&gt; (선택)
-&lt;ul&gt;
-&lt;li&gt;특정 파일을 Git에서 무시하도록 설정 (예: Python, Node.js 등).&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;✅ &lt;code&gt;License&lt;/code&gt; (선택)
-&lt;ul&gt;
-&lt;li&gt;오픈소스 라이선스를 설정 (예: MIT, Apache 2.0 등).&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;5-저장소-생성&#34;&gt;&lt;strong&gt;5️⃣ 저장소 생성&lt;/strong&gt;&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;&amp;ldquo;Create repository&amp;rdquo;&lt;/strong&gt; 버튼을 클릭하면 저장소가 생성됩니다.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;6-로컬-프로젝트와-연결&#34;&gt;&lt;strong&gt;6️⃣ 로컬 프로젝트와 연결&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;이제 로컬에서 작업 중인 프로젝트를 GitHub 저장소에 연결할 수 있습니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Different URL Formats for Accessing a Git Repository</title>
-      <link>http://localhost:1313/posts/technical-support/git--repo-access-url-formats/</link>
-      <pubDate>Fri, 14 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/technical-support/git--repo-access-url-formats/</guid>
-      <description>&lt;h2 id=&#34;-different-url-formats-for-accessing-a-git-repository&#34;&gt;&lt;strong&gt;🔹 Different URL Formats for Accessing a Git Repository&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Git supports multiple protocols for accessing repositories, each with its own advantages and disadvantages in terms of authentication, security, and ease of use. Below is a summary of the common URL formats, their corresponding protocols, authentication methods, and a comparison of their pros and cons.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;-git-repository-url-formats-and-their-characteristics&#34;&gt;&lt;strong&gt;📌 Git Repository URL Formats and Their Characteristics&lt;/strong&gt;&lt;/h3&gt;
-&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;&lt;strong&gt;Git URL Format&lt;/strong&gt;&lt;/th&gt;
-          &lt;th&gt;&lt;strong&gt;Protocol Used&lt;/strong&gt;&lt;/th&gt;
-          &lt;th&gt;&lt;strong&gt;Authentication Method&lt;/strong&gt;&lt;/th&gt;
-          &lt;th&gt;&lt;strong&gt;Pros&lt;/strong&gt;&lt;/th&gt;
-          &lt;th&gt;&lt;strong&gt;Cons&lt;/strong&gt;&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;code&gt;git@host:path/repo.git&lt;/code&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;strong&gt;SSH&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;SSH key authentication (Private/Public key pair)&lt;/td&gt;
-          &lt;td&gt;✅ Secure authentication without storing passwords ✅ Supports read &amp;amp; write access ✅ Works well in automation (CI/CD)&lt;/td&gt;
-          &lt;td&gt;❌ Requires setting up SSH keys ❌ Firewalls may block SSH (port 22)&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;code&gt;ssh://git@host/path/repo.git&lt;/code&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;strong&gt;SSH&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;SSH key authentication&lt;/td&gt;
-          &lt;td&gt;✅ Same as &lt;code&gt;git@host:path/repo.git&lt;/code&gt;, but with explicit protocol ✅ More readable for some users&lt;/td&gt;
-          &lt;td&gt;❌ Identical disadvantages as the &lt;code&gt;git@&lt;/code&gt; format&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;code&gt;https://host/path/repo.git&lt;/code&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;strong&gt;HTTPS&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;Username + Password, or Personal Access Token (PAT)&lt;/td&gt;
-          &lt;td&gt;✅ Works without additional setup ✅ Usually allowed through firewalls ✅ Supports 2FA via PAT&lt;/td&gt;
-          &lt;td&gt;❌ Requires entering credentials or setting up a credential manager ❌ PATs need to be managed securely&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;code&gt;git://host/path/repo.git&lt;/code&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;strong&gt;Git Daemon (read-only)&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;No authentication required&lt;/td&gt;
-          &lt;td&gt;✅ Fast and lightweight ✅ Ideal for public repositories&lt;/td&gt;
-          &lt;td&gt;❌ No authentication, security risk ❌ Only supports read access&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;code&gt;/path/to/repo.git&lt;/code&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;strong&gt;Local File System&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;No authentication needed (local access)&lt;/td&gt;
-          &lt;td&gt;✅ Fastest access (no network latency) ✅ No need for authentication&lt;/td&gt;
-          &lt;td&gt;❌ Only works on the local machine ❌ Cannot be used for remote access&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;-pros-and-cons-of-each-git-access-method&#34;&gt;&lt;strong&gt;📌 Pros and Cons of Each Git Access Method&lt;/strong&gt;&lt;/h3&gt;
-&lt;h4 id=&#34;1-ssh-githostpathrepogit-or-sshgithostpathrepogit&#34;&gt;&lt;strong&gt;1️⃣ SSH (&lt;code&gt;git@host:path/repo.git&lt;/code&gt; or &lt;code&gt;ssh://git@host/path/repo.git&lt;/code&gt;)&lt;/strong&gt;&lt;/h4&gt;
-&lt;p&gt;✅ &lt;strong&gt;Pros:&lt;/strong&gt;&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Git on RyanLabs</title><link>https://jongyongpark.github.io/tags/git/</link><description>Recent content in Git on RyanLabs</description><generator>Hugo -- 0.142.0</generator><language>ko-kr</language><lastBuildDate>Mon, 17 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://jongyongpark.github.io/tags/git/index.xml" rel="self" type="application/rss+xml"/><item><title>Git - Change Branch</title><link>https://jongyongpark.github.io/posts/sdlc/git-branch/</link><pubDate>Mon, 17 Feb 2025 00:00:00 +0000</pubDate><guid>https://jongyongpark.github.io/posts/sdlc/git-branch/</guid><description>&lt;h1 id="clone-with-branch">Clone with branch&lt;/h1>
+&lt;p>특정 브랜치를 바로 클론하려면 다음 명령어를 사용하시면 됩니다:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git clone -b 2025.3.maint https://gitlab.host_name/group_name/repo_name.git
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>이 명령어는 지정된 URL에서 2025.3.maint 브랜치를 클론합니다. 기본적으로 로컬 디렉토리 이름은 저장소 이름(cnc-umbrella-chart)으로 생성됩니다.&lt;/p>
+&lt;p>다른 디렉토리 이름을 지정하고 싶다면 URL 뒤에 원하는 디렉토리 이름을 추가하면 됩니다:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git clone -b 2025.3.maint https://gitlab.host_name/group_name/repo_name.git custom-directory-name
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>이 명령어를 실행하면 2025.3.maint 브랜치만 가져오게 됩니다. 더 빠른 클론을 원한다면 &lt;code>--single-branch&lt;/code> 옵션을 추가할 수 있습니다:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git clone -b 2025.3.maint --single-branch https://gitlab.host_name/group_name/repo_name.git
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="change-branch">Change branch&lt;/h1>
+&lt;p>이미 main 브랜치를 clone하였다. 2025.3.maint 브랜치를 가져오는 방법은?&lt;/p></description></item><item><title>Git Usage</title><link>https://jongyongpark.github.io/posts/sdlc/git/</link><pubDate>Mon, 17 Feb 2025 00:00:00 +0000</pubDate><guid>https://jongyongpark.github.io/posts/sdlc/git/</guid><description>&lt;hr>
+&lt;hr>
+&lt;h1 id="github에서-새로운-repository저장소를-생성하는-방법">&lt;strong>GitHub에서 새로운 Repository(저장소)를 생성하는 방법&lt;/strong>&lt;/h1>
+&lt;h2 id="github에서-새로운-repository저장소를-생성하는-방법-1">&lt;strong>GitHub에서 새로운 Repository(저장소)를 생성하는 방법&lt;/strong>&lt;/h2>
+&lt;p>GitHub에서 새로운 **Repository(저장소)**를 생성하는 방법을 단계별로 설명하겠습니다.&lt;br>
+&lt;strong>방법 1:&lt;/strong> GitHub 웹사이트에서 직접 생성하는 방법&lt;br>
+&lt;strong>방법 2:&lt;/strong> Git CLI를 사용하여 터미널에서 생성하는 방법&lt;/p>
+&lt;hr>
+&lt;h2 id="-방법-1-github-웹사이트에서-직접-생성하기">&lt;strong>📝 방법 1: GitHub 웹사이트에서 직접 생성하기&lt;/strong>&lt;/h2>
+&lt;h3 id="1-github에-로그인">&lt;strong>1️⃣ GitHub에 로그인&lt;/strong>&lt;/h3>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/">GitHub 홈페이지&lt;/a>에 접속 후 로그인합니다.&lt;/li>
+&lt;/ul>
+&lt;h3 id="2-새-저장소-생성-페이지-이동">&lt;strong>2️⃣ 새 저장소 생성 페이지 이동&lt;/strong>&lt;/h3>
+&lt;ul>
+&lt;li>우측 상단의 &lt;strong>&lt;code>+&lt;/code> 버튼&lt;/strong>을 클릭한 후 &lt;strong>&amp;ldquo;New repository&amp;rdquo;&lt;/strong> 선택&lt;/li>
+&lt;li>또는 직접 &lt;a href="https://github.com/new">새 저장소 생성 페이지&lt;/a>로 이동&lt;/li>
+&lt;/ul>
+&lt;h3 id="3-저장소-정보-입력">&lt;strong>3️⃣ 저장소 정보 입력&lt;/strong>&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>Repository name (필수):&lt;/strong> 저장소 이름을 입력합니다. (예: &lt;code>my-new-repo&lt;/code>)&lt;/li>
+&lt;li>&lt;strong>Description (선택):&lt;/strong> 저장소에 대한 설명을 입력합니다.&lt;/li>
+&lt;li>&lt;strong>Visibility 선택:&lt;/strong>
+&lt;ul>
+&lt;li>&lt;code>Public&lt;/code>(공개) → 누구나 볼 수 있음.&lt;/li>
+&lt;li>&lt;code>Private&lt;/code>(비공개) → 본인과 초대한 사용자만 접근 가능.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="4-추가-설정">&lt;strong>4️⃣ 추가 설정&lt;/strong>&lt;/h3>
+&lt;ul>
+&lt;li>✅ &lt;code>Initialize this repository with a README&lt;/code> (선택)
+&lt;ul>
+&lt;li>체크하면 기본적인 &lt;code>README.md&lt;/code> 파일이 생성됨.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>✅ &lt;code>.gitignore&lt;/code> (선택)
+&lt;ul>
+&lt;li>특정 파일을 Git에서 무시하도록 설정 (예: Python, Node.js 등).&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>✅ &lt;code>License&lt;/code> (선택)
+&lt;ul>
+&lt;li>오픈소스 라이선스를 설정 (예: MIT, Apache 2.0 등).&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="5-저장소-생성">&lt;strong>5️⃣ 저장소 생성&lt;/strong>&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>&amp;ldquo;Create repository&amp;rdquo;&lt;/strong> 버튼을 클릭하면 저장소가 생성됩니다.&lt;/li>
+&lt;/ul>
+&lt;h3 id="6-로컬-프로젝트와-연결">&lt;strong>6️⃣ 로컬 프로젝트와 연결&lt;/strong>&lt;/h3>
+&lt;p>이제 로컬에서 작업 중인 프로젝트를 GitHub 저장소에 연결할 수 있습니다.&lt;/p></description></item><item><title>Different URL Formats for Accessing a Git Repository</title><link>https://jongyongpark.github.io/posts/technical-support/git--repo-access-url-formats/</link><pubDate>Fri, 14 Feb 2025 00:00:00 +0000</pubDate><guid>https://jongyongpark.github.io/posts/technical-support/git--repo-access-url-formats/</guid><description>&lt;h2 id="-different-url-formats-for-accessing-a-git-repository">&lt;strong>🔹 Different URL Formats for Accessing a Git Repository&lt;/strong>&lt;/h2>
+&lt;p>Git supports multiple protocols for accessing repositories, each with its own advantages and disadvantages in terms of authentication, security, and ease of use. Below is a summary of the common URL formats, their corresponding protocols, authentication methods, and a comparison of their pros and cons.&lt;/p>
+&lt;hr>
+&lt;h3 id="-git-repository-url-formats-and-their-characteristics">&lt;strong>📌 Git Repository URL Formats and Their Characteristics&lt;/strong>&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;strong>Git URL Format&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Protocol Used&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Authentication Method&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Pros&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Cons&lt;/strong>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>git@host:path/repo.git&lt;/code>&lt;/td>
+&lt;td>&lt;strong>SSH&lt;/strong>&lt;/td>
+&lt;td>SSH key authentication (Private/Public key pair)&lt;/td>
+&lt;td>✅ Secure authentication without storing passwords ✅ Supports read &amp;amp; write access ✅ Works well in automation (CI/CD)&lt;/td>
+&lt;td>❌ Requires setting up SSH keys ❌ Firewalls may block SSH (port 22)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>ssh://git@host/path/repo.git&lt;/code>&lt;/td>
+&lt;td>&lt;strong>SSH&lt;/strong>&lt;/td>
+&lt;td>SSH key authentication&lt;/td>
+&lt;td>✅ Same as &lt;code>git@host:path/repo.git&lt;/code>, but with explicit protocol ✅ More readable for some users&lt;/td>
+&lt;td>❌ Identical disadvantages as the &lt;code>git@&lt;/code> format&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>https://host/path/repo.git&lt;/code>&lt;/td>
+&lt;td>&lt;strong>HTTPS&lt;/strong>&lt;/td>
+&lt;td>Username + Password, or Personal Access Token (PAT)&lt;/td>
+&lt;td>✅ Works without additional setup ✅ Usually allowed through firewalls ✅ Supports 2FA via PAT&lt;/td>
+&lt;td>❌ Requires entering credentials or setting up a credential manager ❌ PATs need to be managed securely&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>git://host/path/repo.git&lt;/code>&lt;/td>
+&lt;td>&lt;strong>Git Daemon (read-only)&lt;/strong>&lt;/td>
+&lt;td>No authentication required&lt;/td>
+&lt;td>✅ Fast and lightweight ✅ Ideal for public repositories&lt;/td>
+&lt;td>❌ No authentication, security risk ❌ Only supports read access&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>/path/to/repo.git&lt;/code>&lt;/td>
+&lt;td>&lt;strong>Local File System&lt;/strong>&lt;/td>
+&lt;td>No authentication needed (local access)&lt;/td>
+&lt;td>✅ Fastest access (no network latency) ✅ No need for authentication&lt;/td>
+&lt;td>❌ Only works on the local machine ❌ Cannot be used for remote access&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h3 id="-pros-and-cons-of-each-git-access-method">&lt;strong>📌 Pros and Cons of Each Git Access Method&lt;/strong>&lt;/h3>
+&lt;h4 id="1-ssh-githostpathrepogit-or-sshgithostpathrepogit">&lt;strong>1️⃣ SSH (&lt;code>git@host:path/repo.git&lt;/code> or &lt;code>ssh://git@host/path/repo.git&lt;/code>)&lt;/strong>&lt;/h4>
+&lt;p>✅ &lt;strong>Pros:&lt;/strong>&lt;/p></description></item></channel></rss>

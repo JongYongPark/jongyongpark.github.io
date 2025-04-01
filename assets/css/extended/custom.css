@@ -1,3 +1,31 @@
+.profile-wrapper {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.profile-avatar {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+}
+
+.profile-title {
+  font-size: 1.8rem;
+  margin-top: 1rem;
+}
+
+.profile-subtitle {
+  color: gray;
+  font-size: 1rem;
+}
+
+.profile-buttons a {
+  display: inline-block;
+  margin: 0.3rem 0.5rem;
+  text-decoration: none;
+  color: #007acc;
+}
+
 .tag-cloud {
   margin-bottom: 2rem;
   display: flex;

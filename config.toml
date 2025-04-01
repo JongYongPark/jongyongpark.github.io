@@ -1,41 +1,54 @@
 baseURL = 'https://jongyongpark.github.io/'
 languageCode = 'ko-kr'
-title = "RyanPark's DevSecOps"
+title = "RyanLabs"
 theme = 'PaperMod'
+paginate = 10
 
-[params]
-  defaultTheme = "auto"
-  ShowReadingTime = true
-  ShowShareButtons = true
-  ShowPostNavLinks = true
-  ShowBreadCrumbs = true
-  ShowCodeCopyButtons = true
-  mainSections = ["posts"]
-  
 [params.profileMode]
-  enabled = false
-  
-[params.homeInfoParams]
-  Title = "RyanPark's DevSecOps Blog 👋"
-  Content = """
-Security & DevOps Engineering Blog
+  enabled = true
+  title = "RyanLabs"
+  subtitle = "DevSecOps Lab"
+  imageUrl = "images/profile.png"   # static/images/profile.png 파일 필요
+  imageTitle = "RyanLabs"
 
-최신 보안 및 DevOps 관련 기술 정보를 공유합니다.
-"""
+  [[params.profileMode.buttons]]
+    name = "Email"
+    url = "mailto:lovemoneyjoy@gmail.com"
 
-[params.assets]
-  favicon = "favicon.ico"
-  favicon16x16 = "favicon-16x16.png"
-  favicon32x32 = "favicon-32x32.png"
-  apple_touch_icon = "apple-touch-icon.png"
-  
-[taxonomies]
-  category = "categories"
-  tag = "tags"
-  series = "series"
+  [[params.profileMode.buttons]]
+    name = "Website"
+    url = "https://your-site.com"
 
-# [permalinks]
-#   post = "/post/:categories/:slug/"
+  [[params.profileMode.buttons]]
+    name = "YouTube"
+    url = "https://youtube.com/yourchannel"
+
+  [[params.profileMode.buttons]]
+    name = "GitHub"
+    url = "https://github.com/JongYongPark"
+
+  [[params.profileMode.buttons]]
+    name = "Instagram"
+    url = "https://instagram.com/yourhandle"
+
+# [params]
+#   description = "DevSecOps 개발자 노트"
+#   author = "Ryan"
+#   defaultTheme = "auto"
+#   homeInfoParams = false # 최근 포스트만 보이도록 true → false 설정
+#   [params.profileMode]
+#     enabled = true
+#     title = "Ryan"
+#     subtitle = "Creator & Data Lover"
+#     imageUrl = "/images/profile.jpg"
+#     imageWidth = 150
+#     imageHeight = 150
+
+# [params.social]
+#   github = "https://github.com/JongYongPark"
+#   email = "lovemoneyjoy@gmail.com"
+#   youtube = ""
+#   instagram = ""
 
 [menu]
   [[menu.main]]
@@ -64,5 +77,16 @@ Security & DevOps Engineering Blog
     url = "/about/"
     weight = 50
 
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  archive = "archives"
+  about = "about"
+
 [outputs]
   home = ["HTML", "RSS", "JSON"]
+  page = ["HTML"]
+
+[permalinks]
+  archives = "/archives/:year/"
+  about = "/about/"

@@ -1,0 +1,45 @@
+{{ define "main" }}
+<div class="page-container">
+  <div class="sidebar">
+    <div class="profile">
+      <div class="profile-logo">
+        <img src="/images/profile.jpg" alt="Ryan">
+      </div>
+      <h2>Ryan</h2>
+      <p class="subtitle">Creator & Data Lover</p>
+      <div class="location">Seoul, South Korea</div>
+      <div class="social-links">
+        <a href="https://github.com/JongYongPark">GitHub</a>
+        <a href="mailto:lovemoneyjoy@gmail.com">Email</a>
+        <a href="#">Website</a>
+        <a href="#">YouTube</a>
+        <a href="#">Instagram</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="breadcrumb">
+      Home / 연도 / {{ .Params.year }}
+    </div>
+
+    <h1>{{ .Params.year }}</h1>
+
+    <div class="year-posts">
+      {{ range .Site.Pages }}
+        {{ if eq (.Date.Format "2006") $.Params.year }}
+        <div class="post-entry">
+          <h3>
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+          </h3>
+          <div class="post-meta">
+            <span>{{ .Date.Format "2006-01-02" }}</span>
+          </div>
+          <p>{{ .Summary }}</p>
+        </div>
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+</div>
+{{ end }}

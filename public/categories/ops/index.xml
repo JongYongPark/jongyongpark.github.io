@@ -1,387 +1,320 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Ops on RyanPark&#39;s DevSecOps</title>
-    <link>http://localhost:1313/categories/ops/</link>
-    <description>Recent content in Ops on RyanPark&#39;s DevSecOps</description>
-    <generator>Hugo -- 0.142.0</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Tue, 04 Mar 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/ops/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Gcc Visibility</title>
-      <link>http://localhost:1313/posts/technical-support/coverity/cov-gcc-visibility/</link>
-      <pubDate>Tue, 04 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/technical-support/coverity/cov-gcc-visibility/</guid>
-      <description>&lt;h1 id=&#34;gcc-visibility&#34;&gt;Gcc Visibility&lt;/h1&gt;
-&lt;p&gt;전처리된 파일에서 보이는 &lt;code&gt;basic_string&lt;/code&gt; 함수의 속성과 컴파일러 옵션이 CIM 소스 창에서 이 함수들이 보이지 않는 이유에 대해 자세히 설명해 드리겠습니다.&lt;/p&gt;
-&lt;h2 id=&#34;가시성-속성-상세-설명&#34;&gt;가시성 속성 상세 설명&lt;/h2&gt;
-&lt;p&gt;다음 코드 라인을 살펴보겠습니다:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;inline&lt;/span&gt; __attribute__ ((__visibility__(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;hidden&amp;#34;&lt;/span&gt;))) __attribute__ ((__exclude_from_explicit_instantiation__))
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;이것은 함수에 두 가지 중요한 GCC/Clang 속성을 적용하고 있습니다:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;__attribute__ ((__visibility__(&amp;quot;hidden&amp;quot;)))&lt;/code&gt; - 이 속성은 컴파일러에게 함수에 &amp;ldquo;hidden&amp;rdquo; 가시성을 부여하도록 지시합니다:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;이 심볼은 공유 라이브러리/실행 파일에서 내보내지지 않습니다&lt;/li&gt;
-&lt;li&gt;다른 모듈에서 동적 링크를 통해 접근할 수 없습니다&lt;/li&gt;
-&lt;li&gt;정의된 컴파일 단위나 라이브러리 내에서만 접근 가능합니다&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;__attribute__ ((__exclude_from_explicit_instantiation__))&lt;/code&gt; - 이 속성은 컴파일러에게 이 함수를 어떤 명시적 템플릿 인스턴스화에도 포함시키지 말라고 지시합니다. 이는 코드 크기를 줄이고 중복 정의를 방지하는 데 도움이 됩니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>SRM Coverity Tool Connector Issues</title>
-      <link>http://localhost:1313/posts/technical-support/srm/srm-coverity-tool-connector/</link>
-      <pubDate>Thu, 27 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/technical-support/srm/srm-coverity-tool-connector/</guid>
-      <description>&lt;h1 id=&#34;an-unexpected-error-occurred-while-validating-the-connection&#34;&gt;An unexpected error occurred while validating the connection&lt;/h1&gt;
-&lt;p&gt;01207318&lt;/p&gt;
-&lt;h3 id=&#34;-문제-요약-및-해결-방법&#34;&gt;&lt;strong&gt;🔍 문제 요약 및 해결 방법&lt;/strong&gt;&lt;/h3&gt;
-&lt;h4 id=&#34;-문제-요약&#34;&gt;✅ &lt;strong&gt;문제 요약&lt;/strong&gt;&lt;/h4&gt;
-&lt;p&gt;고객이 **Coverity(HTTP, 8080 포트)**에 대한 툴 커넥터 설정 중 &lt;strong&gt;&amp;ldquo;An unexpected error occurred while validating the connection&amp;rdquo;&lt;/strong&gt; 오류가 발생했다고 보고함.&lt;br&gt;
-로그를 확인한 결과, 다음과 같은 문제가 발생함:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;오류 메시지:&lt;/strong&gt;&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;ERROR - Creating a new NewHttpClient instance failed with: Response validation for [Coverity Session Cookie] encountered 1 error:
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Ops on RyanLabs</title><link>https://jongyongpark.github.io/categories/ops/</link><description>Recent content in Ops on RyanLabs</description><generator>Hugo -- 0.142.0</generator><language>ko-kr</language><lastBuildDate>Tue, 04 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://jongyongpark.github.io/categories/ops/index.xml" rel="self" type="application/rss+xml"/><item><title>Gcc Visibility</title><link>https://jongyongpark.github.io/posts/technical-support/coverity/cov-gcc-visibility/</link><pubDate>Tue, 04 Mar 2025 00:00:00 +0000</pubDate><guid>https://jongyongpark.github.io/posts/technical-support/coverity/cov-gcc-visibility/</guid><description>&lt;h1 id="gcc-visibility">Gcc Visibility&lt;/h1>
+&lt;p>전처리된 파일에서 보이는 &lt;code>basic_string&lt;/code> 함수의 속성과 컴파일러 옵션이 CIM 소스 창에서 이 함수들이 보이지 않는 이유에 대해 자세히 설명해 드리겠습니다.&lt;/p>
+&lt;h2 id="가시성-속성-상세-설명">가시성 속성 상세 설명&lt;/h2>
+&lt;p>다음 코드 라인을 살펴보겠습니다:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">inline&lt;/span> __attribute__ ((__visibility__(&lt;span style="color:#e6db74">&amp;#34;hidden&amp;#34;&lt;/span>))) __attribute__ ((__exclude_from_explicit_instantiation__))
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>이것은 함수에 두 가지 중요한 GCC/Clang 속성을 적용하고 있습니다:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;code>__attribute__ ((__visibility__(&amp;quot;hidden&amp;quot;)))&lt;/code> - 이 속성은 컴파일러에게 함수에 &amp;ldquo;hidden&amp;rdquo; 가시성을 부여하도록 지시합니다:&lt;/p>
+&lt;ul>
+&lt;li>이 심볼은 공유 라이브러리/실행 파일에서 내보내지지 않습니다&lt;/li>
+&lt;li>다른 모듈에서 동적 링크를 통해 접근할 수 없습니다&lt;/li>
+&lt;li>정의된 컴파일 단위나 라이브러리 내에서만 접근 가능합니다&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>__attribute__ ((__exclude_from_explicit_instantiation__))&lt;/code> - 이 속성은 컴파일러에게 이 함수를 어떤 명시적 템플릿 인스턴스화에도 포함시키지 말라고 지시합니다. 이는 코드 크기를 줄이고 중복 정의를 방지하는 데 도움이 됩니다.&lt;/p></description></item><item><title>SRM Coverity Tool Connector Issues</title><link>https://jongyongpark.github.io/posts/technical-support/srm/srm-coverity-tool-connector/</link><pubDate>Thu, 27 Feb 2025 00:00:00 +0000</pubDate><guid>https://jongyongpark.github.io/posts/technical-support/srm/srm-coverity-tool-connector/</guid><description>&lt;h1 id="an-unexpected-error-occurred-while-validating-the-connection">An unexpected error occurred while validating the connection&lt;/h1>
+&lt;p>01207318&lt;/p>
+&lt;h3 id="-문제-요약-및-해결-방법">&lt;strong>🔍 문제 요약 및 해결 방법&lt;/strong>&lt;/h3>
+&lt;h4 id="-문제-요약">✅ &lt;strong>문제 요약&lt;/strong>&lt;/h4>
+&lt;p>고객이 **Coverity(HTTP, 8080 포트)**에 대한 툴 커넥터 설정 중 &lt;strong>&amp;ldquo;An unexpected error occurred while validating the connection&amp;rdquo;&lt;/strong> 오류가 발생했다고 보고함.&lt;br>
+로그를 확인한 결과, 다음과 같은 문제가 발생함:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>오류 메시지:&lt;/strong>&lt;/p>
+&lt;pre tabindex="0">&lt;code>ERROR - Creating a new NewHttpClient instance failed with: Response validation for [Coverity Session Cookie] encountered 1 error:
 1. Expected a [COVJSESSIONID-build] cookie in the response, but it was missing.
-&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
-&lt;li&gt;Coverity 서버의 응답에서 &lt;strong&gt;&lt;code&gt;COVJSESSIONID-build&lt;/code&gt; 세션 쿠키가 누락됨&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;고객 확인 사항:&lt;/strong&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Coverity API SSL Issue</title>
-      <link>http://localhost:1313/posts/technical-support/coverity/cov-api-ssl/</link>
-      <pubDate>Mon, 24 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/technical-support/coverity/cov-api-ssl/</guid>
-      <description>&lt;h1 id=&#34;blackduck-api-호출-시-발생하는-ssl-인증서-문제를-해결하는-java-코드---disable-ssl&#34;&gt;Blackduck API 호출 시 발생하는 SSL 인증서 문제를 해결하는 Java 코드 - disable SSL&lt;/h1&gt;
-&lt;p&gt;Blackduck API 호출 시 발생하는 SSL 인증서 문제를 해결하는 Java 코드를 작성해드리겠습니다:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; javax.net.ssl.*;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.io.*;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.net.HttpURLConnection;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.net.URL;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.security.cert.X509Certificate;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; java.nio.charset.StandardCharsets;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;BlackDuckApiClient&lt;/span&gt; {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;disableSSLVerification&lt;/span&gt;() {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt; {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            TrustManager&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; trustAllCerts &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; TrustManager&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; X509TrustManager() {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; X509Certificate&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;getAcceptedIssuers&lt;/span&gt;() { &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;; }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;checkClientTrusted&lt;/span&gt;(X509Certificate&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; certs, String authType) { }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;checkServerTrusted&lt;/span&gt;(X509Certificate&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; certs, String authType) { }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            };
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            SSLContext sc &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; SSLContext.&lt;span style=&#34;color:#a6e22e&#34;&gt;getInstance&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;SSL&amp;#34;&lt;/span&gt;);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            sc.&lt;span style=&#34;color:#a6e22e&#34;&gt;init&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;, trustAllCerts, &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; java.&lt;span style=&#34;color:#a6e22e&#34;&gt;security&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;SecureRandom&lt;/span&gt;());
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            HttpsURLConnection.&lt;span style=&#34;color:#a6e22e&#34;&gt;setDefaultSSLSocketFactory&lt;/span&gt;(sc.&lt;span style=&#34;color:#a6e22e&#34;&gt;getSocketFactory&lt;/span&gt;());
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            HostnameVerifier allHostsValid &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (hostname, session) &lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            HttpsURLConnection.&lt;span style=&#34;color:#a6e22e&#34;&gt;setDefaultHostnameVerifier&lt;/span&gt;(allHostsValid);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        } &lt;span style=&#34;color:#66d9ef&#34;&gt;catch&lt;/span&gt; (Exception e) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            e.&lt;span style=&#34;color:#a6e22e&#34;&gt;printStackTrace&lt;/span&gt;();
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; String &lt;span style=&#34;color:#a6e22e&#34;&gt;authenticate&lt;/span&gt;(String baseUrl, String username, String password) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt; {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            URL url &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; URL(baseUrl &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/api/tokens/authenticate&amp;#34;&lt;/span&gt;);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            HttpURLConnection conn &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (HttpURLConnection) url.&lt;span style=&#34;color:#a6e22e&#34;&gt;openConnection&lt;/span&gt;();
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;// 요청 설정&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            conn.&lt;span style=&#34;color:#a6e22e&#34;&gt;setRequestMethod&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;POST&amp;#34;&lt;/span&gt;);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            conn.&lt;span style=&#34;color:#a6e22e&#34;&gt;setRequestProperty&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Accept&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;application/vnd.blackducksoftware.user-4+json&amp;#34;&lt;/span&gt;);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            conn.&lt;span style=&#34;color:#a6e22e&#34;&gt;setRequestProperty&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Content-Type&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;application/json&amp;#34;&lt;/span&gt;);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;// Basic Auth 설정&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            String auth &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; username &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;:&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; password;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            String encodedAuth &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; java.&lt;span style=&#34;color:#a6e22e&#34;&gt;util&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;Base64&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;getEncoder&lt;/span&gt;().&lt;span style=&#34;color:#a6e22e&#34;&gt;encodeToString&lt;/span&gt;(auth.&lt;span style=&#34;color:#a6e22e&#34;&gt;getBytes&lt;/span&gt;());
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            conn.&lt;span style=&#34;color:#a6e22e&#34;&gt;setRequestProperty&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Authorization&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Basic &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; encodedAuth);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            conn.&lt;span style=&#34;color:#a6e22e&#34;&gt;setDoOutput&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#75715e&#34;&gt;// 응답 읽기&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; responseCode &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; conn.&lt;span style=&#34;color:#a6e22e&#34;&gt;getResponseCode&lt;/span&gt;();
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (responseCode &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; HttpURLConnection.&lt;span style=&#34;color:#a6e22e&#34;&gt;HTTP_OK&lt;/span&gt;) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                BufferedReader in &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; BufferedReader(
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; InputStreamReader(conn.&lt;span style=&#34;color:#a6e22e&#34;&gt;getInputStream&lt;/span&gt;(), StandardCharsets.&lt;span style=&#34;color:#a6e22e&#34;&gt;UTF_8&lt;/span&gt;));
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                String inputLine;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                StringBuilder response &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; StringBuilder();
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; ((inputLine &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; in.&lt;span style=&#34;color:#a6e22e&#34;&gt;readLine&lt;/span&gt;()) &lt;span style=&#34;color:#f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    response.&lt;span style=&#34;color:#a6e22e&#34;&gt;append&lt;/span&gt;(inputLine);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                in.&lt;span style=&#34;color:#a6e22e&#34;&gt;close&lt;/span&gt;();
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; response.&lt;span style=&#34;color:#a6e22e&#34;&gt;toString&lt;/span&gt;();
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            } &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                System.&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Response Code: &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; responseCode);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        } &lt;span style=&#34;color:#66d9ef&#34;&gt;catch&lt;/span&gt; (Exception e) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            e.&lt;span style=&#34;color:#a6e22e&#34;&gt;printStackTrace&lt;/span&gt;();
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;(String&lt;span style=&#34;color:#f92672&#34;&gt;[]&lt;/span&gt; args) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;// SSL 검증 비활성화&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        disableSSLVerification();
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        String baseUrl &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;https://your-blackduck-server&amp;#34;&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        String username &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;your-username&amp;#34;&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        String password &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;your-password&amp;#34;&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        String response &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; authenticate(baseUrl, username, password);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        System.&lt;span style=&#34;color:#a6e22e&#34;&gt;out&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;println&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Response: &amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; response);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;안전한 운영 환경을 위한 인증서 설정 방법:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Coverity Performance</title>
-      <link>http://localhost:1313/posts/technical-support/coverity/cov-performance/</link>
-      <pubDate>Fri, 21 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/technical-support/coverity/cov-performance/</guid>
-      <description>&lt;h1 id=&#34;expected-a-covjsessionid-build-cookie-in-the-response-but-it-was-missing&#34;&gt;Expected a [COVJSESSIONID-build] cookie in the response, but it was missing&lt;/h1&gt;
-&lt;p&gt;추가 로그 분석을 통해 더 자세한 상황을 파악할 수 있습니다:&lt;/p&gt;
-&lt;p&gt;원래 문제:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Expected a [COVJSESSIONID-build] cookie in the response, but it was missing
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;추가 로그 분석:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;인증 상태:&lt;/li&gt;
-&lt;/ol&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Authentication=CovUsernameAuthenticationToken [
-    Principal=admin (Admin User),
-    Authenticated=true,
-    RemoteIpAddress=10.2.150.57,
-    SessionId=69FB1C3437377E29D3B887C9FDFA5403,
-    Granted Authorities=[ROLE_AUTHENTICATED_USER]
+&lt;/code>&lt;/pre>&lt;ul>
+&lt;li>Coverity 서버의 응답에서 &lt;strong>&lt;code>COVJSESSIONID-build&lt;/code> 세션 쿠키가 누락됨&lt;/strong>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>고객 확인 사항:&lt;/strong>&lt;/p></description></item><item><title>Coverity API SSL Issue</title><link>https://jongyongpark.github.io/posts/technical-support/coverity/cov-api-ssl/</link><pubDate>Mon, 24 Feb 2025 00:00:00 +0000</pubDate><guid>https://jongyongpark.github.io/posts/technical-support/coverity/cov-api-ssl/</guid><description>&lt;h1 id="blackduck-api-호출-시-발생하는-ssl-인증서-문제를-해결하는-java-코드---disable-ssl">Blackduck API 호출 시 발생하는 SSL 인증서 문제를 해결하는 Java 코드 - disable SSL&lt;/h1>
+&lt;p>Blackduck API 호출 시 발생하는 SSL 인증서 문제를 해결하는 Java 코드를 작성해드리겠습니다:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-java" data-lang="java">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> javax.net.ssl.*;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.io.*;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.net.HttpURLConnection;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.net.URL;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.security.cert.X509Certificate;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> java.nio.charset.StandardCharsets;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">BlackDuckApiClient&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">disableSSLVerification&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">try&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> TrustManager&lt;span style="color:#f92672">[]&lt;/span> trustAllCerts &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> TrustManager&lt;span style="color:#f92672">[]&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">new&lt;/span> X509TrustManager() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> X509Certificate&lt;span style="color:#f92672">[]&lt;/span> &lt;span style="color:#a6e22e">getAcceptedIssuers&lt;/span>() { &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>; }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">checkClientTrusted&lt;/span>(X509Certificate&lt;span style="color:#f92672">[]&lt;/span> certs, String authType) { }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">checkServerTrusted&lt;/span>(X509Certificate&lt;span style="color:#f92672">[]&lt;/span> certs, String authType) { }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> };
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> SSLContext sc &lt;span style="color:#f92672">=&lt;/span> SSLContext.&lt;span style="color:#a6e22e">getInstance&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;SSL&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> sc.&lt;span style="color:#a6e22e">init&lt;/span>(&lt;span style="color:#66d9ef">null&lt;/span>, trustAllCerts, &lt;span style="color:#66d9ef">new&lt;/span> java.&lt;span style="color:#a6e22e">security&lt;/span>.&lt;span style="color:#a6e22e">SecureRandom&lt;/span>());
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> HttpsURLConnection.&lt;span style="color:#a6e22e">setDefaultSSLSocketFactory&lt;/span>(sc.&lt;span style="color:#a6e22e">getSocketFactory&lt;/span>());
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> HostnameVerifier allHostsValid &lt;span style="color:#f92672">=&lt;/span> (hostname, session) &lt;span style="color:#f92672">-&amp;gt;&lt;/span> &lt;span style="color:#66d9ef">true&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> HttpsURLConnection.&lt;span style="color:#a6e22e">setDefaultHostnameVerifier&lt;/span>(allHostsValid);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">catch&lt;/span> (Exception e) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> e.&lt;span style="color:#a6e22e">printStackTrace&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> String &lt;span style="color:#a6e22e">authenticate&lt;/span>(String baseUrl, String username, String password) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">try&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> URL url &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> URL(baseUrl &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34;/api/tokens/authenticate&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> HttpURLConnection conn &lt;span style="color:#f92672">=&lt;/span> (HttpURLConnection) url.&lt;span style="color:#a6e22e">openConnection&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 요청 설정&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> conn.&lt;span style="color:#a6e22e">setRequestMethod&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;POST&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> conn.&lt;span style="color:#a6e22e">setRequestProperty&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Accept&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;application/vnd.blackducksoftware.user-4+json&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> conn.&lt;span style="color:#a6e22e">setRequestProperty&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Content-Type&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;application/json&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Basic Auth 설정&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String auth &lt;span style="color:#f92672">=&lt;/span> username &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34;:&amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> password;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String encodedAuth &lt;span style="color:#f92672">=&lt;/span> java.&lt;span style="color:#a6e22e">util&lt;/span>.&lt;span style="color:#a6e22e">Base64&lt;/span>.&lt;span style="color:#a6e22e">getEncoder&lt;/span>().&lt;span style="color:#a6e22e">encodeToString&lt;/span>(auth.&lt;span style="color:#a6e22e">getBytes&lt;/span>());
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> conn.&lt;span style="color:#a6e22e">setRequestProperty&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Authorization&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Basic &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> encodedAuth);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> conn.&lt;span style="color:#a6e22e">setDoOutput&lt;/span>(&lt;span style="color:#66d9ef">true&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 응답 읽기&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">int&lt;/span> responseCode &lt;span style="color:#f92672">=&lt;/span> conn.&lt;span style="color:#a6e22e">getResponseCode&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (responseCode &lt;span style="color:#f92672">==&lt;/span> HttpURLConnection.&lt;span style="color:#a6e22e">HTTP_OK&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> BufferedReader in &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> BufferedReader(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">new&lt;/span> InputStreamReader(conn.&lt;span style="color:#a6e22e">getInputStream&lt;/span>(), StandardCharsets.&lt;span style="color:#a6e22e">UTF_8&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String inputLine;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> StringBuilder response &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> StringBuilder();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">while&lt;/span> ((inputLine &lt;span style="color:#f92672">=&lt;/span> in.&lt;span style="color:#a6e22e">readLine&lt;/span>()) &lt;span style="color:#f92672">!=&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> response.&lt;span style="color:#a6e22e">append&lt;/span>(inputLine);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> in.&lt;span style="color:#a6e22e">close&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> response.&lt;span style="color:#a6e22e">toString&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">else&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Response Code: &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> responseCode);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">catch&lt;/span> (Exception e) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> e.&lt;span style="color:#a6e22e">printStackTrace&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(String&lt;span style="color:#f92672">[]&lt;/span> args) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// SSL 검증 비활성화&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> disableSSLVerification();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String baseUrl &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;https://your-blackduck-server&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String username &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;your-username&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String password &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;your-password&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> String response &lt;span style="color:#f92672">=&lt;/span> authenticate(baseUrl, username, password);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> System.&lt;span style="color:#a6e22e">out&lt;/span>.&lt;span style="color:#a6e22e">println&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Response: &amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> response);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>안전한 운영 환경을 위한 인증서 설정 방법:&lt;/p></description></item><item><title>Coverity Performance</title><link>https://jongyongpark.github.io/posts/technical-support/coverity/cov-performance/</link><pubDate>Fri, 21 Feb 2025 00:00:00 +0000</pubDate><guid>https://jongyongpark.github.io/posts/technical-support/coverity/cov-performance/</guid><description>&lt;h1 id="expected-a-covjsessionid-build-cookie-in-the-response-but-it-was-missing">Expected a [COVJSESSIONID-build] cookie in the response, but it was missing&lt;/h1>
+&lt;p>추가 로그 분석을 통해 더 자세한 상황을 파악할 수 있습니다:&lt;/p>
+&lt;p>원래 문제:&lt;/p>
+&lt;pre tabindex="0">&lt;code>Expected a [COVJSESSIONID-build] cookie in the response, but it was missing
+&lt;/code>&lt;/pre>&lt;p>추가 로그 분석:&lt;/p>
+&lt;ol>
+&lt;li>인증 상태:&lt;/li>
+&lt;/ol>
+&lt;pre tabindex="0">&lt;code>Authentication=CovUsernameAuthenticationToken [
+Principal=admin (Admin User),
+Authenticated=true,
+RemoteIpAddress=10.2.150.57,
+SessionId=69FB1C3437377E29D3B887C9FDFA5403,
+Granted Authorities=[ROLE_AUTHENTICATED_USER]
 ]
-&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
-&lt;li&gt;서버 측에서는 admin 사용자가 성공적으로 인증됨&lt;/li&gt;
-&lt;li&gt;세션이 정상적으로 생성됨&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ol start=&#34;2&#34;&gt;
-&lt;li&gt;백그라운드 프로세스:&lt;/li&gt;
-&lt;/ol&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;com.coverity.ces.service.GarbageCollectionServiceImpl.runGarbageCollection
-&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
-&lt;li&gt;GarbageCollection 서비스가 정상적으로 동작 중&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;수정된 해결 방안:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;세션 관련:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Different URL Formats for Accessing a Git Repository</title>
-      <link>http://localhost:1313/posts/technical-support/git--repo-access-url-formats/</link>
-      <pubDate>Fri, 14 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/technical-support/git--repo-access-url-formats/</guid>
-      <description>&lt;h2 id=&#34;-different-url-formats-for-accessing-a-git-repository&#34;&gt;&lt;strong&gt;🔹 Different URL Formats for Accessing a Git Repository&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Git supports multiple protocols for accessing repositories, each with its own advantages and disadvantages in terms of authentication, security, and ease of use. Below is a summary of the common URL formats, their corresponding protocols, authentication methods, and a comparison of their pros and cons.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;-git-repository-url-formats-and-their-characteristics&#34;&gt;&lt;strong&gt;📌 Git Repository URL Formats and Their Characteristics&lt;/strong&gt;&lt;/h3&gt;
-&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;&lt;strong&gt;Git URL Format&lt;/strong&gt;&lt;/th&gt;
-          &lt;th&gt;&lt;strong&gt;Protocol Used&lt;/strong&gt;&lt;/th&gt;
-          &lt;th&gt;&lt;strong&gt;Authentication Method&lt;/strong&gt;&lt;/th&gt;
-          &lt;th&gt;&lt;strong&gt;Pros&lt;/strong&gt;&lt;/th&gt;
-          &lt;th&gt;&lt;strong&gt;Cons&lt;/strong&gt;&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;code&gt;git@host:path/repo.git&lt;/code&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;strong&gt;SSH&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;SSH key authentication (Private/Public key pair)&lt;/td&gt;
-          &lt;td&gt;✅ Secure authentication without storing passwords ✅ Supports read &amp;amp; write access ✅ Works well in automation (CI/CD)&lt;/td&gt;
-          &lt;td&gt;❌ Requires setting up SSH keys ❌ Firewalls may block SSH (port 22)&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;code&gt;ssh://git@host/path/repo.git&lt;/code&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;strong&gt;SSH&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;SSH key authentication&lt;/td&gt;
-          &lt;td&gt;✅ Same as &lt;code&gt;git@host:path/repo.git&lt;/code&gt;, but with explicit protocol ✅ More readable for some users&lt;/td&gt;
-          &lt;td&gt;❌ Identical disadvantages as the &lt;code&gt;git@&lt;/code&gt; format&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;code&gt;https://host/path/repo.git&lt;/code&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;strong&gt;HTTPS&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;Username + Password, or Personal Access Token (PAT)&lt;/td&gt;
-          &lt;td&gt;✅ Works without additional setup ✅ Usually allowed through firewalls ✅ Supports 2FA via PAT&lt;/td&gt;
-          &lt;td&gt;❌ Requires entering credentials or setting up a credential manager ❌ PATs need to be managed securely&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;code&gt;git://host/path/repo.git&lt;/code&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;strong&gt;Git Daemon (read-only)&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;No authentication required&lt;/td&gt;
-          &lt;td&gt;✅ Fast and lightweight ✅ Ideal for public repositories&lt;/td&gt;
-          &lt;td&gt;❌ No authentication, security risk ❌ Only supports read access&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;code&gt;/path/to/repo.git&lt;/code&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;strong&gt;Local File System&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;No authentication needed (local access)&lt;/td&gt;
-          &lt;td&gt;✅ Fastest access (no network latency) ✅ No need for authentication&lt;/td&gt;
-          &lt;td&gt;❌ Only works on the local machine ❌ Cannot be used for remote access&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;-pros-and-cons-of-each-git-access-method&#34;&gt;&lt;strong&gt;📌 Pros and Cons of Each Git Access Method&lt;/strong&gt;&lt;/h3&gt;
-&lt;h4 id=&#34;1-ssh-githostpathrepogit-or-sshgithostpathrepogit&#34;&gt;&lt;strong&gt;1️⃣ SSH (&lt;code&gt;git@host:path/repo.git&lt;/code&gt; or &lt;code&gt;ssh://git@host/path/repo.git&lt;/code&gt;)&lt;/strong&gt;&lt;/h4&gt;
-&lt;p&gt;✅ &lt;strong&gt;Pros:&lt;/strong&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>SRM : Reset Admin Password on MariaDB</title>
-      <link>http://localhost:1313/posts/technical-support/srm/srm-reset-mariadb-admin-password/</link>
-      <pubDate>Mon, 03 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/technical-support/srm/srm-reset-mariadb-admin-password/</guid>
-      <description>&lt;p&gt;How to reset admin password on MariaDB from SRM (Softeware Risk Manager).&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;This script recovers from a lost or forgotten super-admin password. It resets both the super-admin password and the database root user password to the provided value By SRM&lt;/p&gt;
-&lt;hr&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#!/bin/bash
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# This script recovers from a lost or forgotten super-admin password.&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# It resets both the super-admin password and the database root user password to the provided value.&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# By SRM&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; admin-password-recover-script&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;### Validate input and set SRM installation path&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$#&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; -ne &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$#&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; -ne &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;; &lt;span style=&#34;color:#66d9ef&#34;&gt;then&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Usage: &lt;/span&gt;$0&lt;span style=&#34;color:#e6db74&#34;&gt; [path to SRM installation folder]&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;If path contains spaces, wrap it in double quotes.&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Example:&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;   &lt;/span&gt;$0&lt;span style=&#34;color:#e6db74&#34;&gt; /opt/srm&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    exit &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;fi&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  local SRM_PATH
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$#&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; -eq &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;; &lt;span style=&#34;color:#66d9ef&#34;&gt;then&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    SRM_PATH&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$1
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Enter path to SRM installation folder:&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    read -r SRM_PATH
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;fi&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;# Remove trailing slash from the input path&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  SRM_PATH&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;SRM_PATH%/&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;# Check for MariaDB binary file&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; ! -f &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$SRM_PATH&lt;span style=&#34;color:#e6db74&#34;&gt;/mysql/bin/mysqld&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;; &lt;span style=&#34;color:#66d9ef&#34;&gt;then&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;The given SRM directory does not appear to have appropriate mysql files&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    exit &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;fi&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;### Get new password&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Enter new administrator password:&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  read -rs NEW_PASSWORD
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;### Create temporary initialization file&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  TEMP_INIT_FILE&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;mktemp&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;### Check MariaDB configuration file&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Looking for MariaDB configuration file...&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  DB_CONFIG&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$SRM_PATH/mysql/my.cnf
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; ! -f &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$DB_CONFIG&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;; &lt;span style=&#34;color:#66d9ef&#34;&gt;then&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$DB_CONFIG&lt;span style=&#34;color:#e6db74&#34;&gt; not found. Aborting&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    exit &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;fi&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;### Check MariaDB data directory from SRM properties file&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Found MariaDB configuration at &lt;/span&gt;$DB_CONFIG&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Looking for SRM database...&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  DB_DATA&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;grep &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;mysql_data_directory&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$SRM_PATH&lt;span style=&#34;color:#e6db74&#34;&gt;/properties.ini&amp;#34;&lt;/span&gt; | cut -d&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;=&amp;#39;&lt;/span&gt; -f2&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; ! -d &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$DB_DATA&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;; &lt;span style=&#34;color:#66d9ef&#34;&gt;then&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;MariaDB data directory not found (looked at &lt;/span&gt;$DB_DATA&lt;span style=&#34;color:#e6db74&#34;&gt;). Aborting&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    exit &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;fi&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;### Verify SRM database&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Found MariaDB data directory at &lt;/span&gt;$DB_DATA&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  DB_NAME&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;srm
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; ! -d &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$DB_DATA&lt;span style=&#34;color:#e6db74&#34;&gt;/&lt;/span&gt;$DB_NAME&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;; &lt;span style=&#34;color:#66d9ef&#34;&gt;then&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    DB_NAME&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;bitnami_srm
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;fi&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; ! -d &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$DB_DATA&lt;span style=&#34;color:#e6db74&#34;&gt;/&lt;/span&gt;$DB_NAME&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;; &lt;span style=&#34;color:#66d9ef&#34;&gt;then&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;SRM database not found. Aborting&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    exit &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;fi&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Found SRM database &lt;/span&gt;$DB_NAME&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;### Generate MariaDB initialization file&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Generating MariaDB recovery init file...&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;SET PASSWORD FOR &amp;#39;root&amp;#39;@&amp;#39;localhost&amp;#39; = PASSWORD(&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;NEW_PASSWORD//&lt;span style=&#34;color:#ae81ff&#34;&gt;\&amp;#39;&lt;/span&gt;/&lt;span style=&#34;color:#ae81ff&#34;&gt;\&amp;#39;\&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;);&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;UPDATE \`&lt;/span&gt;$DB_NAME&lt;span style=&#34;color:#e6db74&#34;&gt;\`.\`LOCAL_USERS\` SET \`PASSWORD\`=SHA2(&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;NEW_PASSWORD//&lt;span style=&#34;color:#ae81ff&#34;&gt;\&amp;#39;&lt;/span&gt;/&lt;span style=&#34;color:#ae81ff&#34;&gt;\&amp;#39;\&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;, 256) WHERE \`ID\`=1;&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;SHUTDOWN;&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt; &amp;gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$TEMP_INIT_FILE&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;### Stop SRM services&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Shutting down SRM services&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$SRM_PATH&lt;span style=&#34;color:#e6db74&#34;&gt;/ctlscript.sh&amp;#34;&lt;/span&gt; stop
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;### Reset passwords&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Resetting passwords...&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;# If root user, set file permissions and run as mysql user&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;((&lt;/span&gt; EUID &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;))&lt;/span&gt;; &lt;span style=&#34;color:#66d9ef&#34;&gt;then&lt;/span&gt; 
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    chown mysql &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$TEMP_INIT_FILE&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$SRM_PATH&lt;span style=&#34;color:#e6db74&#34;&gt;/mysql/bin/mysqld&amp;#34;&lt;/span&gt; --defaults-file&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$DB_CONFIG&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; --init-file&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$TEMP_INIT_FILE&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; --console --user&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;mysql
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$SRM_PATH&lt;span style=&#34;color:#e6db74&#34;&gt;/mysql/bin/mysqld&amp;#34;&lt;/span&gt; --defaults-file&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$DB_CONFIG&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; --init-file&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$TEMP_INIT_FILE&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt; --console
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;fi&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;### Clean up and display completion message&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Removing recovery init file...&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  rm -f &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$TEMP_INIT_FILE&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Done! You may start SRM again.&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Execute the function&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;admin-password-recover-script &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$@&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Ex&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; admin-password-recover-script ~/workspace/dev_tool/codedx/srm-2024.12.1/srm
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
-    </item>
-    <item>
-      <title>Azure DevOps API Rate Limits</title>
-      <link>http://localhost:1313/posts/technical-support/azure--devops-api-rate-limits/</link>
-      <pubDate>Fri, 31 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/technical-support/azure--devops-api-rate-limits/</guid>
-      <description>&lt;h2 id=&#34;azure-devops-api-rate-limits&#34;&gt;&lt;strong&gt;Azure DevOps API Rate Limits&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Azure DevOps imposes &lt;strong&gt;rate limits&lt;/strong&gt; on its REST API to ensure fair usage and prevent abuse. If you exceed these limits, your API requests may be throttled, resulting in HTTP &lt;code&gt;429 Too Many Requests&lt;/code&gt; responses. To avoid this, it&amp;rsquo;s important to monitor and manage your API usage.&lt;/p&gt;
-&lt;p&gt;Here’s how you can check and handle Azure DevOps Work Items API rate limits:&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;1-understanding-azure-devops-api-rate-limits&#34;&gt;&lt;strong&gt;1. Understanding Azure DevOps API Rate Limits&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;Azure DevOps API rate limits are based on:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>How to send findings from SRM (Software Risk Management) to Azure DevOps Work Items</title>
-      <link>http://localhost:1313/posts/technical-support/srm/srm-findings-to-azure-devops-work/</link>
-      <pubDate>Fri, 31 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/technical-support/srm/srm-findings-to-azure-devops-work/</guid>
-      <description>&lt;p&gt;how to check Azure DevOps Work Items API rate limit&lt;/p&gt;
-&lt;h2 id=&#34;how-to-send-findings-from-srm-software-risk-management-to-azure-devops-work-items&#34;&gt;How to send findings from SRM (Software Risk Management) to Azure DevOps Work Items&lt;/h2&gt;
-&lt;p&gt;To send findings from &lt;strong&gt;SRM (Software Risk Management)&lt;/strong&gt; to &lt;strong&gt;Azure DevOps Work Items&lt;/strong&gt;, you can follow the steps outlined below. This process involves using the Azure DevOps REST API to create or update work items based on the SRM findings. Here&amp;rsquo;s a detailed guide:&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;1-prerequisites&#34;&gt;&lt;strong&gt;1. Prerequisites&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;Before starting, ensure the following:&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+&lt;/code>&lt;/pre>&lt;ul>
+&lt;li>서버 측에서는 admin 사용자가 성공적으로 인증됨&lt;/li>
+&lt;li>세션이 정상적으로 생성됨&lt;/li>
+&lt;/ul>
+&lt;ol start="2">
+&lt;li>백그라운드 프로세스:&lt;/li>
+&lt;/ol>
+&lt;pre tabindex="0">&lt;code>com.coverity.ces.service.GarbageCollectionServiceImpl.runGarbageCollection
+&lt;/code>&lt;/pre>&lt;ul>
+&lt;li>GarbageCollection 서비스가 정상적으로 동작 중&lt;/li>
+&lt;/ul>
+&lt;p>수정된 해결 방안:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>세션 관련:&lt;/p></description></item><item><title>Different URL Formats for Accessing a Git Repository</title><link>https://jongyongpark.github.io/posts/technical-support/git--repo-access-url-formats/</link><pubDate>Fri, 14 Feb 2025 00:00:00 +0000</pubDate><guid>https://jongyongpark.github.io/posts/technical-support/git--repo-access-url-formats/</guid><description>&lt;h2 id="-different-url-formats-for-accessing-a-git-repository">&lt;strong>🔹 Different URL Formats for Accessing a Git Repository&lt;/strong>&lt;/h2>
+&lt;p>Git supports multiple protocols for accessing repositories, each with its own advantages and disadvantages in terms of authentication, security, and ease of use. Below is a summary of the common URL formats, their corresponding protocols, authentication methods, and a comparison of their pros and cons.&lt;/p>
+&lt;hr>
+&lt;h3 id="-git-repository-url-formats-and-their-characteristics">&lt;strong>📌 Git Repository URL Formats and Their Characteristics&lt;/strong>&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;strong>Git URL Format&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Protocol Used&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Authentication Method&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Pros&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Cons&lt;/strong>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>git@host:path/repo.git&lt;/code>&lt;/td>
+&lt;td>&lt;strong>SSH&lt;/strong>&lt;/td>
+&lt;td>SSH key authentication (Private/Public key pair)&lt;/td>
+&lt;td>✅ Secure authentication without storing passwords ✅ Supports read &amp;amp; write access ✅ Works well in automation (CI/CD)&lt;/td>
+&lt;td>❌ Requires setting up SSH keys ❌ Firewalls may block SSH (port 22)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>ssh://git@host/path/repo.git&lt;/code>&lt;/td>
+&lt;td>&lt;strong>SSH&lt;/strong>&lt;/td>
+&lt;td>SSH key authentication&lt;/td>
+&lt;td>✅ Same as &lt;code>git@host:path/repo.git&lt;/code>, but with explicit protocol ✅ More readable for some users&lt;/td>
+&lt;td>❌ Identical disadvantages as the &lt;code>git@&lt;/code> format&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>https://host/path/repo.git&lt;/code>&lt;/td>
+&lt;td>&lt;strong>HTTPS&lt;/strong>&lt;/td>
+&lt;td>Username + Password, or Personal Access Token (PAT)&lt;/td>
+&lt;td>✅ Works without additional setup ✅ Usually allowed through firewalls ✅ Supports 2FA via PAT&lt;/td>
+&lt;td>❌ Requires entering credentials or setting up a credential manager ❌ PATs need to be managed securely&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>git://host/path/repo.git&lt;/code>&lt;/td>
+&lt;td>&lt;strong>Git Daemon (read-only)&lt;/strong>&lt;/td>
+&lt;td>No authentication required&lt;/td>
+&lt;td>✅ Fast and lightweight ✅ Ideal for public repositories&lt;/td>
+&lt;td>❌ No authentication, security risk ❌ Only supports read access&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>/path/to/repo.git&lt;/code>&lt;/td>
+&lt;td>&lt;strong>Local File System&lt;/strong>&lt;/td>
+&lt;td>No authentication needed (local access)&lt;/td>
+&lt;td>✅ Fastest access (no network latency) ✅ No need for authentication&lt;/td>
+&lt;td>❌ Only works on the local machine ❌ Cannot be used for remote access&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h3 id="-pros-and-cons-of-each-git-access-method">&lt;strong>📌 Pros and Cons of Each Git Access Method&lt;/strong>&lt;/h3>
+&lt;h4 id="1-ssh-githostpathrepogit-or-sshgithostpathrepogit">&lt;strong>1️⃣ SSH (&lt;code>git@host:path/repo.git&lt;/code> or &lt;code>ssh://git@host/path/repo.git&lt;/code>)&lt;/strong>&lt;/h4>
+&lt;p>✅ &lt;strong>Pros:&lt;/strong>&lt;/p></description></item><item><title>SRM : Reset Admin Password on MariaDB</title><link>https://jongyongpark.github.io/posts/technical-support/srm/srm-reset-mariadb-admin-password/</link><pubDate>Mon, 03 Feb 2025 00:00:00 +0000</pubDate><guid>https://jongyongpark.github.io/posts/technical-support/srm/srm-reset-mariadb-admin-password/</guid><description>&lt;p>How to reset admin password on MariaDB from SRM (Softeware Risk Manager).&lt;/p>
+&lt;hr>
+&lt;p>This script recovers from a lost or forgotten super-admin password. It resets both the super-admin password and the database root user password to the provided value By SRM&lt;/p>
+&lt;hr>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#!/bin/bash
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># This script recovers from a lost or forgotten super-admin password.&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># It resets both the super-admin password and the database root user password to the provided value.&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># By SRM&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> admin-password-recover-script&lt;span style="color:#f92672">()&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">### Validate input and set SRM installation path&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">[&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&lt;/span>$#&lt;span style="color:#e6db74">&amp;#34;&lt;/span> -ne &lt;span style="color:#ae81ff">1&lt;/span> &lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> &lt;span style="color:#f92672">[&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&lt;/span>$#&lt;span style="color:#e6db74">&amp;#34;&lt;/span> -ne &lt;span style="color:#ae81ff">0&lt;/span> &lt;span style="color:#f92672">]&lt;/span>; &lt;span style="color:#66d9ef">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34;Usage: &lt;/span>$0&lt;span style="color:#e6db74"> [path to SRM installation folder]&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34;If path contains spaces, wrap it in double quotes.&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34;Example:&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34; &lt;/span>$0&lt;span style="color:#e6db74"> /opt/srm&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> exit &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> local SRM_PATH
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">[&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&lt;/span>$#&lt;span style="color:#e6db74">&amp;#34;&lt;/span> -eq &lt;span style="color:#ae81ff">1&lt;/span> &lt;span style="color:#f92672">]&lt;/span>; &lt;span style="color:#66d9ef">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> SRM_PATH&lt;span style="color:#f92672">=&lt;/span>$1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34;Enter path to SRM installation folder:&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> read -r SRM_PATH
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># Remove trailing slash from the input path&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> SRM_PATH&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>SRM_PATH%/&lt;span style="color:#e6db74">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># Check for MariaDB binary file&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">[&lt;/span> ! -f &lt;span style="color:#e6db74">&amp;#34;&lt;/span>$SRM_PATH&lt;span style="color:#e6db74">/mysql/bin/mysqld&amp;#34;&lt;/span> &lt;span style="color:#f92672">]&lt;/span>; &lt;span style="color:#66d9ef">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34;The given SRM directory does not appear to have appropriate mysql files&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> exit &lt;span style="color:#ae81ff">2&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">### Get new password&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34;Enter new administrator password:&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> read -rs NEW_PASSWORD
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">### Create temporary initialization file&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> TEMP_INIT_FILE&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">$(&lt;/span>mktemp&lt;span style="color:#66d9ef">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">### Check MariaDB configuration file&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34;Looking for MariaDB configuration file...&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> DB_CONFIG&lt;span style="color:#f92672">=&lt;/span>$SRM_PATH/mysql/my.cnf
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">[&lt;/span> ! -f &lt;span style="color:#e6db74">&amp;#34;&lt;/span>$DB_CONFIG&lt;span style="color:#e6db74">&amp;#34;&lt;/span> &lt;span style="color:#f92672">]&lt;/span>; &lt;span style="color:#66d9ef">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34;&lt;/span>$DB_CONFIG&lt;span style="color:#e6db74"> not found. Aborting&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> exit &lt;span style="color:#ae81ff">2&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">### Check MariaDB data directory from SRM properties file&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34;Found MariaDB configuration at &lt;/span>$DB_CONFIG&lt;span style="color:#e6db74">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34;Looking for SRM database...&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> DB_DATA&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">$(&lt;/span>grep &lt;span style="color:#e6db74">&amp;#34;mysql_data_directory&amp;#34;&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&lt;/span>$SRM_PATH&lt;span style="color:#e6db74">/properties.ini&amp;#34;&lt;/span> | cut -d&lt;span style="color:#e6db74">&amp;#39;=&amp;#39;&lt;/span> -f2&lt;span style="color:#66d9ef">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">[&lt;/span> ! -d &lt;span style="color:#e6db74">&amp;#34;&lt;/span>$DB_DATA&lt;span style="color:#e6db74">&amp;#34;&lt;/span> &lt;span style="color:#f92672">]&lt;/span>; &lt;span style="color:#66d9ef">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34;MariaDB data directory not found (looked at &lt;/span>$DB_DATA&lt;span style="color:#e6db74">). Aborting&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> exit &lt;span style="color:#ae81ff">2&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">### Verify SRM database&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34;Found MariaDB data directory at &lt;/span>$DB_DATA&lt;span style="color:#e6db74">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> DB_NAME&lt;span style="color:#f92672">=&lt;/span>srm
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">[&lt;/span> ! -d &lt;span style="color:#e6db74">&amp;#34;&lt;/span>$DB_DATA&lt;span style="color:#e6db74">/&lt;/span>$DB_NAME&lt;span style="color:#e6db74">&amp;#34;&lt;/span> &lt;span style="color:#f92672">]&lt;/span>; &lt;span style="color:#66d9ef">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> DB_NAME&lt;span style="color:#f92672">=&lt;/span>bitnami_srm
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">[&lt;/span> ! -d &lt;span style="color:#e6db74">&amp;#34;&lt;/span>$DB_DATA&lt;span style="color:#e6db74">/&lt;/span>$DB_NAME&lt;span style="color:#e6db74">&amp;#34;&lt;/span> &lt;span style="color:#f92672">]&lt;/span>; &lt;span style="color:#66d9ef">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34;SRM database not found. Aborting&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> exit &lt;span style="color:#ae81ff">2&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34;Found SRM database &lt;/span>$DB_NAME&lt;span style="color:#e6db74">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">### Generate MariaDB initialization file&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34;Generating MariaDB recovery init file...&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34;SET PASSWORD FOR &amp;#39;root&amp;#39;@&amp;#39;localhost&amp;#39; = PASSWORD(&amp;#39;&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>NEW_PASSWORD//&lt;span style="color:#ae81ff">\&amp;#39;&lt;/span>/&lt;span style="color:#ae81ff">\&amp;#39;\&amp;#39;&lt;/span>&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">&amp;#39;);&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34;UPDATE \`&lt;/span>$DB_NAME&lt;span style="color:#e6db74">\`.\`LOCAL_USERS\` SET \`PASSWORD\`=SHA2(&amp;#39;&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>NEW_PASSWORD//&lt;span style="color:#ae81ff">\&amp;#39;&lt;/span>/&lt;span style="color:#ae81ff">\&amp;#39;\&amp;#39;&lt;/span>&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">&amp;#39;, 256) WHERE \`ID\`=1;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34;SHUTDOWN;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">}&lt;/span> &amp;gt; &lt;span style="color:#e6db74">&amp;#34;&lt;/span>$TEMP_INIT_FILE&lt;span style="color:#e6db74">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">### Stop SRM services&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34;Shutting down SRM services&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;&lt;/span>$SRM_PATH&lt;span style="color:#e6db74">/ctlscript.sh&amp;#34;&lt;/span> stop
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">### Reset passwords&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34;Resetting passwords...&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># If root user, set file permissions and run as mysql user&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">((&lt;/span> EUID &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span> &lt;span style="color:#f92672">))&lt;/span>; &lt;span style="color:#66d9ef">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> chown mysql &lt;span style="color:#e6db74">&amp;#34;&lt;/span>$TEMP_INIT_FILE&lt;span style="color:#e6db74">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;&lt;/span>$SRM_PATH&lt;span style="color:#e6db74">/mysql/bin/mysqld&amp;#34;&lt;/span> --defaults-file&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>$DB_CONFIG&lt;span style="color:#e6db74">&amp;#34;&lt;/span> --init-file&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>$TEMP_INIT_FILE&lt;span style="color:#e6db74">&amp;#34;&lt;/span> --console --user&lt;span style="color:#f92672">=&lt;/span>mysql
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;&lt;/span>$SRM_PATH&lt;span style="color:#e6db74">/mysql/bin/mysqld&amp;#34;&lt;/span> --defaults-file&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>$DB_CONFIG&lt;span style="color:#e6db74">&amp;#34;&lt;/span> --init-file&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>$TEMP_INIT_FILE&lt;span style="color:#e6db74">&amp;#34;&lt;/span> --console
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">### Clean up and display completion message&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34;Removing recovery init file...&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> rm -f &lt;span style="color:#e6db74">&amp;#34;&lt;/span>$TEMP_INIT_FILE&lt;span style="color:#e6db74">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> echo &lt;span style="color:#e6db74">&amp;#34;Done! You may start SRM again.&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># Execute the function&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>admin-password-recover-script &lt;span style="color:#e6db74">&amp;#34;&lt;/span>$@&lt;span style="color:#e6db74">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Ex&lt;span style="color:#f92672">)&lt;/span> admin-password-recover-script ~/workspace/dev_tool/codedx/srm-2024.12.1/srm
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Azure DevOps API Rate Limits</title><link>https://jongyongpark.github.io/posts/technical-support/azure--devops-api-rate-limits/</link><pubDate>Fri, 31 Jan 2025 00:00:00 +0000</pubDate><guid>https://jongyongpark.github.io/posts/technical-support/azure--devops-api-rate-limits/</guid><description>&lt;h2 id="azure-devops-api-rate-limits">&lt;strong>Azure DevOps API Rate Limits&lt;/strong>&lt;/h2>
+&lt;p>Azure DevOps imposes &lt;strong>rate limits&lt;/strong> on its REST API to ensure fair usage and prevent abuse. If you exceed these limits, your API requests may be throttled, resulting in HTTP &lt;code>429 Too Many Requests&lt;/code> responses. To avoid this, it&amp;rsquo;s important to monitor and manage your API usage.&lt;/p>
+&lt;p>Here’s how you can check and handle Azure DevOps Work Items API rate limits:&lt;/p>
+&lt;hr>
+&lt;h3 id="1-understanding-azure-devops-api-rate-limits">&lt;strong>1. Understanding Azure DevOps API Rate Limits&lt;/strong>&lt;/h3>
+&lt;p>Azure DevOps API rate limits are based on:&lt;/p></description></item><item><title>How to send findings from SRM (Software Risk Management) to Azure DevOps Work Items</title><link>https://jongyongpark.github.io/posts/technical-support/srm/srm-findings-to-azure-devops-work/</link><pubDate>Fri, 31 Jan 2025 00:00:00 +0000</pubDate><guid>https://jongyongpark.github.io/posts/technical-support/srm/srm-findings-to-azure-devops-work/</guid><description>&lt;p>how to check Azure DevOps Work Items API rate limit&lt;/p>
+&lt;h2 id="how-to-send-findings-from-srm-software-risk-management-to-azure-devops-work-items">How to send findings from SRM (Software Risk Management) to Azure DevOps Work Items&lt;/h2>
+&lt;p>To send findings from &lt;strong>SRM (Software Risk Management)&lt;/strong> to &lt;strong>Azure DevOps Work Items&lt;/strong>, you can follow the steps outlined below. This process involves using the Azure DevOps REST API to create or update work items based on the SRM findings. Here&amp;rsquo;s a detailed guide:&lt;/p>
+&lt;hr>
+&lt;h3 id="1-prerequisites">&lt;strong>1. Prerequisites&lt;/strong>&lt;/h3>
+&lt;p>Before starting, ensure the following:&lt;/p></description></item></channel></rss>

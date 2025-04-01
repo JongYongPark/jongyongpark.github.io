@@ -1,74 +1,56 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Github on RyanPark&#39;s DevSecOps</title>
-    <link>http://localhost:1313/tags/github/</link>
-    <description>Recent content in Github on RyanPark&#39;s DevSecOps</description>
-    <generator>Hugo -- 0.142.0</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Fri, 14 Feb 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/github/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Different URL Formats for Accessing a Git Repository</title>
-      <link>http://localhost:1313/posts/technical-support/git--repo-access-url-formats/</link>
-      <pubDate>Fri, 14 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/technical-support/git--repo-access-url-formats/</guid>
-      <description>&lt;h2 id=&#34;-different-url-formats-for-accessing-a-git-repository&#34;&gt;&lt;strong&gt;🔹 Different URL Formats for Accessing a Git Repository&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;Git supports multiple protocols for accessing repositories, each with its own advantages and disadvantages in terms of authentication, security, and ease of use. Below is a summary of the common URL formats, their corresponding protocols, authentication methods, and a comparison of their pros and cons.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;-git-repository-url-formats-and-their-characteristics&#34;&gt;&lt;strong&gt;📌 Git Repository URL Formats and Their Characteristics&lt;/strong&gt;&lt;/h3&gt;
-&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;&lt;strong&gt;Git URL Format&lt;/strong&gt;&lt;/th&gt;
-          &lt;th&gt;&lt;strong&gt;Protocol Used&lt;/strong&gt;&lt;/th&gt;
-          &lt;th&gt;&lt;strong&gt;Authentication Method&lt;/strong&gt;&lt;/th&gt;
-          &lt;th&gt;&lt;strong&gt;Pros&lt;/strong&gt;&lt;/th&gt;
-          &lt;th&gt;&lt;strong&gt;Cons&lt;/strong&gt;&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;code&gt;git@host:path/repo.git&lt;/code&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;strong&gt;SSH&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;SSH key authentication (Private/Public key pair)&lt;/td&gt;
-          &lt;td&gt;✅ Secure authentication without storing passwords ✅ Supports read &amp;amp; write access ✅ Works well in automation (CI/CD)&lt;/td&gt;
-          &lt;td&gt;❌ Requires setting up SSH keys ❌ Firewalls may block SSH (port 22)&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;code&gt;ssh://git@host/path/repo.git&lt;/code&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;strong&gt;SSH&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;SSH key authentication&lt;/td&gt;
-          &lt;td&gt;✅ Same as &lt;code&gt;git@host:path/repo.git&lt;/code&gt;, but with explicit protocol ✅ More readable for some users&lt;/td&gt;
-          &lt;td&gt;❌ Identical disadvantages as the &lt;code&gt;git@&lt;/code&gt; format&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;code&gt;https://host/path/repo.git&lt;/code&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;strong&gt;HTTPS&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;Username + Password, or Personal Access Token (PAT)&lt;/td&gt;
-          &lt;td&gt;✅ Works without additional setup ✅ Usually allowed through firewalls ✅ Supports 2FA via PAT&lt;/td&gt;
-          &lt;td&gt;❌ Requires entering credentials or setting up a credential manager ❌ PATs need to be managed securely&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;code&gt;git://host/path/repo.git&lt;/code&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;strong&gt;Git Daemon (read-only)&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;No authentication required&lt;/td&gt;
-          &lt;td&gt;✅ Fast and lightweight ✅ Ideal for public repositories&lt;/td&gt;
-          &lt;td&gt;❌ No authentication, security risk ❌ Only supports read access&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;code&gt;/path/to/repo.git&lt;/code&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;strong&gt;Local File System&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;No authentication needed (local access)&lt;/td&gt;
-          &lt;td&gt;✅ Fastest access (no network latency) ✅ No need for authentication&lt;/td&gt;
-          &lt;td&gt;❌ Only works on the local machine ❌ Cannot be used for remote access&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;-pros-and-cons-of-each-git-access-method&#34;&gt;&lt;strong&gt;📌 Pros and Cons of Each Git Access Method&lt;/strong&gt;&lt;/h3&gt;
-&lt;h4 id=&#34;1-ssh-githostpathrepogit-or-sshgithostpathrepogit&#34;&gt;&lt;strong&gt;1️⃣ SSH (&lt;code&gt;git@host:path/repo.git&lt;/code&gt; or &lt;code&gt;ssh://git@host/path/repo.git&lt;/code&gt;)&lt;/strong&gt;&lt;/h4&gt;
-&lt;p&gt;✅ &lt;strong&gt;Pros:&lt;/strong&gt;&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Github on RyanLabs</title><link>https://jongyongpark.github.io/tags/github/</link><description>Recent content in Github on RyanLabs</description><generator>Hugo -- 0.142.0</generator><language>ko-kr</language><lastBuildDate>Fri, 14 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://jongyongpark.github.io/tags/github/index.xml" rel="self" type="application/rss+xml"/><item><title>Different URL Formats for Accessing a Git Repository</title><link>https://jongyongpark.github.io/posts/technical-support/git--repo-access-url-formats/</link><pubDate>Fri, 14 Feb 2025 00:00:00 +0000</pubDate><guid>https://jongyongpark.github.io/posts/technical-support/git--repo-access-url-formats/</guid><description>&lt;h2 id="-different-url-formats-for-accessing-a-git-repository">&lt;strong>🔹 Different URL Formats for Accessing a Git Repository&lt;/strong>&lt;/h2>
+&lt;p>Git supports multiple protocols for accessing repositories, each with its own advantages and disadvantages in terms of authentication, security, and ease of use. Below is a summary of the common URL formats, their corresponding protocols, authentication methods, and a comparison of their pros and cons.&lt;/p>
+&lt;hr>
+&lt;h3 id="-git-repository-url-formats-and-their-characteristics">&lt;strong>📌 Git Repository URL Formats and Their Characteristics&lt;/strong>&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;strong>Git URL Format&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Protocol Used&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Authentication Method&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Pros&lt;/strong>&lt;/th>
+&lt;th>&lt;strong>Cons&lt;/strong>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;code>git@host:path/repo.git&lt;/code>&lt;/td>
+&lt;td>&lt;strong>SSH&lt;/strong>&lt;/td>
+&lt;td>SSH key authentication (Private/Public key pair)&lt;/td>
+&lt;td>✅ Secure authentication without storing passwords ✅ Supports read &amp;amp; write access ✅ Works well in automation (CI/CD)&lt;/td>
+&lt;td>❌ Requires setting up SSH keys ❌ Firewalls may block SSH (port 22)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>ssh://git@host/path/repo.git&lt;/code>&lt;/td>
+&lt;td>&lt;strong>SSH&lt;/strong>&lt;/td>
+&lt;td>SSH key authentication&lt;/td>
+&lt;td>✅ Same as &lt;code>git@host:path/repo.git&lt;/code>, but with explicit protocol ✅ More readable for some users&lt;/td>
+&lt;td>❌ Identical disadvantages as the &lt;code>git@&lt;/code> format&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>https://host/path/repo.git&lt;/code>&lt;/td>
+&lt;td>&lt;strong>HTTPS&lt;/strong>&lt;/td>
+&lt;td>Username + Password, or Personal Access Token (PAT)&lt;/td>
+&lt;td>✅ Works without additional setup ✅ Usually allowed through firewalls ✅ Supports 2FA via PAT&lt;/td>
+&lt;td>❌ Requires entering credentials or setting up a credential manager ❌ PATs need to be managed securely&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>git://host/path/repo.git&lt;/code>&lt;/td>
+&lt;td>&lt;strong>Git Daemon (read-only)&lt;/strong>&lt;/td>
+&lt;td>No authentication required&lt;/td>
+&lt;td>✅ Fast and lightweight ✅ Ideal for public repositories&lt;/td>
+&lt;td>❌ No authentication, security risk ❌ Only supports read access&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&lt;code>/path/to/repo.git&lt;/code>&lt;/td>
+&lt;td>&lt;strong>Local File System&lt;/strong>&lt;/td>
+&lt;td>No authentication needed (local access)&lt;/td>
+&lt;td>✅ Fastest access (no network latency) ✅ No need for authentication&lt;/td>
+&lt;td>❌ Only works on the local machine ❌ Cannot be used for remote access&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h3 id="-pros-and-cons-of-each-git-access-method">&lt;strong>📌 Pros and Cons of Each Git Access Method&lt;/strong>&lt;/h3>
+&lt;h4 id="1-ssh-githostpathrepogit-or-sshgithostpathrepogit">&lt;strong>1️⃣ SSH (&lt;code>git@host:path/repo.git&lt;/code> or &lt;code>ssh://git@host/path/repo.git&lt;/code>)&lt;/strong>&lt;/h4>
+&lt;p>✅ &lt;strong>Pros:&lt;/strong>&lt;/p></description></item></channel></rss>

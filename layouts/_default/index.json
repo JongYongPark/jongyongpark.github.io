@@ -1,0 +1,12 @@
+{{- $pages := .Site.Pages -}}
+{{- $list := slice -}}
+{{- range $pages -}}
+    {{- $page := . -}}
+    {{- $title := $page.Title -}}
+    {{- $content := $page.Plain | default $page.Summary -}}
+    {{- $permalink := $page.Permalink -}}
+    {{- $summary := $page.Summary -}}
+    {{- $item := dict "title" $title "content" $content "permalink" $permalink "summary" $summary -}}
+    {{- $list = append $item $list -}}
+{{- end -}}
+{{- jsonify $list -}}

@@ -31,4 +31,4 @@ desktop.ini
 *.bak
 
 # 개인 비공개 콘텐츠 예시
-# /content/private/
+/content/private/

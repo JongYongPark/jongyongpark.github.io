@@ -1,1 +1,4 @@
-public/** text eol=lf
+# force LF for all files
+* text=auto eol=lf
+
+# public/** text eol=lf

@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="ko" dir="auto">
-
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
-<title>RyanLabs</title>
-<meta name="keywords" content="">
-<meta name="description" content="_ 와 -
+<!doctype html><html lang=ko dir=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>RyanLabs</title>
+<meta name=keywords content><meta name=description content="_ 와 -
 Ubuntu(또는 Linux)에서 파일 이름에 _(언더스코어)와 -(하이픈)를 사용할 때, 어떤 것을 선택할지 고민할 수 있습니다. 가독성, 일관성, 그리고 명령줄 사용 편의성을 고려하여 다음과 같이 정리할 수 있습니다.
 
 🔹 _(언더스코어) vs -(하이픈) 비교
@@ -56,571 +48,85 @@ Ubuntu(또는 Linux)에서 파일 이름에 _(언더스코어)와 -(하이픈)�
 🔹 추천 방법
 
 
-✅ 파일명에는 하이픈(-)을 추천">
-<meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/posts/sdlc/filename-convention/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.9de45e225101e4f99701d2b68fc6b8a1ef6027928be6391fa15bf7f56326c909.css" integrity="sha256-neReIlEB5PmXAdK2j8a4oe9gJ5KL5jkfoVv39WMmyQk=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="ko" href="http://localhost:1313/posts/sdlc/filename-convention/">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
+✅ 파일명에는 하이픈(-)을 추천"><meta name=author content><link rel=canonical href=https://jongyongpark.github.io/posts/sdlc/filename-convention/><link crossorigin=anonymous href=/assets/css/stylesheet.9de45e225101e4f99701d2b68fc6b8a1ef6027928be6391fa15bf7f56326c909.css integrity="sha256-neReIlEB5PmXAdK2j8a4oe9gJ5KL5jkfoVv39WMmyQk=" rel="preload stylesheet" as=style><link rel=icon href=https://jongyongpark.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://jongyongpark.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://jongyongpark.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://jongyongpark.github.io/apple-touch-icon.png><link rel=mask-icon href=https://jongyongpark.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=ko href=https://jongyongpark.github.io/posts/sdlc/filename-convention/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><meta property="og:url" content="https://jongyongpark.github.io/posts/sdlc/filename-convention/"><meta property="og:site_name" content="RyanLabs"><meta property="og:title" content="RyanLabs"><meta property="og:description" content="_ 와 - Ubuntu(또는 Linux)에서 파일 이름에 _(언더스코어)와 -(하이픈)를 사용할 때, 어떤 것을 선택할지 고민할 수 있습니다. 가독성, 일관성, 그리고 명령줄 사용 편의성을 고려하여 다음과 같이 정리할 수 있습니다.
+🔹 _(언더스코어) vs -(하이픈) 비교 구분 언더스코어 (_) 하이픈 (-) 가독성 일반적으로 더 눈에 띄고 가독성이 좋음 단어를 구분할 때 직관적이나 길게 사용하면 가독성이 떨어질 수 있음 터미널 사용 편의성 자동완성(Tab)에서 문제가 없음 cd나 ls 등에서 자동완성 시 _보다 편리함 스크립트 호환성 변수명과 동일하게 사용 가능 (ex: my_file.txt) 일부 명령어에서 -를 옵션과 혼동할 수 있음 (ex: rm -rf my-file) 웹 URL 호환성 웹 URL에서 잘 쓰이지 않음 (%5F로 변환됨) URL에서도 표준적으로 사용됨 (my-file 형태 유지) POSIX 규칙 준수 POSIX 표준이 아님 (일부 시스템에서 비권장) POSIX 파일명 표준 준수 Unix/Linux 전통 내부적으로 변수명처럼 쓰일 때 좋음 (ex: my_var_name) Unix/Linux 파일 및 디렉터리명에서 더 많이 사용됨 🔹 추천 방법 ✅ 파일명에는 하이픈(-)을 추천"><meta property="og:locale" content="ko"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta name=twitter:card content="summary"><meta name=twitter:title content><meta name=twitter:description content="_ 와 -
+Ubuntu(또는 Linux)에서 파일 이름에 _(언더스코어)와 -(하이픈)를 사용할 때, 어떤 것을 선택할지 고민할 수 있습니다. 가독성, 일관성, 그리고 명령줄 사용 편의성을 고려하여 다음과 같이 정리할 수 있습니다.
 
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-            }
+🔹 _(언더스코어) vs -(하이픈) 비교
 
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
-
-    </style>
-</noscript>
-</head>
-
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
-    <nav class="nav">
-        <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="RyanLabs (Alt + H)">RyanLabs</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <ul id="menu">
-            <li>
-                <a href="http://localhost:1313/search/" title="검색">
-                    <span>검색</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/categories/" title="카테고리">
-                    <span>카테고리</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/tags/" title="태그">
-                    <span>태그</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/archives/" title="연도">
-                    <span>연도</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/lectures/" title="강의">
-                    <span>강의</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/about/" title="어바웃미">
-                    <span>어바웃미</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<main class="main">
-
-<article class="post-single">
-  <header class="post-header">
-    
-    <h1 class="post-title entry-hint-parent">
+  
       
-    </h1>
-    <div class="post-meta">
-
-</div>
-  </header> 
-  <div class="post-content"><h1 id="_-와--">_ 와 -<a hidden class="anchor" aria-hidden="true" href="#_-와--">#</a></h1>
-<p>Ubuntu(또는 Linux)에서 파일 이름에 <code>_</code>(언더스코어)와 <code>-</code>(하이픈)를 사용할 때, 어떤 것을 선택할지 고민할 수 있습니다. <strong>가독성, 일관성, 그리고 명령줄 사용 편의성</strong>을 고려하여 다음과 같이 정리할 수 있습니다.</p>
-<hr>
-<h2 id="-_언더스코어-vs--하이픈-비교"><strong>🔹 <code>_</code>(언더스코어) vs <code>-</code>(하이픈) 비교</strong><a hidden class="anchor" aria-hidden="true" href="#-_언더스코어-vs--하이픈-비교">#</a></h2>
-<table>
-  <thead>
-      <tr>
-          <th><strong>구분</strong></th>
-          <th><strong>언더스코어 (<code>_</code>)</strong></th>
-          <th><strong>하이픈 (<code>-</code>)</strong></th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><strong>가독성</strong></td>
-          <td>일반적으로 더 눈에 띄고 가독성이 좋음</td>
-          <td>단어를 구분할 때 직관적이나 길게 사용하면 가독성이 떨어질 수 있음</td>
-      </tr>
-      <tr>
-          <td><strong>터미널 사용 편의성</strong></td>
-          <td>자동완성(Tab)에서 문제가 없음</td>
-          <td><code>cd</code>나 <code>ls</code> 등에서 자동완성 시 <code>_</code>보다 편리함</td>
-      </tr>
-      <tr>
-          <td><strong>스크립트 호환성</strong></td>
-          <td>변수명과 동일하게 사용 가능 (ex: <code>my_file.txt</code>)</td>
-          <td>일부 명령어에서 <code>-</code>를 옵션과 혼동할 수 있음 (ex: <code>rm -rf my-file</code>)</td>
-      </tr>
-      <tr>
-          <td><strong>웹 URL 호환성</strong></td>
-          <td>웹 URL에서 잘 쓰이지 않음 (<code>%5F</code>로 변환됨)</td>
-          <td>URL에서도 표준적으로 사용됨 (<code>my-file</code> 형태 유지)</td>
-      </tr>
-      <tr>
-          <td><strong>POSIX 규칙 준수</strong></td>
-          <td>POSIX 표준이 아님 (일부 시스템에서 비권장)</td>
-          <td>POSIX 파일명 표준 준수</td>
-      </tr>
-      <tr>
-          <td><strong>Unix/Linux 전통</strong></td>
-          <td>내부적으로 변수명처럼 쓰일 때 좋음 (ex: <code>my_var_name</code>)</td>
-          <td>Unix/Linux 파일 및 디렉터리명에서 더 많이 사용됨</td>
-      </tr>
-  </tbody>
-</table>
-<hr>
-<h2 id="-추천-방법"><strong>🔹 추천 방법</strong><a hidden class="anchor" aria-hidden="true" href="#-추천-방법">#</a></h2>
-<ul>
-<li>
-<p>✅ <strong>파일명에는 하이픈(<code>-</code>)을 추천</strong></p>
-<ul>
-<li><code>my-file-name.txt</code></li>
-<li>이유: <strong>가독성이 좋고, POSIX 표준</strong>이며 <strong>웹과도 호환성이 높음</strong>.</li>
-</ul>
-</li>
-<li>
-<p>✅ <strong>스크립트나 코드 변수명에는 언더스코어(<code>_</code>)를 추천</strong></p>
-<ul>
-<li><code>my_variable_name</code> (Python, Bash, 환경변수 등)</li>
-<li>이유: 언더스코어는 변수명에서 표준적으로 사용되며, <code>-</code>는 연산자로 혼동될 수 있음.</li>
-</ul>
-</li>
-<li>
-<p>✅ <strong>특정한 경우는 언더스코어(<code>_</code>) 사용</strong></p>
-<ul>
-<li><code>log_2024_03_14.txt</code> (날짜처럼 숫자를 포함하는 경우 <code>_</code> 사용)</li>
-<li><code>backup_db_01.sql</code> (숫자와 조합할 때 <code>_</code>이 가독성 좋음)</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="-예제"><strong>🔹 예제</strong><a hidden class="anchor" aria-hidden="true" href="#-예제">#</a></h2>
-<table>
-  <thead>
-      <tr>
-          <th>상황</th>
-          <th>추천 파일명</th>
-          <th>추천하지 않는 파일명</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>일반적인 파일</td>
-          <td><code>project-report-2025.pdf</code></td>
-          <td><code>project_report_2025.pdf</code></td>
-      </tr>
-      <tr>
-          <td>로그 파일</td>
-          <td><code>server-log-2025-03-14.txt</code></td>
-          <td><code>server_log_2025_03_14.txt</code></td>
-      </tr>
-      <tr>
-          <td>스크립트 파일</td>
-          <td><code>backup-database.sh</code></td>
-          <td><code>backup_database.sh</code></td>
-      </tr>
-      <tr>
-          <td>웹 URL</td>
-          <td><code>my-website-logo.png</code></td>
-          <td><code>my_website_logo.png</code></td>
-      </tr>
-      <tr>
-          <td>환경변수 (Shell/Bash)</td>
-          <td><code>MY_ENV_VARIABLE=1</code></td>
-          <td><code>MY-ENV-VARIABLE=1</code></td>
-      </tr>
-  </tbody>
-</table>
-<hr>
-<h2 id="-결론"><strong>🔹 결론</strong><a hidden class="anchor" aria-hidden="true" href="#-결론">#</a></h2>
-<ol>
-<li><strong>일반적인 파일명</strong> → <code>-</code> (하이픈) 추천 (ex: <code>my-file.txt</code>)</li>
-<li><strong>스크립트, 환경변수, 코드 변수명</strong> → <code>_</code> (언더스코어) 추천 (ex: <code>my_variable</code>)</li>
-<li><strong>날짜가 포함된 파일</strong> → <code>_</code> 사용 가능 (ex: <code>backup_2025_03_14.sql</code>)</li>
-<li><strong>웹 관련 파일 (URL, HTML, CSS, JS 등)</strong> → <code>-</code> 사용 추천</li>
-</ol>
-<p>즉, **파일명은 하이픈(<code>-</code>), 변수명은 언더스코어(<code>_</code>)**를 사용하는 것이 가장 일반적이고 가독성이 좋습니다. 🚀</p>
-<h1 id="1-ubuntu-파일-이름-규칙"><strong>1. Ubuntu 파일 이름 규칙</strong><a hidden class="anchor" aria-hidden="true" href="#1-ubuntu-파일-이름-규칙">#</a></h1>
-<h2 id="-파일-이름의-기본-규칙"><strong>✅ 파일 이름의 기본 규칙</strong><a hidden class="anchor" aria-hidden="true" href="#-파일-이름의-기본-규칙">#</a></h2>
-<ol>
-<li>
-<p><strong>대소문자 구분</strong></p>
-<ul>
-<li><code>file.txt</code>, <code>File.txt</code>, <code>FILE.txt</code>는 각각 다른 파일로 취급됨.</li>
-</ul>
-</li>
-<li>
-<p><strong>최대 길이 제한</strong></p>
-<ul>
-<li>파일 이름 최대 길이: <strong>255자</strong></li>
-<li>전체 경로 포함 최대 길이: <strong>4096자</strong></li>
-</ul>
-</li>
-<li>
-<p><strong>숨김 파일</strong></p>
-<ul>
-<li><code>.</code>(점)으로 시작하면 숨김 파일 (<code>.bashrc</code>, <code>.gitignore</code>)</li>
-</ul>
-</li>
-<li>
-<p><strong>공백 포함 가능하지만 추천되지 않음</strong></p>
-<ul>
-<li><code>My Document.txt</code> ❌</li>
-<li><code>my_document.txt</code> ✅</li>
-</ul>
-</li>
-<li>
-<p><strong>특수 문자 사용 주의</strong></p>
-<ul>
-<li>✅ 사용 가능: <code>_</code>, <code>-</code>, <code>.</code></li>
-<li>❌ 피해야 할 문자: <code>! @ # $ % ^ &amp; * ( ) { } [ ] / \</code></li>
-</ul>
-</li>
-<li>
-<p><strong>날짜 포맷</strong></p>
-<ul>
-<li><code>YYYY-MM-DD</code> 또는 <code>YYYYMMDD</code> 형식 권장</li>
-<li><code>backup_2024-03-14.tar.gz</code> ✅</li>
-<li><code>backup_14-03-2024.tar.gz</code> ❌</li>
-</ul>
-</li>
-<li>
-<p><strong>확장자 명확하게 지정</strong></p>
-<ul>
-<li><code>script.sh</code>, <code>config.json</code>, <code>data.csv</code> 등</li>
-</ul>
-</li>
-</ol>
-<hr>
-<h1 id="2-프로그래밍-언어별-파일-네이밍-컨벤션"><strong>2. 프로그래밍 언어별 파일 네이밍 컨벤션</strong><a hidden class="anchor" aria-hidden="true" href="#2-프로그래밍-언어별-파일-네이밍-컨벤션">#</a></h1>
-<h3 id="-python"><strong>📌 Python</strong><a hidden class="anchor" aria-hidden="true" href="#-python">#</a></h3>
-<p>✅ 추천하는 파일 이름 규칙:</p>
-<ul>
-<li>소문자 + 언더스코어(<code>_</code>) 사용 (PEP8 스타일 가이드 따름)</li>
-<li><code>.py</code> 확장자 사용</li>
-<li>테스트 파일은 <code>test_*.py</code> 형식으로 지정</li>
-</ul>
-<p><strong>예제</strong>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>data_processing.py    <span style="color:#75715e"># ✅ 좋은 예</span>
-</span></span><span style="display:flex;"><span>my_script.py          <span style="color:#75715e"># ✅ 좋은 예</span>
-</span></span><span style="display:flex;"><span>myScript.py           <span style="color:#75715e"># ❌ CamelCase 사용 X</span>
-</span></span><span style="display:flex;"><span>MyScript.PY           <span style="color:#75715e"># ❌ 대문자 사용 X</span>
-</span></span></code></pre></div><hr>
-<h3 id="-java"><strong>📌 Java</strong><a hidden class="anchor" aria-hidden="true" href="#-java">#</a></h3>
-<p>✅ 추천하는 파일 이름 규칙:</p>
-<ul>
-<li>클래스 이름과 파일 이름이 같아야 함 (대문자로 시작하는 CamelCase)</li>
-<li><code>.java</code> 확장자 사용</li>
-<li>패키지는 소문자로 작성 (예: <code>com.example.myapp</code>)</li>
-</ul>
-<p><strong>예제</strong>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>UserService.java      <span style="color:#75715e"># ✅ 좋은 예 (클래스와 일치)</span>
-</span></span><span style="display:flex;"><span>user_service.java     <span style="color:#75715e"># ❌ 언더스코어 사용 X</span>
-</span></span><span style="display:flex;"><span>userService.java      <span style="color:#75715e"># ❌ 파일명 소문자로 시작 X</span>
-</span></span></code></pre></div><hr>
-<h3 id="-javascript"><strong>📌 JavaScript</strong><a hidden class="anchor" aria-hidden="true" href="#-javascript">#</a></h3>
-<p>✅ 추천하는 파일 이름 규칙:</p>
-<ul>
-<li>소문자 + 하이픈(<code>-</code>) 또는 언더스코어(<code>_</code>) 사용</li>
-<li><code>.js</code>, <code>.mjs</code>, <code>.cjs</code> 확장자 사용</li>
-<li>모듈/클래스 파일은 PascalCase, 일반 파일은 kebab-case 또는 snake_case</li>
-</ul>
-<p><strong>예제</strong>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>app.js               <span style="color:#75715e"># ✅ 애플리케이션 메인 파일</span>
-</span></span><span style="display:flex;"><span>config.js            <span style="color:#75715e"># ✅ 설정 파일</span>
-</span></span><span style="display:flex;"><span>UserController.js    <span style="color:#75715e"># ✅ 클래스/모듈 파일 (PascalCase)</span>
-</span></span><span style="display:flex;"><span>user_controller.js   <span style="color:#75715e"># ✅ snake_case도 가능</span>
-</span></span></code></pre></div><hr>
-<h3 id="-typescript"><strong>📌 TypeScript</strong><a hidden class="anchor" aria-hidden="true" href="#-typescript">#</a></h3>
-<p>✅ 추천하는 파일 이름 규칙:</p>
-<ul>
-<li><code>.ts</code>, <code>.tsx</code> 확장자 사용</li>
-<li>소문자 + 하이픈(<code>-</code>) 또는 언더스코어(<code>_</code>) 사용</li>
-<li>React 컴포넌트는 PascalCase</li>
-</ul>
-<p><strong>예제</strong>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>main.ts              <span style="color:#75715e"># ✅ 일반 TS 파일</span>
-</span></span><span style="display:flex;"><span>user-service.ts      <span style="color:#75715e"># ✅ 서비스 파일</span>
-</span></span><span style="display:flex;"><span>UserComponent.tsx    <span style="color:#75715e"># ✅ React 컴포넌트</span>
-</span></span></code></pre></div><hr>
-<h3 id="-c--c"><strong>📌 C / C++</strong><a hidden class="anchor" aria-hidden="true" href="#-c--c">#</a></h3>
-<p>✅ 추천하는 파일 이름 규칙:</p>
-<ul>
-<li><code>.c</code>, <code>.cpp</code>, <code>.h</code>, <code>.hpp</code> 확장자 사용</li>
-<li>소문자 + 언더스코어(<code>_</code>) 사용</li>
-<li>헤더 파일은 <code>.h</code> 또는 <code>.hpp</code></li>
-</ul>
-<p><strong>예제</strong>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>main.c               <span style="color:#75715e"># ✅ 메인 프로그램</span>
-</span></span><span style="display:flex;"><span>utilities.c          <span style="color:#75715e"># ✅ 라이브러리 함수</span>
-</span></span><span style="display:flex;"><span>my_library.h         <span style="color:#75715e"># ✅ 헤더 파일</span>
-</span></span></code></pre></div><hr>
-<h3 id="-c"><strong>📌 C#</strong><a hidden class="anchor" aria-hidden="true" href="#-c">#</a></h3>
-<p>✅ 추천하는 파일 이름 규칙:</p>
-<ul>
-<li><code>.cs</code> 확장자 사용</li>
-<li>클래스 파일은 PascalCase, 일반 파일은 소문자+하이픈</li>
-</ul>
-<p><strong>예제</strong>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Program.cs           <span style="color:#75715e"># ✅ 메인 파일</span>
-</span></span><span style="display:flex;"><span>UserService.cs       <span style="color:#75715e"># ✅ 서비스 클래스</span>
-</span></span><span style="display:flex;"><span>database-config.cs   <span style="color:#75715e"># ✅ 설정 파일</span>
-</span></span></code></pre></div><hr>
-<h3 id="-shell-script-bash"><strong>📌 Shell Script (Bash)</strong><a hidden class="anchor" aria-hidden="true" href="#-shell-script-bash">#</a></h3>
-<p>✅ 추천하는 파일 이름 규칙:</p>
-<ul>
-<li><code>.sh</code> 확장자 사용</li>
-<li>소문자 + 언더스코어(<code>_</code>) 사용</li>
-</ul>
-<p><strong>예제</strong>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>backup_script.sh     <span style="color:#75715e"># ✅ 백업 스크립트</span>
-</span></span><span style="display:flex;"><span>install_dependencies.sh <span style="color:#75715e"># ✅ 설치 스크립트</span>
-</span></span></code></pre></div><hr>
-<h3 id="-html--css"><strong>📌 HTML / CSS</strong><a hidden class="anchor" aria-hidden="true" href="#-html--css">#</a></h3>
-<p>✅ 추천하는 파일 이름 규칙:</p>
-<ul>
-<li><code>.html</code>, <code>.css</code> 확장자 사용</li>
-<li>소문자 + 하이픈(<code>-</code>) 사용 (kebab-case)</li>
-</ul>
-<p><strong>예제</strong>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>index.html           <span style="color:#75715e"># ✅ 메인 페이지</span>
-</span></span><span style="display:flex;"><span>style.css            <span style="color:#75715e"># ✅ 스타일 파일</span>
-</span></span><span style="display:flex;"><span>user-profile.html    <span style="color:#75715e"># ✅ 특정 페이지</span>
-</span></span></code></pre></div><hr>
-<h3 id="-sql"><strong>📌 SQL</strong><a hidden class="anchor" aria-hidden="true" href="#-sql">#</a></h3>
-<p>✅ 추천하는 파일 이름 규칙:</p>
-<ul>
-<li><code>.sql</code> 확장자 사용</li>
-<li>소문자 + 언더스코어(<code>_</code>) 사용</li>
-</ul>
-<p><strong>예제</strong>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>create_users_table.sql   <span style="color:#75715e"># ✅ 테이블 생성</span>
-</span></span><span style="display:flex;"><span>backup_20240314.sql      <span style="color:#75715e"># ✅ 백업 파일</span>
-</span></span></code></pre></div><hr>
-<h2 id="3-확장자별-추천-파일-이름"><strong>3. 확장자별 추천 파일 이름</strong><a hidden class="anchor" aria-hidden="true" href="#3-확장자별-추천-파일-이름">#</a></h2>
-<table>
-  <thead>
-      <tr>
-          <th>확장자</th>
-          <th>추천 네이밍 규칙</th>
-          <th>예제</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>.py</code></td>
-          <td>snake_case 사용</td>
-          <td><code>data_processing.py</code></td>
-      </tr>
-      <tr>
-          <td><code>.java</code></td>
-          <td>PascalCase (클래스명과 동일)</td>
-          <td><code>UserService.java</code></td>
-      </tr>
-      <tr>
-          <td><code>.js</code></td>
-          <td>kebab-case 또는 snake_case</td>
-          <td><code>user-profile.js</code></td>
-      </tr>
-      <tr>
-          <td><code>.ts</code></td>
-          <td>kebab-case 또는 PascalCase</td>
-          <td><code>UserComponent.tsx</code></td>
-      </tr>
-      <tr>
-          <td><code>.c</code> / <code>.cpp</code></td>
-          <td>snake_case 사용</td>
-          <td><code>memory_manager.c</code></td>
-      </tr>
-      <tr>
-          <td><code>.h</code> / <code>.hpp</code></td>
-          <td>snake_case 사용</td>
-          <td><code>memory_manager.h</code></td>
-      </tr>
-      <tr>
-          <td><code>.cs</code></td>
-          <td>PascalCase 사용</td>
-          <td><code>DataModel.cs</code></td>
-      </tr>
-      <tr>
-          <td><code>.sh</code></td>
-          <td>snake_case 사용</td>
-          <td><code>install_script.sh</code></td>
-      </tr>
-      <tr>
-          <td><code>.html</code></td>
-          <td>kebab-case 사용</td>
-          <td><code>user-profile.html</code></td>
-      </tr>
-      <tr>
-          <td><code>.css</code></td>
-          <td>kebab-case 사용</td>
-          <td><code>main-style.css</code></td>
-      </tr>
-      <tr>
-          <td><code>.sql</code></td>
-          <td>snake_case 사용</td>
-          <td><code>create_users_table.sql</code></td>
-      </tr>
-  </tbody>
-</table>
-<hr>
-<h2 id="4-최적의-파일-이름-규칙-요약"><strong>4. 최적의 파일 이름 규칙 요약</strong><a hidden class="anchor" aria-hidden="true" href="#4-최적의-파일-이름-규칙-요약">#</a></h2>
-<p>✅ <strong>소문자 + 언더스코어(<code>_</code>) 또는 하이픈(<code>-</code>) 사용</strong><br>
-✅ <strong>공백 및 특수 문자 피하기 (<code>!@#$%^&amp;*</code>)</strong><br>
-✅ <strong>날짜는 ISO 8601(<code>YYYY-MM-DD</code>) 형식 사용</strong><br>
-✅ <strong>파일 확장자는 반드시 포함 (<code>.py</code>, <code>.java</code>, <code>.sh</code> 등)</strong><br>
-✅ <strong>프로그래밍 언어의 스타일 가이드 준수 (PEP8, Java Code Conventions 등)</strong></p>
-<p>Ubuntu 및 Linux 환경에서는 <strong>일관된 네이밍 컨벤션</strong>을 유지하는 것이 가독성, 유지보수성, 자동화에 큰 도움이 됩니다. 🚀</p>
+          구분
+          언더스코어 (_)
+          하이픈 (-)
+      
+  
+  
+      
+          가독성
+          일반적으로 더 눈에 띄고 가독성이 좋음
+          단어를 구분할 때 직관적이나 길게 사용하면 가독성이 떨어질 수 있음
+      
+      
+          터미널 사용 편의성
+          자동완성(Tab)에서 문제가 없음
+          cd나 ls 등에서 자동완성 시 _보다 편리함
+      
+      
+          스크립트 호환성
+          변수명과 동일하게 사용 가능 (ex: my_file.txt)
+          일부 명령어에서 -를 옵션과 혼동할 수 있음 (ex: rm -rf my-file)
+      
+      
+          웹 URL 호환성
+          웹 URL에서 잘 쓰이지 않음 (%5F로 변환됨)
+          URL에서도 표준적으로 사용됨 (my-file 형태 유지)
+      
+      
+          POSIX 규칙 준수
+          POSIX 표준이 아님 (일부 시스템에서 비권장)
+          POSIX 파일명 표준 준수
+      
+      
+          Unix/Linux 전통
+          내부적으로 변수명처럼 쓰일 때 좋음 (ex: my_var_name)
+          Unix/Linux 파일 및 디렉터리명에서 더 많이 사용됨
+      
+  
 
 
-  </div>
+🔹 추천 방법
 
-  <footer class="post-footer">
-    <ul class="post-tags">
-    </ul>
-  </footer>
-</article>
-    </main>
-    
-<footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/">RyanLabs</a></span> · 
 
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
-</footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
-    </svg>
-</a>
-
-<script>
-    let menu = document.getElementById('menu')
-    if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
-    }
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
-
-</script>
-<script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
-
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            document.body.classList.add('dark');
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
-</script>
-</body>
-
-</html>
+✅ 파일명에는 하이픈(-)을 추천"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://jongyongpark.github.io/posts/"},{"@type":"ListItem","position":2,"name":"","item":"https://jongyongpark.github.io/posts/sdlc/filename-convention/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"","name":"","description":"_ 와 - Ubuntu(또는 Linux)에서 파일 이름에 _(언더스코어)와 -(하이픈)를 사용할 때, 어떤 것을 선택할지 고민할 수 있습니다. 가독성, 일관성, 그리고 명령줄 사용 편의성을 고려하여 다음과 같이 정리할 수 있습니다.\n🔹 _(언더스코어) vs -(하이픈) 비교 구분 언더스코어 (_) 하이픈 (-) 가독성 일반적으로 더 눈에 띄고 가독성이 좋음 단어를 구분할 때 직관적이나 길게 사용하면 가독성이 떨어질 수 있음 터미널 사용 편의성 자동완성(Tab)에서 문제가 없음 cd나 ls 등에서 자동완성 시 _보다 편리함 스크립트 호환성 변수명과 동일하게 사용 가능 (ex: my_file.txt) 일부 명령어에서 -를 옵션과 혼동할 수 있음 (ex: rm -rf my-file) 웹 URL 호환성 웹 URL에서 잘 쓰이지 않음 (%5F로 변환됨) URL에서도 표준적으로 사용됨 (my-file 형태 유지) POSIX 규칙 준수 POSIX 표준이 아님 (일부 시스템에서 비권장) POSIX 파일명 표준 준수 Unix/Linux 전통 내부적으로 변수명처럼 쓰일 때 좋음 (ex: my_var_name) Unix/Linux 파일 및 디렉터리명에서 더 많이 사용됨 🔹 추천 방법 ✅ 파일명에는 하이픈(-)을 추천\n","keywords":[],"articleBody":"_ 와 - Ubuntu(또는 Linux)에서 파일 이름에 _(언더스코어)와 -(하이픈)를 사용할 때, 어떤 것을 선택할지 고민할 수 있습니다. 가독성, 일관성, 그리고 명령줄 사용 편의성을 고려하여 다음과 같이 정리할 수 있습니다.\n🔹 _(언더스코어) vs -(하이픈) 비교 구분 언더스코어 (_) 하이픈 (-) 가독성 일반적으로 더 눈에 띄고 가독성이 좋음 단어를 구분할 때 직관적이나 길게 사용하면 가독성이 떨어질 수 있음 터미널 사용 편의성 자동완성(Tab)에서 문제가 없음 cd나 ls 등에서 자동완성 시 _보다 편리함 스크립트 호환성 변수명과 동일하게 사용 가능 (ex: my_file.txt) 일부 명령어에서 -를 옵션과 혼동할 수 있음 (ex: rm -rf my-file) 웹 URL 호환성 웹 URL에서 잘 쓰이지 않음 (%5F로 변환됨) URL에서도 표준적으로 사용됨 (my-file 형태 유지) POSIX 규칙 준수 POSIX 표준이 아님 (일부 시스템에서 비권장) POSIX 파일명 표준 준수 Unix/Linux 전통 내부적으로 변수명처럼 쓰일 때 좋음 (ex: my_var_name) Unix/Linux 파일 및 디렉터리명에서 더 많이 사용됨 🔹 추천 방법 ✅ 파일명에는 하이픈(-)을 추천\nmy-file-name.txt 이유: 가독성이 좋고, POSIX 표준이며 웹과도 호환성이 높음. ✅ 스크립트나 코드 변수명에는 언더스코어(_)를 추천\nmy_variable_name (Python, Bash, 환경변수 등) 이유: 언더스코어는 변수명에서 표준적으로 사용되며, -는 연산자로 혼동될 수 있음. ✅ 특정한 경우는 언더스코어(_) 사용\nlog_2024_03_14.txt (날짜처럼 숫자를 포함하는 경우 _ 사용) backup_db_01.sql (숫자와 조합할 때 _이 가독성 좋음) 🔹 예제 상황 추천 파일명 추천하지 않는 파일명 일반적인 파일 project-report-2025.pdf project_report_2025.pdf 로그 파일 server-log-2025-03-14.txt server_log_2025_03_14.txt 스크립트 파일 backup-database.sh backup_database.sh 웹 URL my-website-logo.png my_website_logo.png 환경변수 (Shell/Bash) MY_ENV_VARIABLE=1 MY-ENV-VARIABLE=1 🔹 결론 일반적인 파일명 → - (하이픈) 추천 (ex: my-file.txt) 스크립트, 환경변수, 코드 변수명 → _ (언더스코어) 추천 (ex: my_variable) 날짜가 포함된 파일 → _ 사용 가능 (ex: backup_2025_03_14.sql) 웹 관련 파일 (URL, HTML, CSS, JS 등) → - 사용 추천 즉, **파일명은 하이픈(-), 변수명은 언더스코어(_)**를 사용하는 것이 가장 일반적이고 가독성이 좋습니다. 🚀\n1. Ubuntu 파일 이름 규칙 ✅ 파일 이름의 기본 규칙 대소문자 구분\nfile.txt, File.txt, FILE.txt는 각각 다른 파일로 취급됨. 최대 길이 제한\n파일 이름 최대 길이: 255자 전체 경로 포함 최대 길이: 4096자 숨김 파일\n.(점)으로 시작하면 숨김 파일 (.bashrc, .gitignore) 공백 포함 가능하지만 추천되지 않음\nMy Document.txt ❌ my_document.txt ✅ 특수 문자 사용 주의\n✅ 사용 가능: _, -, . ❌ 피해야 할 문자: ! @ # $ % ^ \u0026 * ( ) { } [ ] / \\ 날짜 포맷\nYYYY-MM-DD 또는 YYYYMMDD 형식 권장 backup_2024-03-14.tar.gz ✅ backup_14-03-2024.tar.gz ❌ 확장자 명확하게 지정\nscript.sh, config.json, data.csv 등 2. 프로그래밍 언어별 파일 네이밍 컨벤션 📌 Python ✅ 추천하는 파일 이름 규칙:\n소문자 + 언더스코어(_) 사용 (PEP8 스타일 가이드 따름) .py 확장자 사용 테스트 파일은 test_*.py 형식으로 지정 예제:\ndata_processing.py # ✅ 좋은 예 my_script.py # ✅ 좋은 예 myScript.py # ❌ CamelCase 사용 X MyScript.PY # ❌ 대문자 사용 X 📌 Java ✅ 추천하는 파일 이름 규칙:\n클래스 이름과 파일 이름이 같아야 함 (대문자로 시작하는 CamelCase) .java 확장자 사용 패키지는 소문자로 작성 (예: com.example.myapp) 예제:\nUserService.java # ✅ 좋은 예 (클래스와 일치) user_service.java # ❌ 언더스코어 사용 X userService.java # ❌ 파일명 소문자로 시작 X 📌 JavaScript ✅ 추천하는 파일 이름 규칙:\n소문자 + 하이픈(-) 또는 언더스코어(_) 사용 .js, .mjs, .cjs 확장자 사용 모듈/클래스 파일은 PascalCase, 일반 파일은 kebab-case 또는 snake_case 예제:\napp.js # ✅ 애플리케이션 메인 파일 config.js # ✅ 설정 파일 UserController.js # ✅ 클래스/모듈 파일 (PascalCase) user_controller.js # ✅ snake_case도 가능 📌 TypeScript ✅ 추천하는 파일 이름 규칙:\n.ts, .tsx 확장자 사용 소문자 + 하이픈(-) 또는 언더스코어(_) 사용 React 컴포넌트는 PascalCase 예제:\nmain.ts # ✅ 일반 TS 파일 user-service.ts # ✅ 서비스 파일 UserComponent.tsx # ✅ React 컴포넌트 📌 C / C++ ✅ 추천하는 파일 이름 규칙:\n.c, .cpp, .h, .hpp 확장자 사용 소문자 + 언더스코어(_) 사용 헤더 파일은 .h 또는 .hpp 예제:\nmain.c # ✅ 메인 프로그램 utilities.c # ✅ 라이브러리 함수 my_library.h # ✅ 헤더 파일 📌 C# ✅ 추천하는 파일 이름 규칙:\n.cs 확장자 사용 클래스 파일은 PascalCase, 일반 파일은 소문자+하이픈 예제:\nProgram.cs # ✅ 메인 파일 UserService.cs # ✅ 서비스 클래스 database-config.cs # ✅ 설정 파일 📌 Shell Script (Bash) ✅ 추천하는 파일 이름 규칙:\n.sh 확장자 사용 소문자 + 언더스코어(_) 사용 예제:\nbackup_script.sh # ✅ 백업 스크립트 install_dependencies.sh # ✅ 설치 스크립트 📌 HTML / CSS ✅ 추천하는 파일 이름 규칙:\n.html, .css 확장자 사용 소문자 + 하이픈(-) 사용 (kebab-case) 예제:\nindex.html # ✅ 메인 페이지 style.css # ✅ 스타일 파일 user-profile.html # ✅ 특정 페이지 📌 SQL ✅ 추천하는 파일 이름 규칙:\n.sql 확장자 사용 소문자 + 언더스코어(_) 사용 예제:\ncreate_users_table.sql # ✅ 테이블 생성 backup_20240314.sql # ✅ 백업 파일 3. 확장자별 추천 파일 이름 확장자 추천 네이밍 규칙 예제 .py snake_case 사용 data_processing.py .java PascalCase (클래스명과 동일) UserService.java .js kebab-case 또는 snake_case user-profile.js .ts kebab-case 또는 PascalCase UserComponent.tsx .c / .cpp snake_case 사용 memory_manager.c .h / .hpp snake_case 사용 memory_manager.h .cs PascalCase 사용 DataModel.cs .sh snake_case 사용 install_script.sh .html kebab-case 사용 user-profile.html .css kebab-case 사용 main-style.css .sql snake_case 사용 create_users_table.sql 4. 최적의 파일 이름 규칙 요약 ✅ 소문자 + 언더스코어(_) 또는 하이픈(-) 사용\n✅ 공백 및 특수 문자 피하기 (!@#$%^\u0026*)\n✅ 날짜는 ISO 8601(YYYY-MM-DD) 형식 사용\n✅ 파일 확장자는 반드시 포함 (.py, .java, .sh 등)\n✅ 프로그래밍 언어의 스타일 가이드 준수 (PEP8, Java Code Conventions 등)\nUbuntu 및 Linux 환경에서는 일관된 네이밍 컨벤션을 유지하는 것이 가독성, 유지보수성, 자동화에 큰 도움이 됩니다. 🚀\n","wordCount":"833","inLanguage":"ko","datePublished":"0001-01-01T00:00:00Z","dateModified":"0001-01-01T00:00:00Z","mainEntityOfPage":{"@type":"WebPage","@id":"https://jongyongpark.github.io/posts/sdlc/filename-convention/"},"publisher":{"@type":"Organization","name":"RyanLabs","logo":{"@type":"ImageObject","url":"https://jongyongpark.github.io/favicon.ico"}}}</script></head><body id=top><script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://jongyongpark.github.io/ accesskey=h title="RyanLabs (Alt + H)">RyanLabs</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://jongyongpark.github.io/search/ title=검색><span>검색</span></a></li><li><a href=https://jongyongpark.github.io/categories/ title=카테고리><span>카테고리</span></a></li><li><a href=https://jongyongpark.github.io/tags/ title=태그><span>태그</span></a></li><li><a href=https://jongyongpark.github.io/archives/ title=연도><span>연도</span></a></li><li><a href=https://jongyongpark.github.io/lectures/ title=강의><span>강의</span></a></li><li><a href=https://jongyongpark.github.io/about/ title=어바웃미><span>어바웃미</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent"></h1><div class=post-meta></div></header><div class=post-content><h1 id=_-와-->_ 와 -<a hidden class=anchor aria-hidden=true href=#_-와-->#</a></h1><p>Ubuntu(또는 Linux)에서 파일 이름에 <code>_</code>(언더스코어)와 <code>-</code>(하이픈)를 사용할 때, 어떤 것을 선택할지 고민할 수 있습니다. <strong>가독성, 일관성, 그리고 명령줄 사용 편의성</strong>을 고려하여 다음과 같이 정리할 수 있습니다.</p><hr><h2 id=-_언더스코어-vs--하이픈-비교><strong>🔹 <code>_</code>(언더스코어) vs <code>-</code>(하이픈) 비교</strong><a hidden class=anchor aria-hidden=true href=#-_언더스코어-vs--하이픈-비교>#</a></h2><table><thead><tr><th><strong>구분</strong></th><th><strong>언더스코어 (<code>_</code>)</strong></th><th><strong>하이픈 (<code>-</code>)</strong></th></tr></thead><tbody><tr><td><strong>가독성</strong></td><td>일반적으로 더 눈에 띄고 가독성이 좋음</td><td>단어를 구분할 때 직관적이나 길게 사용하면 가독성이 떨어질 수 있음</td></tr><tr><td><strong>터미널 사용 편의성</strong></td><td>자동완성(Tab)에서 문제가 없음</td><td><code>cd</code>나 <code>ls</code> 등에서 자동완성 시 <code>_</code>보다 편리함</td></tr><tr><td><strong>스크립트 호환성</strong></td><td>변수명과 동일하게 사용 가능 (ex: <code>my_file.txt</code>)</td><td>일부 명령어에서 <code>-</code>를 옵션과 혼동할 수 있음 (ex: <code>rm -rf my-file</code>)</td></tr><tr><td><strong>웹 URL 호환성</strong></td><td>웹 URL에서 잘 쓰이지 않음 (<code>%5F</code>로 변환됨)</td><td>URL에서도 표준적으로 사용됨 (<code>my-file</code> 형태 유지)</td></tr><tr><td><strong>POSIX 규칙 준수</strong></td><td>POSIX 표준이 아님 (일부 시스템에서 비권장)</td><td>POSIX 파일명 표준 준수</td></tr><tr><td><strong>Unix/Linux 전통</strong></td><td>내부적으로 변수명처럼 쓰일 때 좋음 (ex: <code>my_var_name</code>)</td><td>Unix/Linux 파일 및 디렉터리명에서 더 많이 사용됨</td></tr></tbody></table><hr><h2 id=-추천-방법><strong>🔹 추천 방법</strong><a hidden class=anchor aria-hidden=true href=#-추천-방법>#</a></h2><ul><li><p>✅ <strong>파일명에는 하이픈(<code>-</code>)을 추천</strong></p><ul><li><code>my-file-name.txt</code></li><li>이유: <strong>가독성이 좋고, POSIX 표준</strong>이며 <strong>웹과도 호환성이 높음</strong>.</li></ul></li><li><p>✅ <strong>스크립트나 코드 변수명에는 언더스코어(<code>_</code>)를 추천</strong></p><ul><li><code>my_variable_name</code> (Python, Bash, 환경변수 등)</li><li>이유: 언더스코어는 변수명에서 표준적으로 사용되며, <code>-</code>는 연산자로 혼동될 수 있음.</li></ul></li><li><p>✅ <strong>특정한 경우는 언더스코어(<code>_</code>) 사용</strong></p><ul><li><code>log_2024_03_14.txt</code> (날짜처럼 숫자를 포함하는 경우 <code>_</code> 사용)</li><li><code>backup_db_01.sql</code> (숫자와 조합할 때 <code>_</code>이 가독성 좋음)</li></ul></li></ul><hr><h2 id=-예제><strong>🔹 예제</strong><a hidden class=anchor aria-hidden=true href=#-예제>#</a></h2><table><thead><tr><th>상황</th><th>추천 파일명</th><th>추천하지 않는 파일명</th></tr></thead><tbody><tr><td>일반적인 파일</td><td><code>project-report-2025.pdf</code></td><td><code>project_report_2025.pdf</code></td></tr><tr><td>로그 파일</td><td><code>server-log-2025-03-14.txt</code></td><td><code>server_log_2025_03_14.txt</code></td></tr><tr><td>스크립트 파일</td><td><code>backup-database.sh</code></td><td><code>backup_database.sh</code></td></tr><tr><td>웹 URL</td><td><code>my-website-logo.png</code></td><td><code>my_website_logo.png</code></td></tr><tr><td>환경변수 (Shell/Bash)</td><td><code>MY_ENV_VARIABLE=1</code></td><td><code>MY-ENV-VARIABLE=1</code></td></tr></tbody></table><hr><h2 id=-결론><strong>🔹 결론</strong><a hidden class=anchor aria-hidden=true href=#-결론>#</a></h2><ol><li><strong>일반적인 파일명</strong> → <code>-</code> (하이픈) 추천 (ex: <code>my-file.txt</code>)</li><li><strong>스크립트, 환경변수, 코드 변수명</strong> → <code>_</code> (언더스코어) 추천 (ex: <code>my_variable</code>)</li><li><strong>날짜가 포함된 파일</strong> → <code>_</code> 사용 가능 (ex: <code>backup_2025_03_14.sql</code>)</li><li><strong>웹 관련 파일 (URL, HTML, CSS, JS 등)</strong> → <code>-</code> 사용 추천</li></ol><p>즉, **파일명은 하이픈(<code>-</code>), 변수명은 언더스코어(<code>_</code>)**를 사용하는 것이 가장 일반적이고 가독성이 좋습니다. 🚀</p><h1 id=1-ubuntu-파일-이름-규칙><strong>1. Ubuntu 파일 이름 규칙</strong><a hidden class=anchor aria-hidden=true href=#1-ubuntu-파일-이름-규칙>#</a></h1><h2 id=-파일-이름의-기본-규칙><strong>✅ 파일 이름의 기본 규칙</strong><a hidden class=anchor aria-hidden=true href=#-파일-이름의-기본-규칙>#</a></h2><ol><li><p><strong>대소문자 구분</strong></p><ul><li><code>file.txt</code>, <code>File.txt</code>, <code>FILE.txt</code>는 각각 다른 파일로 취급됨.</li></ul></li><li><p><strong>최대 길이 제한</strong></p><ul><li>파일 이름 최대 길이: <strong>255자</strong></li><li>전체 경로 포함 최대 길이: <strong>4096자</strong></li></ul></li><li><p><strong>숨김 파일</strong></p><ul><li><code>.</code>(점)으로 시작하면 숨김 파일 (<code>.bashrc</code>, <code>.gitignore</code>)</li></ul></li><li><p><strong>공백 포함 가능하지만 추천되지 않음</strong></p><ul><li><code>My Document.txt</code> ❌</li><li><code>my_document.txt</code> ✅</li></ul></li><li><p><strong>특수 문자 사용 주의</strong></p><ul><li>✅ 사용 가능: <code>_</code>, <code>-</code>, <code>.</code></li><li>❌ 피해야 할 문자: <code>! @ # $ % ^ & * ( ) { } [ ] / \</code></li></ul></li><li><p><strong>날짜 포맷</strong></p><ul><li><code>YYYY-MM-DD</code> 또는 <code>YYYYMMDD</code> 형식 권장</li><li><code>backup_2024-03-14.tar.gz</code> ✅</li><li><code>backup_14-03-2024.tar.gz</code> ❌</li></ul></li><li><p><strong>확장자 명확하게 지정</strong></p><ul><li><code>script.sh</code>, <code>config.json</code>, <code>data.csv</code> 등</li></ul></li></ol><hr><h1 id=2-프로그래밍-언어별-파일-네이밍-컨벤션><strong>2. 프로그래밍 언어별 파일 네이밍 컨벤션</strong><a hidden class=anchor aria-hidden=true href=#2-프로그래밍-언어별-파일-네이밍-컨벤션>#</a></h1><h3 id=-python><strong>📌 Python</strong><a hidden class=anchor aria-hidden=true href=#-python>#</a></h3><p>✅ 추천하는 파일 이름 규칙:</p><ul><li>소문자 + 언더스코어(<code>_</code>) 사용 (PEP8 스타일 가이드 따름)</li><li><code>.py</code> 확장자 사용</li><li>테스트 파일은 <code>test_*.py</code> 형식으로 지정</li></ul><p><strong>예제</strong>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>data_processing.py    <span style=color:#75715e># ✅ 좋은 예</span>
+</span></span><span style=display:flex><span>my_script.py          <span style=color:#75715e># ✅ 좋은 예</span>
+</span></span><span style=display:flex><span>myScript.py           <span style=color:#75715e># ❌ CamelCase 사용 X</span>
+</span></span><span style=display:flex><span>MyScript.PY           <span style=color:#75715e># ❌ 대문자 사용 X</span>
+</span></span></code></pre></div><hr><h3 id=-java><strong>📌 Java</strong><a hidden class=anchor aria-hidden=true href=#-java>#</a></h3><p>✅ 추천하는 파일 이름 규칙:</p><ul><li>클래스 이름과 파일 이름이 같아야 함 (대문자로 시작하는 CamelCase)</li><li><code>.java</code> 확장자 사용</li><li>패키지는 소문자로 작성 (예: <code>com.example.myapp</code>)</li></ul><p><strong>예제</strong>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>UserService.java      <span style=color:#75715e># ✅ 좋은 예 (클래스와 일치)</span>
+</span></span><span style=display:flex><span>user_service.java     <span style=color:#75715e># ❌ 언더스코어 사용 X</span>
+</span></span><span style=display:flex><span>userService.java      <span style=color:#75715e># ❌ 파일명 소문자로 시작 X</span>
+</span></span></code></pre></div><hr><h3 id=-javascript><strong>📌 JavaScript</strong><a hidden class=anchor aria-hidden=true href=#-javascript>#</a></h3><p>✅ 추천하는 파일 이름 규칙:</p><ul><li>소문자 + 하이픈(<code>-</code>) 또는 언더스코어(<code>_</code>) 사용</li><li><code>.js</code>, <code>.mjs</code>, <code>.cjs</code> 확장자 사용</li><li>모듈/클래스 파일은 PascalCase, 일반 파일은 kebab-case 또는 snake_case</li></ul><p><strong>예제</strong>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>app.js               <span style=color:#75715e># ✅ 애플리케이션 메인 파일</span>
+</span></span><span style=display:flex><span>config.js            <span style=color:#75715e># ✅ 설정 파일</span>
+</span></span><span style=display:flex><span>UserController.js    <span style=color:#75715e># ✅ 클래스/모듈 파일 (PascalCase)</span>
+</span></span><span style=display:flex><span>user_controller.js   <span style=color:#75715e># ✅ snake_case도 가능</span>
+</span></span></code></pre></div><hr><h3 id=-typescript><strong>📌 TypeScript</strong><a hidden class=anchor aria-hidden=true href=#-typescript>#</a></h3><p>✅ 추천하는 파일 이름 규칙:</p><ul><li><code>.ts</code>, <code>.tsx</code> 확장자 사용</li><li>소문자 + 하이픈(<code>-</code>) 또는 언더스코어(<code>_</code>) 사용</li><li>React 컴포넌트는 PascalCase</li></ul><p><strong>예제</strong>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>main.ts              <span style=color:#75715e># ✅ 일반 TS 파일</span>
+</span></span><span style=display:flex><span>user-service.ts      <span style=color:#75715e># ✅ 서비스 파일</span>
+</span></span><span style=display:flex><span>UserComponent.tsx    <span style=color:#75715e># ✅ React 컴포넌트</span>
+</span></span></code></pre></div><hr><h3 id=-c--c><strong>📌 C / C++</strong><a hidden class=anchor aria-hidden=true href=#-c--c>#</a></h3><p>✅ 추천하는 파일 이름 규칙:</p><ul><li><code>.c</code>, <code>.cpp</code>, <code>.h</code>, <code>.hpp</code> 확장자 사용</li><li>소문자 + 언더스코어(<code>_</code>) 사용</li><li>헤더 파일은 <code>.h</code> 또는 <code>.hpp</code></li></ul><p><strong>예제</strong>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>main.c               <span style=color:#75715e># ✅ 메인 프로그램</span>
+</span></span><span style=display:flex><span>utilities.c          <span style=color:#75715e># ✅ 라이브러리 함수</span>
+</span></span><span style=display:flex><span>my_library.h         <span style=color:#75715e># ✅ 헤더 파일</span>
+</span></span></code></pre></div><hr><h3 id=-c><strong>📌 C#</strong><a hidden class=anchor aria-hidden=true href=#-c>#</a></h3><p>✅ 추천하는 파일 이름 규칙:</p><ul><li><code>.cs</code> 확장자 사용</li><li>클래스 파일은 PascalCase, 일반 파일은 소문자+하이픈</li></ul><p><strong>예제</strong>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>Program.cs           <span style=color:#75715e># ✅ 메인 파일</span>
+</span></span><span style=display:flex><span>UserService.cs       <span style=color:#75715e># ✅ 서비스 클래스</span>
+</span></span><span style=display:flex><span>database-config.cs   <span style=color:#75715e># ✅ 설정 파일</span>
+</span></span></code></pre></div><hr><h3 id=-shell-script-bash><strong>📌 Shell Script (Bash)</strong><a hidden class=anchor aria-hidden=true href=#-shell-script-bash>#</a></h3><p>✅ 추천하는 파일 이름 규칙:</p><ul><li><code>.sh</code> 확장자 사용</li><li>소문자 + 언더스코어(<code>_</code>) 사용</li></ul><p><strong>예제</strong>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>backup_script.sh     <span style=color:#75715e># ✅ 백업 스크립트</span>
+</span></span><span style=display:flex><span>install_dependencies.sh <span style=color:#75715e># ✅ 설치 스크립트</span>
+</span></span></code></pre></div><hr><h3 id=-html--css><strong>📌 HTML / CSS</strong><a hidden class=anchor aria-hidden=true href=#-html--css>#</a></h3><p>✅ 추천하는 파일 이름 규칙:</p><ul><li><code>.html</code>, <code>.css</code> 확장자 사용</li><li>소문자 + 하이픈(<code>-</code>) 사용 (kebab-case)</li></ul><p><strong>예제</strong>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>index.html           <span style=color:#75715e># ✅ 메인 페이지</span>
+</span></span><span style=display:flex><span>style.css            <span style=color:#75715e># ✅ 스타일 파일</span>
+</span></span><span style=display:flex><span>user-profile.html    <span style=color:#75715e># ✅ 특정 페이지</span>
+</span></span></code></pre></div><hr><h3 id=-sql><strong>📌 SQL</strong><a hidden class=anchor aria-hidden=true href=#-sql>#</a></h3><p>✅ 추천하는 파일 이름 규칙:</p><ul><li><code>.sql</code> 확장자 사용</li><li>소문자 + 언더스코어(<code>_</code>) 사용</li></ul><p><strong>예제</strong>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>create_users_table.sql   <span style=color:#75715e># ✅ 테이블 생성</span>
+</span></span><span style=display:flex><span>backup_20240314.sql      <span style=color:#75715e># ✅ 백업 파일</span>
+</span></span></code></pre></div><hr><h2 id=3-확장자별-추천-파일-이름><strong>3. 확장자별 추천 파일 이름</strong><a hidden class=anchor aria-hidden=true href=#3-확장자별-추천-파일-이름>#</a></h2><table><thead><tr><th>확장자</th><th>추천 네이밍 규칙</th><th>예제</th></tr></thead><tbody><tr><td><code>.py</code></td><td>snake_case 사용</td><td><code>data_processing.py</code></td></tr><tr><td><code>.java</code></td><td>PascalCase (클래스명과 동일)</td><td><code>UserService.java</code></td></tr><tr><td><code>.js</code></td><td>kebab-case 또는 snake_case</td><td><code>user-profile.js</code></td></tr><tr><td><code>.ts</code></td><td>kebab-case 또는 PascalCase</td><td><code>UserComponent.tsx</code></td></tr><tr><td><code>.c</code> / <code>.cpp</code></td><td>snake_case 사용</td><td><code>memory_manager.c</code></td></tr><tr><td><code>.h</code> / <code>.hpp</code></td><td>snake_case 사용</td><td><code>memory_manager.h</code></td></tr><tr><td><code>.cs</code></td><td>PascalCase 사용</td><td><code>DataModel.cs</code></td></tr><tr><td><code>.sh</code></td><td>snake_case 사용</td><td><code>install_script.sh</code></td></tr><tr><td><code>.html</code></td><td>kebab-case 사용</td><td><code>user-profile.html</code></td></tr><tr><td><code>.css</code></td><td>kebab-case 사용</td><td><code>main-style.css</code></td></tr><tr><td><code>.sql</code></td><td>snake_case 사용</td><td><code>create_users_table.sql</code></td></tr></tbody></table><hr><h2 id=4-최적의-파일-이름-규칙-요약><strong>4. 최적의 파일 이름 규칙 요약</strong><a hidden class=anchor aria-hidden=true href=#4-최적의-파일-이름-규칙-요약>#</a></h2><p>✅ <strong>소문자 + 언더스코어(<code>_</code>) 또는 하이픈(<code>-</code>) 사용</strong><br>✅ <strong>공백 및 특수 문자 피하기 (<code>!@#$%^&*</code>)</strong><br>✅ <strong>날짜는 ISO 8601(<code>YYYY-MM-DD</code>) 형식 사용</strong><br>✅ <strong>파일 확장자는 반드시 포함 (<code>.py</code>, <code>.java</code>, <code>.sh</code> 등)</strong><br>✅ <strong>프로그래밍 언어의 스타일 가이드 준수 (PEP8, Java Code Conventions 등)</strong></p><p>Ubuntu 및 Linux 환경에서는 <strong>일관된 네이밍 컨벤션</strong>을 유지하는 것이 가독성, 유지보수성, 자동화에 큰 도움이 됩니다. 🚀</p></div><footer class=post-footer><ul class=post-tags></ul></footer></article></main><footer class=footer><span>&copy; 2025 <a href=https://jongyongpark.github.io/>RyanLabs</a></span> ·
+<span>Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script></body></html>
